@@ -34,7 +34,10 @@ namespace PasswordManagerMainWindow
 
             User.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
 
-            try { User user = new User(login, password); }
+            try {
+                if (User.CheckPassword(login, password)) MessageBox.Show("Success");
+                else MessageBox.Show("Lox");
+            }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
     }

@@ -54,19 +54,33 @@ namespace UsersLibrary
             Add();
         }
 
+        //TODO переробити запрос на існування почти через повернення скалярного значення
+        //метод - ExecuteScalar
         private static bool IsExists(string email)
         {
-            using (SqlConnection myConnection = new SqlConnection(ConnectionString))
+            return false;
+            //return GetDataByEmail(email).Co;
+        }
+
+        private static Dictionary<string, string> GetDataByEmail(string email)
+        {
+            Dictionary<string, string> sqlData = new Dictionary<string, string>();
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
+                connection.Open();
+
                 string request = $"SELECT * FROM \"users\" WHERE EMAIL = @EMail";
-                SqlCommand command = new SqlCommand(request, myConnection);
+                SqlCommand command = new SqlCommand(request, connection);
                 command.Parameters.AddWithValue("@EMail", email);
 
-                myConnection.Open();
-
-                using (SqlDataReader oReader = command.ExecuteReader())
-                    return oReader.HasRows;
+                SqlDataReader sqlDataReader = command.ExecuteReader();
+                while (sqlDataReader.Read())
+                    for (int i = 0; i < sqlDataReader.FieldCount; i++)
+                        sqlData.Add(sqlDataReader.GetName(i), sqlDataReader.GetValue(i).ToString());
             }
+
+            return sqlData;
         }
         private void Add()
         {
@@ -81,6 +95,21 @@ namespace UsersLibrary
                 command.Parameters.AddWithValue("@Salt", Salt);
 
                 command.ExecuteNonQuery();
+            }
+        }
+
+        public static bool CheckPassword(string email, string password)
+        {
+            //if (!IsExists(email)) throw new NonExistenMailException(email);
+
+            Dictionary<string, string> sqlData = GetDataByEmail(email);
+            string passwordCheck = sqlData["Password"];
+            password += sqlData["Salt"];
+
+            using (SHA256 sHA256 = SHA256.Create())
+            {
+                byte[] hash = sHA256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                return string.Join("", hash.Select(c => c.ToString("x2"))) == passwordCheck;
             }
         }
     }
