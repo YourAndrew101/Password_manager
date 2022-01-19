@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Security.Cryptography;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Runtime.Serialization;
 
 namespace UsersLibrary
 {
@@ -45,7 +46,7 @@ namespace UsersLibrary
 
         public User(string email, string password)
         {
-            if (IsExists(email)) throw new Exception($"User with email - {email} already exists.");
+            if (IsExists(email)) throw new DuplicateMailException(email);
 
             Email = email;
             Password = password;
@@ -82,5 +83,16 @@ namespace UsersLibrary
                 command.ExecuteNonQuery();
             }
         }
+    }
+
+    public class DuplicateMailException : Exception
+    {
+        public DuplicateMailException() { }
+        public DuplicateMailException(string email) : base(string.Format("User with email - {0}, already exists", email)) { }
+    }
+    public class NonExistenMailException : Exception
+    {
+        public NonExistenMailException() { }
+        public NonExistenMailException(string email) : base(string.Format("User with email - {0}, does not exists", email)) { }
     }
 }
