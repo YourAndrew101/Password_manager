@@ -19,7 +19,7 @@ namespace ConsoleApp1
                     Console.WriteLine("\nQuery data example:");
                     Console.WriteLine("=========================================\n");
 
-                    string sql = "CREATE TABLE test1 (c1 varchar )";
+                    string sql = "CREATE TABLE test2 (c1 varchar )";
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
@@ -34,11 +34,6 @@ namespace ConsoleApp1
                 Console.WriteLine(e.ToString());
             }
             Console.ReadLine();
-        }
-
-        public static string GetBayrueConnectionString()
-        {
-            return PasswordManager.Properties.Settings.Default.BayrueConnectionString;
         }
     }
 }
