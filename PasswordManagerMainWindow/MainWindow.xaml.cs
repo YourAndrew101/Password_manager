@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UsersLibrary;
 
 namespace PasswordManagerMainWindow
 {
@@ -29,6 +31,11 @@ namespace PasswordManagerMainWindow
         {
             string login = Login.Text;
             string password = Password.Text;
+
+            User.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+
+            try { User user = new User(login, password); }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
     }
 }

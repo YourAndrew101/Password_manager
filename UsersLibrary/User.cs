@@ -4,38 +4,78 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace UsersLibrary
 {
     public class User
     {
-        public int Id { get; private set; }
+        readonly Random _random = new Random();
+        public static string ConnectionString { get; set; }
+
         public string Email { get; set; }
+
         private string _password;
         public string Password
         {
-            get => _password; set
+            get => _password;
+            set
             {
-                Random random = new Random();
-                StringBuilder salt = new StringBuilder();
-                for (int i = 0; i < 20; i++)
-                {
-                    salt.Append((char)random.Next(65, 90));
-                }
-                _password = string.Concat(_password, salt);
+                value += Salt;
                 using (SHA256 sHA256 = SHA256.Create())
                 {
-                    byte[] hash = sHA256.ComputeHash(Encoding.UTF8.GetBytes(_password));
-                    StringBuilder sb = new StringBuilder();
-                    foreach (var item in hash)
-                    {
-                        sb.Append(item.ToString("x2"));
-                    }
-                    _password = sb.ToString();
+                    byte[] hash = sHA256.ComputeHash(Encoding.UTF8.GetBytes(value));
+                    _password = string.Join("", hash.Select(c => c.ToString("x2")));
                 }
             }
         }
-        public string Salt { get; set; }
-    }
 
+        private string _salt;
+        public string Salt
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_salt)) _salt = string.Join("", Enumerable.Range(0, 20).Select(_ => (char)_random.Next(65, 90)));
+                return _salt;
+            }
+        }
+
+        public User() { }
+
+        public User(string email, string password)
+        {
+            if (IsExists(email)) throw new Exception($"User with email - {email} already exists.");
+
+            Email = email;
+            Password = password;
+
+            Add();
+        }
+
+        private static bool IsExists(string email)
+        {
+            using (SqlConnection myConnection = new SqlConnection(ConnectionString))
+            {
+                string request = $"SELECT * FROM \"users\" WHERE EMAIL = '{email}'";
+                SqlCommand command = new SqlCommand(request, myConnection);
+
+                myConnection.Open();
+
+                using (SqlDataReader oReader = command.ExecuteReader())
+                    return oReader.HasRows;
+            }
+        }
+        private void Add()
+        {
+            string request = string.Format("INSERT INTO \"users\" (Email, Password, Salt) VALUES ('{0}', '{1}', '{2}')", Email, Password, Salt);
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(request, connection);
+                command.ExecuteNonQuery();
+            }
+        }
+    }
 }
