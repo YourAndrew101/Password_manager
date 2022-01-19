@@ -57,8 +57,9 @@ namespace UsersLibrary
         {
             using (SqlConnection myConnection = new SqlConnection(ConnectionString))
             {
-                string request = $"SELECT * FROM \"users\" WHERE EMAIL = '{email}'";
+                string request = $"SELECT * FROM \"users\" WHERE EMAIL = @EMail";
                 SqlCommand command = new SqlCommand(request, myConnection);
+                command.Parameters.AddWithValue("@EMail", email);
 
                 myConnection.Open();
 
@@ -68,12 +69,16 @@ namespace UsersLibrary
         }
         private void Add()
         {
-            string request = string.Format("INSERT INTO \"users\" (Email, Password, Salt) VALUES ('{0}', '{1}', '{2}')", Email, Password, Salt);
+            string request = "INSERT INTO \"users\" (Email, Password, Salt) VALUES (@EMail, @Password, @Salt)";
 
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
                 SqlCommand command = new SqlCommand(request, connection);
+                command.Parameters.AddWithValue("@EMail", Email);
+                command.Parameters.AddWithValue("@Password", Password);
+                command.Parameters.AddWithValue("@Salt", Salt);
+
                 command.ExecuteNonQuery();
             }
         }
