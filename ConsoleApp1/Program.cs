@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,18 +14,12 @@ namespace ConsoleApp1
         {
             try
             {
-                SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-                builder.DataSource = "maindiplom.database.windows.net";
-                builder.UserID = "admin1";
-                builder.Password = "!password1";
-                builder.InitialCatalog = "MainDB";
-
-                using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+                using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString))
                 {
                     Console.WriteLine("\nQuery data example:");
                     Console.WriteLine("=========================================\n");
 
-                    String sql = "CREATE TABLE test (c1 varchar )";
+                    string sql = "CREATE TABLE test1 (c1 varchar )";
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
@@ -39,6 +34,11 @@ namespace ConsoleApp1
                 Console.WriteLine(e.ToString());
             }
             Console.ReadLine();
+        }
+
+        public static string GetBayrueConnectionString()
+        {
+            return PasswordManager.Properties.Settings.Default.BayrueConnectionString;
         }
     }
 }
