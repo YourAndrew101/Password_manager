@@ -24,5 +24,11 @@ namespace PasswordManagerMainWindow
         {
             InitializeComponent();
         }
+
+        private void Submit_Click(object sender, RoutedEventArgs e)
+        {
+            string login = Login.Text;
+            string password = Password.Text;
+        }
     }
 }
