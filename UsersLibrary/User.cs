@@ -15,7 +15,16 @@ namespace UsersLibrary
         readonly Random _random = new Random();
         public static string ConnectionString { get; set; }
 
-        public string Email { get; set; }
+        private string _email;
+        public string Email
+        {
+            get => _email;
+            set
+            {
+                if (IsExistsEmail(value)) throw new DuplicateMailException(value);
+                _email = value;
+            }
+        }
 
         private string _password;
         public string Password
@@ -42,24 +51,30 @@ namespace UsersLibrary
             }
         }
 
-        public User() { }
 
+        public User() { }
         public User(string email, string password)
         {
-            if (IsExists(email)) throw new DuplicateMailException(email);
-
             Email = email;
             Password = password;
 
             Add();
         }
 
-        //TODO переробити запрос на існування почти через повернення скалярного значення
-        //метод - ExecuteScalar
-        private static bool IsExists(string email)
+
+        private static bool IsExistsEmail(string email)
         {
-            return false;
-            //return GetDataByEmail(email).Co;
+            string request = "SELECT COUNT(*) FROM \"users\" WHERE  EMAIL = @EMail";
+
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                SqlCommand command = new SqlCommand(request, connection);
+                command.Parameters.AddWithValue("@EMail", email);
+
+                return (int)command.ExecuteScalar() != 0;
+            }
         }
 
         private static Dictionary<string, string> GetDataByEmail(string email)
@@ -70,7 +85,7 @@ namespace UsersLibrary
             {
                 connection.Open();
 
-                string request = $"SELECT * FROM \"users\" WHERE EMAIL = @EMail";
+                string request = "SELECT * FROM \"users\" WHERE EMAIL = @EMail";
                 SqlCommand command = new SqlCommand(request, connection);
                 command.Parameters.AddWithValue("@EMail", email);
 
@@ -82,6 +97,7 @@ namespace UsersLibrary
 
             return sqlData;
         }
+
         private void Add()
         {
             string request = "INSERT INTO \"users\" (Email, Password, Salt) VALUES (@EMail, @Password, @Salt)";
@@ -100,7 +116,7 @@ namespace UsersLibrary
 
         public static bool CheckPassword(string email, string password)
         {
-            //if (!IsExists(email)) throw new NonExistenMailException(email);
+            if (!IsExistsEmail(email)) throw new NonExistenMailException(email);
 
             Dictionary<string, string> sqlData = GetDataByEmail(email);
             string passwordCheck = sqlData["Password"];
