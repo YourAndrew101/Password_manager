@@ -1,0 +1,63 @@
+﻿<Page x:Class="PasswordManagerMainWindow.Auth.EmailConfirmation"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PasswordManagerMainWindow.Auth"
+      mc:Ignorable="d" 
+      d:DesignHeight="520" d:DesignWidth="500"
+      Title="Login"
+      Background="White"
+      ShowsNavigationUI="False">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="50"/>
+            
+            
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="85"/>
+            <ColumnDefinition Width="330"/>
+            <ColumnDefinition Width="85"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Confirm your email" Grid.Column="1" Grid.Row="2" 
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Center" 
+                   FontSize="28" 
+                   Foreground="Black"
+                   FontFamily="Global Sans Serif" 
+                   FontWeight="Bold"
+                   />
+        <TextBlock Text="Enter 6-digit code that you'he received by email" Grid.Column="1" Grid.Row="3" 
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Center" 
+                   FontSize="14" 
+                   Foreground="SlateGray"
+                   FontFamily="Global Sans Serif" 
+                   FontWeight="Bold"
+                   />
+        <TextBox x:Name="SixDigitsTextBox" Grid.Row="5" 
+                 Grid.Column="1" 
+                 BorderThickness="2" 
+                 Height="40"
+                 Style="{StaticResource TextBoxAuth}"
+                 />
+        <Button x:Name="Submit" Grid.Column="1"
+            Grid.Row="7"
+            Content="Confirm"
+            Width="150"
+            Height="50" 
+                Style="{StaticResource Submit}"
+                Click="Submit_Click"
+                />
+    </Grid>
+</Page>

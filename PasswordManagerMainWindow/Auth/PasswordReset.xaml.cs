@@ -10,24 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace PasswordManagerMainWindow.Auth
 {
     /// <summary>
-    /// Логика взаимодействия для Auth.xaml
+    /// Логика взаимодействия для PasswordReset.xaml
     /// </summary>
-    public partial class Auth : Window
+    public partial class PasswordReset : Page
     {
-        public Auth()
+        public PasswordReset()
         {
             InitializeComponent();
-            AuthFrame.Content = new Login();
-        }
-
-        private void CloseApp_Click(object sender, RoutedEventArgs e)
-        {
-            Environment.Exit(0);
         }
     }
 }

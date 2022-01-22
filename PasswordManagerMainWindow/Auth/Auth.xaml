@@ -12,6 +12,7 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
+        Background="White"
         >
     <Grid>
         <Grid.RowDefinitions>
@@ -22,14 +23,19 @@
             <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="500"/>
         </Grid.ColumnDefinitions>
-        <Rectangle Grid.Column="0" Fill="Black" Grid.RowSpan="2"/>
-        <Frame x:Name="AuthFrame" Grid.Column="1" Grid.Row="1"/>
+        <Rectangle Grid.Column="0" Grid.RowSpan="2">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/Assets/Relay.jpg"/>
+            </Rectangle.Fill>
+            
+        </Rectangle>
+        <Frame x:Name="AuthFrame" Grid.Column="1" Grid.Row="1" NavigationUIVisibility="Hidden"/>
         <Button x:Name="CloseApp" Grid.Column="1" Grid.Row="0" 
                 HorizontalAlignment="Right" 
-                Height="Auto" Width="30" 
-                FontFamily="Segoe MDL2 Assets" 
+                Height="30" Width="30" 
                 Content="&#xE711;" 
-                Background="Transparent" 
-                BorderThickness="0"/>
+                Style="{StaticResource CloseApp}"
+                Click="CloseApp_Click"
+                />
     </Grid>
 </Window>
