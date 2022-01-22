@@ -1,0 +1,35 @@
+﻿<Window x:Class="PasswordManagerMainWindow.Auth.Auth"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PasswordManagerMainWindow.Auth"
+        mc:Ignorable="d"
+        Title="Auth" 
+        Height="550"
+        Width="800"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        AllowsTransparency="True"
+        >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="520"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="500"/>
+        </Grid.ColumnDefinitions>
+        <Rectangle Grid.Column="0" Fill="Black" Grid.RowSpan="2"/>
+        <Frame x:Name="AuthFrame" Grid.Column="1" Grid.Row="1"/>
+        <Button x:Name="CloseApp" Grid.Column="1" Grid.Row="0" 
+                HorizontalAlignment="Right" 
+                Height="Auto" Width="30" 
+                FontFamily="Segoe MDL2 Assets" 
+                Content="&#xE711;" 
+                Background="Transparent" 
+                BorderThickness="0"/>
+    </Grid>
+</Window>
