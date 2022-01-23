@@ -29,5 +29,10 @@ namespace PasswordManagerMainWindow.Auth
         {
             Environment.Exit(0);
         }
+
+        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            this.DragMove();
+        }
     }
 }
