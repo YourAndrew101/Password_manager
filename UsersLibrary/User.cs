@@ -15,19 +15,10 @@ namespace UsersLibrary
         readonly Random _random = new Random();
         public static string ConnectionString { get; set; }
 
-        private string _email;
-        public string Email
-        {
-            get => _email;
-            set
-            {
-                if (IsExistsEmail(value)) throw new DuplicateMailException(value);
-                _email = value;
-            }
-        }
+        public string Email { get; set; }
 
         private string _password;
-        public string Password
+        public string AuthPassword
         {
             get => _password;
             set
@@ -40,6 +31,8 @@ namespace UsersLibrary
                 }
             }
         }
+
+        public string CryptoPassword { get; set; }
 
         private string _salt;
         public string Salt
@@ -56,9 +49,8 @@ namespace UsersLibrary
         public User(string email, string password)
         {
             Email = email;
-            Password = password;
-
-            Add();
+            AuthPassword = password;
+            CryptoPassword = password;
         }
 
 
@@ -98,25 +90,33 @@ namespace UsersLibrary
             return sqlData;
         }
 
-        private void Add()
+        public void Save()
         {
-            string request = "INSERT INTO \"users\" (Email, Password, Salt) VALUES (@EMail, @Password, @Salt)";
+            if (IsExistsEmail(Email)) throw new DuplicateMailException();
 
+            string request = "INSERT INTO \"users\" (Email, Password, Salt) VALUES (@EMail, @Password, @Salt)";
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
                 SqlCommand command = new SqlCommand(request, connection);
                 command.Parameters.AddWithValue("@EMail", Email);
-                command.Parameters.AddWithValue("@Password", Password);
+                command.Parameters.AddWithValue("@Password", AuthPassword);
                 command.Parameters.AddWithValue("@Salt", Salt);
 
                 command.ExecuteNonQuery();
             }
         }
 
-        public static bool CheckPassword(string email, string password)
+        public static User GetUser(string email, string password)
         {
-            if (!IsExistsEmail(email)) throw new NonExistenMailException(email);
+            if(!CheckPassword(email, password)) throw new IncorrectPasswordException();
+
+            return new User(email, password);
+        }
+
+        private static bool CheckPassword(string email, string password)
+        {
+            if (!IsExistsEmail(email)) throw new NonExistenMailException();
 
             Dictionary<string, string> sqlData = GetDataByEmail(email);
             string passwordCheck = sqlData["Password"];
@@ -132,12 +132,14 @@ namespace UsersLibrary
 
     public class DuplicateMailException : Exception
     {
-        public DuplicateMailException() { }
-        public DuplicateMailException(string email) : base(string.Format("User with email - {0}, already exists", email)) { }
+        public DuplicateMailException() : base("User already exists") { }
     }
     public class NonExistenMailException : Exception
     {
-        public NonExistenMailException() { }
-        public NonExistenMailException(string email) : base(string.Format("User with email - {0}, does not exists", email)) { }
+        public NonExistenMailException() : base("User does not exists") { }
+    }
+    public class IncorrectPasswordException : Exception
+    {
+        public IncorrectPasswordException() { }
     }
 }

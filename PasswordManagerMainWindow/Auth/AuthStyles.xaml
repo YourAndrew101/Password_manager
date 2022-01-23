@@ -46,6 +46,7 @@
             <Setter Property="FontFamily" Value="Global Sans Serif"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Visibility" Value="Hidden"/>
         </Style.Setters>
     </Style>
     
@@ -59,7 +60,7 @@
                         <Border
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                           Background="{TemplateBinding Background}"
+                            Background="{TemplateBinding Background}"
                             Height="{TemplateBinding Height}"
                             Width="{TemplateBinding Width}"
                             CornerRadius="25"
@@ -84,6 +85,10 @@
             <Trigger Property="IsPressed" Value="True">
                 <Setter Property="Background" Value="#99aab5"/>
             </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand"/>
+            </Trigger>
+    
         </Style.Triggers>
     </Style>
 
@@ -92,7 +97,6 @@
 
 
     <Style x:Key="TextBoxAuth" TargetType="TextBox">
-
         <Style.Setters>
             <Setter Property="OverridesDefaultStyle" Value="True"></Setter>
             <Setter Property="Template">

@@ -11,28 +11,18 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using UsersLibrary;
 
-namespace PasswordManager.Auth
+namespace PasswordManager.MainWindow
 {
     /// <summary>
-    /// Логика взаимодействия для Auth.xaml
+    /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class Auth : Window
+    public partial class MainWindow : Window
     {
-        public Auth()
+        public MainWindow(User user)
         {
             InitializeComponent();
-            AuthFrame.Content = new Login();
-        }
-
-        public void CloseWindow(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
-
-        private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            this.DragMove();
         }
     }
 }
