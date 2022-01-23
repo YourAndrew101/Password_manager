@@ -1,15 +1,14 @@
-﻿<Page x:Class="PasswordManagerMainWindow.Auth.Login"
+﻿<Page x:Class="PasswordManager.Auth.Login"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:PasswordManagerMainWindow.Auth"
+      xmlns:local="clr-namespace:PasswordManager.Auth"
       mc:Ignorable="d" 
       d:DesignHeight="520" d:DesignWidth="500"
       Title="Login"
       Background="White"
-      ShowsNavigationUI="False"
-      >
+      ShowsNavigationUI="False">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -34,10 +33,8 @@
         </Grid.ColumnDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
                    Grid.RowSpan="2"
-                   HorizontalAlignment="Right"
-                   
-                   FontSize="14" Margin="0,32,20,32"
-                   >
+                   HorizontalAlignment="Right" 
+                   FontSize="14" Margin="0,32,20,32">
             <Hyperlink NavigateUri="Signup.xaml" Foreground="#7289da"
                    FontFamily="Global Sans Serif" 
                    FontWeight="Bold" TextDecorations="{x:Null}">
@@ -83,30 +80,38 @@
                    FontWeight="Bold"
                    />
 
-        <PasswordBox
-            x:Name="PasswordTextBox" Grid.Row="9" 
+        <PasswordBox x:Name="PasswordTextBox" Grid.Row="9" 
                  Grid.Column="1" 
                  Height="40"                
             Style="{StaticResource PswdBoxAuth}"
                  />
-        <TextBlock x:Name="AurhError" Grid.Row="10" Grid.Column="1" Text="Error sample" Style="{StaticResource ErrorAuth}"/>
+        <TextBlock x:Name="AurhError" 
+                   Grid.Row="10" 
+                   Grid.Column="1" 
+                   Style="{StaticResource ErrorAuth}"/>
         <Button x:Name="Submit" Grid.Column="1"
             Grid.Row="11"
             Content="Login"
             Width="150"
             Height="50" 
-                Style="{StaticResource Submit}"/>
+            Style="{StaticResource Submit}" Click="Submit_Click"/>
         <TextBlock Grid.Row="11" Grid.Column="1" 
                    HorizontalAlignment="Right"
-                   VerticalAlignment="Center"
-                   
-                   FontSize="14" 
-                   >
+                   VerticalAlignment="Center"  
+                   FontSize="14" >
             <Hyperlink NavigateUri = "Signup.xaml" Foreground="#7289da"
                    FontFamily="Global Sans Serif" 
                    FontWeight="Bold" TextDecorations="{x:Null}">
                 Reset password
             </Hyperlink>
         </TextBlock>
+        <CheckBox 
+            x:Name="VisiblePassword"
+            Content="CheckBox"
+            Grid.Column="1" 
+            HorizontalAlignment="Left" 
+            Margin="214.667,9.667,0,0" 
+            Grid.Row="10" 
+            VerticalAlignment="Top"/>
     </Grid>
 </Page>

@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PasswordManagerMainWindow.Auth
+namespace PasswordManager.Auth
 {
     /// <summary>
     /// Логика взаимодействия для Signup.xaml
@@ -27,7 +27,7 @@ namespace PasswordManagerMainWindow.Auth
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-           NavigationService.Navigate(new EmailConfirmation(LoginTextBox.Text, PasswordTextBox.Password));
+           //NavigationService.Navigate(new EmailConfirmation(LoginTextBox.Text, PasswordTextBox.Password));
         }
     }
 }
