@@ -76,9 +76,16 @@ namespace PasswordManager.Auth
             return (PasswordScore)passwordComplexity;
         }
 
-        private void FakePassword_TextChanged(object sender, TextChangedEventArgs e)
+        private void KindaPassword_TextChanged(object sender, TextChangedEventArgs e)
         {
             SetPasswordComplexity(CheckStrength(Password));
+            SetShowPasswordToggleButton();
+        }
+
+        private void SetShowPasswordToggleButton()
+        {
+            if (string.IsNullOrEmpty(Password)) ShowPasswordToggleButton.Visibility = Visibility.Hidden;
+            else ShowPasswordToggleButton.Visibility = Visibility.Visible;
         }
 
         private void SetPasswordComplexity(PasswordScore passwordScore)

@@ -54,7 +54,7 @@ namespace PasswordManager.Auth
 
             MainWindow.MainWindow mainWindow = new MainWindow.MainWindow(_user);
             mainWindow.Show();
-            var parentWindow = Window.GetWindow(this);
+            Window parentWindow = Window.GetWindow(this);
             parentWindow.Close();
         }
 
@@ -74,18 +74,28 @@ namespace PasswordManager.Auth
             AurhError.Text = message;
         }
 
+
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
             PasswordTextBox.Visibility = Visibility.Collapsed;
             KindaPassword.Visibility = Visibility.Visible;
         }
-
         private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
-
             KindaPassword.Visibility = Visibility.Collapsed;
             PasswordTextBox.Visibility = Visibility.Visible;
         }
 
+
+        private void KindaPassword_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SetShowPasswordToggleButton();
+        }
+
+        private void SetShowPasswordToggleButton()
+        {
+            if (string.IsNullOrEmpty(Password)) ShowPasswordToggleButton.Visibility = Visibility.Hidden;
+            else ShowPasswordToggleButton.Visibility = Visibility.Visible;
+        }
     }
 }

@@ -94,10 +94,10 @@
                  Visibility="Collapsed"
                  Padding="5,0,30,0"
                  Style="{StaticResource TextBoxAuth}"   
-                 Text="{Binding Password, ElementName=PasswordTextBox}"
+                 Text="{Binding Password, ElementName=PasswordTextBox}" TextChanged="KindaPassword_TextChanged"
                  />
 
-        <ToggleButton
+        <ToggleButton x:Name="ShowPasswordToggleButton"
             Grid.Row="9" 
                  Grid.Column="1" 
                       Height="25" Width="25" 

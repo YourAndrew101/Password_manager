@@ -171,7 +171,6 @@
 
 
     <Style x:Key="RevealPassword" TargetType="ToggleButton">
-
         <Style.Setters>
             <Setter Property="Template">
                 <Setter.Value>
@@ -191,6 +190,7 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <Setter Property="Visibility" Value="Hidden"/>
             <Setter Property="BorderThickness" Value="0"/>
             <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="Height" Value="30"/>

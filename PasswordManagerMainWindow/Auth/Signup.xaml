@@ -80,34 +80,41 @@
                    FontFamily="Global Sans Serif" 
                    FontWeight="Bold" Grid.ColumnSpan="2" Height="17" Margin="85,7,0,6.667" Width="66"/>
 
-        <components:BindablePasswordBox
-            x:Name="PasswordTextBox" Grid.Row="9" 
-                 Grid.Column="1" 
-                 Height="40"                
-            Visibility="Visible"
-              Password="{Binding Text, ElementName=KindaPassword}"/>
+        <components:BindablePasswordBox x:Name="PasswordTextBox" 
+                                        Grid.Row="9" 
+                                        Grid.Column="1" 
+                                        Height="40"                
+                                        Visibility="Visible"
+                                        Password="{Binding Text, ElementName=KindaPassword}"/>
 
-        <TextBox x:Name="KindaPassword"  Grid.Row="9" 
+        <TextBox x:Name="KindaPassword" 
+                 Grid.Row="9" 
                  Grid.Column="1" 
                  Height="40"        
                  Visibility="Collapsed"
                  Padding="5,0,30,0"
                  Style="{StaticResource TextBoxAuth}"   
-                 Text="{Binding Password, ElementName=PasswordTextBox}"/>
+                 Text="{Binding Password, ElementName=PasswordTextBox}" TextChanged="KindaPassword_TextChanged"/>
 
-        <ToggleButton
-            Grid.Row="9" 
-                 Grid.Column="1" 
-                      Height="25" Width="25" 
-                      BorderThickness="0" FontSize="16"
+        <ToggleButton x:Name="ShowPasswordToggleButton"
+                      Grid.Row="9" 
+                      Grid.Column="1" 
+                      Height="25" 
+                      Width="25" 
+                      BorderThickness="0" 
+                      FontSize="16"
                       Checked="ToggleButton_Checked"
                       Unchecked="ToggleButton_Unchecked"
                       IsChecked="False"
-                      Style="{StaticResource RevealPassword}"
-                      />
+                      Style="{StaticResource RevealPassword}"/>
 
 
-        <TextBlock x:Name="AurhError" Grid.Row="10" Grid.Column="1" Text="Error sample" Style="{StaticResource ErrorAuth}"/>
+        <TextBlock x:Name="AurhError" 
+                   Grid.Row="10" 
+                   Grid.Column="1" 
+                   Text="Error sample" 
+                   Style="{StaticResource ErrorAuth}"/>
+        
         <Button x:Name="Submit" Grid.Column="1"
             Grid.Row="11"
             Content="Sign Up"
