@@ -98,10 +98,7 @@
                  Height="40"        
                  Visibility="Visible"
             Padding="0,0,30,0"
-                 Style="{StaticResource TextBoxAuth}"
-                 
-                 TextChanged="FakePassword_TextChanged"
-                 />
+                 Style="{StaticResource TextBoxAuth}"/>
         <ToggleButton Content="&#xF78D;" FontFamily="Segoe MDL2 Assets" Background="Transparent" Grid.Row="9" 
                       Grid.Column="1"  
                       HorizontalAlignment="Right"
@@ -110,15 +107,73 @@
                       
                       />
 
+
+
+
         <TextBlock x:Name="AurhError" Grid.Row="10" Grid.Column="1" Text="Error sample" Style="{StaticResource ErrorAuth}"/>
         <Button x:Name="Submit" Grid.Column="1"
             Grid.Row="11"
             Content="Sign Up"
             Width="150"
             Height="50" 
-            Style="{StaticResource Submit}"
-                Click="Submit_Click"/>
-            
+            Style="{StaticResource Submit}"/>
+        <StackPanel
+            Margin="85,3.667,0.333,10" 
+            Grid.Row="10" 
+            Grid.ColumnSpan="2">
+            <DockPanel 
+            x:Name="PasswordComplexityPanel">
+                <Rectangle x:Name="VeryWeakPasswordRectangle"
+                       Fill="#FFF4F4F5" 
+                       Height="14" 
+                       Stroke="Black"
+                       Width="60" 
+                       Margin="2,0"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"/>
+                <Rectangle x:Name="WeakPasswordRectangle"
+                       Fill="#FFF4F4F5" 
+                       Height="14" 
+                       Stroke="Black"
+                       Margin="6,0" 
+                       Width="60" 
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"/>
+                <Rectangle x:Name="NormalPasswordRectangle"
+                       Fill="#FFF4F4F5" 
+                       Height="14" 
+                       Stroke="Black"
+                       Margin="0,0" 
+                       Width="60" 
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"/>
+                <Rectangle x:Name="StrongPasswordRectangle"
+                       Fill="#FFF4F4F5" 
+                       Height="14" 
+                       Stroke="Black"
+                       Margin="6,0" 
+                       Width="60" 
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"/>
+                <Rectangle x:Name="VeryStrongPasswordRectangle"
+                       Fill="#FFF4F4F5" 
+                       Height="14" 
+                       Stroke="Black"
+                       Width="60" 
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"/>
+
+            </DockPanel>
+            <TextBlock x:Name="PasswordComplexityTextBlock"
+                       TextWrapping="Wrap" 
+                       Text="{Binding PasswordComplexityText}"
+                       Foreground="{Binding PasswordComplexityColor}"
+                       HorizontalAlignment="Center"
+                       Margin="141,0,138,0" Width="51"/>
+
+
+        </StackPanel>
+        
     </Grid>
 </Page>
 

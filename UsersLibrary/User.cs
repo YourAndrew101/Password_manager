@@ -90,7 +90,7 @@ namespace UsersLibrary
             return sqlData;
         }
 
-        public void Save()
+        public void AddUser()
         {
             if (IsExistsEmail(Email)) throw new DuplicateMailException();
 

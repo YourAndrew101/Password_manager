@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -18,31 +20,29 @@ namespace PasswordManager.Auth
     /// <summary>
     /// Логика взаимодействия для Signup.xaml
     /// </summary>
-    public partial class Signup : Page
+    public partial class Signup : Page, INotifyPropertyChanged
     {
-        string Password;
+        private string _passwordComplexityText;
+        public string PasswordComplexityText {
+            get { return _passwordComplexityText; }
+            set
+            {
+                _passwordComplexityText = value;
+                OnPropertyChanged("PasswordComplexityText");
+            }
+        }
+
         public Signup()
         {
             InitializeComponent();
-            
+            PasswordComplexityText = "test";
         }
 
-        private void Submit_Click(object sender, RoutedEventArgs e)
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName] string prop = "")
         {
-          NavigationService.Navigate(new EmailConfirmation(LoginTextBox.Text,FakePassword.Text));
-        }
-
-        private void FakePassword_PreviewTextInput(object sender, TextCompositionEventArgs e)
-        {
-            //Password+=e.Text;
-            //e.Text.Replace(e.Text.Substring(e.Text.Length - 1), '@');
-            //FakePassword.Text += "@";
-        }
-
-        private void FakePassword_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            FakePassword.Text=FakePassword.Text.Replace(FakePassword.Text.ToCharArray()[FakePassword.Text.Length-1],'@');
-            FakePassword.CaretIndex++;
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
         }
     }
 }

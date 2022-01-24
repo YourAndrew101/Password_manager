@@ -12,9 +12,12 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
-        Background="White"
-        MouseLeftButtonDown="Window_MouseLeftButtonDown"
-        >
+        Background="White">
+    
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="30"/>
+    </WindowChrome.WindowChrome>
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30"/>
@@ -24,6 +27,19 @@
             <ColumnDefinition Width="300"/>
             <ColumnDefinition Width="500"/>
         </Grid.ColumnDefinitions>
+        
+            <StackPanel WindowChrome.IsHitTestVisibleInChrome="True"
+                        Grid.Column="1" 
+                        Grid.ColumnSpan="2"
+                        Grid.Row="0" >
+            <Button x:Name="CloseApp" 
+                HorizontalAlignment="Right" 
+                Height="30" Width="30" 
+                Content="&#xE711;" 
+                Style="{StaticResource CloseApp}"
+                Click="CloseWindow"/>
+        </StackPanel>
+        
         <Rectangle Grid.Column="0" Grid.RowSpan="2">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/Assets/Relay.jpg"/>
@@ -31,14 +47,6 @@
             
         </Rectangle>
         <Frame x:Name="AuthFrame" Grid.Column="1" Grid.Row="1" NavigationUIVisibility="Hidden"/>
-        <Button x:Name="CloseApp" 
-                Grid.Column="1" 
-                Grid.Row="0" 
-                HorizontalAlignment="Right" 
-                Height="30" Width="30" 
-                Content="&#xE711;" 
-                Style="{StaticResource CloseApp}"
-                Click="CloseWindow"
-                />
+        
     </Grid>
 </Window>
