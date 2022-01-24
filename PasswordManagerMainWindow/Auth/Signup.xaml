@@ -5,11 +5,10 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PasswordManager.Auth" xmlns:components="clr-namespace:PasswordManager.Components"
       mc:Ignorable="d" 
-     d:DesignHeight="520" d:DesignWidth="500"
+      d:DesignHeight="520" d:DesignWidth="500"
       Title="Login"
       Background="White"
-      ShowsNavigationUI="False"
-      >
+      ShowsNavigationUI="False">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -25,60 +24,93 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="62"/>
-            <RowDefinition Height="Auto" MinHeight="8"/>
+            <RowDefinition Height="Auto"
+                           MinHeight="8"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="85"/>
             <ColumnDefinition Width="330"/>
             <ColumnDefinition Width="85"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2"
+        
+        <TextBlock Grid.Row="0" 
+                   Grid.Column="1"
+                   Grid.ColumnSpan="2"
                    Grid.RowSpan="2"
-                   HorizontalAlignment="Right"
-                   
-                   FontSize="14" Margin="0,32,65.333,32.333" Width="42"
-                   >
-            <Hyperlink NavigateUri="Login.xaml" Foreground="#7289da"
-                   FontFamily="Global Sans Serif" 
-                   FontWeight="Bold" TextDecorations="{x:Null}">
+                   HorizontalAlignment="Right"                  
+                   FontSize="14" 
+                   Margin="0,32,65.333,32.333" 
+                   Width="42">
+            
+            <Hyperlink NavigateUri="Login.xaml" 
+                       Foreground="#7289da"
+                       FontFamily="Global Sans Serif" 
+                       FontWeight="Bold" 
+                       TextDecorations="{x:Null}">
                 Log In
             </Hyperlink>
+           
         </TextBlock>
-        <TextBlock Text="Create new account" Grid.Row="1" 
+        
+        <TextBlock Text="Create new account" 
+                   Grid.Row="1" 
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Center" 
                    FontSize="28" 
                    Foreground="Black"
                    FontFamily="Global Sans Serif" 
-                   FontWeight="Bold" Grid.ColumnSpan="2" Height="33" Margin="85,39.333,0,19.667" Grid.RowSpan="3" Width="265"
-                   />
-        <TextBlock Text="Please fill all following fields" Grid.Row="3" 
+                   FontWeight="Bold" 
+                   Grid.ColumnSpan="2"
+                   Height="33" 
+                   Margin="85,39.333,0,19.667"
+                   Grid.RowSpan="3" 
+                   Width="265"/>
+        
+        <TextBlock Text="Please fill all following fields" 
+                   Grid.Row="3" 
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Center" 
                    FontSize="14" 
                    Foreground="SlateGray"
                    FontFamily="Global Sans Serif" 
-                   FontWeight="Bold" Grid.ColumnSpan="2" Height="17" Margin="85,2,0,1.667" Width="190"
-                   />
-        <TextBlock Text="Login" Grid.Row="5" 
+                   FontWeight="Bold" 
+                   Grid.ColumnSpan="2" 
+                   Height="17" 
+                   Margin="85,2,0,1.667" 
+                   Width="190"/>
+        
+        <TextBlock Text="Login" 
+                   Grid.Row="5" 
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Center" 
                    FontSize="14" 
                    Foreground="Black"
                    FontFamily="Global Sans Serif" 
-                   FontWeight="Bold" Grid.ColumnSpan="2" Height="17" Margin="85,7,0,6.667" Width="38"
-                   />
-        <TextBox x:Name="LoginTextBox" Grid.Row="6" 
-                 BorderThickness="2"
-                 Style="{StaticResource TextBoxAuth}" Grid.ColumnSpan="2" Margin="85,5.333,0.333,5.333"
-                 />
-        <TextBlock Text="Password" Grid.Row="8" 
+                   FontWeight="Bold" 
+                   Grid.ColumnSpan="2" 
+                   Height="17" 
+                   Margin="85,7,0,6.667" 
+                   Width="38"/>
+        
+        <TextBox x:Name="LoginTextBox" 
+                 Grid.Row="6" 
+                 BorderThickness="2"                 
+                 Grid.ColumnSpan="2" 
+                 Margin="85,5.333,0.333,5.333"
+                 Style="{StaticResource TextBoxAuth}"/>
+        
+        <TextBlock Text="Password" 
+                   Grid.Row="8" 
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Center" 
                    FontSize="14" 
                    Foreground="Black"
                    FontFamily="Global Sans Serif" 
-                   FontWeight="Bold" Grid.ColumnSpan="2" Height="17" Margin="85,7,0,6.667" Width="66"/>
+                   FontWeight="Bold" 
+                   Grid.ColumnSpan="2" 
+                   Height="17"
+                   Margin="85,7,0,6.667"
+                   Width="66"/>
 
         <components:BindablePasswordBox x:Name="PasswordTextBox" 
                                         Grid.Row="9" 
@@ -94,7 +126,8 @@
                  Visibility="Collapsed"
                  Padding="5,0,30,0"
                  Style="{StaticResource TextBoxAuth}"   
-                 Text="{Binding Password, ElementName=PasswordTextBox}" TextChanged="KindaPassword_TextChanged"/>
+                 Text="{Binding Password, ElementName=PasswordTextBox}" 
+                 TextChanged="KindaPassword_TextChanged"/>
 
         <ToggleButton x:Name="ShowPasswordToggleButton"
                       Grid.Row="9" 
@@ -108,7 +141,6 @@
                       IsChecked="False"
                       Style="{StaticResource RevealPassword}"/>
 
-
         <TextBlock x:Name="AurhError" 
                    Grid.Row="10" 
                    Grid.Column="1" 
@@ -116,17 +148,17 @@
                    Style="{StaticResource ErrorAuth}"/>
         
         <Button x:Name="Submit" Grid.Column="1"
-            Grid.Row="11"
-            Content="Sign Up"
-            Width="150"
-            Height="50" 
-            Style="{StaticResource Submit}" Grid.ColumnSpan="2" Margin="85,7,0,5.667"/>
+                Grid.Row="11"
+                Content="Sign Up"
+                Width="150"
+                Height="50"  
+                Grid.ColumnSpan="2" Margin="85,7,0,5.667"
+                Style="{StaticResource Submit}"/>
 
         <StackPanel Margin="85,3.667,0.333,0" 
                     Grid.Row="10" 
                     Grid.ColumnSpan="2">
-            <DockPanel 
-            x:Name="PasswordComplexityPanel">
+            <DockPanel x:Name="PasswordComplexityPanel">
                 <Rectangle x:Name="VeryWeakPasswordRectangle"
                            Style="{DynamicResource PasswordCompexityRectangle}"
                            Margin="2,0"/>
@@ -140,8 +172,8 @@
                            Style="{StaticResource PasswordCompexityRectangle}"/>
                 <Rectangle x:Name="VeryStrongPasswordRectangle"
                            Style="{StaticResource PasswordCompexityRectangle}"/>
-
             </DockPanel>
+
             <TextBlock x:Name="PasswordComplexityTextBlock"
                        TextWrapping="Wrap" 
                        Text=""
@@ -150,8 +182,6 @@
                        FontSize="14"
                        Width="205" 
                        TextAlignment="Center"/>
-
-
         </StackPanel>
 
     </Grid>

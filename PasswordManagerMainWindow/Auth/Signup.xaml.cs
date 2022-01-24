@@ -25,7 +25,7 @@ namespace PasswordManager.Auth
         private string PasswordComplexityText { set => PasswordComplexityTextBlock.Text = value; }
         private Brush PasswordComplexityTextColor { set => PasswordComplexityTextBlock.Foreground = value; }
 
-        private Rectangle[] _passwordComplexityRectangles = new Rectangle[5];
+        private readonly Rectangle[] _passwordComplexityRectangles = new Rectangle[5];
 
         private Color _veryWeakPasswordRectangleColor = (Color)ColorConverter.ConvertFromString("#FF0000");
         private Color _weakPasswordRectangleColor = (Color)ColorConverter.ConvertFromString("#DB7A19");
@@ -76,6 +76,7 @@ namespace PasswordManager.Auth
             return (PasswordScore)passwordComplexity;
         }
 
+
         private void KindaPassword_TextChanged(object sender, TextChangedEventArgs e)
         {
             SetPasswordComplexity(CheckStrength(Password));
@@ -94,39 +95,38 @@ namespace PasswordManager.Auth
             {
                 case PasswordScore.VeryWeak:
                     SolidColorBrush colorBrush = new SolidColorBrush(_veryWeakPasswordRectangleColor);
-                    SetPasswordComplexitText("Password very weak", colorBrush);
+                    SetPasswordComplexityText("Password very weak", colorBrush);
                     SetPasswordComplexityRectangles(colorBrush, passwordScore);
                     break;
                 case PasswordScore.Weak:
                     colorBrush = new SolidColorBrush(_weakPasswordRectangleColor);
-                    SetPasswordComplexitText("Password weak", colorBrush);
+                    SetPasswordComplexityText("Password weak", colorBrush);
                     SetPasswordComplexityRectangles(colorBrush, passwordScore);
                     break;
                 case PasswordScore.Medium:
                     colorBrush = new SolidColorBrush(_normalPasswordRectangleColor);
-                    SetPasswordComplexitText("Password normal", colorBrush);
+                    SetPasswordComplexityText("Password normal", colorBrush);
                     SetPasswordComplexityRectangles(colorBrush, passwordScore);
                     break;
                 case PasswordScore.Strong:
                     colorBrush = new SolidColorBrush(_strongPasswordRectangleColor);
-                    SetPasswordComplexitText("Password strong", colorBrush);
+                    SetPasswordComplexityText("Password strong", colorBrush);
                     SetPasswordComplexityRectangles(colorBrush, passwordScore);
                     break;
                 case PasswordScore.VeryStrong:
                     colorBrush = new SolidColorBrush(_veryStrongPasswordRectangleColor);
-                    SetPasswordComplexitText("Password very strong", colorBrush);
+                    SetPasswordComplexityText("Password very strong", colorBrush);
                     SetPasswordComplexityRectangles(colorBrush, passwordScore);
                     break;
                 default:
                     colorBrush = new SolidColorBrush(_nullPasswordRectangleColor);
-                    SetPasswordComplexitText("", colorBrush);
+                    SetPasswordComplexityText("", colorBrush);
                     SetPasswordComplexityRectangles(colorBrush, passwordScore);
                     break;
             }
 
         }
-
-        private void SetPasswordComplexitText(string message, SolidColorBrush colorBrush)
+        private void SetPasswordComplexityText(string message, SolidColorBrush colorBrush)
         {
             PasswordComplexityText = message;
             PasswordComplexityTextColor = colorBrush;

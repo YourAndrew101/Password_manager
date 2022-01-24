@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 using UsersLibrary;
 using PasswordManager.MainWindow;
 using System.Configuration;
+using static UsersLibrary.UsersExceptions;
 
 namespace PasswordManager.Auth
 {
@@ -23,7 +24,7 @@ namespace PasswordManager.Auth
     {
         private User _user;
 
-        private string Email { get => LoginTextBox.Text; }
+        private string Email { get => LoginTextBox.Text; } 
         private string Password { get => PasswordTextBox.Password; }
 
 
@@ -86,12 +87,10 @@ namespace PasswordManager.Auth
             PasswordTextBox.Visibility = Visibility.Visible;
         }
 
-
         private void KindaPassword_TextChanged(object sender, TextChangedEventArgs e)
         {
             SetShowPasswordToggleButton();
         }
-
         private void SetShowPasswordToggleButton()
         {
             if (string.IsNullOrEmpty(Password)) ShowPasswordToggleButton.Visibility = Visibility.Hidden;
