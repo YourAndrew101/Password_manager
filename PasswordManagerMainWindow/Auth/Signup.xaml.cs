@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -20,56 +18,26 @@ namespace PasswordManager.Auth
     /// <summary>
     /// Логика взаимодействия для Signup.xaml
     /// </summary>
-    public partial class Signup : Page, INotifyPropertyChanged
-    {
-        string Password;
-        private string _passwordComplexityText;
-        public string PasswordComplexityText
-        {
-            get { return _passwordComplexityText; }
-            set
-            {
-                _passwordComplexityText = value;
-                OnPropertyChanged("PasswordComplexityText");
-            }
-        }
+    public partial class Signup : Page {
         public Signup()
         {
             InitializeComponent();
-
         }
-
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new EmailConfirmation(LoginTextBox.Text,PasswordTextBox.Password));
-          
+            //NavigationService.Navigate(new EmailConfirmation(LoginTextBox.Text, PasswordTextBox.Password));
 
-
-        public Signup()
-        {
-            
-            InitializeComponent();
-            PasswordComplexityText = "test";
         }
-            private void ToggleButton_Checked(object sender, RoutedEventArgs e)
-            {
-                PasswordTextBox.Visibility = Visibility.Collapsed;
-                KindaPassword.Visibility = Visibility.Visible;
-            }
-            private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
-            {
-                KindaPassword.Visibility = Visibility.Collapsed;
-                PasswordTextBox.Visibility = Visibility.Visible;
-            }
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName] string prop = "")
+        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
-
-           
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+            PasswordTextBox.Visibility = Visibility.Collapsed;
+            KindaPassword.Visibility = Visibility.Visible;
+        }
+        private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            KindaPassword.Visibility = Visibility.Collapsed;
+            PasswordTextBox.Visibility = Visibility.Visible;
         }
 
-        
     }
-    }
+}

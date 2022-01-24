@@ -89,7 +89,7 @@
                  Grid.Column="1" 
                  Height="40"                
             Visibility="Visible"
-            Password="{Binding Text, ElementName=KindaPassword}"
+              Password="{Binding Text, ElementName=KindaPassword}"
             />
         <TextBox x:Name="KindaPassword"  Grid.Row="9" 
                  Grid.Column="1" 
@@ -120,7 +120,7 @@
             Height="50" 
             Style="{StaticResource Submit}"
                 Click="Submit_Click"/>
-            
+
     </Grid>
 </Page>
 
