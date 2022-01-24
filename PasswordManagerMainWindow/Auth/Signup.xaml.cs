@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -118,6 +116,20 @@ namespace PasswordManager.Auth
                     SetPasswordComplexityRectangles(colorBrush, passwordScore);
                     break;
             }
+    public partial class Signup : Page {
+        public Signup()
+        {
+            InitializeComponent();
+        }
+        private void Submit_Click(object sender, RoutedEventArgs e)
+        {
+            //NavigationService.Navigate(new EmailConfirmation(LoginTextBox.Text, PasswordTextBox.Password));
+
+        }
+        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+            PasswordTextBox.Visibility = Visibility.Collapsed;
+            KindaPassword.Visibility = Visibility.Visible;
         }
 
         private void SetPasswordComplexityRectangles(SolidColorBrush colorBrush, PasswordScore passwordScore)
@@ -128,15 +140,15 @@ namespace PasswordManager.Auth
                 _passwordComplexityRectangles[i].Fill = colorBrush;             
         }
         private void ClearPasswordComplexityRectangles()
+        private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
             foreach (var item in _passwordComplexityRectangles)
                 item.Fill = new SolidColorBrush(_nullPasswordRectangleColor);
+            KindaPassword.Visibility = Visibility.Collapsed;
+            PasswordTextBox.Visibility = Visibility.Visible;
         }
 
-        private void SetPasswordComplexitText(string message, SolidColorBrush colorBrush)
-        {
-            PasswordComplexityText = message;
-            PasswordComplexityTextColor = colorBrush;
+        }
         }
     }
 }
