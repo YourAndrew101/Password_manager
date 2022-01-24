@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -21,9 +19,9 @@ namespace PasswordManager.Auth
     /// <summary>
     /// Логика взаимодействия для Signup.xaml
     /// </summary>
-    public partial class Signup : Page 
+    public partial class Signup : Page
     {
-        private string Password { get => FakePassword.Text; }
+        private string Password { get => PasswordTextBox.Password; }
         private string PasswordComplexityText { set => PasswordComplexityTextBlock.Text = value; }
         private Brush PasswordComplexityTextColor { set => PasswordComplexityTextBlock.Foreground = value; }
 
@@ -40,7 +38,7 @@ namespace PasswordManager.Auth
         {
             InitializeComponent();
             InitializePasswordComplexityRectangles();
-            
+
         }
         private void InitializePasswordComplexityRectangles()
         {
@@ -73,7 +71,7 @@ namespace PasswordManager.Auth
             if (password.Length >= 16) passwordComplexity++;
             if (password.Any(char.IsDigit)) passwordComplexity++;
             if (password.Any(char.IsSymbol)) passwordComplexity++;
-            if (password.Length - password.Distinct().Count() >= password.Length/3) passwordComplexity--;
+            if (password.Length - password.Distinct().Count() >= password.Length / 3) passwordComplexity--;
 
             return (PasswordScore)passwordComplexity;
         }
@@ -87,7 +85,7 @@ namespace PasswordManager.Auth
         {
             switch (passwordScore)
             {
-                case PasswordScore.VeryWeak:             
+                case PasswordScore.VeryWeak:
                     SolidColorBrush colorBrush = new SolidColorBrush(_veryWeakPasswordRectangleColor);
                     SetPasswordComplexitText("Password very weak", colorBrush);
                     SetPasswordComplexityRectangles(colorBrush, passwordScore);
@@ -118,6 +116,13 @@ namespace PasswordManager.Auth
                     SetPasswordComplexityRectangles(colorBrush, passwordScore);
                     break;
             }
+
+        }
+
+        private void SetPasswordComplexitText(string message, SolidColorBrush colorBrush)
+        {
+            PasswordComplexityText = message;
+            PasswordComplexityTextColor = colorBrush;
         }
 
         private void SetPasswordComplexityRectangles(SolidColorBrush colorBrush, PasswordScore passwordScore)
@@ -125,7 +130,7 @@ namespace PasswordManager.Auth
             ClearPasswordComplexityRectangles();
 
             for (int i = 0; i < (int)passwordScore; i++)
-                _passwordComplexityRectangles[i].Fill = colorBrush;             
+                _passwordComplexityRectangles[i].Fill = colorBrush;
         }
         private void ClearPasswordComplexityRectangles()
         {
@@ -133,10 +138,15 @@ namespace PasswordManager.Auth
                 item.Fill = new SolidColorBrush(_nullPasswordRectangleColor);
         }
 
-        private void SetPasswordComplexitText(string message, SolidColorBrush colorBrush)
+        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
-            PasswordComplexityText = message;
-            PasswordComplexityTextColor = colorBrush;
+            PasswordTextBox.Visibility = Visibility.Collapsed;
+            KindaPassword.Visibility = Visibility.Visible;
+        }
+        private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            KindaPassword.Visibility = Visibility.Collapsed;
+            PasswordTextBox.Visibility = Visibility.Visible;
         }
     }
 }

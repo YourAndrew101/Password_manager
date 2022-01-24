@@ -3,7 +3,7 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:PasswordManager.Auth"
+      xmlns:local="clr-namespace:PasswordManager.Auth" xmlns:components="clr-namespace:PasswordManager.Components"
       mc:Ignorable="d" 
      d:DesignHeight="520" d:DesignWidth="500"
       Title="Login"
@@ -80,17 +80,35 @@
                    FontFamily="Global Sans Serif" 
                    FontWeight="Bold" Grid.ColumnSpan="2" Height="17" Margin="85,7,0,6.667" Width="66"/>
 
-        <TextBox x:Name="FakePassword"  Grid.Row="9"        
-                 Visibility="Visible"
-                 Padding="0,0,30,0"
-                 Style="{StaticResource TextBoxAuth}" TextChanged="FakePassword_TextChanged" Grid.ColumnSpan="2" Margin="85,5.333,0.333,5.333"/>
-        <ToggleButton Content="&#xF78D;" FontFamily="Segoe MDL2 Assets" Background="Transparent" Grid.Row="9" 
-                      Grid.Column="1"  
-                      HorizontalAlignment="Right" Width="30" 
-                      BorderThickness="0" FontSize="16" Margin="0,10.333,0.333,10.333"/>
+        <components:BindablePasswordBox
+            x:Name="PasswordTextBox" Grid.Row="9" 
+                 Grid.Column="1" 
+                 Height="40"                
+            Visibility="Visible"
+              Password="{Binding Text, ElementName=KindaPassword}"/>
 
-        <TextBlock x:Name="AurhError" Grid.Row="10" Text="Error sample" Style="{StaticResource ErrorAuth}" Grid.ColumnSpan="2" Height="17" Margin="85,16.667,0,17" Width="80"/>
-        <Button x:Name="Submit"
+        <TextBox x:Name="KindaPassword"  Grid.Row="9" 
+                 Grid.Column="1" 
+                 Height="40"        
+                 Visibility="Collapsed"
+                 Padding="5,0,30,0"
+                 Style="{StaticResource TextBoxAuth}"   
+                 Text="{Binding Password, ElementName=PasswordTextBox}"/>
+
+        <ToggleButton
+            Grid.Row="9" 
+                 Grid.Column="1" 
+                      Height="25" Width="25" 
+                      BorderThickness="0" FontSize="16"
+                      Checked="ToggleButton_Checked"
+                      Unchecked="ToggleButton_Unchecked"
+                      IsChecked="False"
+                      Style="{StaticResource RevealPassword}"
+                      />
+
+
+        <TextBlock x:Name="AurhError" Grid.Row="10" Grid.Column="1" Text="Error sample" Style="{StaticResource ErrorAuth}"/>
+        <Button x:Name="Submit" Grid.Column="1"
             Grid.Row="11"
             Content="Sign Up"
             Width="150"
