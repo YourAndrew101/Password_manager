@@ -73,5 +73,19 @@ namespace PasswordManager.Auth
             AurhError.Visibility = Visibility.Visible;
             AurhError.Text = message;
         }
+
+        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+            PasswordTextBox.Visibility = Visibility.Collapsed;
+            KindaPassword.Visibility = Visibility.Visible;
+        }
+
+        private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+            KindaPassword.Visibility = Visibility.Collapsed;
+            PasswordTextBox.Visibility = Visibility.Visible;
+        }
+
     }
 }

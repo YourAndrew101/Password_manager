@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PasswordManager.Auth"
+      xmlns:components="clr-namespace:PasswordManager.Components"
       mc:Ignorable="d" 
       d:DesignHeight="520" d:DesignWidth="500"
       Title="Login"
@@ -80,11 +81,32 @@
                    FontWeight="Bold"
                    />
 
-        <PasswordBox x:Name="PasswordTextBox" Grid.Row="9" 
+        <components:BindablePasswordBox
+            x:Name="PasswordTextBox" Grid.Row="9" 
                  Grid.Column="1" 
                  Height="40"                
-            Style="{StaticResource PswdBoxAuth}"
+            Visibility="Visible"
+            Password="{Binding Text, ElementName=KindaPassword}"
+            />
+        <TextBox x:Name="KindaPassword"  Grid.Row="9" 
+                 Grid.Column="1" 
+                 Height="40"        
+                 Visibility="Collapsed"
+                 Padding="5,0,30,0"
+                 Style="{StaticResource TextBoxAuth}"   
+                 Text="{Binding Password, ElementName=PasswordTextBox}"
                  />
+
+        <ToggleButton
+            Grid.Row="9" 
+                 Grid.Column="1" 
+                      Height="25" Width="25" 
+                      BorderThickness="0" FontSize="16"
+                      Checked="ToggleButton_Checked"
+                      Unchecked="ToggleButton_Unchecked"
+                      IsChecked="False"
+                      Style="{StaticResource RevealPassword}"
+                      />
         <TextBlock x:Name="AurhError" 
                    Grid.Row="10" 
                    Grid.Column="1" 
@@ -105,13 +127,6 @@
                 Reset password
             </Hyperlink>
         </TextBlock>
-        <CheckBox 
-            x:Name="VisiblePassword"
-            Content="CheckBox"
-            Grid.Column="1" 
-            HorizontalAlignment="Left" 
-            Margin="214.667,9.667,0,0" 
-            Grid.Row="10" 
-            VerticalAlignment="Top"/>
+        
     </Grid>
 </Page>
