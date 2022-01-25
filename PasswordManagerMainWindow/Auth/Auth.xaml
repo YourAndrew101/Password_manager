@@ -42,10 +42,8 @@
             
         </StackPanel>
         
-        <Rectangle Grid.Column="0" Grid.RowSpan="2">
-            <Rectangle.Fill>
-                <ImageBrush ImageSource="/Assets/Relay.jpg"/>
-            </Rectangle.Fill>
+        <Rectangle Grid.Column="0" Grid.RowSpan="2" Style="{StaticResource Gradient}">
+            
         </Rectangle>
 
         <Frame
