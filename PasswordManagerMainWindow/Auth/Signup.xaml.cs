@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -13,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UsersLibrary;
+using static UsersLibrary.UsersExceptions;
 
 namespace PasswordManager.Auth
 {
@@ -22,6 +25,8 @@ namespace PasswordManager.Auth
     public partial class Signup : Page
     {
         private string Password { get => PasswordTextBox.Password; }
+        private string Email { get => EmailTextBox.Text; }
+
         private string PasswordComplexityText { set => PasswordComplexityTextBlock.Text = value; }
         private Brush PasswordComplexityTextColor { set => PasswordComplexityTextBlock.Foreground = value; }
 
@@ -81,6 +86,11 @@ namespace PasswordManager.Auth
         {
             SetPasswordComplexity(CheckStrength(Password));
             SetShowPasswordToggleButton();
+            if(AuthError.Visibility == Visibility.Visible) HideErrorMessage();
+        }
+        private void EmailTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (AuthError.Visibility == Visibility.Visible) HideErrorMessage();
         }
 
         private void SetShowPasswordToggleButton()
@@ -154,6 +164,39 @@ namespace PasswordManager.Auth
         {
             KindaPassword.Visibility = Visibility.Collapsed;
             PasswordTextBox.Visibility = Visibility.Visible;
+        }
+
+        private void Submit_Click(object sender, RoutedEventArgs e)
+        {
+            if (!CheckAuthData()) return;
+
+            User user = new User(Email, Password);
+
+            try { user.AddUser(); }
+            catch(Exception ex)
+            {
+                if(ex is DuplicateMailException duplicateMail) SetErrorMessage(duplicateMail.Message);
+                else throw;
+            }
+        }
+        private bool CheckAuthData()
+        {
+            if (string.IsNullOrEmpty(Email) || string.IsNullOrWhiteSpace(Email)) { SetErrorMessage("Enter Email"); return false; }
+            if (string.IsNullOrEmpty(Password) || string.IsNullOrWhiteSpace(Password)) { SetErrorMessage("Enter password"); return false; }
+            try { _ = new MailAddress(Email).Address; }
+            catch (FormatException) { SetErrorMessage("Enter valid Email"); return false; }
+
+            return true;
+        }
+
+        private void SetErrorMessage(string message)
+        {
+            AuthError.Visibility = Visibility.Visible;
+            AuthError.Text = message;
+        }
+        private void HideErrorMessage()
+        {
+            AuthError.Visibility = Visibility.Hidden;
         }
     }
 }

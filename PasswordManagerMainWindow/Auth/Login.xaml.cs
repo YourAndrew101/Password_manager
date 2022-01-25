@@ -34,7 +34,6 @@ namespace PasswordManager.Auth
 
             SetConnectionDataBase();
         }
-
         private void SetConnectionDataBase()
         {
             User.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
@@ -71,8 +70,8 @@ namespace PasswordManager.Auth
 
         private void SetErrorMessage(string message)
         {
-            AurhError.Visibility = Visibility.Visible;
-            AurhError.Text = message;
+            AuthError.Visibility = Visibility.Visible;
+            AuthError.Text = message;
         }
 
 

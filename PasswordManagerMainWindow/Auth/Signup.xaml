@@ -32,7 +32,7 @@
             <ColumnDefinition Width="330"/>
             <ColumnDefinition Width="85"/>
         </Grid.ColumnDefinitions>
-        
+
         <TextBlock Grid.Row="0" 
                    Grid.Column="1"
                    Grid.ColumnSpan="2"
@@ -49,9 +49,9 @@
                        TextDecorations="{x:Null}">
                 Log In
             </Hyperlink>
-           
+
         </TextBlock>
-        
+
         <TextBlock Text="Create new account" 
                    Grid.Row="1" 
                    HorizontalAlignment="Left" 
@@ -65,7 +65,7 @@
                    Margin="85,39.333,0,19.667"
                    Grid.RowSpan="3" 
                    Width="265"/>
-        
+
         <TextBlock Text="Please fill all following fields" 
                    Grid.Row="3" 
                    HorizontalAlignment="Left" 
@@ -78,7 +78,7 @@
                    Height="17" 
                    Margin="85,2,0,1.667" 
                    Width="190"/>
-        
+
         <TextBlock Text="Login" 
                    Grid.Row="5" 
                    HorizontalAlignment="Left" 
@@ -91,14 +91,14 @@
                    Height="17" 
                    Margin="85,7,0,6.667" 
                    Width="38"/>
-        
-        <TextBox x:Name="LoginTextBox" 
+
+        <TextBox x:Name="EmailTextBox" 
                  Grid.Row="6" 
                  BorderThickness="2"                 
                  Grid.ColumnSpan="2" 
                  Margin="85,5.333,0.333,5.333"
-                 Style="{StaticResource TextBoxAuth}"/>
-        
+                 Style="{StaticResource TextBoxAuth}" TextChanged="EmailTextBox_TextChanged"/>
+
         <TextBlock Text="Password" 
                    Grid.Row="8" 
                    HorizontalAlignment="Left" 
@@ -141,19 +141,19 @@
                       IsChecked="False"
                       Style="{StaticResource RevealPassword}"/>
 
-        <TextBlock x:Name="AurhError" 
+        <TextBlock x:Name="AuthError" 
                    Grid.Row="10" 
-                   Grid.Column="1" 
                    Text="Error sample" 
-                   Style="{StaticResource ErrorAuth}"/>
-        
+                   Style="{StaticResource ErrorAuth}" Grid.ColumnSpan="2" 
+                   Margin="85,33.667,0,0"/>
+
         <Button x:Name="Submit" Grid.Column="1"
                 Grid.Row="11"
                 Content="Sign Up"
                 Width="150"
                 Height="50"  
                 Grid.ColumnSpan="2" Margin="85,7,0,5.667"
-                Style="{StaticResource Submit}"/>
+                Style="{StaticResource Submit}" Click="Submit_Click"/>
 
         <StackPanel Margin="85,3.667,0.333,0" 
                     Grid.Row="10" 

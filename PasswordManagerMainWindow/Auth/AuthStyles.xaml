@@ -50,6 +50,8 @@
             <Setter Property="Visibility" Value="Hidden"/>
         </Style.Setters>
     </Style>
+    
+    
     <Style x:Key="Submit" TargetType="Button">
         <Style.Setters>
             <Setter Property="Template">

@@ -123,19 +123,16 @@
                       IsChecked="False"
                       Style="{StaticResource RevealPassword}"/>
         
-        <TextBlock x:Name="AurhError" 
+        <TextBlock x:Name="AuthError" 
                    Grid.Row="10" 
                    Grid.Column="1" 
-                   Style="{StaticResource ErrorAuth}"
-                   />
+                   Style="{StaticResource ErrorAuth}"/>
         <CheckBox x:Name="RemmemberMe" Content="Remember me"
                   Grid.Row="10" 
                   Grid.Column="1"
                   HorizontalAlignment="Left"
                   VerticalAlignment="Bottom"
-                   Style="{DynamicResource RememberMe}" 
-                  
-                  />
+                  Style="{DynamicResource RememberMe}"/>
 
         <Button x:Name="Submit" Grid.Column="1"
                 Grid.Row="11"
