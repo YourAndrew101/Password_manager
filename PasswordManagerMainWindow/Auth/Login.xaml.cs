@@ -24,7 +24,7 @@ namespace PasswordManager.Auth
     {
         private User _user;
 
-        private string Email { get => LoginTextBox.Text; } 
+        private string Email { get => EmailTextBox.Text; } 
         private string Password { get => PasswordTextBox.Password; }
 
 
@@ -39,7 +39,7 @@ namespace PasswordManager.Auth
             User.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
         }
 
-        private void Submit_Click(object sender, RoutedEventArgs e)
+        private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
             if (!CheckAuthData()) return;
 
@@ -70,19 +70,19 @@ namespace PasswordManager.Auth
 
         private void SetErrorMessage(string message)
         {
-            AuthError.Visibility = Visibility.Visible;
-            AuthError.Text = message;
+            AuthErrorTextBlock.Visibility = Visibility.Visible;
+            AuthErrorTextBlock.Text = message;
         }
 
 
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
             PasswordTextBox.Visibility = Visibility.Collapsed;
-            KindaPassword.Visibility = Visibility.Visible;
+            KindaPasswordTextBox.Visibility = Visibility.Visible;
         }
         private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            KindaPassword.Visibility = Visibility.Collapsed;
+            KindaPasswordTextBox.Visibility = Visibility.Collapsed;
             PasswordTextBox.Visibility = Visibility.Visible;
         }
 

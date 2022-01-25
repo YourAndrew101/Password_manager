@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PasswordManager.Auth" xmlns:components="clr-namespace:PasswordManager.Components"
       mc:Ignorable="d" 
-      d:DesignHeight="520" d:DesignWidth="500"
+      d:DesignHeight="520"
+      d:DesignWidth="500"
       Title="Login"
       Background="White"
       ShowsNavigationUI="False">
@@ -33,7 +34,8 @@
             <ColumnDefinition Width="85"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" 
+        <TextBlock x:Name="LogInTextBlock"
+                   Grid.Row="0" 
                    Grid.Column="1"
                    Grid.ColumnSpan="2"
                    Grid.RowSpan="2"
@@ -42,7 +44,8 @@
                    Margin="0,32,65.333,32.333" 
                    Width="42">
             
-            <Hyperlink NavigateUri="Login.xaml" 
+            <Hyperlink x:Name="LogInHyperLink"
+                       NavigateUri="Login.xaml" 
                        Foreground="#7289da"
                        FontFamily="Global Sans Serif" 
                        FontWeight="Bold" 
@@ -61,9 +64,9 @@
                    FontFamily="Global Sans Serif" 
                    FontWeight="Bold" 
                    Grid.ColumnSpan="2"
+                   Grid.RowSpan="3" 
                    Height="33" 
                    Margin="85,39.333,0,19.667"
-                   Grid.RowSpan="3" 
                    Width="265"/>
 
         <TextBlock Text="Please fill all following fields" 
@@ -79,7 +82,7 @@
                    Margin="85,2,0,1.667" 
                    Width="190"/>
 
-        <TextBlock Text="Login" 
+        <TextBlock Text="Email" 
                    Grid.Row="5" 
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Center" 
@@ -97,7 +100,8 @@
                  BorderThickness="2"                 
                  Grid.ColumnSpan="2" 
                  Margin="85,5.333,0.333,5.333"
-                 Style="{StaticResource TextBoxAuth}" TextChanged="EmailTextBox_TextChanged"/>
+                 Style="{StaticResource TextBoxAuth}" 
+                 TextChanged="EmailTextBox_TextChanged"/>
 
         <TextBlock Text="Password" 
                    Grid.Row="8" 
@@ -119,7 +123,7 @@
                                         Visibility="Visible"
                                         Password="{Binding Text, ElementName=KindaPassword}"/>
 
-        <TextBox x:Name="KindaPassword" 
+        <TextBox x:Name="KindaPasswordTextBox" 
                  Grid.Row="9" 
                  Grid.Column="1" 
                  Height="40"        
@@ -141,26 +145,29 @@
                       IsChecked="False"
                       Style="{StaticResource RevealPassword}"/>
 
-        <TextBlock x:Name="AuthError" 
+        <TextBlock x:Name="AuthErrorTextBlock" 
                    Grid.Row="10" 
                    Text="Error sample" 
                    Style="{StaticResource ErrorAuth}" Grid.ColumnSpan="2" 
                    Margin="85,33.667,0,0"/>
 
-        <Button x:Name="Submit" Grid.Column="1"
+        <Button x:Name="SubmitButton" 
+                Grid.Column="1"
                 Grid.Row="11"
                 Content="Sign Up"
                 Width="150"
                 Height="50"  
-                Grid.ColumnSpan="2" Margin="85,7,0,5.667"
-                Style="{StaticResource Submit}" Click="Submit_Click"/>
+                Grid.ColumnSpan="2" 
+                Margin="85,7,0,5.667"
+                Style="{StaticResource Submit}" 
+                Click="SubmitButton_Click"/>
 
         <StackPanel Margin="85,3.667,0.333,0" 
                     Grid.Row="10" 
                     Grid.ColumnSpan="2">
             <DockPanel x:Name="PasswordComplexityPanel">
                 <Rectangle x:Name="VeryWeakPasswordRectangle"
-                           Style="{DynamicResource PasswordCompexityRectangle}"
+                           Style="{StaticResource PasswordCompexityRectangle}"
                            Margin="2,0"/>
                 <Rectangle x:Name="WeakPasswordRectangle"
                            Margin="6,0" 

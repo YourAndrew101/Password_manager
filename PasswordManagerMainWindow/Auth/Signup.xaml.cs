@@ -24,7 +24,7 @@ namespace PasswordManager.Auth
     /// </summary>
     public partial class Signup : Page
     {
-        private string Password { get => KindaPassword.Text; }
+        private string Password { get => KindaPasswordTextBox.Text; }
         private string Email { get => EmailTextBox.Text; }
 
         private string PasswordComplexityText { set => PasswordComplexityTextBlock.Text = value; }
@@ -87,11 +87,11 @@ namespace PasswordManager.Auth
             SetPasswordComplexity(CheckStrength(Password));
             SetShowPasswordToggleButton();
 
-            if(AuthError.Visibility == Visibility.Visible) HideErrorMessage();
+            if(AuthErrorTextBlock.Visibility == Visibility.Visible) HideErrorMessage();
         }
         private void EmailTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (AuthError.Visibility == Visibility.Visible) HideErrorMessage();
+            if (AuthErrorTextBlock.Visibility == Visibility.Visible) HideErrorMessage();
         }
 
         private void SetShowPasswordToggleButton()
@@ -159,15 +159,15 @@ namespace PasswordManager.Auth
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
             PasswordTextBox.Visibility = Visibility.Collapsed;
-            KindaPassword.Visibility = Visibility.Visible;
+            KindaPasswordTextBox.Visibility = Visibility.Visible;
         }
         private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            KindaPassword.Visibility = Visibility.Collapsed;
+            KindaPasswordTextBox.Visibility = Visibility.Collapsed;
             PasswordTextBox.Visibility = Visibility.Visible;
         }
 
-        private void Submit_Click(object sender, RoutedEventArgs e)
+        private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
             if (!CheckAuthData()) return;
 
@@ -192,12 +192,12 @@ namespace PasswordManager.Auth
 
         private void SetErrorMessage(string message)
         {
-            AuthError.Visibility = Visibility.Visible;
-            AuthError.Text = message;
+            AuthErrorTextBlock.Visibility = Visibility.Visible;
+            AuthErrorTextBlock.Text = message;
         }
         private void HideErrorMessage()
         {
-            AuthError.Visibility = Visibility.Hidden;
+            AuthErrorTextBlock.Visibility = Visibility.Hidden;
         }
     }
 }
