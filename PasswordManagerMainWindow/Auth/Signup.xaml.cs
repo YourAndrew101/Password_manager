@@ -24,7 +24,7 @@ namespace PasswordManager.Auth
     /// </summary>
     public partial class Signup : Page
     {
-        private string Password { get => PasswordTextBox.Password; }
+        private string Password { get => KindaPassword.Text; }
         private string Email { get => EmailTextBox.Text; }
 
         private string PasswordComplexityText { set => PasswordComplexityTextBlock.Text = value; }
@@ -86,6 +86,7 @@ namespace PasswordManager.Auth
         {
             SetPasswordComplexity(CheckStrength(Password));
             SetShowPasswordToggleButton();
+
             if(AuthError.Visibility == Visibility.Visible) HideErrorMessage();
         }
         private void EmailTextBox_TextChanged(object sender, TextChangedEventArgs e)
