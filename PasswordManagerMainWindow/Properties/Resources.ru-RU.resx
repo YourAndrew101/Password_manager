@@ -118,69 +118,69 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CreateNewAccount" xml:space="preserve">
-    <value>Create new account</value>
+    <value>Создать новый аккаунт</value>
   </data>
   <data name="EmailAuth" xml:space="preserve">
-    <value>Email</value>
+    <value>Почта</value>
   </data>
   <data name="EmailRequest" xml:space="preserve">
-    <value>Enter Email</value>
+    <value>Введите Email</value>
   </data>
   <data name="EnterValidEmail" xml:space="preserve">
-    <value>Enter valid Email</value>
+    <value>Введите правильный Email</value>
   </data>
   <data name="FillAllFields" xml:space="preserve">
-    <value>Please fill all folowing fields</value>
+    <value>Пожалуйста заполните все следующие поля</value>
   </data>
   <data name="Greetings" xml:space="preserve">
-    <value>Welcome!</value>
+    <value>Добро пожаловать!</value>
   </data>
   <data name="IncorrectPassword" xml:space="preserve">
-    <value>Incorrect password</value>
+    <value>Неверный пароль</value>
   </data>
   <data name="Login" xml:space="preserve">
-    <value>Login</value>
+    <value>Логин</value>
   </data>
   <data name="LoginRequest" xml:space="preserve">
-    <value>Please Log into your account</value>
+    <value>Пожалуйста ввойдите в Ваш аккаунт</value>
   </data>
   <data name="Log_In" xml:space="preserve">
-    <value>Log In</value>
+    <value>Войти</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>Password</value>
+    <value>Пароль</value>
   </data>
   <data name="PasswordRequest" xml:space="preserve">
-    <value>Enter password</value>
+    <value>Введите пароль</value>
   </data>
   <data name="PswdNormal" xml:space="preserve">
-    <value>Password normal</value>
+    <value>Нормальный пароль</value>
   </data>
   <data name="PswdStrong" xml:space="preserve">
-    <value>Password strong</value>
+    <value>Надёжный пароль</value>
   </data>
   <data name="PswdVeryStrong" xml:space="preserve">
-    <value>Password very strong</value>
+    <value>Очень надёжный пароль</value>
   </data>
   <data name="PswdVeryWeak" xml:space="preserve">
-    <value>Password very weak</value>
+    <value>Очень слабый пароль</value>
   </data>
   <data name="PswdWeak" xml:space="preserve">
-    <value>Password weak</value>
+    <value>Слабый пароль</value>
   </data>
   <data name="RememberMe" xml:space="preserve">
-    <value>Remember me</value>
+    <value>Запомнить меня</value>
   </data>
   <data name="ResetPassword" xml:space="preserve">
-    <value>Reset password</value>
+    <value>Сбросить пароль</value>
   </data>
   <data name="SignUp" xml:space="preserve">
-    <value>Sign Up</value>
+    <value>Зарегистроваться</value>
   </data>
   <data name="UserExists" xml:space="preserve">
-    <value>User already exists</value>
+    <value>Пользователь уже существует</value>
   </data>
   <data name="UserNotExists" xml:space="preserve">
-    <value>User does not exists</value>
+    <value>Пользователь не существует</value>
   </data>
 </root>

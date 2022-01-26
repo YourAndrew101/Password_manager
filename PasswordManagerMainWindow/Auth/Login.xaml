@@ -5,6 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PasswordManager.Auth"
       xmlns:components="clr-namespace:PasswordManager.Components"
+      xmlns:res="clr-namespace:PasswordManager.Properties"
       mc:Ignorable="d" 
       d:DesignHeight="520" 
       d:DesignWidth="500"
@@ -33,7 +34,7 @@
             <ColumnDefinition Width="330"/>
             <ColumnDefinition Width="85"/>
         </Grid.ColumnDefinitions>
-        
+
         <TextBlock x:Name="CreateAccountTextBlock"
                    Grid.Row="0" 
                    Grid.Column="1" 
@@ -46,13 +47,15 @@
                        Foreground="#7289da"
                        FontFamily="Global Sans Serif" 
                        FontWeight="Bold" 
-                       TextDecorations="{x:Null}">
-                Create new account
+                       TextDecorations="{x:Null}"
+                       
+                       >
+                <Run Text="{x:Static res:Resources.CreateNewAccount}"/>
             </Hyperlink>
-            
+
         </TextBlock>
-        
-        <TextBlock Text="Welcome!"
+
+        <TextBlock Text="{x:Static res:Resources.Greetings}"
                    Grid.Column="1" 
                    Grid.Row="2" 
                    HorizontalAlignment="Left" 
@@ -61,8 +64,8 @@
                    Foreground="Black"
                    FontFamily="Global Sans Serif" 
                    FontWeight="Bold"/>
-        
-        <TextBlock Text="Please Log into your account"
+
+        <TextBlock Text="{x:Static res:Resources.LoginRequest}"
                    Grid.Column="1" 
                    Grid.Row="3" 
                    HorizontalAlignment="Left" 
@@ -71,25 +74,25 @@
                    Foreground="SlateGray"
                    FontFamily="Global Sans Serif" 
                    FontWeight="Bold"/>
-        
-        <TextBlock Text="Login" 
-                   Grid.Column="1"
+
+        <TextBlock Text="{x:Static res:Resources.Login}"
                    Grid.Row="5" 
+                   Grid.Column="1"
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Center" 
                    FontSize="14" 
                    Foreground="Black"
                    FontFamily="Global Sans Serif" 
-                   FontWeight="Bold"/>
-        
+                   FontWeight="Bold" Grid.ColumnSpan="2" />
+
         <TextBox x:Name="EmailTextBox" 
                  Grid.Row="6" 
                  Grid.Column="1" 
                  BorderThickness="2" 
                  Height="40"
                  Style="{StaticResource TextBoxAuth}"/>
-        
-        <TextBlock Text="Password"
+
+        <TextBlock Text="{x:Static res:Resources.Password}"
                    Grid.Column="1"
                    Grid.Row="8" 
                    HorizontalAlignment="Left" 
@@ -105,7 +108,7 @@
                                         Height="40"           
                                         Visibility="Visible"
                                         Password="{Binding Text, ElementName=KindaPassword}"/>
-        
+
         <TextBox x:Name="KindaPasswordTextBox"  
                  Grid.Row="9" 
                  Grid.Column="1" 
@@ -125,13 +128,13 @@
                       Unchecked="ToggleButton_Unchecked"
                       IsChecked="False"
                       Style="{StaticResource RevealPassword}"/>
-        
+
         <TextBlock x:Name="AuthErrorTextBlock" 
                    Grid.Row="10" 
                    Grid.Column="1" 
                    Style="{StaticResource ErrorAuth}"/>
-        
-        <CheckBox x:Name="RemmemberMeCheckBox" Content="Remember me"
+
+        <CheckBox x:Name="RemmemberMeCheckBox" Content="{x:Static res:Resources.RememberMe}"
                   Grid.Row="10" 
                   Grid.Column="1"
                   HorizontalAlignment="Left"
@@ -140,7 +143,7 @@
 
         <Button x:Name="SubmitButton" Grid.Column="1"
                 Grid.Row="11"
-                Content="Login"
+                Content="{x:Static res:Resources.Log_In}"
                 Width="150"
                 Height="50" 
                 Style="{StaticResource Submit}" 
@@ -159,7 +162,7 @@
                        FontFamily="Global Sans Serif" 
                        FontWeight="Bold" 
                        TextDecorations="{x:Null}">
-                Reset password
+                <Run Text="{x:Static res:Resources.ResetPassword}"/>
             </Hyperlink>
 
         </TextBlock>

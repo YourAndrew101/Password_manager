@@ -41,6 +41,7 @@ namespace PasswordManager.Auth
 
         public Signup()
         {
+           
             InitializeComponent();
             InitializePasswordComplexityRectangles();
 
@@ -106,27 +107,27 @@ namespace PasswordManager.Auth
             {
                 case PasswordScore.VeryWeak:
                     SolidColorBrush colorBrush = new SolidColorBrush(_veryWeakPasswordRectangleColor);
-                    SetPasswordComplexityText("Password very weak", colorBrush);
+                    SetPasswordComplexityText(Properties.Resources.PswdVeryWeak, colorBrush);
                     SetPasswordComplexityRectangles(colorBrush, passwordScore);
                     break;
                 case PasswordScore.Weak:
                     colorBrush = new SolidColorBrush(_weakPasswordRectangleColor);
-                    SetPasswordComplexityText("Password weak", colorBrush);
+                    SetPasswordComplexityText(Properties.Resources.PswdWeak, colorBrush);
                     SetPasswordComplexityRectangles(colorBrush, passwordScore);
                     break;
                 case PasswordScore.Medium:
                     colorBrush = new SolidColorBrush(_normalPasswordRectangleColor);
-                    SetPasswordComplexityText("Password normal", colorBrush);
+                    SetPasswordComplexityText(Properties.Resources.PswdNormal, colorBrush);
                     SetPasswordComplexityRectangles(colorBrush, passwordScore);
                     break;
                 case PasswordScore.Strong:
                     colorBrush = new SolidColorBrush(_strongPasswordRectangleColor);
-                    SetPasswordComplexityText("Password strong", colorBrush);
+                    SetPasswordComplexityText(Properties.Resources.PswdStrong, colorBrush);
                     SetPasswordComplexityRectangles(colorBrush, passwordScore);
                     break;
                 case PasswordScore.VeryStrong:
                     colorBrush = new SolidColorBrush(_veryStrongPasswordRectangleColor);
-                    SetPasswordComplexityText("Password very strong", colorBrush);
+                    SetPasswordComplexityText(Properties.Resources.PswdVeryStrong, colorBrush);
                     SetPasswordComplexityRectangles(colorBrush, passwordScore);
                     break;
                 default:
@@ -182,10 +183,10 @@ namespace PasswordManager.Auth
         }
         private bool CheckAuthData()
         {
-            if (string.IsNullOrEmpty(Email) || string.IsNullOrWhiteSpace(Email)) { SetErrorMessage("Enter Email"); return false; }
-            if (string.IsNullOrEmpty(Password) || string.IsNullOrWhiteSpace(Password)) { SetErrorMessage("Enter password"); return false; }
+            if (string.IsNullOrEmpty(Email) || string.IsNullOrWhiteSpace(Email)) { SetErrorMessage(Properties.Resources.EmailRequest); return false; }
+            if (string.IsNullOrEmpty(Password) || string.IsNullOrWhiteSpace(Password)) { SetErrorMessage(Properties.Resources.PasswordRequest); return false; }
             try { _ = new MailAddress(Email).Address; }
-            catch (FormatException) { SetErrorMessage("Enter valid Email"); return false; }
+            catch (FormatException) { SetErrorMessage(Properties.Resources.EnterValidEmail); return false; }
 
             return true;
         }

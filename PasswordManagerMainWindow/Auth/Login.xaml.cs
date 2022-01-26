@@ -47,7 +47,7 @@ namespace PasswordManager.Auth
             catch (Exception ex)
             {
                 if (ex is NonExistenMailException nonExistenMail) { SetErrorMessage(nonExistenMail.Message); return; }
-                if (ex is IncorrectPasswordException) { SetErrorMessage("Incorrect password"); return; }
+                if (ex is IncorrectPasswordException) { SetErrorMessage(Properties.Resources.IncorrectPassword); return; }
 
                 throw;
             }
@@ -60,10 +60,10 @@ namespace PasswordManager.Auth
 
         private bool CheckAuthData()
         {
-            if (string.IsNullOrEmpty(Email) || string.IsNullOrWhiteSpace(Email)) { SetErrorMessage("Enter Email"); return false; }
-            if (string.IsNullOrEmpty(Password) || string.IsNullOrWhiteSpace(Password)) { SetErrorMessage("Enter password"); return false; }
+            if (string.IsNullOrEmpty(Email) || string.IsNullOrWhiteSpace(Email)) { SetErrorMessage(Properties.Resources.EmailRequest); return false; }
+            if (string.IsNullOrEmpty(Password) || string.IsNullOrWhiteSpace(Password)) { SetErrorMessage(Properties.Resources.PasswordRequest); return false; }
             try { _ = new MailAddress(Email).Address; }
-            catch (FormatException) { SetErrorMessage("Enter valid Email"); return false; }
+            catch (FormatException) { SetErrorMessage(Properties.Resources.EnterValidEmail); return false; }
 
             return true;
         }

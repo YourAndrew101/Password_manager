@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PasswordManager.Auth" xmlns:components="clr-namespace:PasswordManager.Components"
+           xmlns:res="clr-namespace:PasswordManager.Properties"
       mc:Ignorable="d" 
       d:DesignHeight="520"
       d:DesignWidth="500"
@@ -50,12 +51,12 @@
                        FontFamily="Global Sans Serif" 
                        FontWeight="Bold" 
                        TextDecorations="{x:Null}">
-                Log In
+                <Run Text="{x:Static res:Resources.Log_In}"/>
             </Hyperlink>
 
         </TextBlock>
 
-        <TextBlock Text="Create new account" 
+        <TextBlock Text="{x:Static res:Resources.CreateNewAccount}" 
                    Grid.Row="1" 
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Center" 
@@ -69,7 +70,7 @@
                    Margin="85,39.333,0,19.667"
                    Width="265"/>
 
-        <TextBlock Text="Please fill all following fields" 
+        <TextBlock Text="{x:Static res:Resources.FillAllFields}" 
                    Grid.Row="3" 
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Center" 
@@ -82,7 +83,7 @@
                    Margin="85,2,0,1.667" 
                    Width="190"/>
 
-        <TextBlock Text="Email" 
+        <TextBlock Text="{x:Static res:Resources.EmailAuth}" 
                    Grid.Row="5" 
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Center" 
@@ -103,7 +104,7 @@
                  Style="{StaticResource TextBoxAuth}" 
                  TextChanged="EmailTextBox_TextChanged"/>
 
-        <TextBlock Text="Password" 
+        <TextBlock Text="{x:Static res:Resources.Password}" 
                    Grid.Row="8" 
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Center" 
@@ -154,7 +155,7 @@
         <Button x:Name="SubmitButton" 
                 Grid.Column="1"
                 Grid.Row="11"
-                Content="Sign Up"
+                Content="{x:Static res:Resources.SignUp}"
                 Width="150"
                 Height="50"  
                 Grid.ColumnSpan="2" 
