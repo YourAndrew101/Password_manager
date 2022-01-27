@@ -1,46 +1,47 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <SolidColorBrush x:Key="CloseAppButton.Static.Background" Color="Transparent"/>
-    <SolidColorBrush x:Key="CloseAppButton.IsMouseOver.Background" Color="#99aab5"/>
-    <SolidColorBrush x:Key="CloseAppButton.IsPressed.Background" Color="#7289da"/>
+    <SolidColorBrush x:Key="CloseAppButtonStyle.Static.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="CloseAppButtonStyle.IsMouseOver.Background" Color="#99aab5"/>
+    <SolidColorBrush x:Key="CloseAppButtonStyle.IsPressed.Background" Color="#7289da"/>
 
-    <SolidColorBrush x:Key="ErrorAuth.Static.Foreground" Color="Red"/>
+    <SolidColorBrush x:Key="AuthErrorTextBlockStyle.Static.Foreground" Color="Red"/>
 
-    <SolidColorBrush x:Key="SubmitButton.Static.Background" Color="#7289da"/>
-    <SolidColorBrush x:Key="SubmitButton.IsPressed.Background" Color="#99aab5"/>
-    <SolidColorBrush x:Key="SubmitButton.Text.Foreground" Color="White"/>
+    <SolidColorBrush x:Key="SubmitButtonStyle.Static.Background" Color="#7289da"/>
+    <SolidColorBrush x:Key="SubmitButtonStyle.IsPressed.Background" Color="#99aab5"/>
+    <SolidColorBrush x:Key="SubmitButtonStyle.Text.Foreground" Color="White"/>
 
-    <SolidColorBrush x:Key="TextBoxAuth.Static.Border.Background" Color="White"/>
-    <SolidColorBrush x:Key="TextBoxAuth.Static.Border.BorderBrush" Color="LightGray"/>
-    <SolidColorBrush x:Key="TextBoxAuth.IsMouseOver.Border.BorderBrush" Color="LightGray"/>
-    <SolidColorBrush x:Key="TextBoxAuth.IsFocused.Border.BorderBrush" Color="#7289da"/>
-    <SolidColorBrush x:Key="TextBoxAuth.Static.BorderBrush" Color="Black"/>
+    <SolidColorBrush x:Key="EmailTextBoxStyle.Static.Border.Background" Color="White"/>
+    <SolidColorBrush x:Key="EmailTextBoxStyle.Static.Border.BorderBrush" Color="LightGray"/>
+    <SolidColorBrush x:Key="EmailTextBoxStyle.IsMouseOver.Border.BorderBrush" Color="LightGray"/>
+    <SolidColorBrush x:Key="EmailTextBoxStyle.IsFocused.Border.BorderBrush" Color="#7289da"/>
+    <SolidColorBrush x:Key="EmailTextBoxStyle.Static.BorderBrush" Color="Black"/>
 
-    <SolidColorBrush x:Key="PswdBoxAuth.Static.Border.Background" Color="White"/>
-    <SolidColorBrush x:Key="PswdBoxAuth.Static.Border.BorderBrush" Color="LightGray"/>
-    <SolidColorBrush x:Key="PswdBoxAuth.IsMouseOver.Border.BorderBrush" Color="LightGray"/>
-    <SolidColorBrush x:Key="PswdBoxAuth.IsFocused.Border.BorderBrush" Color="#7289da"/>
-    <SolidColorBrush x:Key="PswdBoxAuth.Static.BorderBrush" Color="Black"/>
+    <SolidColorBrush x:Key="PasswordBoxStyle.Static.Border.Background" Color="White"/>
+    <SolidColorBrush x:Key="PasswordBoxStyle.Static.Border.BorderBrush" Color="LightGray"/>
+    <SolidColorBrush x:Key="PasswordBoxStyle.IsMouseOver.Border.BorderBrush" Color="LightGray"/>
+    <SolidColorBrush x:Key="PasswordBoxStyle.IsFocused.Border.BorderBrush" Color="#7289da"/>
+    <SolidColorBrush x:Key="PasswordBoxStyle.Static.BorderBrush" Color="Black"/>
 
-    <SolidColorBrush x:Key="PasswordCompexityRectangle.Static.Fill" Color="#EBEBEB"/>
-    <SolidColorBrush x:Key="PasswordCompexityRectangle.Static.Stroke" Color="#C6C6C6"/>
+    <SolidColorBrush x:Key="PasswordCompexityRectangleStyle.Static.Fill" Color="#EBEBEB"/>
+    <SolidColorBrush x:Key="PasswordCompexityRectangleStyle.Static.Stroke" Color="#C6C6C6"/>
 
-    <LinearGradientBrush x:Key="Gradient.Static.Fill" StartPoint="0,1" EndPoint="0,0">
+    <LinearGradientBrush x:Key="GradientRectangleStyle.Static.Fill" StartPoint="0,1" EndPoint="0,0">
         <GradientStop Color="#3A1C71" Offset="0"/>
         <GradientStop Color="#D76D77" Offset="0.5"/>
         <GradientStop Color="#FFAF7B" Offset="1"/>
     </LinearGradientBrush>
 
-    <SolidColorBrush x:Key="OptionMark.Static.Background" Color="#FFFFFFFF"/>
-    <SolidColorBrush x:Key="OptionMark.Static.Border" Color="#7289da"/>
-    <SolidColorBrush x:Key="OptionMark.Pressed.Background" Color="#7289da"/>
-    <SolidColorBrush x:Key="OptionMark.Pressed.Border" Color="#7289da"/>
-    <SolidColorBrush x:Key="OptionMark.Pressed.Glyph" Color="White"/>
-    <SolidColorBrush x:Key="OptionMark.Static.Glyph" Color="White"/>
- 
-    
-    <Style TargetType="Button" x:Key="CloseApp">
+    <SolidColorBrush x:Key="RememberMeCheckBoxStyle.Static.Background" Color="#FFFFFFFF"/>
+    <SolidColorBrush x:Key="RememberMeCheckBoxStyle.Grid.Static.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="RememberMeCheckBoxStyle.Static.Border" Color="#7289da"/>
+    <SolidColorBrush x:Key="RememberMeCheckBoxStyle.Pressed.Background" Color="#7289da"/>
+    <SolidColorBrush x:Key="RememberMeCheckBoxStyle.Pressed.Border" Color="#7289da"/>
+    <SolidColorBrush x:Key="RememberMeCheckBoxStyle.Pressed.Glyph" Color="White"/>
+    <SolidColorBrush x:Key="RememberMeCheckBoxStyle.Static.Glyph" Color="White"/>
+
+
+    <Style x:Key="CloseAppButtonStyle" TargetType="Button">
         <Style.Setters>
             <Setter Property="Template">
                 <Setter.Value>
@@ -62,22 +63,22 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <Setter Property="Background" Value="{StaticResource CloseAppButton.Static.Background}"/>
+            <Setter Property="Background" Value="{StaticResource CloseAppButtonStyle.Static.Background}"/>
         </Style.Setters>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{StaticResource CloseAppButton.IsMouseOver.Background}"/>
+                <Setter Property="Background" Value="{StaticResource CloseAppButtonStyle.IsMouseOver.Background}"/>
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{StaticResource CloseAppButton.IsPressed.Background}"/>
+                <Setter Property="Background" Value="{StaticResource CloseAppButtonStyle.IsPressed.Background}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
 
 
-    <Style x:Key="ErrorAuth" TargetType="TextBlock">
+    <Style x:Key="AuthErrorTextBlockStyle" TargetType="TextBlock">
         <Style.Setters>
-            <Setter Property="Foreground" Value="{StaticResource ErrorAuth.Static.Foreground}"/>
+            <Setter Property="Foreground" Value="{StaticResource AuthErrorTextBlockStyle.Static.Foreground}"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="FontFamily" Value="Global Sans Serif"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
@@ -88,7 +89,7 @@
     </Style>
 
 
-    <Style x:Key="Submit" TargetType="Button">
+    <Style x:Key="SubmitButtonStyle" TargetType="Button">
         <Style.Setters>
             <Setter Property="Template">
                 <Setter.Value>
@@ -105,19 +106,19 @@
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center"
                                        FontFamily="Global Sans Serif"
-                                       Foreground="White"
+                                       Foreground="{StaticResource SubmitButtonStyle.Text.Foreground}"
                                        FontSize="18"/>
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <Setter Property="Background" Value="#7289da"/>
+            <Setter Property="Background" Value="{StaticResource SubmitButtonStyle.Static.Background}"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style.Setters>
         <Style.Triggers>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="#99aab5"/>
+                <Setter Property="Background" Value="{StaticResource SubmitButtonStyle.IsPressed.Background}"/>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Cursor" Value="Hand"/>
@@ -126,23 +127,23 @@
     </Style>
 
 
-    <Style x:Key="TextBoxAuth" TargetType="TextBox">
+    <Style x:Key="EmailTextBoxStyle" TargetType="TextBox">
         <Style.Setters>
             <Setter Property="OverridesDefaultStyle" Value="True"></Setter>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
                         <Border x:Name="border" BorderThickness="2" 
-                                CornerRadius="5" Background="{StaticResource TextBoxAuth.Static.Border.Background}" 
-                                BorderBrush="{StaticResource TextBoxAuth.Static.Border.BorderBrush}">
+                                CornerRadius="5" Background="{StaticResource EmailTextBoxStyle.Static.Border.Background}" 
+                                BorderBrush="{StaticResource EmailTextBoxStyle.Static.Border.BorderBrush}">
                             <ScrollViewer x:Name="PART_ContentHost" Padding="{TemplateBinding Padding}" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource TextBoxAuth.IsMouseOver.Border.BorderBrush}"></Setter>
+                                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource EmailTextBoxStyle.IsMouseOver.Border.BorderBrush}"></Setter>
                             </Trigger>
                             <Trigger Property="IsFocused" Value="True">
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBoxAuth.IsFocused.Border.BorderBrush}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource EmailTextBoxStyle.IsFocused.Border.BorderBrush}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -154,28 +155,28 @@
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="16"/>
-            <Setter Property="BorderBrush" Value="{StaticResource TextBoxAuth.Static.BorderBrush}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource EmailTextBoxStyle.Static.BorderBrush}"/>
         </Style.Setters>
     </Style>
     
     
-    <Style x:Key="PswdBoxAuth" TargetType="PasswordBox">
+    <Style x:Key="PasswordBoxStyle" TargetType="PasswordBox">
         <Style.Setters>
             <Setter Property="OverridesDefaultStyle" Value="True"></Setter>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="PasswordBox">
                         <Border x:Name="border" BorderThickness="2" 
-                                CornerRadius="5" Background="{StaticResource PswdBoxAuth.Static.Border.Background}" 
-                                BorderBrush="{StaticResource PswdBoxAuth.Static.Border.BorderBrush}">
+                                CornerRadius="5" Background="{StaticResource PasswordBoxStyle.Static.Border.Background}" 
+                                BorderBrush="{StaticResource PasswordBoxStyle.Static.Border.BorderBrush}">
                             <ScrollViewer x:Name="PART_ContentHost" Padding="{TemplateBinding Padding}" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource PswdBoxAuth.IsMouseOver.Border.BorderBrush}"></Setter>
+                                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource PasswordBoxStyle.IsMouseOver.Border.BorderBrush}"></Setter>
                             </Trigger>
                             <Trigger Property="IsFocused" Value="True">
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource PswdBoxAuth.IsFocused.Border.BorderBrush}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource PasswordBoxStyle.IsFocused.Border.BorderBrush}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -187,17 +188,17 @@
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="16"/>
-            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderBrush" Value="{StaticResource PasswordBoxStyle.Static.BorderBrush}"/>
         </Style.Setters>
     </Style>
 
 
-    <Style x:Key="PasswordCompexityRectangle" TargetType="{x:Type Rectangle}">
+    <Style x:Key="PasswordCompexityRectangleStyle" TargetType="{x:Type Rectangle}">
         <Style.Setters>
-            <Setter Property="Fill" Value="{StaticResource PasswordCompexityRectangle.Static.Fill}"/>
+            <Setter Property="Fill" Value="{StaticResource PasswordCompexityRectangleStyle.Static.Fill}"/>
             <Setter Property="Height" Value="14"/>
             <Setter Property="Width" Value="60"/>
-            <Setter Property="Stroke" Value="{StaticResource PasswordCompexityRectangle.Static.Stroke}"/>
+            <Setter Property="Stroke" Value="{StaticResource PasswordCompexityRectangleStyle.Static.Stroke}"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Visibility" Value="Visible"/>
@@ -205,7 +206,7 @@
     </Style>
 
 
-    <Style x:Key="RevealPassword" TargetType="ToggleButton">
+    <Style x:Key="ShowPasswordToggleButtonStyle" TargetType="ToggleButton">
         <Style.Setters>
             <Setter Property="Template">
                 <Setter.Value>
@@ -235,17 +236,17 @@
     </Style>
 
 
-    <Style x:Key="Gradient" TargetType="Rectangle">
+    <Style x:Key="GradientRectangleStyle" TargetType="Rectangle">
         <Style.Setters>
-            <Setter Property="Fill" Value="{StaticResource Gradient.Static.Fill}">
+            <Setter Property="Fill" Value="{StaticResource GradientRectangleStyle.Static.Fill}">
             </Setter>
         </Style.Setters>
     </Style>
 
-   
-    <Style x:Key="RememberMe" TargetType="{x:Type CheckBox}">
-        <Setter Property="Background" Value="{StaticResource OptionMark.Static.Background}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource OptionMark.Static.Border}"/>
+
+    <Style x:Key="RememberMeCheckBoxStyle" TargetType="{x:Type CheckBox}">
+        <Setter Property="Background" Value="{StaticResource RememberMeCheckBoxStyle.Static.Background}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource RememberMeCheckBoxStyle.Static.Border}"/>
         <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="Padding" Value="5,6,0,0"/>
@@ -255,31 +256,38 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type CheckBox}">
-                    <Grid x:Name="templateRoot" Background="Transparent" SnapsToDevicePixels="True" UseLayoutRounding="True">
+                    <Grid x:Name="templateRoot" Background="{StaticResource RememberMeCheckBoxStyle.Grid.Static.Background}" SnapsToDevicePixels="True" UseLayoutRounding="True">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Border x:Name="checkBoxBorder" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="1" VerticalAlignment="{TemplateBinding VerticalContentAlignment}" CornerRadius="3"
+                        <Border x:Name="checkBoxBorder" BorderBrush="{TemplateBinding BorderBrush}" 
+                                BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" 
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="1" 
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" CornerRadius="3"
                                 Height="25" Width="25"
                                 >
                             <Grid x:Name="markGrid">
-                                <Path x:Name="optionMark" Data="F1 M 9.97498,1.22334L 4.6983,9.09834L 4.52164,9.09834L 0,5.19331L 1.27664,3.52165L 4.255,6.08833L 8.33331,1.52588e-005L 9.97498,1.22334 Z " Fill="{StaticResource OptionMark.Static.Glyph}" Margin="3" Opacity="0" Stretch="Fill"/>
+                                <Path x:Name="optionMark" Data="F1 M 9.97498,1.22334L 4.6983,9.09834L 4.52164,9.09834L 0,5.19331L 1.27664,3.52165L 4.255,6.08833L 8.33331,1.52588e-005L 9.97498,1.22334 Z " 
+                                      Fill="{StaticResource RememberMeCheckBoxStyle.Static.Glyph}" Margin="3" Opacity="0" Stretch="Fill"/>
                             </Grid>
                         </Border>
-                        <ContentPresenter x:Name="contentPresenter" Grid.Column="1" Focusable="False" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                        <ContentPresenter x:Name="contentPresenter" Grid.Column="1" Focusable="False" 
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" Margin="{TemplateBinding Padding}" 
+                                          RecognizesAccessKey="True" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Pressed.Background}"/>
-                            <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Pressed.Border}"/>
-                            <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource OptionMark.Pressed.Glyph}"/>
+                            <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource RememberMeCheckBoxStyle.Pressed.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource RememberMeCheckBoxStyle.Pressed.Border}"/>
+                            <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource RememberMeCheckBoxStyle.Pressed.Glyph}"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="true">
                             <Setter Property="Opacity" TargetName="optionMark" Value="1"/>
-                            <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Pressed.Background}"/>
-                            <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource OptionMark.Pressed.Border}"/>
-                            <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource OptionMark.Pressed.Glyph}"/>
+                            <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource RememberMeCheckBoxStyle.Pressed.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource RememberMeCheckBoxStyle.Pressed.Border}"/>
+                            <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource RememberMeCheckBoxStyle.Pressed.Glyph}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

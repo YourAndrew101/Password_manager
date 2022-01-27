@@ -47,9 +47,7 @@
                        Foreground="#7289da"
                        FontFamily="Global Sans Serif" 
                        FontWeight="Bold" 
-                       TextDecorations="{x:Null}"
-                       
-                       >
+                       TextDecorations="{x:Null}">
                 <Run Text="{x:Static res:Resources.CreateNewAccount}"/>
             </Hyperlink>
 
@@ -90,7 +88,7 @@
                  Grid.Column="1" 
                  BorderThickness="2" 
                  Height="40"
-                 Style="{StaticResource TextBoxAuth}"/>
+                 Style="{StaticResource EmailTextBoxStyle}"/>
 
         <TextBlock Text="{x:Static res:Resources.Password}"
                    Grid.Column="1"
@@ -115,7 +113,7 @@
                  Height="40"        
                  Visibility="Collapsed"
                  Padding="5,0,30,0"
-                 Style="{StaticResource TextBoxAuth}"   
+                 Style="{StaticResource EmailTextBoxStyle}"   
                  Text="{Binding Password, ElementName=PasswordTextBox}" 
                  TextChanged="KindaPassword_TextChanged"/>
 
@@ -127,26 +125,27 @@
                       Checked="ToggleButton_Checked"
                       Unchecked="ToggleButton_Unchecked"
                       IsChecked="False"
-                      Style="{StaticResource RevealPassword}"/>
+                      Style="{StaticResource ShowPasswordToggleButtonStyle}"/>
 
         <TextBlock x:Name="AuthErrorTextBlock" 
                    Grid.Row="10" 
                    Grid.Column="1" 
-                   Style="{StaticResource ErrorAuth}"/>
+                   Style="{StaticResource AuthErrorTextBlockStyle}"/>
 
-        <CheckBox x:Name="RemmemberMeCheckBox" Content="{x:Static res:Resources.RememberMe}"
+        <CheckBox x:Name="RemmemberMeCheckBox" 
+                  Content="{x:Static res:Resources.RememberMe}"
                   Grid.Row="10" 
                   Grid.Column="1"
                   HorizontalAlignment="Left"
                   VerticalAlignment="Bottom"
-                  Style="{StaticResource RememberMe}"/>
+                  Style="{StaticResource RememberMeCheckBoxStyle}"/>
 
         <Button x:Name="SubmitButton" Grid.Column="1"
                 Grid.Row="11"
                 Content="{x:Static res:Resources.Log_In}"
                 Width="150"
                 Height="50" 
-                Style="{StaticResource Submit}" 
+                Style="{StaticResource SubmitButtonStyle}" 
                 Click="SubmitButton_Click"/>
 
         <TextBlock x:Name="ResetPasswordTextBlock"
