@@ -24,11 +24,22 @@ namespace PasswordManager.Auth
     {
         public Auth()
         {
-            
             InitializeComponent();
-            AuthFrame.Content = new Login();
+            SetPage();
+            SetColorTheme();
+        }
 
+        private void SetPage()
+        {
+            AuthFrame.Content = new Login();
+        }
+
+        private void SetColorTheme()
+        {
             ThemePicker.Themes theme = ThemePicker.GetSystemTheme();
+
+            ResourceDictionary dict = new ResourceDictionary { Source = new Uri($"/Themes/{theme}Theme.xaml", UriKind.Relative) };
+            Application.Current.Resources.MergedDictionaries.Add(dict);
         }
 
         public void CloseWindow(object sender, RoutedEventArgs e)
