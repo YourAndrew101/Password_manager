@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,28 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using PasswordManager.Services;
 
 namespace PasswordManager.Auth
 {
     /// <summary>
-    /// Логика взаимодействия для Auth.xaml
+    /// Логика взаимодействия для PasswordReset.xaml
     /// </summary>
-    public partial class Auth : Window
+    public partial class PasswordReset : Page
     {
-        public Auth()
+        public PasswordReset()
         {
-            
             InitializeComponent();
-            AuthFrame.Content = new Login();
-
-            ThemePicker.Themes theme = ThemePicker.GetSystemTheme();
-        }
-
-        public void CloseWindow(object sender, RoutedEventArgs e)
-        {
-            Close();
         }
     }
 }

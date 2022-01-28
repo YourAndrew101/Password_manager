@@ -13,7 +13,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using PasswordManager.Services;
 
 namespace PasswordManager.Auth
 {
@@ -27,8 +26,6 @@ namespace PasswordManager.Auth
             
             InitializeComponent();
             AuthFrame.Content = new Login();
-
-            ThemePicker.Themes theme = ThemePicker.GetSystemTheme();
         }
 
         public void CloseWindow(object sender, RoutedEventArgs e)
