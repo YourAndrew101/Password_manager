@@ -32,12 +32,12 @@ namespace PasswordManager.Auth
 
         private readonly Rectangle[] _passwordComplexityRectangles = new Rectangle[5];
 
-        private Color _veryWeakPasswordRectangleColor = (Color)ColorConverter.ConvertFromString("#FF0000");
-        private Color _weakPasswordRectangleColor = (Color)ColorConverter.ConvertFromString("#DB7A19");
-        private Color _normalPasswordRectangleColor = (Color)ColorConverter.ConvertFromString("#F1DD1A");
-        private Color _strongPasswordRectangleColor = (Color)ColorConverter.ConvertFromString("#9CF11A");
-        private Color _veryStrongPasswordRectangleColor = (Color)ColorConverter.ConvertFromString("#05C612");
-        private Color _nullPasswordRectangleColor = (Color)ColorConverter.ConvertFromString("#EBEBEB");
+        private Color _veryWeakPasswordRectangleColor = (Color)Application.Current.Resources["_veryWeakPasswordRectangleColor"];
+        private Color _weakPasswordRectangleColor = (Color)Application.Current.Resources["_weakPasswordRectangleColor"];
+        private Color _normalPasswordRectangleColor = (Color)Application.Current.Resources["_normalPasswordRectangleColor"];
+        private Color _strongPasswordRectangleColor = (Color)Application.Current.Resources["_strongPasswordRectangleColor"];
+        private Color _veryStrongPasswordRectangleColor = (Color)Application.Current.Resources["_veryStrongPasswordRectangleColor"];
+        private Color _nullPasswordRectangleColor = (Color)Application.Current.Resources["PasswordCompexityRectangle.Static.Fill"];
 
         public Signup()
         {

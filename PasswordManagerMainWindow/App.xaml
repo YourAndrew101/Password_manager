@@ -6,7 +6,9 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Auth/AuthStyles.xaml" />
-                <ResourceDictionary Source="Themes/WhiteTheme.xaml"/>
+                
+                <!--<ResourceDictionary Source="Themes/WhiteTheme.xaml"/>-->
+                <ResourceDictionary Source="Themes/DarkTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
