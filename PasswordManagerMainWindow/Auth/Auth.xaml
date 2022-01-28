@@ -12,7 +12,8 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
-        Background="White">
+        Background="{DynamicResource MainColor}"
+        Foreground="{DynamicResource TextColor}">
     
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="30"/>

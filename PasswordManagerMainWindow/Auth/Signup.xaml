@@ -9,8 +9,10 @@
       d:DesignHeight="520"
       d:DesignWidth="500"
       Title="Login"
-      Background="White"
-      ShowsNavigationUI="False">
+      Background="{DynamicResource MainColor}"
+      ShowsNavigationUI="False"
+      Foreground="{DynamicResource TextColor}"
+      >
 
     <Grid>
         <Grid.RowDefinitions>
@@ -61,7 +63,6 @@
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Center" 
                    FontSize="28" 
-                   Foreground="Black"
                    FontFamily="Global Sans Serif" 
                    FontWeight="Bold" 
                    Height="33" />
@@ -72,7 +73,6 @@
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Center" 
                    FontSize="14" 
-                   Foreground="SlateGray"
                    FontFamily="Global Sans Serif" 
                    FontWeight="Bold" 
                    Grid.ColumnSpan="2" 
@@ -85,7 +85,6 @@
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Center" 
                    FontSize="14" 
-                   Foreground="Black"
                    FontFamily="Global Sans Serif" 
                    FontWeight="Bold" 
                    />
@@ -106,7 +105,6 @@
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Center" 
                    FontSize="14" 
-                   Foreground="Black"
                    FontFamily="Global Sans Serif" 
                    FontWeight="Bold" />
 
@@ -142,6 +140,9 @@
         <TextBlock x:Name="AuthErrorTextBlock" 
                    Grid.Row="10" 
                    Text="Error sample" 
+                   Grid.Column="1"
+                   VerticalAlignment="Bottom"
+                   
                    Style="{StaticResource AuthErrorTextBlockStyle}"
                    />
 

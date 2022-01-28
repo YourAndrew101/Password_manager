@@ -26,7 +26,7 @@
     <SolidColorBrush x:Key="PasswordCompexityRectangleStyle.Static.Fill" Color="{DynamicResource PasswordCompexityRectangle.Static.Fill}"/>
     <SolidColorBrush x:Key="PasswordCompexityRectangleStyle.Static.Stroke" Color="{DynamicResource PasswordCompexityRectangle.Static.Stroke}"/>
 
-    <LinearGradientBrush x:Key="GradientRectangleStyle.Static.Fill" StartPoint="0,1" EndPoint="0,0">
+    <LinearGradientBrush x:Key="GradientRectangleStyle.Static.Fill" StartPoint="0,0" EndPoint="1,0">
         <GradientStop Color="{DynamicResource GradientStop1}" Offset="0"/>
         <GradientStop Color="{DynamicResource GradientStop2}" Offset="0.5"/>
         <GradientStop Color="{DynamicResource GradientStop3}" Offset="1"/>
@@ -39,6 +39,8 @@
     <SolidColorBrush x:Key="RememberMeCheckBoxStyle.Pressed.Border" Color="{DynamicResource RememberMeCheckBox.Pressed.Border}"/>
     <SolidColorBrush x:Key="RememberMeCheckBoxStyle.Pressed.Glyph" Color="{DynamicResource RememberMeCheckBox.Pressed.Glyph}"/>
     <SolidColorBrush x:Key="RememberMeCheckBoxStyle.Static.Glyph" Color="{DynamicResource RememberMeCheckBox.Static.Glyph}"/>
+    <SolidColorBrush x:Key="RememberMeCheckBoxStyle.Static.Foreground" Color="{DynamicResource RememberMeCheckBox.Foreground}"/>
+
 
 
     <Style x:Key="CloseAppButtonStyle" TargetType="Button">
@@ -57,20 +59,20 @@
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center"
                                        FontFamily="Segoe MDL2 Assets"
-                                       Foreground="Black"
+                                       Foreground="{DynamicResource TextColor}"
                                        FontSize="16"/>
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <Setter Property="Background" Value="{StaticResource CloseAppButtonStyle.Static.Background}"/>
+            <Setter Property="Background" Value="{DynamicResource CloseAppButtonStyle.Static.Background}"/>
         </Style.Setters>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="{StaticResource CloseAppButtonStyle.IsMouseOver.Background}"/>
+                <Setter Property="Background" Value="{DynamicResource CloseAppButtonStyle.IsMouseOver.Background}"/>
             </Trigger>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{StaticResource CloseAppButtonStyle.IsPressed.Background}"/>
+                <Setter Property="Background" Value="{DynamicResource CloseAppButtonStyle.IsPressed.Background}"/>
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -78,7 +80,7 @@
 
     <Style x:Key="AuthErrorTextBlockStyle" TargetType="TextBlock">
         <Style.Setters>
-            <Setter Property="Foreground" Value="{StaticResource AuthErrorTextBlockStyle.Static.Foreground}"/>
+            <Setter Property="Foreground" Value="{DynamicResource AuthErrorTextBlockStyle.Static.Foreground}"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="FontFamily" Value="Global Sans Serif"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
@@ -106,19 +108,19 @@
                                        VerticalAlignment="Center"
                                        HorizontalAlignment="Center"
                                        FontFamily="Global Sans Serif"
-                                       Foreground="{StaticResource SubmitButtonStyle.Text.Foreground}"
+                                       Foreground="{DynamicResource SubmitButtonStyle.Text.Foreground}"
                                        FontSize="18"/>
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
-            <Setter Property="Background" Value="{StaticResource SubmitButtonStyle.Static.Background}"/>
+            <Setter Property="Background" Value="{DynamicResource SubmitButtonStyle.Static.Background}"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style.Setters>
         <Style.Triggers>
             <Trigger Property="IsPressed" Value="True">
-                <Setter Property="Background" Value="{StaticResource SubmitButtonStyle.IsPressed.Background}"/>
+                <Setter Property="Background" Value="{DynamicResource SubmitButtonStyle.IsPressed.Background}"/>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Cursor" Value="Hand"/>
@@ -129,21 +131,22 @@
 
     <Style x:Key="EmailTextBoxStyle" TargetType="TextBox">
         <Style.Setters>
+            <Setter Property="CaretBrush" Value="{DynamicResource TextColor}"/>
             <Setter Property="OverridesDefaultStyle" Value="True"></Setter>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
                         <Border x:Name="border" BorderThickness="2" 
-                                CornerRadius="5" Background="{StaticResource EmailTextBoxStyle.Static.Border.Background}" 
-                                BorderBrush="{StaticResource EmailTextBoxStyle.Static.Border.BorderBrush}">
-                            <ScrollViewer x:Name="PART_ContentHost" Padding="{TemplateBinding Padding}" />
+                                CornerRadius="5" Background="{DynamicResource EmailTextBoxStyle.Static.Border.Background}" 
+                                BorderBrush="{DynamicResource EmailTextBoxStyle.Static.Border.BorderBrush}">
+                            <ScrollViewer x:Name="PART_ContentHost" Padding="{TemplateBinding Padding}"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource EmailTextBoxStyle.IsMouseOver.Border.BorderBrush}"></Setter>
+                                <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource EmailTextBoxStyle.IsMouseOver.Border.BorderBrush}"></Setter>
                             </Trigger>
                             <Trigger Property="IsFocused" Value="True">
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource EmailTextBoxStyle.IsFocused.Border.BorderBrush}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource EmailTextBoxStyle.IsFocused.Border.BorderBrush}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -155,28 +158,29 @@
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="16"/>
-            <Setter Property="BorderBrush" Value="{StaticResource EmailTextBoxStyle.Static.BorderBrush}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource EmailTextBoxStyle.Static.BorderBrush}"/>
         </Style.Setters>
     </Style>
     
     
     <Style x:Key="PasswordBoxStyle" TargetType="PasswordBox">
         <Style.Setters>
+            <Setter Property="CaretBrush" Value="{DynamicResource TextColor}"/>
             <Setter Property="OverridesDefaultStyle" Value="True"></Setter>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="PasswordBox">
                         <Border x:Name="border" BorderThickness="2" 
-                                CornerRadius="5" Background="{StaticResource PasswordBoxStyle.Static.Border.Background}" 
-                                BorderBrush="{StaticResource PasswordBoxStyle.Static.Border.BorderBrush}">
+                                CornerRadius="5" Background="{DynamicResource PasswordBoxStyle.Static.Border.Background}" 
+                                BorderBrush="{DynamicResource PasswordBoxStyle.Static.Border.BorderBrush}">
                             <ScrollViewer x:Name="PART_ContentHost" Padding="{TemplateBinding Padding}" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource PasswordBoxStyle.IsMouseOver.Border.BorderBrush}"></Setter>
+                                <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource PasswordBoxStyle.IsMouseOver.Border.BorderBrush}"></Setter>
                             </Trigger>
                             <Trigger Property="IsFocused" Value="True">
-                                <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource PasswordBoxStyle.IsFocused.Border.BorderBrush}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource PasswordBoxStyle.IsFocused.Border.BorderBrush}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -188,17 +192,17 @@
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="16"/>
-            <Setter Property="BorderBrush" Value="{StaticResource PasswordBoxStyle.Static.BorderBrush}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource PasswordBoxStyle.Static.BorderBrush}"/>
         </Style.Setters>
     </Style>
 
 
     <Style x:Key="PasswordCompexityRectangleStyle" TargetType="{x:Type Rectangle}">
         <Style.Setters>
-            <Setter Property="Fill" Value="{StaticResource PasswordCompexityRectangleStyle.Static.Fill}"/>
+            <Setter Property="Fill" Value="{DynamicResource PasswordCompexityRectangleStyle.Static.Fill}"/>
             <Setter Property="Height" Value="14"/>
             <Setter Property="Width" Value="60"/>
-            <Setter Property="Stroke" Value="{StaticResource PasswordCompexityRectangleStyle.Static.Stroke}"/>
+            <Setter Property="Stroke" Value="{DynamicResource PasswordCompexityRectangleStyle.Static.Stroke}"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Visibility" Value="Visible"/>
@@ -214,13 +218,13 @@
                         <Image x:Name="img" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill">
                             <Image.Style>
                                 <Style TargetType="Image">
-                                    <Setter Property="Source" Value="/Auth/Assets/eye.png"/>
+                                    <Setter Property="Source" Value="{DynamicResource ResourceKey=OpenEye}"/>
                                 </Style>
                             </Image.Style>
                         </Image>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="img" Property="Source" Value="/Auth/Assets/closed_eye.png"/>
+                                <Setter TargetName="img" Property="Source" Value="{DynamicResource ResourceKey=ClosedEye}"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -238,16 +242,16 @@
 
     <Style x:Key="GradientRectangleStyle" TargetType="Rectangle">
         <Style.Setters>
-            <Setter Property="Fill" Value="{StaticResource GradientRectangleStyle.Static.Fill}">
+            <Setter Property="Fill" Value="{DynamicResource GradientRectangleStyle.Static.Fill}">
             </Setter>
         </Style.Setters>
     </Style>
 
 
     <Style x:Key="RememberMeCheckBoxStyle" TargetType="{x:Type CheckBox}">
-        <Setter Property="Background" Value="{StaticResource RememberMeCheckBoxStyle.Static.Background}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource RememberMeCheckBoxStyle.Static.Border}"/>
-        <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        <Setter Property="Background" Value="{DynamicResource RememberMeCheckBoxStyle.Static.Background}"/>
+        <Setter Property="BorderBrush" Value="{DynamicResource RememberMeCheckBoxStyle.Static.Border}"/>
+        <Setter Property="Foreground" Value="{DynamicResource RememberMeCheckBoxStyle.Static.Foreground}"/>
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="Padding" Value="5,6,0,0"/>
         <Setter Property="FontSize" Value="14"/>
@@ -256,7 +260,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type CheckBox}">
-                    <Grid x:Name="templateRoot" Background="{StaticResource RememberMeCheckBoxStyle.Grid.Static.Background}" SnapsToDevicePixels="True" UseLayoutRounding="True">
+                    <Grid x:Name="templateRoot" Background="{DynamicResource RememberMeCheckBoxStyle.Grid.Static.Background}" SnapsToDevicePixels="True" UseLayoutRounding="True">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition Width="*"/>
@@ -269,7 +273,7 @@
                                 >
                             <Grid x:Name="markGrid">
                                 <Path x:Name="optionMark" Data="F1 M 9.97498,1.22334L 4.6983,9.09834L 4.52164,9.09834L 0,5.19331L 1.27664,3.52165L 4.255,6.08833L 8.33331,1.52588e-005L 9.97498,1.22334 Z " 
-                                      Fill="{StaticResource RememberMeCheckBoxStyle.Static.Glyph}" Margin="3" Opacity="0" Stretch="Fill"/>
+                                      Fill="{DynamicResource RememberMeCheckBoxStyle.Static.Glyph}" Margin="3" Opacity="0" Stretch="Fill"/>
                             </Grid>
                         </Border>
                         <ContentPresenter x:Name="contentPresenter" Grid.Column="1" Focusable="False" 
@@ -279,15 +283,15 @@
                     </Grid>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsPressed" Value="true">
-                            <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource RememberMeCheckBoxStyle.Pressed.Background}"/>
-                            <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource RememberMeCheckBoxStyle.Pressed.Border}"/>
-                            <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource RememberMeCheckBoxStyle.Pressed.Glyph}"/>
+                            <Setter Property="Background" TargetName="checkBoxBorder" Value="{DynamicResource RememberMeCheckBoxStyle.Pressed.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{DynamicResource RememberMeCheckBoxStyle.Pressed.Border}"/>
+                            <Setter Property="Fill" TargetName="optionMark" Value="{DynamicResource RememberMeCheckBoxStyle.Pressed.Glyph}"/>
                         </Trigger>
                         <Trigger Property="IsChecked" Value="true">
                             <Setter Property="Opacity" TargetName="optionMark" Value="1"/>
-                            <Setter Property="Background" TargetName="checkBoxBorder" Value="{StaticResource RememberMeCheckBoxStyle.Pressed.Background}"/>
-                            <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{StaticResource RememberMeCheckBoxStyle.Pressed.Border}"/>
-                            <Setter Property="Fill" TargetName="optionMark" Value="{StaticResource RememberMeCheckBoxStyle.Pressed.Glyph}"/>
+                            <Setter Property="Background" TargetName="checkBoxBorder" Value="{DynamicResource RememberMeCheckBoxStyle.Pressed.Background}"/>
+                            <Setter Property="BorderBrush" TargetName="checkBoxBorder" Value="{DynamicResource RememberMeCheckBoxStyle.Pressed.Border}"/>
+                            <Setter Property="Fill" TargetName="optionMark" Value="{DynamicResource RememberMeCheckBoxStyle.Pressed.Glyph}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
