@@ -1,0 +1,42 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Color x:Key="BackGroundColor">White</Color>
+    <Color x:Key="CloseAppButton.Static.Background">Transparent</Color>
+    <Color x:Key="CloseAppButton.IsMouseOver.Background">#99aab5</Color>
+    <Color x:Key="CloseAppButton.IsPressed.Background" >#7289da</Color>
+
+    <Color x:Key="AuthErrorTextBlock.Static.Foreground" >Red</Color>
+
+    <Color x:Key="SubmitButton.Static.Background" >#7289da</Color>
+    <Color x:Key="SubmitButton.IsPressed.Background" >#99aab5</Color>
+    <Color x:Key="SubmitButton.Text.Foreground" >White</Color>
+
+    <Color x:Key="EmailTextBox.Static.Border.Background" >White</Color>
+    <Color x:Key="EmailTextBox.Static.Border.BorderBrush" >LightGray</Color>
+    <Color x:Key="EmailTextBox.IsMouseOver.Border.BorderBrush" >LightGray</Color>
+    <Color x:Key="EmailTextBox.IsFocused.Border.BorderBrush" >#7289da</Color>
+    <Color x:Key="EmailTextBox.Static.BorderBrush" >Black</Color>
+
+    <Color x:Key="PasswordBox.Static.Border.Background" >White</Color>
+    <Color x:Key="PasswordBox.Static.Border.BorderBrush" >LightGray</Color>
+    <Color x:Key="PasswordBox.IsMouseOver.Border.BorderBrush" >LightGray</Color>
+    <Color x:Key="PasswordBox.IsFocused.Border.BorderBrush" >#7289da</Color>
+    <Color x:Key="PasswordBox.Static.BorderBrush" >Black</Color>
+
+    <Color x:Key="PasswordCompexityRectangle.Static.Fill" >#EBEBEB</Color>
+    <Color x:Key="PasswordCompexityRectangle.Static.Stroke" >#C6C6C6</Color>
+
+    <Color x:Key="GradientStop1">#2980B9</Color>
+    <Color x:Key="GradientStop2">#6DD5FA</Color>
+    <Color x:Key="GradientStop3">#FFFFFF</Color>
+
+
+    <Color x:Key="RememberMeCheckBox.Static.Background" >#FFFFFFFF</Color>
+    <Color x:Key="RememberMeCheckBox.Grid.Static.Background" >Transparent</Color>
+    <Color x:Key="RememberMeCheckBox.Static.Border" >#7289da</Color>
+    <Color x:Key="RememberMeCheckBox.Pressed.Background" >#7289da</Color>
+    <Color x:Key="RememberMeCheckBox.Pressed.Border" >#7289da</Color>
+    <Color x:Key="RememberMeCheckBox.Pressed.Glyph" >White</Color>
+    <Color x:Key="RememberMeCheckBox.Static.Glyph" >White</Color>
+
+</ResourceDictionary>
