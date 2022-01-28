@@ -38,12 +38,11 @@
         <TextBlock x:Name="LogInTextBlock"
                    Grid.Row="0" 
                    Grid.Column="1"
-                   Grid.ColumnSpan="2"
                    Grid.RowSpan="2"
-                   HorizontalAlignment="Right"                  
-                   FontSize="14" 
-                   Margin="0,32,65.333,32.333" 
-                   Width="42">
+                   HorizontalAlignment="Right" 
+                   VerticalAlignment="Center"
+                   FontSize="14" Grid.ColumnSpan="2" Margin="0,32,64,32"
+                   >
             
             <Hyperlink x:Name="LogInHyperLink"
                        NavigateUri="Login.xaml" 
@@ -57,21 +56,19 @@
         </TextBlock>
 
         <TextBlock Text="{x:Static res:Resources.CreateNewAccount}" 
-                   Grid.Row="1" 
+                   Grid.Row="2" 
+                   Grid.Column="1"
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Center" 
                    FontSize="28" 
                    Foreground="Black"
                    FontFamily="Global Sans Serif" 
                    FontWeight="Bold" 
-                   Grid.ColumnSpan="2"
-                   Grid.RowSpan="3" 
-                   Height="33" 
-                   Margin="85,39.333,0,19.667"
-                   Width="265"/>
+                   Height="33" />
 
         <TextBlock Text="{x:Static res:Resources.FillAllFields}" 
                    Grid.Row="3" 
+                   Grid.Column="1"
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Center" 
                    FontSize="14" 
@@ -80,42 +77,38 @@
                    FontWeight="Bold" 
                    Grid.ColumnSpan="2" 
                    Height="17" 
-                   Margin="85,2,0,1.667" 
-                   Width="190"/>
+                   />
 
         <TextBlock Text="{x:Static res:Resources.EmailAuth}" 
                    Grid.Row="5" 
+                   Grid.Column="1"
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Center" 
                    FontSize="14" 
                    Foreground="Black"
                    FontFamily="Global Sans Serif" 
                    FontWeight="Bold" 
-                   Grid.ColumnSpan="2" 
-                   Height="17" 
-                   Margin="85,7,0,6.667" 
-                   Width="38"/>
+                   />
 
         <TextBox x:Name="EmailTextBox" 
                  Grid.Row="6" 
+                 Grid.Column="1"
                  BorderThickness="2"                 
-                 Grid.ColumnSpan="2" 
-                 Margin="85,5.333,0.333,5.333"
-                 Style="{StaticResource TextBoxAuth}" 
-                 TextChanged="EmailTextBox_TextChanged"/>
+                 Padding="5,0,30,0"
+                 Style="{StaticResource EmailTextBoxStyle}" 
+                 TextChanged="EmailTextBox_TextChanged"
+                 Height="40"  
+                 />
 
         <TextBlock Text="{x:Static res:Resources.Password}" 
                    Grid.Row="8" 
+                   Grid.Column="1"
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Center" 
                    FontSize="14" 
                    Foreground="Black"
                    FontFamily="Global Sans Serif" 
-                   FontWeight="Bold" 
-                   Grid.ColumnSpan="2" 
-                   Height="17"
-                   Margin="85,7,0,6.667"
-                   Width="66"/>
+                   FontWeight="Bold" />
 
         <components:BindablePasswordBox x:Name="PasswordTextBox" 
                                         Grid.Row="9" 
@@ -130,7 +123,7 @@
                  Height="40"        
                  Visibility="Collapsed"
                  Padding="5,0,30,0"
-                 Style="{StaticResource TextBoxAuth}"   
+                 Style="{StaticResource EmailTextBoxStyle}"   
                  Text="{Binding Password, ElementName=PasswordTextBox}" 
                  TextChanged="KindaPassword_TextChanged"/>
 
@@ -144,42 +137,41 @@
                       Checked="ToggleButton_Checked"
                       Unchecked="ToggleButton_Unchecked"
                       IsChecked="False"
-                      Style="{StaticResource RevealPassword}"/>
+                      Style="{StaticResource ShowPasswordToggleButtonStyle}"/>
 
         <TextBlock x:Name="AuthErrorTextBlock" 
                    Grid.Row="10" 
                    Text="Error sample" 
-                   Style="{StaticResource ErrorAuth}" Grid.ColumnSpan="2" 
-                   Margin="85,33.667,0,0"/>
+                   Style="{StaticResource AuthErrorTextBlockStyle}"
+                   />
 
         <Button x:Name="SubmitButton" 
                 Grid.Column="1"
                 Grid.Row="11"
                 Content="{x:Static res:Resources.SignUp}"
-                Width="150"
+                Width="160"
                 Height="50"  
-                Grid.ColumnSpan="2" 
-                Margin="85,7,0,5.667"
-                Style="{StaticResource Submit}" 
+                Style="{StaticResource SubmitButtonStyle}" 
                 Click="SubmitButton_Click"/>
 
-        <StackPanel Margin="85,3.667,0.333,0" 
+        <StackPanel 
                     Grid.Row="10" 
-                    Grid.ColumnSpan="2">
+                    Grid.Column="1"
+            >
             <DockPanel x:Name="PasswordComplexityPanel">
                 <Rectangle x:Name="VeryWeakPasswordRectangle"
-                           Style="{StaticResource PasswordCompexityRectangle}"
+                           Style="{StaticResource PasswordCompexityRectangleStyle}"
                            Margin="2,0"/>
                 <Rectangle x:Name="WeakPasswordRectangle"
                            Margin="6,0" 
-                           Style="{StaticResource PasswordCompexityRectangle}"/>
+                           Style="{StaticResource PasswordCompexityRectangleStyle}"/>
                 <Rectangle x:Name="NormalPasswordRectangle"
-                           Style="{StaticResource PasswordCompexityRectangle}"/>
+                           Style="{StaticResource PasswordCompexityRectangleStyle}"/>
                 <Rectangle x:Name="StrongPasswordRectangle"
                            Margin="6,0" 
-                           Style="{StaticResource PasswordCompexityRectangle}"/>
+                           Style="{StaticResource PasswordCompexityRectangleStyle}"/>
                 <Rectangle x:Name="VeryStrongPasswordRectangle"
-                           Style="{StaticResource PasswordCompexityRectangle}"/>
+                           Style="{StaticResource PasswordCompexityRectangleStyle}"/>
             </DockPanel>
 
             <TextBlock x:Name="PasswordComplexityTextBlock"

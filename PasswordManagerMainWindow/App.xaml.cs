@@ -13,8 +13,12 @@ namespace PasswordManager
     /// </summary>
     public partial class App : Application
     {
-        App() {
+        private App() {
             System.Threading.Thread.CurrentThread.CurrentUICulture = new System.Globalization.CultureInfo("ru-RU");
+           // ResourceDictionary dict = new ResourceDictionary();
+           // dict.Source = new Uri("ColorTheme.xaml", UriKind.Relative);
+           // Application.Current.Resources.MergedDictionaries.Add(dict);
+           //Current.Resources.Remove("ColorTheme.xzml");
         }
     }
 }

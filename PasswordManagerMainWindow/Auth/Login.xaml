@@ -81,7 +81,7 @@
                    FontSize="14" 
                    Foreground="Black"
                    FontFamily="Global Sans Serif" 
-                   FontWeight="Bold" Grid.ColumnSpan="2" />
+                   FontWeight="Bold"/>
 
         <TextBox x:Name="EmailTextBox" 
                  Grid.Row="6" 
@@ -143,7 +143,7 @@
         <Button x:Name="SubmitButton" Grid.Column="1"
                 Grid.Row="11"
                 Content="{x:Static res:Resources.Log_In}"
-                Width="150"
+                Width="160"
                 Height="50" 
                 Style="{StaticResource SubmitButtonStyle}" 
                 Click="SubmitButton_Click"/>
