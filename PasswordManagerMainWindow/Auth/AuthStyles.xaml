@@ -1,44 +1,44 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <SolidColorBrush x:Key="CloseAppButtonStyle.Static.Background" Color="Transparent"/>
-    <SolidColorBrush x:Key="CloseAppButtonStyle.IsMouseOver.Background" Color="#99aab5"/>
-    <SolidColorBrush x:Key="CloseAppButtonStyle.IsPressed.Background" Color="#7289da"/>
+    <SolidColorBrush x:Key="CloseAppButtonStyle.Static.Background" Color="{DynamicResource CloseAppButton.Static.Background}"/>
+    <SolidColorBrush x:Key="CloseAppButtonStyle.IsMouseOver.Background" Color="{DynamicResource CloseAppButton.IsMouseOver.Background}"/>
+    <SolidColorBrush x:Key="CloseAppButtonStyle.IsPressed.Background" Color="{DynamicResource CloseAppButton.IsPressed.Background}"/>
 
-    <SolidColorBrush x:Key="AuthErrorTextBlockStyle.Static.Foreground" Color="Red"/>
+    <SolidColorBrush x:Key="AuthErrorTextBlockStyle.Static.Foreground" Color="{DynamicResource AuthErrorTextBlock.Static.Foreground}"/>
 
-    <SolidColorBrush x:Key="SubmitButtonStyle.Static.Background" Color="#7289da"/>
-    <SolidColorBrush x:Key="SubmitButtonStyle.IsPressed.Background" Color="#99aab5"/>
-    <SolidColorBrush x:Key="SubmitButtonStyle.Text.Foreground" Color="White"/>
+    <SolidColorBrush x:Key="SubmitButtonStyle.Static.Background" Color="{DynamicResource SubmitButton.Static.Background}"/>
+    <SolidColorBrush x:Key="SubmitButtonStyle.IsPressed.Background" Color="{DynamicResource SubmitButton.IsPressed.Background}"/>
+    <SolidColorBrush x:Key="SubmitButtonStyle.Text.Foreground" Color="{DynamicResource SubmitButton.Text.Foreground}"/>
 
-    <SolidColorBrush x:Key="EmailTextBoxStyle.Static.Border.Background" Color="White"/>
-    <SolidColorBrush x:Key="EmailTextBoxStyle.Static.Border.BorderBrush" Color="LightGray"/>
-    <SolidColorBrush x:Key="EmailTextBoxStyle.IsMouseOver.Border.BorderBrush" Color="LightGray"/>
-    <SolidColorBrush x:Key="EmailTextBoxStyle.IsFocused.Border.BorderBrush" Color="#7289da"/>
-    <SolidColorBrush x:Key="EmailTextBoxStyle.Static.BorderBrush" Color="Black"/>
+    <SolidColorBrush x:Key="EmailTextBoxStyle.Static.Border.Background" Color="{DynamicResource EmailTextBox.Static.Border.Background}"/>
+    <SolidColorBrush x:Key="EmailTextBoxStyle.Static.Border.BorderBrush" Color="{DynamicResource EmailTextBox.Static.Border.BorderBrush}"/>
+    <SolidColorBrush x:Key="EmailTextBoxStyle.IsMouseOver.Border.BorderBrush" Color="{DynamicResource EmailTextBox.IsMouseOver.Border.BorderBrush}"/>
+    <SolidColorBrush x:Key="EmailTextBoxStyle.IsFocused.Border.BorderBrush" Color="{DynamicResource EmailTextBox.IsFocused.Border.BorderBrush}"/>
+    <SolidColorBrush x:Key="EmailTextBoxStyle.Static.BorderBrush" Color="{DynamicResource EmailTextBox.Static.BorderBrush}"/>
 
-    <SolidColorBrush x:Key="PasswordBoxStyle.Static.Border.Background" Color="White"/>
-    <SolidColorBrush x:Key="PasswordBoxStyle.Static.Border.BorderBrush" Color="LightGray"/>
-    <SolidColorBrush x:Key="PasswordBoxStyle.IsMouseOver.Border.BorderBrush" Color="LightGray"/>
-    <SolidColorBrush x:Key="PasswordBoxStyle.IsFocused.Border.BorderBrush" Color="#7289da"/>
-    <SolidColorBrush x:Key="PasswordBoxStyle.Static.BorderBrush" Color="Black"/>
+    <SolidColorBrush x:Key="PasswordBoxStyle.Static.Border.Background" Color="{DynamicResource PasswordBox.Static.Border.Background}"/>
+    <SolidColorBrush x:Key="PasswordBoxStyle.Static.Border.BorderBrush" Color="{DynamicResource PasswordBox.Static.Border.BorderBrush}"/>
+    <SolidColorBrush x:Key="PasswordBoxStyle.IsMouseOver.Border.BorderBrush" Color="{DynamicResource PasswordBox.IsMouseOver.Border.BorderBrush}"/>
+    <SolidColorBrush x:Key="PasswordBoxStyle.IsFocused.Border.BorderBrush" Color="{DynamicResource PasswordBox.IsFocused.Border.BorderBrush}"/>
+    <SolidColorBrush x:Key="PasswordBoxStyle.Static.BorderBrush" Color="{DynamicResource PasswordBox.Static.BorderBrush}"/>
 
-    <SolidColorBrush x:Key="PasswordCompexityRectangleStyle.Static.Fill" Color="#EBEBEB"/>
-    <SolidColorBrush x:Key="PasswordCompexityRectangleStyle.Static.Stroke" Color="#C6C6C6"/>
+    <SolidColorBrush x:Key="PasswordCompexityRectangleStyle.Static.Fill" Color="{DynamicResource PasswordCompexityRectangle.Static.Fill}"/>
+    <SolidColorBrush x:Key="PasswordCompexityRectangleStyle.Static.Stroke" Color="{DynamicResource PasswordCompexityRectangle.Static.Stroke}"/>
 
     <LinearGradientBrush x:Key="GradientRectangleStyle.Static.Fill" StartPoint="0,1" EndPoint="0,0">
-        <GradientStop Color="#3A1C71" Offset="0"/>
-        <GradientStop Color="#D76D77" Offset="0.5"/>
-        <GradientStop Color="#FFAF7B" Offset="1"/>
+        <GradientStop Color="{DynamicResource GradientStop1}" Offset="0"/>
+        <GradientStop Color="{DynamicResource GradientStop2}" Offset="0.5"/>
+        <GradientStop Color="{DynamicResource GradientStop3}" Offset="1"/>
     </LinearGradientBrush>
 
-    <SolidColorBrush x:Key="RememberMeCheckBoxStyle.Static.Background" Color="#FFFFFFFF"/>
-    <SolidColorBrush x:Key="RememberMeCheckBoxStyle.Grid.Static.Background" Color="Transparent"/>
-    <SolidColorBrush x:Key="RememberMeCheckBoxStyle.Static.Border" Color="#7289da"/>
-    <SolidColorBrush x:Key="RememberMeCheckBoxStyle.Pressed.Background" Color="#7289da"/>
-    <SolidColorBrush x:Key="RememberMeCheckBoxStyle.Pressed.Border" Color="#7289da"/>
-    <SolidColorBrush x:Key="RememberMeCheckBoxStyle.Pressed.Glyph" Color="White"/>
-    <SolidColorBrush x:Key="RememberMeCheckBoxStyle.Static.Glyph" Color="White"/>
+    <SolidColorBrush x:Key="RememberMeCheckBoxStyle.Static.Background" Color="{DynamicResource RememberMeCheckBox.Static.Background}"/>
+    <SolidColorBrush x:Key="RememberMeCheckBoxStyle.Grid.Static.Background" Color="{DynamicResource RememberMeCheckBox.Grid.Static.Background}"/>
+    <SolidColorBrush x:Key="RememberMeCheckBoxStyle.Static.Border" Color="{DynamicResource RememberMeCheckBox.Static.Border}"/>
+    <SolidColorBrush x:Key="RememberMeCheckBoxStyle.Pressed.Background" Color="{DynamicResource RememberMeCheckBox.Pressed.Background}"/>
+    <SolidColorBrush x:Key="RememberMeCheckBoxStyle.Pressed.Border" Color="{DynamicResource RememberMeCheckBox.Pressed.Border}"/>
+    <SolidColorBrush x:Key="RememberMeCheckBoxStyle.Pressed.Glyph" Color="{DynamicResource RememberMeCheckBox.Pressed.Glyph}"/>
+    <SolidColorBrush x:Key="RememberMeCheckBoxStyle.Static.Glyph" Color="{DynamicResource RememberMeCheckBox.Static.Glyph}"/>
 
 
     <Style x:Key="CloseAppButtonStyle" TargetType="Button">
