@@ -49,15 +49,12 @@
                  Grid.Column="1" 
                  BorderThickness="2" 
                  Height="40"
-                 Style="{StaticResource TextBoxAuth}"
                  />
         <Button x:Name="Submit" Grid.Column="1"
             Grid.Row="7"
             Content="Confirm"
             Width="150"
             Height="50" 
-                Style="{StaticResource Submit}"
-                Click="Submit_Click"
                 />
     </Grid>
 </Page>

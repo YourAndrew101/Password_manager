@@ -27,6 +27,8 @@ namespace PasswordManager.Auth
             InitializeComponent();
             SetPage();
             SetColorTheme();
+
+            CultureInfo.CurrentCulture = new CultureInfo("uk-UA", false);
         }
 
         private void SetPage()

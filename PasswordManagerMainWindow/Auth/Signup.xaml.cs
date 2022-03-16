@@ -180,6 +180,11 @@ namespace PasswordManager.Auth
                 if(ex is DuplicateMailException duplicateMail) SetErrorMessage(duplicateMail.Message);
                 else throw;
             }
+
+            NavigationService navService = NavigationService.GetNavigationService(this);
+            EmailConfirmation emailConfirmation = new EmailConfirmation(user);
+            navService.Navigate(emailConfirmation);
+
         }
         private bool CheckAuthData()
         {

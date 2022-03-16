@@ -5,8 +5,12 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Auth/AuthStyles.xaml" />
-                
+                <ResourceDictionary Source="Styles/MainPageStyles.xaml" />
+                <ResourceDictionary Source="Styles/LoginPageStyles.xaml" />
+                <ResourceDictionary Source="Styles/SignUpPageStyles.xaml" />
+                <!--<ResourceDictionary Source="Styles/authstyles.xaml" />-->
+
+
                 <!--<ResourceDictionary Source="Themes/WhiteTheme.xaml"/>-->
                 <ResourceDictionary Source="Themes/DarkTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>

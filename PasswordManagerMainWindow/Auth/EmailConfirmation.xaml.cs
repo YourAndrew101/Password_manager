@@ -15,15 +15,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UsersLibrary;
 
 namespace PasswordManager.Auth
 {
-    /// <summary>
-    /// Логика взаимодействия для EmailConfirmation.xaml
-    /// </summary>
     public partial class EmailConfirmation : Page
     {
-        Random random = new Random();
+        public EmailConfirmation()
+        {
+
+        }
+
+
+        /*Random random = new Random();
         int code;
         string _login;
         string _password;
@@ -78,6 +82,6 @@ namespace PasswordManager.Auth
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-        } 
+        }*/
     }
 }
