@@ -26,7 +26,6 @@ namespace PasswordManager.Auth
 
         }
 
-
         /*Random random = new Random();
         int code;
         string _login;

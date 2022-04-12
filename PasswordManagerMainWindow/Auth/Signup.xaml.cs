@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net.Mail;
 using System.Text;
@@ -41,7 +42,7 @@ namespace PasswordManager.Auth
 
         public Signup()
         {
-           
+
             InitializeComponent();
             InitializePasswordComplexityRectangles();
 
@@ -88,7 +89,7 @@ namespace PasswordManager.Auth
             SetPasswordComplexity(CheckStrength(Password));
             SetShowPasswordToggleButton();
 
-            if(AuthErrorTextBlock.Visibility == Visibility.Visible) HideErrorMessage();
+            if (AuthErrorTextBlock.Visibility == Visibility.Visible) HideErrorMessage();
         }
         private void EmailTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -136,7 +137,6 @@ namespace PasswordManager.Auth
                     SetPasswordComplexityRectangles(colorBrush, passwordScore);
                     break;
             }
-
         }
         private void SetPasswordComplexityText(string message, SolidColorBrush colorBrush)
         {
@@ -175,16 +175,19 @@ namespace PasswordManager.Auth
             User user = new User(Email, Password);
 
             try { user.AddUser(); }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                if(ex is DuplicateMailException duplicateMail) SetErrorMessage(duplicateMail.Message);
+                if (ex is DuplicateMailException duplicateMail) SetErrorMessage(duplicateMail.Message);
                 else throw;
             }
 
-            NavigationService navService = NavigationService.GetNavigationService(this);
-            EmailConfirmation emailConfirmation = new EmailConfirmation(user);
-            navService.Navigate(emailConfirmation);
-
+            SaveUserSettings(user);
+        }
+        private void SaveUserSettings(User user)
+        {
+            Properties.Settings.Default.Email = user.Email;
+            Properties.Settings.Default.Password = user.AuthPassword;
+            Properties.Settings.Default.Save();
         }
         private bool CheckAuthData()
         {

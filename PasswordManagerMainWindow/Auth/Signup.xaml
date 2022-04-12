@@ -26,8 +26,8 @@
             <RowDefinition Height="10"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="62"/>
+            <RowDefinition Height="55"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="Auto"
                            MinHeight="8"/>
         </Grid.RowDefinitions>
@@ -141,10 +141,8 @@
                    Grid.Row="10" 
                    Text="Error sample" 
                    Grid.Column="1"
-                   VerticalAlignment="Bottom"
-                   
-                   Style="{StaticResource AuthErrorTextBlockStyle}"
-                   />
+                   VerticalAlignment="Bottom"                
+                   Style="{StaticResource AuthErrorTextBlockStyle}"/>
 
         <Button x:Name="SubmitButton" 
                 Grid.Column="1"
@@ -157,8 +155,7 @@
 
         <StackPanel 
                     Grid.Row="10" 
-                    Grid.Column="1"
-            >
+                    Grid.Column="1">
             <DockPanel x:Name="PasswordComplexityPanel">
                 <Rectangle x:Name="VeryWeakPasswordRectangle"
                            Style="{StaticResource PasswordCompexityRectangleStyle}"
