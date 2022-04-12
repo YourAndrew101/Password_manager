@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PasswordManager.Services
 {
-    public class ThemePicker
+    public class ThemesService
     {
         public enum Themes
         {

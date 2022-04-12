@@ -36,7 +36,7 @@ namespace PasswordManager.Auth
 
         private void SetColorTheme()
         {
-            ThemePicker.Themes theme = ThemePicker.GetSystemTheme();
+            ThemesService.Themes theme = ThemesService.GetSystemTheme();
 
             ResourceDictionary dict = new ResourceDictionary { Source = new Uri($"/Themes/{theme}Theme.xaml", UriKind.Relative) };
             Application.Current.Resources.MergedDictionaries.Add(dict);

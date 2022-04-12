@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Services;
 using UsersLibrary;
 using static UsersLibrary.UsersExceptions;
 
@@ -171,23 +172,21 @@ namespace PasswordManager.Auth
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
             if (!CheckAuthData()) return;
-
             User user = new User(Email, Password);
 
-            try { user.AddUser(); }
+            try
+            {
+                if (UsersService.IsExistsEmail(user.Email)) throw new DuplicateMailException();
+            }
             catch (Exception ex)
             {
                 if (ex is DuplicateMailException duplicateMail) SetErrorMessage(duplicateMail.Message);
                 else throw;
             }
 
-            SaveUserSettings(user);
-        }
-        private void SaveUserSettings(User user)
-        {
-            Properties.Settings.Default.Email = user.Email;
-            Properties.Settings.Default.Password = user.AuthPassword;
-            Properties.Settings.Default.Save();
+            EmailConfirmation nextPage = new EmailConfirmation();
+            NavigationService navService = NavigationService.GetNavigationService(this);
+            navService.Navigate(nextPage);
         }
         private bool CheckAuthData()
         {
