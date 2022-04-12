@@ -4,11 +4,14 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PasswordManager.Auth"
+      xmlns:res="clr-namespace:PasswordManager.Properties"
       mc:Ignorable="d" 
       d:DesignHeight="520" d:DesignWidth="500"
-      Title="Login"
-      Background="White"
-      ShowsNavigationUI="False">
+      Title="EmailConfirmation" 
+      Background="{DynamicResource MainColor}"
+      Foreground="{DynamicResource TextColor}"
+      ShowsNavigationUI="False"
+      >
 
     <Grid>
         <Grid.RowDefinitions>
@@ -20,8 +23,6 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="20"/>
             <RowDefinition Height="50"/>
-            
-            
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -29,19 +30,19 @@
             <ColumnDefinition Width="330"/>
             <ColumnDefinition Width="85"/>
         </Grid.ColumnDefinitions>
-        <TextBlock Text="Confirm your email" Grid.Column="1" Grid.Row="2" 
+        <TextBlock Text="{x:Static res:Resources.EmailConfirmationTitle}" Grid.Column="1" Grid.Row="2" 
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Center" 
                    FontSize="28" 
-                   Foreground="Black"
+                  
                    FontFamily="Global Sans Serif" 
                    FontWeight="Bold"
                    />
-        <TextBlock Text="Enter 6-digit code that you'he received by email" Grid.Column="1" Grid.Row="3" 
+        <TextBlock Text="{x:Static res:Resources.EmailConfirmationHint}" Grid.Column="1" Grid.Row="3" 
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Center" 
                    FontSize="14" 
-                   Foreground="SlateGray"
+                  
                    FontFamily="Global Sans Serif" 
                    FontWeight="Bold"
                    />
@@ -49,12 +50,15 @@
                  Grid.Column="1" 
                  BorderThickness="2" 
                  Height="40"
-                 />
+                 Style="{StaticResource EmailTextBoxStyle}"/>
+       
         <Button x:Name="Submit" Grid.Column="1"
             Grid.Row="7"
-            Content="Confirm"
-            Width="150"
-            Height="50" 
+            Content="{x:Static res:Resources.EmailConfirmationConfirm}"
+                HorizontalAlignment="Center"
+                Width="160"
+                Height="50" 
+                Style="{StaticResource SubmitButtonStyle}" 
                 />
     </Grid>
 </Page>
