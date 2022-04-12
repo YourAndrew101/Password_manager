@@ -17,6 +17,7 @@ using UsersLibrary;
 using PasswordManager.MainWindow;
 using System.Configuration;
 using static UsersLibrary.UsersExceptions;
+using Services;
 
 namespace PasswordManager.Auth
 {
@@ -36,14 +37,14 @@ namespace PasswordManager.Auth
         }
         private void SetConnectionDataBase()
         {
-            User.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            UsersService.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
         }
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
             if (!CheckAuthData()) return;
 
-            try { _user = User.GetUser(Email, Password); }
+            try { _user = UsersService.GetUser(Email, Password); }
             catch (Exception ex)
             {
                 if (ex is NonExistenMailException nonExistenMail) { SetErrorMessage(nonExistenMail.Message); return; }
