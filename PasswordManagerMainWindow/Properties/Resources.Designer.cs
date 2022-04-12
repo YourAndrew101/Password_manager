@@ -79,6 +79,33 @@ namespace PasswordManager.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Confirm.
+        /// </summary>
+        public static string EmailConfirmationConfirm {
+            get {
+                return ResourceManager.GetString("EmailConfirmationConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Enter 6-digit code that tou&apos;ve received by email.
+        /// </summary>
+        public static string EmailConfirmationHint {
+            get {
+                return ResourceManager.GetString("EmailConfirmationHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Confirm your email.
+        /// </summary>
+        public static string EmailConfirmationTitle {
+            get {
+                return ResourceManager.GetString("EmailConfirmationTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Enter Email.
         /// </summary>
         public static string EmailRequest {

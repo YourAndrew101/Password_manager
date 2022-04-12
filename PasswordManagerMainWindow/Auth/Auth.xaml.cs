@@ -31,7 +31,7 @@ namespace PasswordManager.Auth
 
         private void SetPage()
         {
-            AuthFrame.Content = new Login();
+            AuthFrame.Content = new EmailConfirmation();
         }
 
         private void SetColorTheme()

@@ -123,6 +123,15 @@
   <data name="EmailAuth" xml:space="preserve">
     <value>Почта</value>
   </data>
+  <data name="EmailConfirmationConfirm" xml:space="preserve">
+    <value>Подтвердить</value>
+  </data>
+  <data name="EmailConfirmationHint" xml:space="preserve">
+    <value>Введите код, который вы получили по почте</value>
+  </data>
+  <data name="EmailConfirmationTitle" xml:space="preserve">
+    <value>Подтвердите почту</value>
+  </data>
   <data name="EmailRequest" xml:space="preserve">
     <value>Введите Email</value>
   </data>

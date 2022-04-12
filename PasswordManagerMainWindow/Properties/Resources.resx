@@ -123,6 +123,15 @@
   <data name="EmailAuth" xml:space="preserve">
     <value>Email</value>
   </data>
+  <data name="EmailConfirmationConfirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="EmailConfirmationHint" xml:space="preserve">
+    <value>Enter 8-digit code that tou've received by email</value>
+  </data>
+  <data name="EmailConfirmationTitle" xml:space="preserve">
+    <value>Confirm your email</value>
+  </data>
   <data name="EmailRequest" xml:space="preserve">
     <value>Enter Email</value>
   </data>
