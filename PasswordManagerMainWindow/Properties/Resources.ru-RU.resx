@@ -162,6 +162,15 @@
   <data name="PasswordRequest" xml:space="preserve">
     <value>Введите пароль</value>
   </data>
+  <data name="PasswordResetConfirm" xml:space="preserve">
+    <value>Подтвердить</value>
+  </data>
+  <data name="PasswordResetHint" xml:space="preserve">
+    <value>Заполните следующие поля</value>
+  </data>
+  <data name="PasswordResetTitle" xml:space="preserve">
+    <value>Сброс пароля</value>
+  </data>
   <data name="PswdNormal" xml:space="preserve">
     <value>Нормальный пароль</value>
   </data>

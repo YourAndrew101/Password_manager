@@ -196,6 +196,33 @@ namespace PasswordManager.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Confirm.
+        /// </summary>
+        public static string PasswordResetConfirm {
+            get {
+                return ResourceManager.GetString("PasswordResetConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Fill all bottom fields.
+        /// </summary>
+        public static string PasswordResetHint {
+            get {
+                return ResourceManager.GetString("PasswordResetHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Password reset.
+        /// </summary>
+        public static string PasswordResetTitle {
+            get {
+                return ResourceManager.GetString("PasswordResetTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Password normal.
         /// </summary>
         public static string PswdNormal {
