@@ -162,11 +162,23 @@
   <data name="PasswordRequest" xml:space="preserve">
     <value>Enter password</value>
   </data>
+  <data name="PasswordResetBack" xml:space="preserve">
+    <value>Undo</value>
+  </data>
+  <data name="PasswordResetCode" xml:space="preserve">
+    <value>Confirmation code</value>
+  </data>
   <data name="PasswordResetConfirm" xml:space="preserve">
     <value>Confirm</value>
   </data>
+  <data name="PasswordResetEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
   <data name="PasswordResetHint" xml:space="preserve">
     <value>Fill all bottom fields</value>
+  </data>
+  <data name="PasswordResetNewPassword" xml:space="preserve">
+    <value>New password</value>
   </data>
   <data name="PasswordResetTitle" xml:space="preserve">
     <value>Password reset</value>

@@ -31,7 +31,7 @@ namespace PasswordManager.Auth
 
         private void SetPage()
         {
-            AuthFrame.Content = new PasswordReset();
+            AuthFrame.Content = new Login();
         }
 
         private void SetColorTheme()
