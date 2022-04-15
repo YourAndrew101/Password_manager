@@ -28,7 +28,11 @@ namespace Services
                 return (int)command.ExecuteScalar() != 0;
             }
         }      
-
+        
+        public static void IsUserExists(string email)
+        {
+            if (!IsExistsEmail(email)) throw new NonExistenMailException();
+        }
         public static void AddUser(User user)
         {
             if (IsExistsEmail(user.Email)) throw new DuplicateMailException();

@@ -250,6 +250,15 @@ namespace PasswordManager.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Send code.
+        /// </summary>
+        public static string PasswordResetSendCode {
+            get {
+                return ResourceManager.GetString("PasswordResetSendCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Password reset.
         /// </summary>
         public static string PasswordResetTitle {

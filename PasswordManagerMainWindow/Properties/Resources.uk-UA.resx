@@ -180,6 +180,9 @@
   <data name="PasswordResetNewPassword" xml:space="preserve">
     <value>Новий пароль</value>
   </data>
+  <data name="PasswordResetSendCode" xml:space="preserve">
+    <value>Надіслати код</value>
+  </data>
   <data name="PasswordResetTitle" xml:space="preserve">
     <value>Скидання пароля</value>
   </data>

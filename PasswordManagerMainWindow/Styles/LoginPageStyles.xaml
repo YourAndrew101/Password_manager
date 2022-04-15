@@ -7,6 +7,8 @@
     <SolidColorBrush x:Key="EmailTextBoxStyle.IsMouseOver.Border.BorderBrush" Color="{DynamicResource EmailTextBox.IsMouseOver.Border.BorderBrush}"/>
     <SolidColorBrush x:Key="EmailTextBoxStyle.IsFocused.Border.BorderBrush" Color="{DynamicResource EmailTextBox.IsFocused.Border.BorderBrush}"/>
     <SolidColorBrush x:Key="EmailTextBoxStyle.Static.BorderBrush" Color="{DynamicResource EmailTextBox.Static.BorderBrush}"/>
+    <SolidColorBrush x:Key="EmailTextBoxStyle.IsEnabledFalse.BorderBrush" Color="{DynamicResource EmailTextBox.IsEnabledFalse.Border.BorderBrush}"/>
+    <SolidColorBrush x:Key="EmailTextBoxStyle.IsEnabledFalse.Background" Color="{DynamicResource EmailTextBox.IsEnabledFalse.Background}"/>
 
     <SolidColorBrush x:Key="AuthErrorTextBlockStyle.Static.Foreground" Color="{DynamicResource AuthErrorTextBlock.Static.Foreground}"/>
 
@@ -21,6 +23,7 @@
 
     <SolidColorBrush x:Key="SubmitButtonStyle.Static.Background" Color="{DynamicResource SubmitButton.Static.Background}"/>
     <SolidColorBrush x:Key="SubmitButtonStyle.IsPressed.Background" Color="{DynamicResource SubmitButton.IsPressed.Background}"/>
+    <SolidColorBrush x:Key="SubmitButtonStyle.IsEnabledFalse.Background" Color="{DynamicResource SubmitButton.IsEnabledFalse.Background}"/>
     <SolidColorBrush x:Key="SubmitButtonStyle.Text.Foreground" Color="{DynamicResource SubmitButton.Text.Foreground}"/>
     
     
@@ -42,6 +45,12 @@
                             </Trigger>
                             <Trigger Property="IsFocused" Value="True">
                                 <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource EmailTextBoxStyle.IsFocused.Border.BorderBrush}"/>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Trigger.Setters>
+                                    <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource EmailTextBoxStyle.IsEnabledFalse.BorderBrush}"></Setter>
+                                    <Setter TargetName="border" Property="Background" Value="{DynamicResource EmailTextBoxStyle.IsEnabledFalse.Background}"></Setter>
+                                </Trigger.Setters>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -186,6 +195,9 @@
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Cursor" Value="Hand"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{DynamicResource SubmitButtonStyle.IsEnabledFalse.Background}"/>
             </Trigger>
         </Style.Triggers>
     </Style>

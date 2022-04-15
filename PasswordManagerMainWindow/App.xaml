@@ -13,6 +13,7 @@
 
                 <!--<ResourceDictionary Source="Themes/WhiteTheme.xaml"/>-->
                 <ResourceDictionary Source="Themes/DarkTheme.xaml"/>
+                <ResourceDictionary Source="Styles/ResetPasswordStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
