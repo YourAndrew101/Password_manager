@@ -155,7 +155,7 @@
                    FontSize="14" >
             
             <Hyperlink x:Name="ResetPasswordHyperlink"
-                       NavigateUri = "Signup.xaml"
+                       NavigateUri = "PasswordReset.xaml"
                        Foreground="#7289da"
                        FontFamily="Global Sans Serif" 
                        FontWeight="Bold" 

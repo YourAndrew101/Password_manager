@@ -196,6 +196,78 @@ namespace PasswordManager.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Undo.
+        /// </summary>
+        public static string PasswordResetBack {
+            get {
+                return ResourceManager.GetString("PasswordResetBack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Confirmation code.
+        /// </summary>
+        public static string PasswordResetCode {
+            get {
+                return ResourceManager.GetString("PasswordResetCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Confirm.
+        /// </summary>
+        public static string PasswordResetConfirm {
+            get {
+                return ResourceManager.GetString("PasswordResetConfirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Email.
+        /// </summary>
+        public static string PasswordResetEmail {
+            get {
+                return ResourceManager.GetString("PasswordResetEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Fill all bottom fields.
+        /// </summary>
+        public static string PasswordResetHint {
+            get {
+                return ResourceManager.GetString("PasswordResetHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на New password.
+        /// </summary>
+        public static string PasswordResetNewPassword {
+            get {
+                return ResourceManager.GetString("PasswordResetNewPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Send code.
+        /// </summary>
+        public static string PasswordResetSendCode {
+            get {
+                return ResourceManager.GetString("PasswordResetSendCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Password reset.
+        /// </summary>
+        public static string PasswordResetTitle {
+            get {
+                return ResourceManager.GetString("PasswordResetTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Password normal.
         /// </summary>
         public static string PswdNormal {

@@ -14,6 +14,7 @@
 
     <Color x:Key="SubmitButton.Static.Background" >#7289da</Color>
     <Color x:Key="SubmitButton.IsPressed.Background" >#99aab5</Color>
+    <Color x:Key="SubmitButton.IsEnabledFalse.Background" >#99aab5</Color>
     <Color x:Key="SubmitButton.Text.Foreground" >White</Color>
 
     <Color x:Key="EmailTextBox.Static.Border.Background" >White</Color>
@@ -21,6 +22,8 @@
     <Color x:Key="EmailTextBox.IsMouseOver.Border.BorderBrush" >LightGray</Color>
     <Color x:Key="EmailTextBox.IsFocused.Border.BorderBrush" >#7289da</Color>
     <Color x:Key="EmailTextBox.Static.BorderBrush" >Black</Color>
+    <Color x:Key="EmailTextBox.IsEnabledFalse.Background">LightGray</Color>
+    <Color x:Key="EmailTextBox.IsEnabledFalse.Border.BorderBrush">#99aab5</Color>
 
     <Color x:Key="PasswordBox.Static.Border.Background" >White</Color>
     <Color x:Key="PasswordBox.Static.Border.BorderBrush" >LightGray</Color>

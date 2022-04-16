@@ -162,6 +162,30 @@
   <data name="PasswordRequest" xml:space="preserve">
     <value>Введите пароль</value>
   </data>
+  <data name="PasswordResetBack" xml:space="preserve">
+    <value>Назад</value>
+  </data>
+  <data name="PasswordResetCode" xml:space="preserve">
+    <value>Код подтвердждения</value>
+  </data>
+  <data name="PasswordResetConfirm" xml:space="preserve">
+    <value>Подтвердить</value>
+  </data>
+  <data name="PasswordResetEmail" xml:space="preserve">
+    <value>Почта</value>
+  </data>
+  <data name="PasswordResetHint" xml:space="preserve">
+    <value>Заполните следующие поля</value>
+  </data>
+  <data name="PasswordResetNewPassword" xml:space="preserve">
+    <value>Новый пароль</value>
+  </data>
+  <data name="PasswordResetSendCode" xml:space="preserve">
+    <value>Отправить код</value>
+  </data>
+  <data name="PasswordResetTitle" xml:space="preserve">
+    <value>Сброс пароля</value>
+  </data>
   <data name="PswdNormal" xml:space="preserve">
     <value>Нормальный пароль</value>
   </data>
