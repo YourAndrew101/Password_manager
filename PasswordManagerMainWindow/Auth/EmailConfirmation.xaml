@@ -75,7 +75,7 @@
                 HorizontalAlignment="Right"
                 Width="160"
                 Height="50" 
-                Style="{StaticResource SubmitButtonStyle}" 
+                Style="{StaticResource SubmitButtonStyle}" Click="Submit_Click" 
                 />
     </Grid>
 </Page>

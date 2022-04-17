@@ -17,6 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Services;
 using UsersLibrary;
+using UsersLibrary.Settings;
 using static UsersLibrary.UsersExceptions;
 
 namespace PasswordManager.Auth
@@ -180,9 +181,15 @@ namespace PasswordManager.Auth
             }
             catch (Exception ex)
             {
-                if (ex is DuplicateMailException duplicateMail) SetErrorMessage(duplicateMail.Message);
+                if (ex is DuplicateMailException duplicateMail)
+                {
+                    SetErrorMessage(duplicateMail.Message);
+                    return;
+                }
                 else throw;
             }
+
+            SettingsService.SaveSignUpSettings(new Settings(user));
 
             EmailConfirmation nextPage = new EmailConfirmation();
             NavigationService navService = NavigationService.GetNavigationService(this);
