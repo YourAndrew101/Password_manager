@@ -51,11 +51,28 @@
                  BorderThickness="2" 
                  Height="40"
                  Style="{StaticResource EmailTextBoxStyle}"/>
-       
+        <TextBlock x:Name="BackTextBlock"
+                   Grid.Row="7" 
+                   Grid.Column="1"
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Center"
+                   FontSize="14" 
+                   >
+            
+            <Hyperlink x:Name="LogInHyperLink"
+                       NavigateUri="Signup.xaml" 
+                       Foreground="#7289da"
+                       FontFamily="Global Sans Serif" 
+                       FontWeight="Bold" 
+                       TextDecorations="{x:Null}">
+                <Run Text="{x:Static res:Resources.PasswordResetBack}"/>
+            </Hyperlink>
+
+        </TextBlock>
         <Button x:Name="Submit" Grid.Column="1"
             Grid.Row="7"
             Content="{x:Static res:Resources.EmailConfirmationConfirm}"
-                HorizontalAlignment="Center"
+                HorizontalAlignment="Right"
                 Width="160"
                 Height="50" 
                 Style="{StaticResource SubmitButtonStyle}" 
