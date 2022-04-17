@@ -69,7 +69,7 @@ namespace PasswordManager.Auth
 
             return true;
         }
-
+        //TODO функціонал запам'ятати мене
         private void SetErrorMessage(string message)
         {
             AuthErrorTextBlock.Visibility = Visibility.Visible;

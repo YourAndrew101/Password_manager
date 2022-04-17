@@ -191,7 +191,7 @@ namespace PasswordManager.Auth
 
             SettingsService.SaveSignUpSettings(new Settings(user));
 
-            EmailConfirmation nextPage = new EmailConfirmation();
+            EmailConfirmation nextPage = new EmailConfirmation(user);
             NavigationService navService = NavigationService.GetNavigationService(this);
             navService.Navigate(nextPage);
         }

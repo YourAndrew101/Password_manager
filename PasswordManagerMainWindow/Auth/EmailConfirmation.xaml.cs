@@ -32,9 +32,12 @@ namespace PasswordManager.Auth
         private string ErrorMessage { set => ErrorTextBlock.Text = value; }
 
         EMailService _eMailService;
+        User _user;
 
-        public EmailConfirmation()
+        public EmailConfirmation(User user)
         {
+            _user = user;
+
             InitializeComponent();
             GetDataFromSettings();
             SendEmail();
@@ -56,10 +59,9 @@ namespace PasswordManager.Auth
         {
             if(_eMailService.ConfirmationCode == CurrentConfirmationCode)
             {
-                User user = new User(_email, _password);
-                UsersService.AddUser(user);
+                UsersService.AddUser(_user);
 
-                MainWindow.MainWindow mainWindow = new MainWindow.MainWindow(user);
+                MainWindow.MainWindow mainWindow = new MainWindow.MainWindow(_user);
                 mainWindow.Show();
                 Window.GetWindow(this).Close();
             }
