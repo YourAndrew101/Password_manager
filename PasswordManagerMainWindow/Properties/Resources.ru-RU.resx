@@ -186,6 +186,9 @@
   <data name="PasswordResetTitle" xml:space="preserve">
     <value>Сброс пароля</value>
   </data>
+  <data name="PasswordResetWrongCode" xml:space="preserve">
+    <value>Введён неверный код</value>
+  </data>
   <data name="PswdNormal" xml:space="preserve">
     <value>Нормальный пароль</value>
   </data>

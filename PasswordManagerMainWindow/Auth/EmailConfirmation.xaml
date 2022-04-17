@@ -21,7 +21,7 @@
             <RowDefinition Height="20"/>
             <RowDefinition Height="35"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="40"/>
             <RowDefinition Height="50"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
@@ -41,24 +41,28 @@
         <TextBlock Text="{x:Static res:Resources.EmailConfirmationHint}" Grid.Column="1" Grid.Row="3" 
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Center" 
-                   FontSize="14" 
-                  
+                   FontSize="14"                  
                    FontFamily="Global Sans Serif" 
-                   FontWeight="Bold"
-                   />
-        <TextBox x:Name="SixDigitsTextBox" Grid.Row="5" 
+                   FontWeight="Bold"/>
+        <TextBox x:Name="CurrentConfirmationCodeTextBox" Grid.Row="5" 
                  Grid.Column="1" 
                  BorderThickness="2" 
                  Height="40"
                  Style="{StaticResource EmailTextBoxStyle}"/>
+
+        <TextBlock x:Name="ErrorTextBlock" 
+                   Grid.Row="6"
+                   Grid.Column="2"
+                   Text="Error sample"
+                   VerticalAlignment="Center"                
+                   Style="{StaticResource AuthErrorTextBlockStyle}"/>
+
         <TextBlock x:Name="BackTextBlock"
                    Grid.Row="7" 
                    Grid.Column="1"
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Center"
-                   FontSize="14" 
-                   >
-            
+                   FontSize="14" >        
             <Hyperlink x:Name="LogInHyperLink"
                        NavigateUri="Signup.xaml" 
                        Foreground="#7289da"
@@ -67,15 +71,16 @@
                        TextDecorations="{x:Null}">
                 <Run Text="{x:Static res:Resources.PasswordResetBack}"/>
             </Hyperlink>
-
         </TextBlock>
-        <Button x:Name="Submit" Grid.Column="1"
-            Grid.Row="7"
-            Content="{x:Static res:Resources.EmailConfirmationConfirm}"
+        
+        <Button x:Name="Submit" 
+                Grid.Column="1"
+                Grid.Row="7"
+                Content="{x:Static res:Resources.EmailConfirmationConfirm}"
                 HorizontalAlignment="Right"
                 Width="160"
                 Height="50" 
-                Style="{StaticResource SubmitButtonStyle}" Click="Submit_Click" 
-                />
+                Style="{StaticResource SubmitButtonStyle}"
+                Click="Submit_Click" />
     </Grid>
 </Page>

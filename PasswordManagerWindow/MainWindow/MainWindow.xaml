@@ -24,7 +24,7 @@
                     Height="30" Width="30" 
                     Content="&#xE711;" 
                     Style="{StaticResource CloseAppButtonStyle}"
-                    Click="CloseApp_Click"/>
+                    />
 
         </StackPanel>
     </Grid>

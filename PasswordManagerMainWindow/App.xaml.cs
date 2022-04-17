@@ -15,8 +15,6 @@ namespace PasswordManager
     public partial class App : Application
     {
         private App() {
-          // CultureInfo.CurrentUICulture = new CultureInfo("uk-UA");
-            CultureInfo.CurrentUICulture = new CultureInfo("en-EN");
         }
     }
 }

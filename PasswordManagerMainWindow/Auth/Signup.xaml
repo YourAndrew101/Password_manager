@@ -26,7 +26,7 @@
             <RowDefinition Height="10"/>
             <RowDefinition Height="30"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="40"/>
+            <RowDefinition Height="60"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="Auto"
                            MinHeight="8"/>
@@ -136,25 +136,8 @@
                       Unchecked="ToggleButton_Unchecked"
                       IsChecked="False"
                       Style="{StaticResource ShowPasswordToggleButtonStyle}"/>
-
-        <TextBlock x:Name="AuthErrorTextBlock" 
-                   Grid.Row="10" 
-                   Text="Error sample" 
-                   Grid.Column="1"
-                   VerticalAlignment="Bottom"                
-                   Style="{StaticResource AuthErrorTextBlockStyle}"/>
-
-        <Button x:Name="SubmitButton" 
-                Grid.Column="1"
-                Grid.Row="11"
-                Content="{x:Static res:Resources.SignUp}"
-                Width="160"
-                Height="50"  
-                Style="{StaticResource SubmitButtonStyle}" 
-                Click="SubmitButton_Click"/>
-
-        <StackPanel 
-                    Grid.Row="10" 
+        
+        <StackPanel Grid.Row="10" 
                     Grid.Column="1">
             <DockPanel x:Name="PasswordComplexityPanel">
                 <Rectangle x:Name="VeryWeakPasswordRectangle"
@@ -181,6 +164,24 @@
                        Width="205" 
                        TextAlignment="Center"/>
         </StackPanel>
+        
+        <TextBlock x:Name="AuthErrorTextBlock" 
+                   Grid.Row="10" 
+                   Text="Error sample" 
+                   Grid.Column="1"
+                   VerticalAlignment="Bottom"                
+                   Style="{StaticResource AuthErrorTextBlockStyle}"/>
+
+        <Button x:Name="SubmitButton" 
+                Grid.Column="1"
+                Grid.Row="11"
+                Content="{x:Static res:Resources.SignUp}"
+                Width="160"
+                Height="50"  
+                Style="{StaticResource SubmitButtonStyle}" 
+                Click="SubmitButton_Click"/>
+
+        
 
     </Grid>
 </Page>

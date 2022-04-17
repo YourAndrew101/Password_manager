@@ -22,8 +22,6 @@ namespace Services
         public string Email { get; set; }
 
         MailMessage _mailMessage;
-        SmtpClient _smtpClient;
-
 
         public EMailService(string email)
         {
@@ -36,10 +34,12 @@ namespace Services
 
         private void PrepareConfirmationMessage()
         {
-            _mailMessage = new MailMessage(new MailAddress("pswdmngr.supp0rt@gmail.com"), new MailAddress(Email));
-            _mailMessage.Subject = "Email confirmation";
-            _mailMessage.Body = ConfirmationMessage.Replace("_CONFIRMATIONCODE_", ConfirmationCode);
-            _mailMessage.IsBodyHtml = true;
+            _mailMessage = new MailMessage(new MailAddress("pswdmngr.supp0rt@gmail.com"), new MailAddress(Email))
+            {
+                Subject = "Email confirmation",
+                Body = ConfirmationMessage.Replace("_CONFIRMATIONCODE_", ConfirmationCode),
+                IsBodyHtml = true
+            };
         }
 
         private void GenerateConfirmationCode()
@@ -55,20 +55,21 @@ namespace Services
 
         private void GetConfirmationMessage()
         {
-            using (StreamReader streamReader = new StreamReader("/Auth/Assets/EmailConfirmationMessage.txt"))
+            using (StreamReader streamReader = new StreamReader("../../Auth/Assets/EmailConfirmationMessage.txt"))
                 ConfirmationMessage = streamReader.ReadToEnd();
         }
 
-        public async Task SendConfirmationMessage()
+        //TODO зробити асинхронний метод
+        public void SendConfirmationMessage()
         {
             string confirmationMailLogin = ConfigurationManager.AppSettings["ConfirmationMailLogin"];
             string confirmationMailPassword = ConfigurationManager.AppSettings["ConfirmationMailPassword"];
 
-            _smtpClient = new SmtpClient(_smtpClientHost, _smtpClientPort);
+            SmtpClient _smtpClient = new SmtpClient(_smtpClientHost, _smtpClientPort);
             _smtpClient.Credentials = new NetworkCredential(confirmationMailLogin, confirmationMailPassword);
             _smtpClient.EnableSsl = false;
 
-            await _smtpClient.SendMailAsync(_mailMessage);
+            _smtpClient.Send(_mailMessage);
         }
     }
 }

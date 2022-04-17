@@ -44,6 +44,7 @@ namespace PasswordManager.Auth
         {
             if (!CheckAuthData()) return;
 
+            //TODO обмежена кількість спроб
             try { _user = UsersService.GetUser(Email, Password); }
             catch (Exception ex)
             {

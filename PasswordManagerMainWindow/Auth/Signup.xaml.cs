@@ -181,12 +181,12 @@ namespace PasswordManager.Auth
             }
             catch (Exception ex)
             {
-                if (ex is DuplicateMailException duplicateMail)
+                if (ex is DuplicateMailException)
                 {
-                    SetErrorMessage(duplicateMail.Message);
+                    SetErrorMessage(Properties.Resources.UserExists);
                     return;
                 }
-                else throw;
+                throw;
             }
 
             SettingsService.SaveSignUpSettings(new Settings(user));

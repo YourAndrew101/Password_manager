@@ -19,7 +19,7 @@ namespace PasswordManager.Properties {
     // с помощью такого средства, как ResGen или Visual Studio.
     // Чтобы добавить или удалить член, измените файл .ResX и снова запустите ResGen
     // с параметром /str или перестройте свой проект VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -264,6 +264,15 @@ namespace PasswordManager.Properties {
         public static string PasswordResetTitle {
             get {
                 return ResourceManager.GetString("PasswordResetTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Invalid code entered.
+        /// </summary>
+        public static string PasswordResetWrongCode {
+            get {
+                return ResourceManager.GetString("PasswordResetWrongCode", resourceCulture);
             }
         }
         
