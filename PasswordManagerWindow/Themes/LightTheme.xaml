@@ -16,14 +16,23 @@
     <Color x:Key="SubmitButton.IsPressed.Background" >#99aab5</Color>
     <Color x:Key="SubmitButton.IsEnabledFalse.Background" >#99aab5</Color>
     <Color x:Key="SubmitButton.Text.Foreground" >White</Color>
+    
+    <Color x:Key="TextBox.Static.Border.Background" >White</Color>
+    <Color x:Key="TextBox.Static.Border.BorderBrush" >LightGray</Color>
+    <Color x:Key="TextBox.IsMouseOver.Border.BorderBrush" >LightGray</Color>
+    <Color x:Key="TextBox.IsFocused.Border.BorderBrush" >#7289da</Color>
+    <Color x:Key="TextBox.Static.BorderBrush" >Black</Color>
+    <Color x:Key="TextBox.IsEnabledFalse.Background">LightGray</Color>
+    <Color x:Key="TextBox.IsEnabledFalse.Border.BorderBrush">#99aab5</Color>
 
-    <Color x:Key="EmailTextBox.Static.Border.Background" >White</Color>
-    <Color x:Key="EmailTextBox.Static.Border.BorderBrush" >LightGray</Color>
-    <Color x:Key="EmailTextBox.IsMouseOver.Border.BorderBrush" >LightGray</Color>
-    <Color x:Key="EmailTextBox.IsFocused.Border.BorderBrush" >#7289da</Color>
-    <Color x:Key="EmailTextBox.Static.BorderBrush" >Black</Color>
-    <Color x:Key="EmailTextBox.IsEnabledFalse.Background">LightGray</Color>
-    <Color x:Key="EmailTextBox.IsEnabledFalse.Border.BorderBrush">#99aab5</Color>
+    <Color x:Key="SearchTextBox.Static.Border.Background" >White</Color>
+    <Color x:Key="SearchTextBox.Static.Border.BorderBrush" >LightGray</Color>
+    <Color x:Key="SearchTextBox.IsMouseOver.Border.BorderBrush" >LightGray</Color>
+    <Color x:Key="SearchTextBox.IsFocused.Border.BorderBrush" >#7289da</Color>
+    <Color x:Key="SearchTextBox.Static.BorderBrush" >Black</Color>
+    <Color x:Key="SearchTextBox.IsEnabledFalse.Background">LightGray</Color>
+    <Color x:Key="SearchTextBox.IsEnabledFalse.Border.BorderBrush">#99aab5</Color>
+    <Color x:Key="SearchTextBox.PlaceHolder.Foreground">#99aab5</Color>
 
     <Color x:Key="PasswordBox.Static.Border.Background" >White</Color>
     <Color x:Key="PasswordBox.Static.Border.BorderBrush" >LightGray</Color>
@@ -56,7 +65,17 @@
 
     <ImageSource x:Key="ClosedEye">/Auth/Assets/closed_eye.png</ImageSource>
     <ImageSource x:Key="OpenEye">/Auth/Assets/eye.png</ImageSource>
+    
+    <Color x:Key="NavmenuItem.Active.Foreground">#000000</Color>
+    <Color x:Key="NavmenuItem.InActive.Foreground">#99aab5</Color>
+    <Color x:Key="NavmenuItem.Pressed.Background" >#7289da</Color>
+    <Color x:Key="NavmenuItem.IsMouseOver.Foreground" >#000000</Color>
+    <Color x:Key="NavmenuItem.IsMouseOver.Background">#99aab5</Color>
 
-    
-    
+    <Color x:Key="AddButton.Static.Background" >#7289da</Color>
+    <Color x:Key="AddButton.IsMouseOver.Background" >#506099</Color>
+    <Color x:Key="AddButton.IsPressed.Background" >#445283</Color>
+    <Color x:Key="AddButton.IsEnabledFalse.Background" >#99aab5</Color>
+    <Color x:Key="AddButton.Text.Foreground" >White</Color>
+
 </ResourceDictionary>

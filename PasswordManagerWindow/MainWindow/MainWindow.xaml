@@ -5,27 +5,260 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PasswordManager.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550"
-        Width="800"
+        Title="MainWindow" 
+        MinHeight="576"
+        MinWidth="1024"
+        Height="838.4"
+        Width="1550.4"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
-        AllowsTransparency="True">
+        AllowsTransparency="True"
+        Background="{DynamicResource MainColor}"
+        Foreground="{DynamicResource TextColor}"
+       WindowState="Minimized"
+      
+        >
+    <!--Maximized window sizes: Height - 838.4; Width - 1550.4-->
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="30"/>
     </WindowChrome.WindowChrome>
-    
+
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
         <StackPanel WindowChrome.IsHitTestVisibleInChrome="True"
                     Grid.Column="1"                    
                     Grid.ColumnSpan="2"
-                    Grid.Row="0">
-            <Button x:Name="CloseApp" 
-                    HorizontalAlignment="Right" 
-                    Height="30" Width="30" 
-                    Content="&#xE711;" 
-                    Style="{StaticResource CloseAppButtonStyle}"
+                    Grid.Row="0"
+                        HorizontalAlignment="Right"
+                        Orientation="Horizontal"
+                        >
+            <Button x:Name="MinimizeWindow" 
+                        HorizontalAlignment="Right"
+                        Height="30" Width="60" 
+                         Content="&#xE921;"
+                     Style="{StaticResource WindowButtonStyle}"
+                    Click="MinimizeWindow_Click"
+                    />
+            <ToggleButton x:Name="MaximizeWindow" 
+                        HorizontalAlignment="Right"
+                        Height="30" Width="60" 
+                         Content="&#xE922;"
+                    IsChecked="False"
+                          Style="{StaticResource WindowToggleButton}"
+                          Checked="MaximizeWindow_Checked"
+                          Unchecked="MaximizeWindow_Unchecked"
                     />
 
+            <Button x:Name="CloseApp" 
+                    HorizontalAlignment="Right" 
+                    Height="30" Width="60" 
+                    Content="&#xE8BB;" 
+                    Style="{StaticResource WindowButtonStyle}"
+                    Click="CloseApp_Click"
+                    />
         </StackPanel>
+        <Viewbox Grid.Row="1" >
+            <Grid Height="808.4" Width="1550.4" x:Name="ResizebleGrid">
+                <!--<Rectangle Fill="Aquamarine" Height="100" Width="400">
+                    
+                </Rectangle>-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20"/>
+                    <ColumnDefinition Width="504"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="20"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="18"/>
+                    <RowDefinition Height="700"/>
+                </Grid.RowDefinitions>
+                <Frame x:Name="MainFrame" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Content="Pages/Home.xaml" NavigationUIVisibility="Hidden"/>
+                <Rectangle x:Name="CheckedItem" Grid.Row="1"  Grid.Column ="1" Style="{StaticResource PressedNavmenuItem}">
+                    <Rectangle.RenderTransform>
+                        <TranslateTransform x:Name="Axis"/>
+                    </Rectangle.RenderTransform>
+
+                </Rectangle>
+                <RadioButton x:Name="Home" Content="&#xE80F;" GroupName="NavMenuElement" Style="{StaticResource NavmenuItem}" Grid.Column="1" Grid.Row="1" IsChecked="True" Checked="Home_Checked"/>
+
+                <RadioButton x:Name="Settings" Content="&#xE713;" GroupName="NavMenuElement"  Style="{StaticResource NavmenuItem}" Grid.Column="2" Grid.Row="1" Checked="Settings_Checked"/>
+                <RadioButton x:Name="Account" Content="&#xE77B;" GroupName="NavMenuElement"  Style="{DynamicResource NavmenuItem}" Grid.Column="3" Grid.Row="1"  Checked="Account_Checked"/>
+                <Grid  x:Name="Shadow" Height="838.4"   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="4" Style="{StaticResource Shadow}" />
+
+                <Grid x:FieldModifier="public" x:Name="FormBody"   Height="600" Width="500" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="4" Style="{StaticResource AddEditForm}">
+                    <Grid.RenderTransform>
+                        <ScaleTransform CenterX="250" CenterY="300"/>
+                        
+                    </Grid.RenderTransform>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="85"/>
+                        <ColumnDefinition Width="320"/>
+                        <ColumnDefinition Width="85"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="20"/>
+                        <RowDefinition Height="35"/>
+
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="10"/>
+
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="10"/>
+
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="10"/>
+
+                        <RowDefinition Height="60"/>
+
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="120"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Add a new password" 
+                   Grid.Row="1" 
+                   Grid.Column="1"
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Center" 
+                   FontSize="28" 
+                   FontFamily="Global Sans Serif" 
+                   FontWeight="Bold" 
+                   Height="33" />
+
+                    <TextBlock Text="Fill all following fields" 
+                   Grid.Row="2" 
+                   Grid.Column="1"
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Center" 
+                   FontSize="14" 
+                   FontFamily="Global Sans Serif" 
+                   FontWeight="Bold" 
+                   Grid.ColumnSpan="2" 
+                   Height="17" 
+                   />
+
+                    <TextBlock Text="Resource" 
+                   Grid.Row="4" 
+                   Grid.Column="1"
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Center" 
+                   FontSize="14" 
+                   FontFamily="Global Sans Serif" 
+                   FontWeight="Bold" 
+                   />
+
+                    <TextBox x:Name="ResourceTextBox" 
+                 Grid.Row="5" 
+                 Grid.Column="1"
+                 BorderThickness="2"                 
+                
+                 Style="{StaticResource TextBoxStyle}" 
+                
+                 Height="40"  
+                 />
+
+                    <TextBlock Text="Login" 
+                   Grid.Row="7" 
+                   Grid.Column="1"
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Center" 
+                   FontSize="14" 
+                   FontFamily="Global Sans Serif" 
+                   FontWeight="Bold" 
+                   />
+
+                    <TextBox x:Name="LoginTextBox" 
+                 Grid.Row="8" 
+                 Grid.Column="1"
+                 BorderThickness="2"                 
+                
+                 Style="{StaticResource TextBoxStyle}" 
+                
+                 Height="40"  
+                 />
+                    <TextBlock Text="Password" 
+                   Grid.Row="10" 
+                   Grid.Column="1"
+                   HorizontalAlignment="Left" 
+                   VerticalAlignment="Center" 
+                   FontSize="14" 
+                   FontFamily="Global Sans Serif" 
+                   FontWeight="Bold" 
+                   />
+
+                    <TextBox x:Name="PasswordTextBox" 
+                 Grid.Row="11" 
+                 Grid.Column="1"
+                 BorderThickness="2"                 
+                
+                 Style="{StaticResource TextBoxStyle}" 
+                 
+                 Height="40"  
+                 />
+                    <Button x:Name="SuggestPassword" Content="Password" Background="White" Height="30" Width="320" Grid.Column="1" Grid.Row="11" Grid.RowSpan="3"/>
+                    <StackPanel Grid.Row="13" 
+                    Grid.Column="1">
+                        <DockPanel x:Name="PasswordComplexityPanel">
+                            <Rectangle x:Name="VeryWeakPasswordRectangle"
+                           Style="{StaticResource PasswordCompexityRectangleStyle}"
+                           Margin="2,0"/>
+                            <Rectangle x:Name="WeakPasswordRectangle"
+                           Margin="6,0" 
+                           Style="{StaticResource PasswordCompexityRectangleStyle}"/>
+                            <Rectangle x:Name="NormalPasswordRectangle"
+                           Style="{StaticResource PasswordCompexityRectangleStyle}"/>
+                            <Rectangle x:Name="StrongPasswordRectangle"
+                           Margin="6,0" 
+                           Style="{StaticResource PasswordCompexityRectangleStyle}"/>
+                            <Rectangle x:Name="VeryStrongPasswordRectangle"
+                           Style="{StaticResource PasswordCompexityRectangleStyle}"/>
+                        </DockPanel>
+
+                        <TextBlock x:Name="PasswordComplexityTextBlock"
+                       TextWrapping="Wrap" 
+                       Text=""
+                       HorizontalAlignment="Center"
+                       Margin="0,5,0,0"
+                       FontSize="14"
+                       Width="205" 
+                       TextAlignment="Center"/>
+                    </StackPanel>
+
+
+                    <Button x:Name="SubmitButton" 
+                Grid.Column="1"
+                Grid.Row="14"
+                Content="Submit"
+                Width="160"
+                Height="50"  
+                Style="{StaticResource SubmitButtonStyle}" 
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Center"
+                />
+                    <Button Grid.Column="1"
+                            Name="CloseEditAddForm"
+                Grid.Row="14" Content="Cancel"
+                            Style="{StaticResource CancelButton}"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Click="CloseEditAddForm_Click"
+                            />
+
+                </Grid>
+            </Grid>
+        </Viewbox>
     </Grid>
 </Window>
