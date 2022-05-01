@@ -54,10 +54,7 @@ namespace PasswordManager.MainWindow
         }
         private void IniGrids()
         {
-            //ResizebleGrid.Children.Add(Shadow);
-            //Shadow.Style = (Style)TryFindResource("Shadow");
-            ShadowEffect = Shadow;
-            AddEditForm = FormBody;
+            ShadowEffect = Shadow;          
         }
 
         private void CloseApp_Click(object sender, RoutedEventArgs e)
@@ -116,10 +113,6 @@ namespace PasswordManager.MainWindow
 
      
 
-        private void CloseEditAddForm_Click(object sender, RoutedEventArgs e)
-        {
-            ShadowEffect.Visibility = Visibility.Collapsed;
-            AddEditForm.Visibility = Visibility.Collapsed;
-        }
+        
     }
 }
