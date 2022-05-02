@@ -23,17 +23,17 @@ namespace PasswordManager.MainWindow
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static Grid ShadowEffect;
-        public static Grid AddEditForm;
+        public static Grid ShadowEffectWindow;
+       
         public MainWindow()
         {
             InitializeComponent();
             SetColorTheme();
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
-            MainFrame.Content = new Home();
-            IniGrids();
-            
+            Home.IsChecked = true;
+            ShadowEffectWindow = Shadow;
+
         }
 
         public MainWindow(User user)
@@ -52,10 +52,7 @@ namespace PasswordManager.MainWindow
             Application.Current.Resources.MergedDictionaries.Add(dict);
 
         }
-        private void IniGrids()
-        {
-            ShadowEffect = Shadow;          
-        }
+        
 
         private void CloseApp_Click(object sender, RoutedEventArgs e)
         {

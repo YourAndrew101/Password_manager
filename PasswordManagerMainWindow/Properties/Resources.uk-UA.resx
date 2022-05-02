@@ -139,7 +139,7 @@
     <value>Введіть правильний Email</value>
   </data>
   <data name="FillAllFields" xml:space="preserve">
-    <value>Будь ласка заповніть усі наступні поля</value>
+    <value>Будь ласка, заповніть усі наступні поля</value>
   </data>
   <data name="Greetings" xml:space="preserve">
     <value>Ласкаво просимо!</value>

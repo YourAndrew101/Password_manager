@@ -25,16 +25,15 @@
     <SolidColorBrush x:Key="SearchTextBoxStyle.Static.BorderBrush" Color="{DynamicResource SearchTextBox.Static.BorderBrush}"/>
     <SolidColorBrush x:Key="SearchTextBoxStyle.IsEnabledFalse.BorderBrush" Color="{DynamicResource SearchTextBox.IsEnabledFalse.Border.BorderBrush}"/>
     <SolidColorBrush x:Key="SearchTextBoxStyle.IsEnabledFalse.Background" Color="{DynamicResource SearchTextBox.IsEnabledFalse.Background}"/>
-    <SolidColorBrush x:Key="SearchTextBoxStyle.Placeholder.Foreground" Color="{DynamicResource SearchTextBox.Placeholder.Foreground}"/>
-
+    
 
     <SolidColorBrush x:Key="AddButtonStyle.Static.Background" Color="{DynamicResource AddButton.Static.Background}"/>
     <SolidColorBrush x:Key="AddButtonStyle.IsPressed.Background" Color="{DynamicResource AddButton.IsPressed.Background}"/>
     <SolidColorBrush x:Key="AddButtonStyle.IsMouseOver.Background" Color="{DynamicResource AddButton.IsMouseOver.Background}"/>
     <SolidColorBrush x:Key="AddButtonStyle.IsEnabledFalse.Background" Color="{DynamicResource AddButton.IsEnabledFalse.Background}"/>
     <SolidColorBrush x:Key="AddButtonStyle.Text.Foreground" Color="{DynamicResource AddButton.Text.Foreground}"/>
-    
-     <SolidColorBrush x:Key="TextBoxStyle.Static.Border.Background" Color="{DynamicResource TextBox.Static.Border.Background}"/>
+
+    <SolidColorBrush x:Key="TextBoxStyle.Static.Border.Background" Color="{DynamicResource TextBox.Static.Border.Background}"/>
     <SolidColorBrush x:Key="TextBoxStyle.Static.Border.BorderBrush" Color="{DynamicResource TextBox.Static.Border.BorderBrush}"/>
     <SolidColorBrush x:Key="TextBoxStyle.IsMouseOver.Border.BorderBrush" Color="{DynamicResource TextBox.IsMouseOver.Border.BorderBrush}"/>
     <SolidColorBrush x:Key="TextBoxStyle.IsFocused.Border.BorderBrush" Color="{DynamicResource TextBox.IsFocused.Border.BorderBrush}"/>
@@ -47,6 +46,9 @@
     <SolidColorBrush x:Key="SubmitButtonStyle.IsMouseOver.Background" Color="{DynamicResource SubmitButton.IsMouseOver.Background}"/>
     <SolidColorBrush x:Key="SubmitButtonStyle.IsEnabledFalse.Background" Color="{DynamicResource SubmitButton.IsEnabledFalse.Background}"/>
     <SolidColorBrush x:Key="SubmitButtonStyle.Text.Foreground" Color="{DynamicResource SubmitButton.Text.Foreground}"/>
+
+    <SolidColorBrush x:Key="NotificationBorderStyle.Static.Background" Color="{DynamicResource NotificationBorder.Static.Background}"/>
+    <SolidColorBrush x:Key="NotificationTextBlockStyle.Static.Foreground" Color="{DynamicResource NotificationTextBlock.Text.Foreground}"/>
 
     <Style x:Key="WindowButtonStyle" TargetType="Button">
         <Style.Setters>
@@ -81,7 +83,7 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    
+
     <Style x:Key="WindowToggleButton" TargetType="ToggleButton">
         <Style.Setters>
             <Setter Property="Template">
@@ -107,11 +109,12 @@
                             <Trigger Property="IsChecked" Value="True">
                                 <Setter TargetName="text" Property="Text" Value="&#xE923;"/>
                             </Trigger>
-                            
+
+
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
-                
+
             </Setter>
             <Setter Property="Background" Value="{DynamicResource WindowButtonStyle.Static.Background}"/>
         </Style.Setters>
@@ -119,9 +122,9 @@
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Background" Value="{DynamicResource WindowButtonStyle.IsMouseOver.Background}"/>
             </Trigger>
-            <!--<Trigger Property="IsPressed" Value="True">
+            <Trigger Property="IsPressed" Value="True">
                 <Setter Property="Background" Value="{DynamicResource WindowButtonStyle.IsPressed.Background}"/>
-            </Trigger>-->
+            </Trigger>
         </Style.Triggers>
     </Style>
     <Style x:Key="NavmenuItem" TargetType="RadioButton">
@@ -160,9 +163,9 @@
                             </Trigger>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property="Foreground" Value="{DynamicResource NavmenuItemStyle.IsMouseOver.Foreground}"/>
-                               
+
                             </Trigger>
-                           
+
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
@@ -174,7 +177,7 @@
     <Style x:Key="PressedNavmenuItem" TargetType="Rectangle">
         <Style.Setters>
             <Setter Property="Fill" Value="{DynamicResource NavmenuItemStyle.Pressed.Background}"/>
-            
+
         </Style.Setters>
 
     </Style>
@@ -190,7 +193,7 @@
         </Style.Setters>
     </Style>
 
-    
+
     <Style x:Key="SearchTextBox" TargetType="TextBox">
         <Style.Setters>
             <Setter Property="CaretBrush" Value="{DynamicResource TextColor}"/>
@@ -254,7 +257,7 @@
             <Setter Property="BorderBrush" Value="{DynamicResource SearchTextBoxStyle.Static.BorderBrush}"/>
         </Style.Setters>
     </Style>
-    
+
     <Style x:Key="AddButtonStyle" TargetType="Button">
         <Style.Setters>
             <Setter Property="Template">
@@ -279,11 +282,11 @@
                         </Border>
                     </ControlTemplate>
                 </Setter.Value>
-                
+
             </Setter>
             <Setter Property="Background" Value="{DynamicResource AddButtonStyle.Static.Background}"/>
-            
-            
+
+
         </Style.Setters>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
@@ -304,35 +307,40 @@
                 <Setter Property="Background" Value="{DynamicResource AddButtonStyle.IsEnabledFalse.Background}"/>
             </Trigger>
         </Style.Triggers>
-        
+
     </Style>
 
-   
-    
+
+
     <Style x:Key="Shadow" TargetType="Grid">
         <Style.Setters>
             <Setter Property="Background" Value="Black"/>
             <Setter Property="Visibility" Value="Collapsed"/>
-
-
         </Style.Setters>
-        <Style.Triggers>
+        <!--<Style.Triggers>
             <Trigger Property="Visibility" Value="Visible">
                 <Trigger.EnterActions>
                     <BeginStoryboard>
                         <Storyboard>
-                            <DoubleAnimation Duration="0:0:0.1" From="0" To="0.75" Storyboard.TargetProperty="Opacity"/>
+                            <DoubleAnimation Duration="0:0:0.3" From="0" To="0.75" Storyboard.TargetProperty="Opacity"/>
                         </Storyboard>
                     </BeginStoryboard>
                 </Trigger.EnterActions>
+                <Trigger.ExitActions>
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Duration="0:0:0.3" From="0.75" To="0" Storyboard.TargetProperty="Opacity"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </Trigger.ExitActions>
             </Trigger>
-        </Style.Triggers>
+        </Style.Triggers>-->
     </Style>
     <!--Visibility="Collapsed" x:Name="FormBody" Background="Red" VerticalAlignment="Center" HorizontalAlignment="Center"-->
     <Style x:Key="AddEditForm" TargetType="Grid">
 
         <Style.Setters>
-            <Setter Property="Visibility" Value="Visible"/>
+            <Setter Property="Visibility" Value="Collapsed"/>
             <Setter Property="Background" Value="{DynamicResource MainColor}"/>
 
         </Style.Setters>
@@ -376,7 +384,7 @@
             <Setter Property="BorderBrush" Value="{DynamicResource TextBoxStyle.Static.BorderBrush}"/>
         </Style.Setters>
     </Style>
-   
+
     <Style x:Key="PasswordCompexityRectangleStyle" TargetType="{x:Type Rectangle}">
         <Style.Setters>
             <Setter Property="Fill" Value="{DynamicResource PasswordCompexityRectangleStyle.Static.Fill}"/>
@@ -412,7 +420,7 @@
                 </Setter.Value>
             </Setter>
             <Setter Property="Background" Value="{DynamicResource SubmitButtonStyle.Static.Background}"/>
-            
+
         </Style.Setters>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
@@ -428,7 +436,7 @@
         </Style.Triggers>
     </Style>
 
-    <Style x:Key="CancelButton" TargetType="Button">
+    <Style x:Key="CancelButtonStyle" TargetType="Button">
         <Style.Setters>
             <Setter Property="Template">
                 <Setter.Value>
@@ -438,25 +446,82 @@
                             Text="{TemplateBinding Property=Content}"
                                       
                                        FontFamily="Global Sans Serif"
-                                       Foreground="{DynamicResource SubmitButtonStyle.Text.Foreground}"
+                                       Foreground="{DynamicResource TextColor}"
                                        FontSize="18"
                                     TextDecorations="None"
                             Name="textB"
                                     />
                         <ControlTemplate.Triggers>
-                           <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Cursor" Value="Hand"/>
-                <Setter Property="TextDecorations" Value="Underline" TargetName="textB"/>
-            </Trigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Cursor" Value="Hand"/>
+                                <Setter Property="TextDecorations" Value="Underline" TargetName="textB"/>
+                            </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
-                
+
             </Setter>
         </Style.Setters>
-        <Style.Triggers>
-           
+        
+    </Style>
+
+    <Style x:Key="SuggestPassword" TargetType="Button">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            
+                            Background="{TemplateBinding Background}"
+                            Height="{TemplateBinding Height}"
+                            Width="{TemplateBinding Width}"
+                            CornerRadius="5"
+                            BorderThickness="0">
+                            <TextBlock Text="{TemplateBinding Property=Content}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left"
+                                       Padding="5,0,0,0"
+                                       FontFamily="Global Sans Serif"
+                                       Foreground="{DynamicResource SubmitButtonStyle.Text.Foreground}"
+                                       FontSize="14"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
             
+            
+            <Setter Property="Background" Value="{DynamicResource SubmitButtonStyle.Static.Background}"/>
+            <Setter Property="Visibility" Value="Collapsed"/>
+
+        </Style.Setters>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Background" Value="{DynamicResource SubmitButtonStyle.IsMouseOver.Background}"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{DynamicResource SubmitButtonStyle.IsPressed.Background}"/>
+            </Trigger>
+            <Trigger Property="IsEnabled" Value="False">
+                <Setter Property="Background" Value="{DynamicResource SubmitButtonStyle.IsEnabledFalse.Background}"/>
+            </Trigger>
         </Style.Triggers>
+    </Style>
+    <Style x:Key="NotificationBorderStyle" TargetType="Border">
+        <Style.Setters>
+            <Setter Property="CornerRadius" Value="5"/>
+            <Setter Property="Background" Value="{DynamicResource NotificationBorderStyle.Static.Background}"/>
+            <!--<Setter Property="Margin" Value="0,0,0,20"/>-->
+            <Setter Property="Padding" Value="15,0,15,0"/>
+        </Style.Setters>
+    </Style>
+    <Style x:Key="NotificationTextStyle" TargetType="TextBlock">
+        <Style.Setters>
+            <Setter Property="Foreground" Value="{DynamicResource NotificationTextBlockStyle.Static.Foreground}"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="FontFamily" Value="Global Sans Serif"/>
+            <Setter Property="FontSize" Value="20"/>
+        </Style.Setters>
     </Style>
 </ResourceDictionary>

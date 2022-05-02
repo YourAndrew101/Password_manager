@@ -23,14 +23,14 @@
     </Page.RenderTransform>
     <Page.Triggers>
         
-            <EventTrigger RoutedEvent="Page.Loaded">
+            <!--<EventTrigger RoutedEvent="Page.Loaded">
                 <BeginStoryboard>
                     <Storyboard>
                         <DoubleAnimation Storyboard.TargetName="PageAxis" Storyboard.TargetProperty="Y" From="100" To="0" Duration="0:0:0.2"/>
                         <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.2"/>
                     </Storyboard>
                 </BeginStoryboard>
-            </EventTrigger>
+            </EventTrigger>-->
         
     </Page.Triggers>
     <Grid>
@@ -52,10 +52,21 @@
         
         <TextBlock Text="Home" Style="{StaticResource PageHeader}" />
         <!--<Grid Grid.Row="2" Grid.ColumnSpan="3" Background="AntiqueWhite"/>-->
-        <TextBox x:Name="SearchTextBox" Text="{Binding DataFilter, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="2" Height="30" Width="300" HorizontalAlignment="Right" Margin="0,0,100,0" Foreground="{DynamicResource SearchTextBoxStyle.Placeholder.Foreground}" Style="{StaticResource SearchTextBox}"  GotFocus="SearchTextBox_GotFocus" LostFocus="SearchTextBox_LostFocus"/>
+        <TextBox x:Name="SearchTextBox" Text="{Binding DataFilter, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="2" Height="30" Width="300" HorizontalAlignment="Right" Margin="0,0,100,0" Style="{StaticResource SearchTextBox}"/>
         <Button x:Name="AddPasswordButton" Grid.Row="2" Grid.Column="0" Width="40" Height="40" Style="{StaticResource AddButtonStyle}" Content="&#xE710;" HorizontalAlignment="Left" Margin="100,0,0,0" Click="AddPasswordButton_Click"/>
 
-        <Grid x:Name="AddEditForm"   Height="600" Width="500" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="5" Style="{StaticResource AddEditForm}">
+        
+
+        <DataGrid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="100,0,100,0" CanUserResizeColumns="False" SelectionUnit="Cell" ItemsSource="{Binding AuthenticationDataCollectionView}"  CanUserSortColumns="False" AutoGenerateColumns="False" RowHeaderWidth="0" CanUserResizeRows="False" IsReadOnly="True" CanUserReorderColumns="False" GridLinesVisibility="None" >
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Resource" Width="338" Binding="{Binding Path= Resource}"/>
+                <DataGridTextColumn Header="Login" Width="338" Binding="{Binding Path= Login}"/>
+                <DataGridTextColumn Header="Password" Width="338" Binding="{Binding Path= Password}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid  x:Name="ShadowEffectHomePage" Height="700"   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="5" Style="{StaticResource Shadow}"  />
+        <Grid x:Name="AddEditForm"   Height="600" Width="500" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="5" Style="{StaticResource AddEditForm}" Margin="0,0,0,104.2" >
             <Grid.RenderTransform>
                 <ScaleTransform CenterX="250" CenterY="300" x:Name="FormScailing"/>
             </Grid.RenderTransform>
@@ -89,7 +100,7 @@
                 <RowDefinition Height="120"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Text="Add a new password" 
+            <TextBlock Text="{x:Static res:Resources.AddFormHeader}" 
                    Grid.Row="1" 
                    Grid.Column="1"
                    HorizontalAlignment="Left" 
@@ -99,7 +110,7 @@
                    FontWeight="Bold" 
                    Height="33" />
 
-            <TextBlock Text="Fill all following fields" 
+            <TextBlock Text="{x:Static res:Resources.FormSecondaryHeader}" 
                    Grid.Row="2" 
                    Grid.Column="1"
                    HorizontalAlignment="Left" 
@@ -111,7 +122,7 @@
                    Height="17" 
                    />
 
-            <TextBlock Text="Resource" 
+            <TextBlock Text="{x:Static res:Resources.FormRecource}" 
                    Grid.Row="4" 
                    Grid.Column="1"
                    HorizontalAlignment="Left" 
@@ -131,7 +142,7 @@
                  Height="40"  
                  />
 
-            <TextBlock Text="Login" 
+            <TextBlock Text="{x:Static res:Resources.FormLogin}" 
                    Grid.Row="7" 
                    Grid.Column="1"
                    HorizontalAlignment="Left" 
@@ -150,7 +161,7 @@
                 
                  Height="40"  
                  />
-            <TextBlock Text="Password" 
+            <TextBlock Text="{x:Static res:Resources.FormPassword}" 
                    Grid.Row="10" 
                    Grid.Column="1"
                    HorizontalAlignment="Left" 
@@ -164,12 +175,13 @@
                  Grid.Row="11" 
                  Grid.Column="1"
                  BorderThickness="2"                 
-                
+                GotFocus="PasswordTextBox_GotFocus"
+                     LostFocus="PasswordTextBox_LostFocus"
                  Style="{StaticResource TextBoxStyle}" 
-                 
+                
                  Height="40"  
                  />
-            <Button x:Name="SuggestPassword" Content="Password" Background="White" Height="30" Width="320" Grid.Column="1" Grid.Row="11" Grid.RowSpan="3"/>
+            <Button x:Name="SuggestPassword" Content="{x:Static res:Resources.FormSuggestPassword}"  Height="30" Width="320" Grid.Column="1" Grid.Row="11" Grid.RowSpan="3" Style="{StaticResource SuggestPassword}" Click="SuggestPassword_Click"/>
             <StackPanel Grid.Row="13" 
                     Grid.Column="1">
                 <DockPanel x:Name="PasswordComplexityPanel">
@@ -202,36 +214,32 @@
             <Button x:Name="SubmitButton" 
                 Grid.Column="1"
                 Grid.Row="14"
-                Content="Submit"
+                Content="{x:Static res:Resources.FormSubmit}"
                 Width="160"
                 Height="50"  
                 Style="{StaticResource SubmitButtonStyle}" 
                             HorizontalAlignment="Right"
                             VerticalAlignment="Center"
+                    Click="FormSubmitButton_Click"
                 />
             <Button Grid.Column="1"
                             Name="CloseEditAddForm"
-                Grid.Row="14" Content="Cancel"
-                            Style="{StaticResource CancelButton}"
+                Grid.Row="14" Content="{x:Static res:Resources.FormCancel}"
+                            Style="{StaticResource CancelButtonStyle}"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
                             Click="CloseEditAddForm_Click"
                             />
 
+
         </Grid>
-
-        <DataGrid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Margin="100,0,100,0" CanUserResizeColumns="False" SelectionUnit="Cell" ItemsSource="{Binding AuthenticationDataCollectionView}"  CanUserSortColumns="False" AutoGenerateColumns="False" RowHeaderWidth="0" CanUserResizeRows="False" IsReadOnly="True" CanUserReorderColumns="False" GridLinesVisibility="None" >
-
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Resource" Width="338" Binding="{Binding Path= Resource}"/>
-                <DataGridTextColumn Header="Login" Width="338" Binding="{Binding Path= Login}"/>
-                <DataGridTextColumn Header="Password" Width="338" Binding="{Binding Path= Password}"/>
-            </DataGrid.Columns>
-        </DataGrid>
-        
-        <Button x:Name="deletesomeshit" Content="SOSNI" Click="deletesomeshit_Click"/>
-
-        
-
+        <Border x:Name="NotificationBody" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3"  Height="40" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Bottom" Style="{StaticResource NotificationBorderStyle}" Visibility="Collapsed">
+            <Border.RenderTransform>
+                <TranslateTransform x:Name="NotificationTranslateTransform"/>
+            </Border.RenderTransform>
+           
+            <TextBlock Grid.Column="1" Grid.Row="4"   Style="{StaticResource NotificationTextStyle}" x:Name="NotificationText">
+            </TextBlock>
+        </Border>
     </Grid>
 </Page>

@@ -117,6 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddFormHeader" xml:space="preserve">
+    <value>Додати запис</value>
+  </data>
+  <data name="EditFormHeader" xml:space="preserve">
+    <value>Редагувати запис</value>
+  </data>
+  <data name="FormCancel" xml:space="preserve">
+    <value>Відмінити</value>
+  </data>
+  <data name="FormLogin" xml:space="preserve">
+    <value>Логін</value>
+  </data>
+  <data name="FormPassword" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="FormRecource" xml:space="preserve">
+    <value>Ресурс</value>
+  </data>
+  <data name="FormSecondaryHeader" xml:space="preserve">
+    <value>Будь ласка, заповніть усі наступні поля</value>
+  </data>
+  <data name="FormSubmit" xml:space="preserve">
+    <value>Підтвердити</value>
+  </data>
+  <data name="FormSuggestPassword" xml:space="preserve">
+    <value>Використати запропонований пароль</value>
+  </data>
   <data name="PlaceholderSearch" xml:space="preserve">
     <value>Пошук паролів</value>
   </data>

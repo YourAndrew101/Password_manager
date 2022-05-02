@@ -78,4 +78,7 @@
     <Color x:Key="AddButton.IsEnabledFalse.Background" >#99aab5</Color>
     <Color x:Key="AddButton.Text.Foreground" >White</Color>
 
+    <Color x:Key="NotificationBorder.Static.Background">#7289da</Color>
+    <Color x:Key="NotificationTextBlock.Text.Foreground">White</Color>
+
 </ResourceDictionary>

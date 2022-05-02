@@ -80,19 +80,22 @@
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="18"/>
                     <RowDefinition Height="700"/>
-                </Grid.RowDefinitions>
-                <Frame x:Name="MainFrame" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Content="Pages/Home.xaml" NavigationUIVisibility="Hidden"/>
+                </Grid.RowDefinitions> 
+                
+               
                 <Rectangle x:Name="CheckedItem" Grid.Row="1"  Grid.Column ="1" Style="{StaticResource PressedNavmenuItem}">
                     <Rectangle.RenderTransform>
                         <TranslateTransform x:Name="Axis"/>
                     </Rectangle.RenderTransform>
 
                 </Rectangle>
-                <RadioButton x:Name="Home" Content="&#xE80F;" GroupName="NavMenuElement" Style="{StaticResource NavmenuItem}" Grid.Column="1" Grid.Row="1" IsChecked="True" Checked="Home_Checked"/>
+                <RadioButton x:Name="Home" Content="&#xE80F;" GroupName="NavMenuElement" Style="{StaticResource NavmenuItem}" Grid.Column="1" Grid.Row="1"  Checked="Home_Checked"/>
 
                 <RadioButton x:Name="Settings" Content="&#xE713;" GroupName="NavMenuElement"  Style="{StaticResource NavmenuItem}" Grid.Column="2" Grid.Row="1" Checked="Settings_Checked"/>
                 <RadioButton x:Name="Account" Content="&#xE77B;" GroupName="NavMenuElement"  Style="{DynamicResource NavmenuItem}" Grid.Column="3" Grid.Row="1"  Checked="Account_Checked"/>
-                <Grid  x:Name="Shadow" Height="838.4"   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="4" Style="{StaticResource Shadow}" />
+                <Grid  x:Name="Shadow" Height="838.4"   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="4" Style="{StaticResource Shadow}" /> 
+                <Frame x:Name="MainFrame" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Content="Pages/Home.xaml" NavigationUIVisibility="Hidden"/>
+               
 
                 
             </Grid>

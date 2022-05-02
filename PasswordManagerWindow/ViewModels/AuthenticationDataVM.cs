@@ -29,9 +29,13 @@ namespace PasswordManagerWindow.ViewModels
 
             set
             {
-                dataFilter = value;
-                OnPropertyChanged(nameof(DataFilter));
-                AuthenticationDataCollectionView.Refresh();
+                if (value != Properties.Resources.PlaceholderSearch)
+                {
+                    dataFilter = value;
+                    OnPropertyChanged(nameof(DataFilter));
+                    AuthenticationDataCollectionView.Refresh();
+
+                }
             }
         }
       

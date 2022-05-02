@@ -61,6 +61,87 @@ namespace PasswordManagerWindow.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Add a record.
+        /// </summary>
+        public static string AddFormHeader {
+            get {
+                return ResourceManager.GetString("AddFormHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Edit a record.
+        /// </summary>
+        public static string EditFormHeader {
+            get {
+                return ResourceManager.GetString("EditFormHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Cancel.
+        /// </summary>
+        public static string FormCancel {
+            get {
+                return ResourceManager.GetString("FormCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Login.
+        /// </summary>
+        public static string FormLogin {
+            get {
+                return ResourceManager.GetString("FormLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Password.
+        /// </summary>
+        public static string FormPassword {
+            get {
+                return ResourceManager.GetString("FormPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Recource.
+        /// </summary>
+        public static string FormRecource {
+            get {
+                return ResourceManager.GetString("FormRecource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Please fiil all following fields.
+        /// </summary>
+        public static string FormSecondaryHeader {
+            get {
+                return ResourceManager.GetString("FormSecondaryHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Confirm.
+        /// </summary>
+        public static string FormSubmit {
+            get {
+                return ResourceManager.GetString("FormSubmit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Use suggested password.
+        /// </summary>
+        public static string FormSuggestPassword {
+            get {
+                return ResourceManager.GetString("FormSuggestPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Search for passwords.
         /// </summary>
         public static string PlaceholderSearch {
