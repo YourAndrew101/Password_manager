@@ -118,33 +118,33 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddFormHeader" xml:space="preserve">
-    <value>Add a record</value>
+    <value>Добавить запись</value>
   </data>
   <data name="EditFormHeader" xml:space="preserve">
-    <value>Edit a record</value>
+    <value>Редактировать запись</value>
   </data>
   <data name="FormCancel" xml:space="preserve">
-    <value>Cancel</value>
+    <value>Отменить</value>
   </data>
   <data name="FormLogin" xml:space="preserve">
-    <value>Login</value>
+    <value>Логин</value>
   </data>
   <data name="FormPassword" xml:space="preserve">
-    <value>Password</value>
+    <value>Пароль</value>
   </data>
   <data name="FormRecource" xml:space="preserve">
-    <value>Recource</value>
+    <value>Ресурс</value>
   </data>
   <data name="FormSecondaryHeader" xml:space="preserve">
-    <value>Please fiil all following fields</value>
+    <value>Заполните следующие поля</value>
   </data>
   <data name="FormSubmit" xml:space="preserve">
-    <value>Confirm</value>
+    <value>Подтвердить</value>
   </data>
   <data name="FormSuggestPassword" xml:space="preserve">
-    <value>Use suggested password</value>
+    <value>Использовать предложеный пароль</value>
   </data>
   <data name="PlaceholderSearch" xml:space="preserve">
-    <value>Search for passwords</value>
+    <value>Поиск паролей</value>
   </data>
 </root>
