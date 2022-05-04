@@ -25,11 +25,15 @@ namespace PasswordManager.Auth
     /// </summary>
     public partial class EmailConfirmation : Page
     {
-        private string _email;
-        private string _password;
-
         private string CurrentConfirmationCode { get => CurrentConfirmationCodeTextBox.Text; }
-        private string ErrorMessage { set => ErrorTextBlock.Text = value; }
+        private string ErrorMessage 
+        { 
+            set
+            {
+                ErrorTextBlock.Visibility = Visibility.Visible;
+                ErrorTextBlock.Text = value;
+            }
+        }
 
         EMailService _eMailService;
         User _user;
@@ -39,19 +43,12 @@ namespace PasswordManager.Auth
             _user = user;
 
             InitializeComponent();
-            GetDataFromSettings();
             SendEmail();
-        }
-
-        private void GetDataFromSettings()
-        {
-            _email = SettingsService.GetSignUpSettings().Email;
-            _password = SettingsService.GetSignUpSettings().Password;
         }
 
         private void SendEmail()
         {
-            _eMailService = new EMailService(_email);
+            _eMailService = new EMailService(_user.Email);
             _eMailService.SendConfirmationMessage();
         }
 

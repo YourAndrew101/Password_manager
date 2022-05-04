@@ -23,6 +23,7 @@ namespace PasswordManager.MainWindow
     /// </summary>
     public partial class MainWindow : Window
     {
+        public User User { get; set; }
         public static Grid ShadowEffectWindow;
        
         public MainWindow()
@@ -32,8 +33,7 @@ namespace PasswordManager.MainWindow
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
             Home.IsChecked = true;
-            ShadowEffectWindow = Shadow;
-
+            ShadowEffectWindow = Shadow;;
         }
 
         public MainWindow(User user)
@@ -42,6 +42,8 @@ namespace PasswordManager.MainWindow
             SetColorTheme();
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
+
+            User = user;
         }
 
         private void SetColorTheme()

@@ -33,6 +33,15 @@ namespace PasswordManager.Auth
         private string PasswordComplexityText { set => PasswordComplexityTextBlock.Text = value; }
         private Brush PasswordComplexityTextColor { set => PasswordComplexityTextBlock.Foreground = value; }
 
+        private string ErrorMessage
+        { 
+            set
+            {
+                AuthErrorTextBlock.Visibility = Visibility.Visible;
+                AuthErrorTextBlock.Text = value;
+            }
+        }
+
         private readonly Rectangle[] _passwordComplexityRectangles = new Rectangle[5];
 
         private Color _veryWeakPasswordRectangleColor = (Color)Application.Current.Resources["_veryWeakPasswordRectangleColor"];
@@ -183,7 +192,7 @@ namespace PasswordManager.Auth
             {
                 if (ex is DuplicateMailException)
                 {
-                    SetErrorMessage(Properties.Resources.UserExists);
+                    ErrorMessage = Properties.Resources.UserExists);
                     return;
                 }
                 throw;
@@ -197,22 +206,14 @@ namespace PasswordManager.Auth
         }
         private bool CheckAuthData()
         {
-            if (string.IsNullOrEmpty(Email) || string.IsNullOrWhiteSpace(Email)) { SetErrorMessage(Properties.Resources.EmailRequest); return false; }
-            if (string.IsNullOrEmpty(Password) || string.IsNullOrWhiteSpace(Password)) { SetErrorMessage(Properties.Resources.PasswordRequest); return false; }
+            if (string.IsNullOrEmpty(Email) || string.IsNullOrWhiteSpace(Email)) { ErrorMessage = Properties.Resources.EmailRequest; return false; }
+            if (string.IsNullOrEmpty(Password) || string.IsNullOrWhiteSpace(Password)) { ErrorMessage = Properties.Resources.PasswordRequest; return false; }
             try { _ = new MailAddress(Email).Address; }
-            catch (FormatException) { SetErrorMessage(Properties.Resources.EnterValidEmail); return false; }
+            catch (FormatException) { ErrorMessage = Properties.Resources.EnterValidEmail; return false; }
 
             return true;
         }
 
-        private void SetErrorMessage(string message)
-        {
-            AuthErrorTextBlock.Visibility = Visibility.Visible;
-            AuthErrorTextBlock.Text = message;
-        }
-        private void HideErrorMessage()
-        {
-            AuthErrorTextBlock.Visibility = Visibility.Hidden;
-        }
+        private void HideErrorMessage() => AuthErrorTextBlock.Visibility = Visibility.Hidden;
     }
 }
