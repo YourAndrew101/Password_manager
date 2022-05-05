@@ -169,7 +169,7 @@ namespace PasswordManagerWindow.Pages
                 dataVM.AuthenticationDataViewModels.Add(new Models.AuthenticationData(ResourceTextBox.Text, LoginTextBox.Text, PasswordTextBox.Text));
                 FormClosingAnimation();
                 ShowNotification(Properties.Resources.RecordAddedNotification);
-                ClearForm();
+                
             }
             else
             { int index = int.Parse(IdTextBox.Text);
@@ -178,8 +178,10 @@ namespace PasswordManagerWindow.Pages
                 dataVM.AuthenticationDataViewModels[index].Password = PasswordTextBox.Text;
                 FormClosingAnimation();
                 ShowNotification(Properties.Resources.RecordEditedNotification);
-                ClearForm();
+                
             }
+            ClearForm();
+            dataVM.AuthenticationDataCollectionView.Refresh();
         }
          private void ClearForm()
         {

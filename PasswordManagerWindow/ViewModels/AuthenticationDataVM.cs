@@ -26,19 +26,12 @@ namespace PasswordManagerWindow.ViewModels
             }
 
             set
-            {
-              
+            {             
                     dataFilter = value;
-                    
-                    AuthenticationDataCollectionView.Refresh();
-
-                
+                    OnPropertyChanged(nameof(DataFilter));
+                    AuthenticationDataCollectionView.Refresh();      
             }
         }
-      
-
-       
-
         public AuthenticationDataVM() {
 
             AuthenticationDataViewModels = new ObservableCollection<AuthenticationData>
