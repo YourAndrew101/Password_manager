@@ -23,8 +23,7 @@ namespace PasswordManager.MainWindow
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static Grid ShadowEffectWindow;
-       
+           
         public MainWindow()
         {
             InitializeComponent();
@@ -32,7 +31,7 @@ namespace PasswordManager.MainWindow
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
             Home.IsChecked = true;
-            ShadowEffectWindow = Shadow;
+           
 
         }
 

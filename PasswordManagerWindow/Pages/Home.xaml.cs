@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -15,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PasswordManager.MainWindow;
+using PasswordManagerWindow.Models;
 using PasswordManagerWindow.ViewModels;
 
 namespace PasswordManagerWindow.Pages
@@ -30,23 +32,19 @@ namespace PasswordManagerWindow.Pages
         {
             InitializeComponent();
             DataContext = dataVM;
-
-
-
-        }
-
-
-
-        private void deletesomeshit_Click(object sender, RoutedEventArgs e)
-        {
-            dataVM.AuthenticationData.RemoveAt(1);
         }
 
         private void AddPasswordButton_Click(object sender, RoutedEventArgs e)
         {
-            AddEditForm.Visibility = Visibility.Visible;
+            FormHeader.Text = Properties.Resources.AddFormHeader;
+            FormOpeninganimation();
+
+        }
+
+        private void FormOpeninganimation() { 
+         AddEditForm.Visibility = Visibility.Visible;
             ShadowEffectHomePage.Visibility = Visibility.Visible;
-            MainWindow.ShadowEffectWindow.Visibility = Visibility.Visible;
+            ((MainWindow)App.Current.MainWindow).Shadow.Visibility = Visibility.Visible;
             DoubleAnimation formScaleAnimation = new DoubleAnimation()
             {
                 From = 1.2,
@@ -73,14 +71,14 @@ namespace PasswordManagerWindow.Pages
                 To = 0.75,
             };
             ShadowEffectHomePage.BeginAnimation(OpacityProperty, shadowAppearingAnimation);
-            MainWindow.ShadowEffectWindow.BeginAnimation(OpacityProperty, shadowAppearingAnimation);
-
-
+           
+            ((MainWindow)App.Current.MainWindow).Shadow.BeginAnimation(OpacityProperty, shadowAppearingAnimation);
+            
         }
-
         private void CloseEditAddForm_Click(object sender, RoutedEventArgs e)
         {
             FormClosingAnimation();
+            ClearForm();
 
         }
         private void FormClosingAnimation()
@@ -114,12 +112,12 @@ namespace PasswordManagerWindow.Pages
             };
             shadowDisappearingAnimation.Completed += ShadowDisappearingAnimation_Completed;
             ShadowEffectHomePage.BeginAnimation(OpacityProperty, shadowDisappearingAnimation);
-            MainWindow.ShadowEffectWindow.BeginAnimation(OpacityProperty, shadowDisappearingAnimation);
+            ((MainWindow)App.Current.MainWindow).Shadow.BeginAnimation(OpacityProperty, shadowDisappearingAnimation);
         }
         private void ShadowDisappearingAnimation_Completed(object sender, EventArgs e)
         {
             ShadowEffectHomePage.Visibility = Visibility.Collapsed;
-            MainWindow.ShadowEffectWindow.Visibility = Visibility.Collapsed;
+            ((MainWindow)App.Current.MainWindow).Shadow.Visibility = Visibility.Collapsed;
         }
 
         private void formDisapperingAnimation_Comleted(object sender, EventArgs e)
@@ -166,16 +164,40 @@ namespace PasswordManagerWindow.Pages
 
         private void FormSubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            dataVM.AuthenticationData.Add(new Models.AuthenticationData(ResourceTextBox.Text, LoginTextBox.Text, PasswordTextBox.Text));
-            FormClosingAnimation();
-            ShowNotification("Record was added");
+            if (string.IsNullOrEmpty(IdTextBox.Text))
+            {
+                dataVM.AuthenticationDataViewModels.Add(new Models.AuthenticationData(ResourceTextBox.Text, LoginTextBox.Text, PasswordTextBox.Text));
+                FormClosingAnimation();
+                ShowNotification(Properties.Resources.RecordAddedNotification);
+                ClearForm();
+            }
+            else
+            { int index = int.Parse(IdTextBox.Text);
+                dataVM.AuthenticationDataViewModels[index].Resource=ResourceTextBox.Text;
+                dataVM.AuthenticationDataViewModels[index].Login = LoginTextBox.Text;
+                dataVM.AuthenticationDataViewModels[index].Password = PasswordTextBox.Text;
+                FormClosingAnimation();
+                ShowNotification(Properties.Resources.RecordEditedNotification);
+                ClearForm();
+            }
         }
-
+         private void ClearForm()
+        {
+            ResourceTextBox.Text = string.Empty;
+            LoginTextBox.Text = string.Empty;
+            PasswordTextBox.Text = string.Empty;
+        }
+       private Storyboard sb = new Storyboard();
         private void ShowNotification(string NotificationMessage)
         {
+           sb.Completed-= Notification_Completed;
+           // sb.Stop();
+
             NotificationBody.Visibility = Visibility.Visible;
 
             NotificationText.Text = NotificationMessage;
+
+            
 
             DoubleAnimation notificationAppearingTranslate = new DoubleAnimation()
             {
@@ -208,7 +230,7 @@ namespace PasswordManagerWindow.Pages
             };
             Storyboard.SetTargetName(notificationAppearingTranslate, "NotificationTranslateTransform");
             Storyboard.SetTargetProperty(notificationAppearingTranslate, new PropertyPath(TranslateTransform.YProperty));
-            var sb = new Storyboard();
+            
             sb.Completed += Notification_Completed;
             sb.Children.Add(notificationAppearingTranslate);
 
@@ -228,10 +250,49 @@ namespace PasswordManagerWindow.Pages
 
 
         }
-
         private void Notification_Completed(object sender, EventArgs e)
         {
             NotificationBody.Visibility = Visibility.Collapsed;
+
         }
+         private void CopyCellText(object sender, MouseButtonEventArgs e)
+        {
+            string cellText = ((TextBlock)((DataGridCell)sender).Content).Text;
+            Clipboard.SetText(cellText);
+            ShowNotification(Properties.Resources.TextCopiedToClipboardNotification);
+        }
+
+        private void PopupMenuButton_Click(object sender, RoutedEventArgs e)
+        {
+        var parent = (StackPanel)((Button)sender).Parent;
+        Popup pp =  (Popup)parent.FindName("PopupMenu");
+        pp.IsOpen = true;
+            
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            var popupEl = (Popup)((Border)(((StackPanel)(((Button)sender).Parent)).Parent)).Parent;
+            popupEl.IsOpen = false;
+            FormHeader.Text = Properties.Resources.EditFormHeader;
+            int index = MainDataGrid.Items.IndexOf(MainDataGrid.CurrentItem);
+            var item = (AuthenticationData)MainDataGrid.Items[index];
+            ResourceTextBox.Text = item.Resource;
+            LoginTextBox.Text = item.Login;
+            PasswordTextBox.Text = item.Password;
+            IdTextBox.Text = index.ToString();
+            FormOpeninganimation();
+
+
+        }
+
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+            int index = MainDataGrid.Items.IndexOf(MainDataGrid.CurrentItem);
+            dataVM.AuthenticationDataViewModels.RemoveAt(index);
+            ShowNotification(Properties.Resources.RecordRemovedNotification);
+        }
+
+      
     }
 }

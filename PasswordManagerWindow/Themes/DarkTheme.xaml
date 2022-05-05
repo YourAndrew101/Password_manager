@@ -84,4 +84,20 @@
     <Color x:Key="NotificationBorder.Static.Background">#7289da</Color>
     <Color x:Key="NotificationTextBlock.Text.Foreground">White</Color>
 
+    <Color x:Key="DataGrid.Static.Background">#2c2f33</Color>
+    <Color x:Key="DataGrid.ColumnHeader.Foreground">#99aab5</Color>
+    <Color x:Key="DataGrid.Row.Foreground">White</Color>
+    <Color x:Key="DataGrid.ScrollBar.Foreground">#7289da</Color>
+    <Color x:Key="DataGrid.ScrollBar.Background">#1a1c1f</Color>
+    <Color x:Key="DataGrid.Cell.IsMouseOver.Background">#414447</Color>
+    <Color x:Key="DataGrid.Cell.IsSelected.Background">#56595c</Color>
+    <Color x:Key="DataGrid.ToolTip.Background">#7289da</Color>
+    <Color x:Key="DataGrid.ToolTip.Foreground">White</Color>
+    <Color x:Key="DataGrid.PopupMenu.Foreground">White</Color>
+    <Color x:Key="DataGrid.PopupMenu.Background">#2c2f33</Color>
+    <Color x:Key="DataGrid.PopUpMenuButton.IsMouseOver.Background">#414447</Color>
+    <Color x:Key="DataGrid.PopUpMenuButton.IsPressed.Background">#56595c</Color>
+    <Color x:Key="DataGrid.PopUpMenuItem.IsMouseOver.Background">#414447</Color>
+    <Color x:Key="DataGrid.PopUpMenuItem.IsPressed.Background">#56595c</Color>
+    <Color x:Key="DataGrid.DropDownBorder.BorderBrush">#7289da</Color>
 </ResourceDictionary>

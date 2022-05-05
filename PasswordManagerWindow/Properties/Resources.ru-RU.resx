@@ -120,6 +120,15 @@
   <data name="AddFormHeader" xml:space="preserve">
     <value>Добавить запись</value>
   </data>
+  <data name="DataGridLogin" xml:space="preserve">
+    <value>Логин</value>
+  </data>
+  <data name="DataGridPassword" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="DataGridResource" xml:space="preserve">
+    <value>Ресурс</value>
+  </data>
   <data name="EditFormHeader" xml:space="preserve">
     <value>Редактировать запись</value>
   </data>
@@ -144,7 +153,31 @@
   <data name="FormSuggestPassword" xml:space="preserve">
     <value>Использовать предложеный пароль</value>
   </data>
+  <data name="HomeHeader" xml:space="preserve">
+    <value>Главная</value>
+  </data>
   <data name="PlaceholderSearch" xml:space="preserve">
     <value>Поиск паролей</value>
+  </data>
+  <data name="PopupMenuEdit" xml:space="preserve">
+    <value>Редактировать</value>
+  </data>
+  <data name="PopupMenuRemove" xml:space="preserve">
+    <value>Удалить</value>
+  </data>
+  <data name="RecordAddedNotification" xml:space="preserve">
+    <value>Запись была добавлена</value>
+  </data>
+  <data name="RecordEditedNotification" xml:space="preserve">
+    <value>Запись была отредактирована</value>
+  </data>
+  <data name="RecordRemovedNotification" xml:space="preserve">
+    <value>Запись была удалена</value>
+  </data>
+  <data name="TapToCopyToolTip" xml:space="preserve">
+    <value>Нажмите чтобы скопировать</value>
+  </data>
+  <data name="TextCopiedToClipboardNotification" xml:space="preserve">
+    <value>Скопировано в буфер обмена</value>
   </data>
 </root>

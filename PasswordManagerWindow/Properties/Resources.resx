@@ -120,6 +120,15 @@
   <data name="AddFormHeader" xml:space="preserve">
     <value>Add a record</value>
   </data>
+  <data name="DataGridLogin" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="DataGridPassword" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="DataGridResource" xml:space="preserve">
+    <value>Resource</value>
+  </data>
   <data name="EditFormHeader" xml:space="preserve">
     <value>Edit a record</value>
   </data>
@@ -144,7 +153,31 @@
   <data name="FormSuggestPassword" xml:space="preserve">
     <value>Use suggested password</value>
   </data>
+  <data name="HomeHeader" xml:space="preserve">
+    <value>Home</value>
+  </data>
   <data name="PlaceholderSearch" xml:space="preserve">
     <value>Search for passwords</value>
+  </data>
+  <data name="PopupMenuEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="PopupMenuRemove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
+  <data name="RecordAddedNotification" xml:space="preserve">
+    <value>Record was added</value>
+  </data>
+  <data name="RecordEditedNotification" xml:space="preserve">
+    <value>Record was edited</value>
+  </data>
+  <data name="RecordRemovedNotification" xml:space="preserve">
+    <value>Record was removed</value>
+  </data>
+  <data name="TapToCopyToolTip" xml:space="preserve">
+    <value>Tap to copy</value>
+  </data>
+  <data name="TextCopiedToClipboardNotification" xml:space="preserve">
+    <value>Copied to clipboard</value>
   </data>
 </root>
