@@ -36,6 +36,7 @@ namespace PasswordManager.MainWindow
             ShadowEffectWindow = Shadow;;
         }
 
+        //TODO исключение XamlParseException під час запуску
         public MainWindow(User user)
         {
             InitializeComponent();
@@ -52,7 +53,6 @@ namespace PasswordManager.MainWindow
 
             ResourceDictionary dict = new ResourceDictionary { Source = new Uri($"/Themes/{theme}Theme.xaml", UriKind.Relative) };
             Application.Current.Resources.MergedDictionaries.Add(dict);
-
         }
         
 
@@ -80,14 +80,10 @@ namespace PasswordManager.MainWindow
         protected override void OnStateChanged(EventArgs e)
         {
             base.OnStateChanged(e);
-            if(this.WindowState==WindowState.Maximized && MaximizeWindow.IsChecked == false)
-            {
+            if(WindowState==WindowState.Maximized && MaximizeWindow.IsChecked == false)
                 MaximizeWindow.IsChecked = true;
-            }
-            if(this.WindowState == WindowState.Normal && MaximizeWindow.IsChecked == true)
-            {
+            if(WindowState == WindowState.Normal && MaximizeWindow.IsChecked == true)
                 MaximizeWindow.IsChecked = false;
-            }
         }
         private void Home_Checked(object sender, RoutedEventArgs e)
         {

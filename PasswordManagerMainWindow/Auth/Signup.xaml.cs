@@ -192,7 +192,7 @@ namespace PasswordManager.Auth
             {
                 if (ex is DuplicateMailException)
                 {
-                    ErrorMessage = Properties.Resources.UserExists);
+                    ErrorMessage = Properties.Resources.UserExists;
                     return;
                 }
                 throw;
