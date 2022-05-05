@@ -38,11 +38,10 @@ namespace PasswordManager.Auth
                 EmailTextBox.IsEnabled = false;
                 ErrorTextBlock.Text = "";
             }
-            else { 
-            SetErrorMessage(Properties.Resources.UserNotExists);
-        }
-            
-
+            else
+            {
+                SetErrorMessage(Properties.Resources.UserNotExists);
+            }
         }
         private void SetErrorMessage(string message)
         {

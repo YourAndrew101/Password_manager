@@ -52,7 +52,7 @@
 
         <TextBlock x:Name="ErrorTextBlock" 
                    Grid.Row="6"
-                   Grid.Column="2"
+                   Grid.Column="1"
                    Text="Error sample"
                    VerticalAlignment="Center"                
                    Style="{StaticResource AuthErrorTextBlockStyle}"/>

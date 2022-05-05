@@ -48,7 +48,20 @@ namespace Services
 
                 command.ExecuteNonQuery();
             }
+
+            CreateUserServicesTable(user);
         }
+        private static void CreateUserServicesTable(User user)
+        {
+            string request = $"CREATE TABLE \"{user.HashEmail}\" (ServiceID int, ServiceName varchar(255),ServiceLogin varchar(255),ServicePassword varchar(255))";
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(request, connection);
+                command.ExecuteNonQuery();
+            }
+        }
+
 
         public static User GetUser(string email, string password)
         {

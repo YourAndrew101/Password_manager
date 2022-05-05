@@ -48,7 +48,7 @@ namespace PasswordManager.Auth
             try { _user = UsersService.GetUser(Email, Password); }
             catch (Exception ex)
             {
-                if (ex is NonExistenMailException nonExistenMail) { SetErrorMessage(nonExistenMail.Message); return; }
+                if (ex is NonExistenMailException) { SetErrorMessage(Properties.Resources.UserNotExists); return; }
                 if (ex is IncorrectPasswordException) { SetErrorMessage(Properties.Resources.IncorrectPassword); return; }
 
                 throw;
