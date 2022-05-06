@@ -164,24 +164,33 @@ namespace PasswordManagerWindow.Pages
 
         private void FormSubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(IdTextBox.Text))
+            if (!string.IsNullOrEmpty(ResourceTextBox.Text) && !string.IsNullOrEmpty(LoginTextBox.Text) && !string.IsNullOrEmpty(PasswordTextBox.Text))
             {
-                dataVM.AuthenticationDataViewModels.Add(new Models.AuthenticationData(ResourceTextBox.Text, LoginTextBox.Text, PasswordTextBox.Text));
-                FormClosingAnimation();
-                ShowNotification(Properties.Resources.RecordAddedNotification);
-                
+                if (string.IsNullOrEmpty(IdTextBox.Text))
+                {
+                    dataVM.AuthenticationDataViewModels.Add(new Models.AuthenticationData(ResourceTextBox.Text, LoginTextBox.Text, PasswordTextBox.Text));
+                    FormClosingAnimation();
+                    ShowNotification(Properties.Resources.RecordAddedNotification);
+
+                }
+                else
+                {
+                    int index = int.Parse(IdTextBox.Text);
+                    dataVM.AuthenticationDataViewModels[index].Resource = ResourceTextBox.Text;
+                    dataVM.AuthenticationDataViewModels[index].Login = LoginTextBox.Text;
+                    dataVM.AuthenticationDataViewModels[index].Password = PasswordTextBox.Text;
+                    FormClosingAnimation();
+                    ShowNotification(Properties.Resources.RecordEditedNotification);
+
+                }
+                ClearForm();
+                dataVM.AuthenticationDataCollectionView.Refresh();
             }
             else
-            { int index = int.Parse(IdTextBox.Text);
-                dataVM.AuthenticationDataViewModels[index].Resource=ResourceTextBox.Text;
-                dataVM.AuthenticationDataViewModels[index].Login = LoginTextBox.Text;
-                dataVM.AuthenticationDataViewModels[index].Password = PasswordTextBox.Text;
-                FormClosingAnimation();
-                ShowNotification(Properties.Resources.RecordEditedNotification);
-                
+            {
+                PasswordComplexityTextBlock.Text =Properties.Resources.FormFillAllFields;
+                PasswordComplexityTextBlock.Foreground = new SolidColorBrush(Colors.Red);
             }
-            ClearForm();
-            dataVM.AuthenticationDataCollectionView.Refresh();
         }
          private void ClearForm()
         {
@@ -257,7 +266,17 @@ namespace PasswordManagerWindow.Pages
             NotificationBody.Visibility = Visibility.Collapsed;
 
         }
-         private void CopyCellText(object sender, MouseButtonEventArgs e)
+        private void RevealPassword_Checked(object sender, RoutedEventArgs e)
+        {
+            Grid parent = ((Grid)((ToggleButton)sender).Parent);
+            TextBlock RevealedPasswordTextBlock = (TextBlock)parent.FindName("RevealedPasswordTextBlock");
+            TextBlock HiddenPasswordTextBlock = (TextBlock)parent.FindName("HiddenPasswordTextBlock");
+            RevealedPasswordTextBlock.Visibility = Visibility.Visible;
+            HiddenPasswordTextBlock.Visibility = Visibility.Collapsed;
+
+
+        }
+        private void CopyCellText(object sender, MouseButtonEventArgs e)
         {
             string cellText = ((TextBlock)((DataGridCell)sender).Content).Text;
             Clipboard.SetText(cellText);
@@ -272,29 +291,27 @@ namespace PasswordManagerWindow.Pages
             
         }
 
+        
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            var popupEl = (Popup)((Border)(((StackPanel)(((Button)sender).Parent)).Parent)).Parent;
+            var popupEl = (Popup)((Border)((StackPanel)(((Button)sender).Parent)).Parent).Parent;
             popupEl.IsOpen = false;
             FormHeader.Text = Properties.Resources.EditFormHeader;
-            int index = MainDataGrid.Items.IndexOf(MainDataGrid.CurrentItem);
-            var item = (AuthenticationData)MainDataGrid.Items[index];
+            AuthenticationData item = (AuthenticationData)MainDataGrid.CurrentItem;
+            int index = MainDataGrid.Items.IndexOf(item);
             ResourceTextBox.Text = item.Resource;
             LoginTextBox.Text = item.Login;
             PasswordTextBox.Text = item.Password;
             IdTextBox.Text = index.ToString();
             FormOpeninganimation();
-
-
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
-        {
-            int index = MainDataGrid.Items.IndexOf(MainDataGrid.CurrentItem);
-            dataVM.AuthenticationDataViewModels.RemoveAt(index);
+        { 
+            dataVM.AuthenticationDataViewModels.Remove((AuthenticationData)MainDataGrid.CurrentItem);
             ShowNotification(Properties.Resources.RecordRemovedNotification);
         }
 
-      
+       
     }
 }

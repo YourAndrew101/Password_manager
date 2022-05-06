@@ -135,6 +135,9 @@
   <data name="FormCancel" xml:space="preserve">
     <value>Відмінити</value>
   </data>
+  <data name="FormFillAllFields" xml:space="preserve">
+    <value>Поля не можуть бути пустими</value>
+  </data>
   <data name="FormLogin" xml:space="preserve">
     <value>Логін</value>
   </data>
@@ -175,7 +178,7 @@
     <value>Запис було видалено</value>
   </data>
   <data name="TapToCopyToolTip" xml:space="preserve">
-    <value>Натисніть, щоб скопіювати</value>
+    <value>Подвійний клік, щоб скопіювати</value>
   </data>
   <data name="TextCopiedToClipboardNotification" xml:space="preserve">
     <value>Скопійовано в буфер обміну</value>

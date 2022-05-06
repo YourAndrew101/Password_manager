@@ -135,6 +135,9 @@
   <data name="FormCancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
+  <data name="FormFillAllFields" xml:space="preserve">
+    <value>Fields can't be empty</value>
+  </data>
   <data name="FormLogin" xml:space="preserve">
     <value>Login</value>
   </data>
@@ -175,7 +178,7 @@
     <value>Record was removed</value>
   </data>
   <data name="TapToCopyToolTip" xml:space="preserve">
-    <value>Tap to copy</value>
+    <value>Double click to copy</value>
   </data>
   <data name="TextCopiedToClipboardNotification" xml:space="preserve">
     <value>Copied to clipboard</value>

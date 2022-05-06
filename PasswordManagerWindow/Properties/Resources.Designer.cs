@@ -115,6 +115,15 @@ namespace PasswordManagerWindow.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Fields can&apos;t be empty.
+        /// </summary>
+        public static string FormFillAllFields {
+            get {
+                return ResourceManager.GetString("FormFillAllFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Login.
         /// </summary>
         public static string FormLogin {
@@ -232,7 +241,7 @@ namespace PasswordManagerWindow.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Tap to copy.
+        ///   Ищет локализованную строку, похожую на Double click to copy.
         /// </summary>
         public static string TapToCopyToolTip {
             get {

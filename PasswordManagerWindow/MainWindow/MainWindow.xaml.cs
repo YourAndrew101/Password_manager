@@ -88,21 +88,21 @@ namespace PasswordManager.MainWindow
         }
         private void Home_Checked(object sender, RoutedEventArgs e)
         {
-            DoubleAnimation da = new DoubleAnimation(0, new Duration(TimeSpan.FromSeconds(0.2)));
+            DoubleAnimation da = new DoubleAnimation(0, new Duration(TimeSpan.FromSeconds(0.3)));
             Axis.BeginAnimation(TranslateTransform.XProperty, da);
             MainFrame.Content = new Home();
         }
 
         private void Settings_Checked(object sender, RoutedEventArgs e)
         {
-            DoubleAnimation da = new DoubleAnimation(504, new Duration(TimeSpan.FromSeconds(0.2)));
+            DoubleAnimation da = new DoubleAnimation(504, new Duration(TimeSpan.FromSeconds(0.3)));
             Axis.BeginAnimation(TranslateTransform.XProperty, da);
             MainFrame.Content = new Settings();
         }
 
         private void Account_Checked(object sender, RoutedEventArgs e)
         {
-            DoubleAnimation da = new DoubleAnimation(1008, new Duration(TimeSpan.FromSeconds(0.2)));
+            DoubleAnimation da = new DoubleAnimation(1008, new Duration(TimeSpan.FromSeconds(0.3)));
             Axis.BeginAnimation(TranslateTransform.XProperty, da);
             MainFrame.Content = new Account();
         }
