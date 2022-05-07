@@ -15,7 +15,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Services;
 
-namespace PasswordManager.Auth
+namespace PasswordManager.AuthenticationWindow.Pages
 {
     /// <summary>
     /// Логика взаимодействия для PasswordReset.xaml

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PasswordManagerWindow.Models
+namespace PasswordManager.MainWindow.Models
 {
     public class BaseModel : INotifyPropertyChanged
     {

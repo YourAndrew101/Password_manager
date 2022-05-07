@@ -18,7 +18,7 @@ using Services;
 using UsersLibrary;
 using UsersLibrary.Settings;
 
-namespace PasswordManager.Auth
+namespace PasswordManager.AuthenticationWindow.Pages
 {
     /// <summary>
     /// Логика взаимодействия для EmailConfirmation.xaml

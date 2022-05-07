@@ -20,7 +20,7 @@ using UsersLibrary;
 using UsersLibrary.Settings;
 using static UsersLibrary.UsersExceptions;
 
-namespace PasswordManager.Auth
+namespace PasswordManager.AuthenticationWindow.Pages
 {
     /// <summary>
     /// Логика взаимодействия для Signup.xaml

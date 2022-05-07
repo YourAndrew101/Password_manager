@@ -15,7 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using PasswordManager.Services;
 
-namespace PasswordManager.Auth
+namespace PasswordManager.AuthenticationWindow
 {
     /// <summary>
     /// Логика взаимодействия для Auth.xaml

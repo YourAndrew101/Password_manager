@@ -16,10 +16,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PasswordManager.MainWindow;
-using PasswordManagerWindow.Models;
 using PasswordManagerWindow.ViewModels;
 
-namespace PasswordManagerWindow.Pages
+namespace PasswordManager.MainWindow.Pages
 {
     /// <summary>
     /// Логика взаимодействия для Home.xaml

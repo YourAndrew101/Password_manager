@@ -19,7 +19,7 @@ using System.Configuration;
 using static UsersLibrary.UsersExceptions;
 using Services;
 
-namespace PasswordManager.Auth
+namespace PasswordManager.AuthenticationWindow.Pages
 {
     public partial class Login : Page
     {
