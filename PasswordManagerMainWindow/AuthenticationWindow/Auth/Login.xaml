@@ -139,12 +139,14 @@
                   VerticalAlignment="Bottom"
                   Style="{StaticResource RememberMeCheckBoxStyle}"/>
 
-        <Button x:Name="SubmitButton" Grid.Column="1"
+        <Button x:Name="SubmitButton" 
+                Grid.Column="1"
                 Grid.Row="11"
                 Content="{x:Static res:Resources.Log_In}"
                 Width="160"
                 Height="50" 
                 Style="{StaticResource SubmitButtonStyle}" 
+                HorizontalAlignment="Left"
                 Click="SubmitButton_Click"/>
 
         <TextBlock x:Name="ResetPasswordTextBlock"
