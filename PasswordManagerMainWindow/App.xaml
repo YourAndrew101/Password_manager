@@ -9,9 +9,10 @@
                 <ResourceDictionary Source="AuthenticationWindow/Styles/LoginPageStyles.xaml" />
                 <ResourceDictionary Source="AuthenticationWindow/Styles/SignUpPageStyles.xaml" />
                 <ResourceDictionary Source="AuthenticationWindow/Styles/ResetPasswordStyles.xaml"/>
-                <ResourceDictionary Source="Styles/MainStyles.xaml"/>
                 <ResourceDictionary Source="AuthenticationWindow/Themes/DarkTheme.xaml"/>
-                <ResourceDictionary Source="Themes/MainWindowThemes/DarkTheme.xaml"/>
+
+                <ResourceDictionary Source="MainWindow/Styles/MainStyles.xaml"/>
+                <ResourceDictionary Source="MainWindow/Themes/DarkTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
