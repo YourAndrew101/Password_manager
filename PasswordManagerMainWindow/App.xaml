@@ -1,19 +1,17 @@
 ﻿<Application x:Class="PasswordManager.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             StartupUri="Auth/Auth.xaml">
+             StartupUri="AuthenticationWindow/Auth/Auth.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Styles/MainPageStyles.xaml" />
                 <ResourceDictionary Source="Styles/LoginPageStyles.xaml" />
                 <ResourceDictionary Source="Styles/SignUpPageStyles.xaml" />
-                <!--<ResourceDictionary Source="Styles/authstyles.xaml" />-->
-
-
-                <!--<ResourceDictionary Source="Themes/WhiteTheme.xaml"/>-->
-                <ResourceDictionary Source="Themes/DarkTheme.xaml"/>
                 <ResourceDictionary Source="Styles/ResetPasswordStyles.xaml"/>
+                <ResourceDictionary Source="Styles/MainStyles.xaml"/>
+                <ResourceDictionary Source="Themes/AuthenticationWindowThemes/DarkTheme.xaml"/>
+                <ResourceDictionary Source="Themes/MainWindowThemes/DarkTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

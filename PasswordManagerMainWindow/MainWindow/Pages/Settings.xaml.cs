@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,25 +10,19 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PasswordManager.Auth
+namespace PasswordManagerWindow.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для Auth.xaml
+    /// Логика взаимодействия для Settings.xaml
     /// </summary>
-    public partial class Auth : Window
+    public partial class Settings : Page
     {
-        public Auth()
+        public Settings()
         {
-            
             InitializeComponent();
-            AuthFrame.Content = new Login();
-        }
-
-        public void CloseWindow(object sender, RoutedEventArgs e)
-        {
-            Close();
         }
     }
 }

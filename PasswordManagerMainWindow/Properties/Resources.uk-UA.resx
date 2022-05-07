@@ -117,8 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddFormHeader" xml:space="preserve">
+    <value>Додати запис</value>
+  </data>
   <data name="CreateNewAccount" xml:space="preserve">
     <value>Створити новий акаунт</value>
+  </data>
+  <data name="DataGridLogin" xml:space="preserve">
+    <value>Логін</value>
+  </data>
+  <data name="DataGridPassword" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="DataGridResource" xml:space="preserve">
+    <value>Ресурс</value>
+  </data>
+  <data name="EditFormHeader" xml:space="preserve">
+    <value>Редагувати запис</value>
   </data>
   <data name="EmailAuth" xml:space="preserve">
     <value>Пошта</value>
@@ -141,8 +156,35 @@
   <data name="FillAllFields" xml:space="preserve">
     <value>Будь ласка, заповніть усі наступні поля</value>
   </data>
+  <data name="FormCancel" xml:space="preserve">
+    <value>Відмінити</value>
+  </data>
+  <data name="FormFillAllFields" xml:space="preserve">
+    <value>Поля не можуть бути пустими</value>
+  </data>
+  <data name="FormLogin" xml:space="preserve">
+    <value>Логін</value>
+  </data>
+  <data name="FormPassword" xml:space="preserve">
+    <value>Пароль</value>
+  </data>
+  <data name="FormRecource" xml:space="preserve">
+    <value>Ресурс</value>
+  </data>
+  <data name="FormSecondaryHeader" xml:space="preserve">
+    <value>Будь ласка, заповніть усі наступні поля</value>
+  </data>
+  <data name="FormSubmit" xml:space="preserve">
+    <value>Підтвердити</value>
+  </data>
+  <data name="FormSuggestPassword" xml:space="preserve">
+    <value>Використати запропонований пароль</value>
+  </data>
   <data name="Greetings" xml:space="preserve">
     <value>Ласкаво просимо!</value>
+  </data>
+  <data name="HomeHeader" xml:space="preserve">
+    <value>Головна</value>
   </data>
   <data name="IncorrectPassword" xml:space="preserve">
     <value>Неправильний пароль</value>
@@ -189,6 +231,15 @@
   <data name="PasswordResetWrongCode" xml:space="preserve">
     <value>Введено невірний код</value>
   </data>
+  <data name="PlaceholderSearch" xml:space="preserve">
+    <value>Пошук паролів</value>
+  </data>
+  <data name="PopupMenuEdit" xml:space="preserve">
+    <value>Редагувати</value>
+  </data>
+  <data name="PopupMenuRemove" xml:space="preserve">
+    <value>Видалити</value>
+  </data>
   <data name="PswdNormal" xml:space="preserve">
     <value>Пароль нормальний</value>
   </data>
@@ -204,6 +255,15 @@
   <data name="PswdWeak" xml:space="preserve">
     <value>Пароль слабкий</value>
   </data>
+  <data name="RecordAddedNotification" xml:space="preserve">
+    <value>Запис було додано</value>
+  </data>
+  <data name="RecordEditedNotification" xml:space="preserve">
+    <value>Запис було відредаговано</value>
+  </data>
+  <data name="RecordRemovedNotification" xml:space="preserve">
+    <value>Запис було видалено</value>
+  </data>
   <data name="RememberMe" xml:space="preserve">
     <value>Запам'ятати мене</value>
   </data>
@@ -212,6 +272,12 @@
   </data>
   <data name="SignUp" xml:space="preserve">
     <value>Зареєструватися</value>
+  </data>
+  <data name="TapToCopyToolTip" xml:space="preserve">
+    <value>Подвійний клік, щоб скопіювати</value>
+  </data>
+  <data name="TextCopiedToClipboardNotification" xml:space="preserve">
+    <value>Скопійовано в буфер обміну</value>
   </data>
   <data name="UserExists" xml:space="preserve">
     <value>Користувач уже існує</value>

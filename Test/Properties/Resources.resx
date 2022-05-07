@@ -118,171 +118,66 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AddFormHeader" xml:space="preserve">
-    <value>Добавить запись</value>
-  </data>
-  <data name="CreateNewAccount" xml:space="preserve">
-    <value>Создать новый аккаунт</value>
+    <value>Add a record</value>
   </data>
   <data name="DataGridLogin" xml:space="preserve">
-    <value>Логин</value>
+    <value>Login</value>
   </data>
   <data name="DataGridPassword" xml:space="preserve">
-    <value>Пароль</value>
+    <value>Password</value>
   </data>
   <data name="DataGridResource" xml:space="preserve">
-    <value>Ресурс</value>
+    <value>Resource</value>
   </data>
   <data name="EditFormHeader" xml:space="preserve">
-    <value>Редактировать запись</value>
-  </data>
-  <data name="EmailAuth" xml:space="preserve">
-    <value>Почта</value>
-  </data>
-  <data name="EmailConfirmationConfirm" xml:space="preserve">
-    <value>Подтвердить</value>
-  </data>
-  <data name="EmailConfirmationHint" xml:space="preserve">
-    <value>Введите код, который вы получили по почте</value>
-  </data>
-  <data name="EmailConfirmationTitle" xml:space="preserve">
-    <value>Подтвердите почту</value>
-  </data>
-  <data name="EmailRequest" xml:space="preserve">
-    <value>Введите Email</value>
-  </data>
-  <data name="EnterValidEmail" xml:space="preserve">
-    <value>Введите правильный Email</value>
-  </data>
-  <data name="FillAllFields" xml:space="preserve">
-    <value>Пожалуйста заполните все следующие поля</value>
+    <value>Edit a record</value>
   </data>
   <data name="FormCancel" xml:space="preserve">
-    <value>Отменить</value>
-  </data>
-  <data name="FormFillAllFields" xml:space="preserve">
-    <value>Поля не могут быть пустыми</value>
+    <value>Cancel</value>
   </data>
   <data name="FormLogin" xml:space="preserve">
-    <value>Логин</value>
+    <value>Login</value>
   </data>
   <data name="FormPassword" xml:space="preserve">
-    <value>Пароль</value>
+    <value>Password</value>
   </data>
   <data name="FormRecource" xml:space="preserve">
-    <value>Ресурс</value>
+    <value>Recource</value>
   </data>
   <data name="FormSecondaryHeader" xml:space="preserve">
-    <value>Заполните следующие поля</value>
+    <value>Please fiil all following fields</value>
   </data>
   <data name="FormSubmit" xml:space="preserve">
-    <value>Подтвердить</value>
+    <value>Confirm</value>
   </data>
   <data name="FormSuggestPassword" xml:space="preserve">
-    <value>Использовать предложеный пароль</value>
-  </data>
-  <data name="Greetings" xml:space="preserve">
-    <value>Добро пожаловать!</value>
+    <value>Use suggested password</value>
   </data>
   <data name="HomeHeader" xml:space="preserve">
-    <value>Главная</value>
-  </data>
-  <data name="IncorrectPassword" xml:space="preserve">
-    <value>Неверный пароль</value>
-  </data>
-  <data name="Login" xml:space="preserve">
-    <value>Логин</value>
-  </data>
-  <data name="LoginRequest" xml:space="preserve">
-    <value>Пожалуйста ввойдите в Ваш аккаунт</value>
-  </data>
-  <data name="Log_In" xml:space="preserve">
-    <value>Войти</value>
-  </data>
-  <data name="Password" xml:space="preserve">
-    <value>Пароль</value>
-  </data>
-  <data name="PasswordRequest" xml:space="preserve">
-    <value>Введите пароль</value>
-  </data>
-  <data name="PasswordResetBack" xml:space="preserve">
-    <value>Назад</value>
-  </data>
-  <data name="PasswordResetCode" xml:space="preserve">
-    <value>Код подтвердждения</value>
-  </data>
-  <data name="PasswordResetConfirm" xml:space="preserve">
-    <value>Подтвердить</value>
-  </data>
-  <data name="PasswordResetEmail" xml:space="preserve">
-    <value>Почта</value>
-  </data>
-  <data name="PasswordResetHint" xml:space="preserve">
-    <value>Заполните следующие поля</value>
-  </data>
-  <data name="PasswordResetNewPassword" xml:space="preserve">
-    <value>Новый пароль</value>
-  </data>
-  <data name="PasswordResetSendCode" xml:space="preserve">
-    <value>Отправить код</value>
-  </data>
-  <data name="PasswordResetTitle" xml:space="preserve">
-    <value>Сброс пароля</value>
-  </data>
-  <data name="PasswordResetWrongCode" xml:space="preserve">
-    <value>Введён неверный код</value>
+    <value>Home</value>
   </data>
   <data name="PlaceholderSearch" xml:space="preserve">
-    <value>Поиск паролей</value>
+    <value>Search for passwords</value>
   </data>
   <data name="PopupMenuEdit" xml:space="preserve">
-    <value>Редактировать</value>
+    <value>Edit</value>
   </data>
   <data name="PopupMenuRemove" xml:space="preserve">
-    <value>Удалить</value>
-  </data>
-  <data name="PswdNormal" xml:space="preserve">
-    <value>Нормальный пароль</value>
-  </data>
-  <data name="PswdStrong" xml:space="preserve">
-    <value>Надёжный пароль</value>
-  </data>
-  <data name="PswdVeryStrong" xml:space="preserve">
-    <value>Очень надёжный пароль</value>
-  </data>
-  <data name="PswdVeryWeak" xml:space="preserve">
-    <value>Очень слабый пароль</value>
-  </data>
-  <data name="PswdWeak" xml:space="preserve">
-    <value>Слабый пароль</value>
+    <value>Remove</value>
   </data>
   <data name="RecordAddedNotification" xml:space="preserve">
-    <value>Запись была добавлена</value>
+    <value>Record was added</value>
   </data>
   <data name="RecordEditedNotification" xml:space="preserve">
-    <value>Запись была отредактирована</value>
+    <value>Record was edited</value>
   </data>
   <data name="RecordRemovedNotification" xml:space="preserve">
-    <value>Запись была удалена</value>
-  </data>
-  <data name="RememberMe" xml:space="preserve">
-    <value>Запомнить меня</value>
-  </data>
-  <data name="ResetPassword" xml:space="preserve">
-    <value>Сбросить пароль</value>
-  </data>
-  <data name="SignUp" xml:space="preserve">
-    <value>Зарегистроваться</value>
+    <value>Record was removed</value>
   </data>
   <data name="TapToCopyToolTip" xml:space="preserve">
-    <value>Двойной клик чтобы скопировать</value>
+    <value>Tap to copy</value>
   </data>
   <data name="TextCopiedToClipboardNotification" xml:space="preserve">
-    <value>Скопировано в буфер обмена</value>
-  </data>
-  <data name="UserExists" xml:space="preserve">
-    <value>Пользователь уже существует</value>
-  </data>
-  <data name="UserNotExists" xml:space="preserve">
-    <value>Пользователь не существует</value>
+    <value>Copied to clipboard</value>
   </data>
 </root>

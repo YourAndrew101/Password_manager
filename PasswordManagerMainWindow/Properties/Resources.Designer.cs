@@ -61,11 +61,56 @@ namespace PasswordManager.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Add a record.
+        /// </summary>
+        public static string AddFormHeader {
+            get {
+                return ResourceManager.GetString("AddFormHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Create new account.
         /// </summary>
         public static string CreateNewAccount {
             get {
                 return ResourceManager.GetString("CreateNewAccount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Login.
+        /// </summary>
+        public static string DataGridLogin {
+            get {
+                return ResourceManager.GetString("DataGridLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Password.
+        /// </summary>
+        public static string DataGridPassword {
+            get {
+                return ResourceManager.GetString("DataGridPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Resource.
+        /// </summary>
+        public static string DataGridResource {
+            get {
+                return ResourceManager.GetString("DataGridResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Edit a record.
+        /// </summary>
+        public static string EditFormHeader {
+            get {
+                return ResourceManager.GetString("EditFormHeader", resourceCulture);
             }
         }
         
@@ -133,11 +178,92 @@ namespace PasswordManager.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Cancel.
+        /// </summary>
+        public static string FormCancel {
+            get {
+                return ResourceManager.GetString("FormCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Fields can&apos;t be empty.
+        /// </summary>
+        public static string FormFillAllFields {
+            get {
+                return ResourceManager.GetString("FormFillAllFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Login.
+        /// </summary>
+        public static string FormLogin {
+            get {
+                return ResourceManager.GetString("FormLogin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Password.
+        /// </summary>
+        public static string FormPassword {
+            get {
+                return ResourceManager.GetString("FormPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Recource.
+        /// </summary>
+        public static string FormRecource {
+            get {
+                return ResourceManager.GetString("FormRecource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Please fiil all following fields.
+        /// </summary>
+        public static string FormSecondaryHeader {
+            get {
+                return ResourceManager.GetString("FormSecondaryHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Confirm.
+        /// </summary>
+        public static string FormSubmit {
+            get {
+                return ResourceManager.GetString("FormSubmit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Use suggested password.
+        /// </summary>
+        public static string FormSuggestPassword {
+            get {
+                return ResourceManager.GetString("FormSuggestPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Welcome!.
         /// </summary>
         public static string Greetings {
             get {
                 return ResourceManager.GetString("Greetings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Home.
+        /// </summary>
+        public static string HomeHeader {
+            get {
+                return ResourceManager.GetString("HomeHeader", resourceCulture);
             }
         }
         
@@ -277,6 +403,33 @@ namespace PasswordManager.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Search for passwords.
+        /// </summary>
+        public static string PlaceholderSearch {
+            get {
+                return ResourceManager.GetString("PlaceholderSearch", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Edit.
+        /// </summary>
+        public static string PopupMenuEdit {
+            get {
+                return ResourceManager.GetString("PopupMenuEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Remove.
+        /// </summary>
+        public static string PopupMenuRemove {
+            get {
+                return ResourceManager.GetString("PopupMenuRemove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Password normal.
         /// </summary>
         public static string PswdNormal {
@@ -322,6 +475,33 @@ namespace PasswordManager.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Record was added.
+        /// </summary>
+        public static string RecordAddedNotification {
+            get {
+                return ResourceManager.GetString("RecordAddedNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Record was edited.
+        /// </summary>
+        public static string RecordEditedNotification {
+            get {
+                return ResourceManager.GetString("RecordEditedNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Record was removed.
+        /// </summary>
+        public static string RecordRemovedNotification {
+            get {
+                return ResourceManager.GetString("RecordRemovedNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Remember me.
         /// </summary>
         public static string RememberMe {
@@ -345,6 +525,24 @@ namespace PasswordManager.Properties {
         public static string SignUp {
             get {
                 return ResourceManager.GetString("SignUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Double click to copy.
+        /// </summary>
+        public static string TapToCopyToolTip {
+            get {
+                return ResourceManager.GetString("TapToCopyToolTip", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Copied to clipboard.
+        /// </summary>
+        public static string TextCopiedToClipboardNotification {
+            get {
+                return ResourceManager.GetString("TextCopiedToClipboardNotification", resourceCulture);
             }
         }
         

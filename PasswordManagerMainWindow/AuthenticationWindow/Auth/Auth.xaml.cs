@@ -38,7 +38,7 @@ namespace PasswordManager.Auth
         {
             ThemesService.Themes theme = ThemesService.GetSystemTheme();
 
-            ResourceDictionary dict = new ResourceDictionary { Source = new Uri($"/Themes/{theme}Theme.xaml", UriKind.Relative) };
+            ResourceDictionary dict = new ResourceDictionary { Source = new Uri($"/Themes/AuthenticationWindowThemes/{theme}Theme.xaml", UriKind.Relative) };
             Application.Current.Resources.MergedDictionaries.Add(dict);
         }
 

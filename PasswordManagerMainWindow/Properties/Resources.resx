@@ -117,8 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AddFormHeader" xml:space="preserve">
+    <value>Add a record</value>
+  </data>
   <data name="CreateNewAccount" xml:space="preserve">
     <value>Create new account</value>
+  </data>
+  <data name="DataGridLogin" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="DataGridPassword" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="DataGridResource" xml:space="preserve">
+    <value>Resource</value>
+  </data>
+  <data name="EditFormHeader" xml:space="preserve">
+    <value>Edit a record</value>
   </data>
   <data name="EmailAuth" xml:space="preserve">
     <value>Email</value>
@@ -141,8 +156,35 @@
   <data name="FillAllFields" xml:space="preserve">
     <value>Please fill all folowing fields</value>
   </data>
+  <data name="FormCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="FormFillAllFields" xml:space="preserve">
+    <value>Fields can't be empty</value>
+  </data>
+  <data name="FormLogin" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="FormPassword" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="FormRecource" xml:space="preserve">
+    <value>Recource</value>
+  </data>
+  <data name="FormSecondaryHeader" xml:space="preserve">
+    <value>Please fiil all following fields</value>
+  </data>
+  <data name="FormSubmit" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="FormSuggestPassword" xml:space="preserve">
+    <value>Use suggested password</value>
+  </data>
   <data name="Greetings" xml:space="preserve">
     <value>Welcome!</value>
+  </data>
+  <data name="HomeHeader" xml:space="preserve">
+    <value>Home</value>
   </data>
   <data name="IncorrectPassword" xml:space="preserve">
     <value>Incorrect password</value>
@@ -189,6 +231,15 @@
   <data name="PasswordResetWrongCode" xml:space="preserve">
     <value>Invalid code entered</value>
   </data>
+  <data name="PlaceholderSearch" xml:space="preserve">
+    <value>Search for passwords</value>
+  </data>
+  <data name="PopupMenuEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="PopupMenuRemove" xml:space="preserve">
+    <value>Remove</value>
+  </data>
   <data name="PswdNormal" xml:space="preserve">
     <value>Password normal</value>
   </data>
@@ -204,6 +255,15 @@
   <data name="PswdWeak" xml:space="preserve">
     <value>Password weak</value>
   </data>
+  <data name="RecordAddedNotification" xml:space="preserve">
+    <value>Record was added</value>
+  </data>
+  <data name="RecordEditedNotification" xml:space="preserve">
+    <value>Record was edited</value>
+  </data>
+  <data name="RecordRemovedNotification" xml:space="preserve">
+    <value>Record was removed</value>
+  </data>
   <data name="RememberMe" xml:space="preserve">
     <value>Remember me</value>
   </data>
@@ -212,6 +272,12 @@
   </data>
   <data name="SignUp" xml:space="preserve">
     <value>Sign Up</value>
+  </data>
+  <data name="TapToCopyToolTip" xml:space="preserve">
+    <value>Double click to copy</value>
+  </data>
+  <data name="TextCopiedToClipboardNotification" xml:space="preserve">
+    <value>Copied to clipboard</value>
   </data>
   <data name="UserExists" xml:space="preserve">
     <value>User already exists</value>

@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PasswordManager.Auth
+namespace PasswordManagerWindow.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для PasswordReset.xaml
+    /// Логика взаимодействия для Account.xaml
     /// </summary>
-    public partial class PasswordReset : Page
+    public partial class Account : Page
     {
-        public PasswordReset()
+        public Account()
         {
             InitializeComponent();
         }
