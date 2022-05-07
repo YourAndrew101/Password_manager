@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:res="clr-namespace:PasswordManagerWindow.Properties"
+                    xmlns:res="clr-namespace:PasswordManager.Properties"
                     >
 
     <SolidColorBrush x:Key="WindowButtonStyle.Static.Background" Color="{DynamicResource WindowButton.Static.Background}"/>
@@ -610,14 +610,14 @@
                             <ContentPresenter.ToolTip>
                                 <ToolTip ToolTipService.InitialShowDelay="10000"  Background="Transparent" Padding="0,0,0,0" BorderBrush="Transparent">
                                     <Border Background="{DynamicResource DataGridStyle.ToolTip.Background}"  CornerRadius="5" MinHeight="20" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" MaxWidth="100" Padding="5">
-                                        <!--<TextBlock Text="{x:Static res:Resources.TapToCopyToolTip}" 
+                                        <TextBlock Text="{x:Static res:Resources.TapToCopyToolTip}" 
                                                    FontFamily="Global Sans Serif" 
                                                    FontSize="12" 
                                                    HorizontalAlignment="Center" 
                                                    VerticalAlignment="Center" 
                                                    TextAlignment="Center" 
                                                    Foreground="{DynamicResource DataGridStyle.ToolTip.Foreground}" 
-                                                   TextWrapping="WrapWithOverflow"/>-->
+                                                   TextWrapping="WrapWithOverflow"/>
 
                                     </Border>
                                 </ToolTip>
