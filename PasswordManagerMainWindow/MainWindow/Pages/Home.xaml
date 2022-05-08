@@ -92,7 +92,7 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                            
-                            <Grid>
+                            <Grid x:Name="Content">
                                 <TextBlock Text="●●●●●●●" x:Name="HiddenPasswordTextBlock"/>
                                 <TextBlock Text="{Binding Path=Password}" x:Name="RevealedPasswordTextBlock" Visibility="Collapsed"/>
                                 <ToggleButton x:Name="RevealPassword" Checked="RevealPassword_Checked" Height="20" Width="20" VerticalAlignment="Center" HorizontalAlignment="Right"/>
@@ -232,12 +232,12 @@
                    FontWeight="Bold" 
                    />
 
-            <TextBox x:Name="PasswordTextBox" 
+            <TextBox x:Name="HiddenPasswordTextBox" 
                  Grid.Row="11" 
                  Grid.Column="1"
                  BorderThickness="2"                 
-                GotFocus="PasswordTextBox_GotFocus"
-                     LostFocus="PasswordTextBox_LostFocus"
+                GotFocus="HiddenPasswordTextBox_GotFocus"
+                     LostFocus="HiddenPasswordTextBox_LostFocus"
                  Style="{StaticResource TextBoxStyle}" 
                 
                  Height="40"  

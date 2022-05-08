@@ -108,21 +108,21 @@
                    FontFamily="Global Sans Serif" 
                    FontWeight="Bold" />
 
-        <components:BindablePasswordBox x:Name="PasswordTextBox" 
+        <components:BindablePasswordBox x:Name="HiddenPasswordTextBox" 
                                         Grid.Row="9" 
                                         Grid.Column="1" 
                                         Height="40"                
                                         Visibility="Visible"
-                                        Password="{Binding Text, ElementName=KindaPassword}"/>
+                                        Password="{Binding Text, ElementName=RevealedPasswordTextBox}"/>
 
-        <TextBox x:Name="KindaPasswordTextBox" 
+        <TextBox x:Name="RevealedPasswordTextBox" 
                  Grid.Row="9" 
                  Grid.Column="1" 
                  Height="40"        
                  Visibility="Collapsed"
                  Padding="5,0,30,0"
                  Style="{StaticResource EmailTextBoxStyle}"   
-                 Text="{Binding Password, ElementName=PasswordTextBox}" 
+                 Text="{Binding Password, ElementName=HiddenPasswordTextBox}" 
                  TextChanged="KindaPassword_TextChanged"/>
 
         <ToggleButton x:Name="ShowPasswordToggleButton"

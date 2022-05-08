@@ -99,4 +99,8 @@
     <Color x:Key="DataGrid.PopUpMenuItem.IsMouseOver.Background">#414447</Color>
     <Color x:Key="DataGrid.PopUpMenuItem.IsPressed.Background">#56595c</Color>
     <Color x:Key="DataGrid.DropDownBorder.BorderBrush">#7289da</Color>
+
+
+    <ImageSource x:Key="ClosedEye">/MainWindow/Assets/closed_eye_white.png</ImageSource>
+    <ImageSource x:Key="OpenEye">/MainWindow/Assets/eye_white.png</ImageSource>
 </ResourceDictionary>

@@ -126,7 +126,7 @@ namespace PasswordManager.MainWindow.Pages
 
         }
 
-        private void PasswordTextBox_GotFocus(object sender, RoutedEventArgs e)
+        private void HiddenPasswordTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
             SuggestPassword.Visibility = Visibility.Visible;
             DoubleAnimation suggestionApperingAnimation = new DoubleAnimation()
@@ -139,7 +139,7 @@ namespace PasswordManager.MainWindow.Pages
             SuggestPassword.BeginAnimation(OpacityProperty, suggestionApperingAnimation);
         }
 
-        private void PasswordTextBox_LostFocus(object sender, RoutedEventArgs e)
+        private void HiddenPasswordTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
             DoubleAnimation suggestionDisapperingAnimation = new DoubleAnimation()
             {
@@ -159,16 +159,16 @@ namespace PasswordManager.MainWindow.Pages
 
         private void SuggestPassword_Click(object sender, RoutedEventArgs e)
         {
-            PasswordTextBox.Text = "test password";
+            HiddenPasswordTextBox.Text = "test password";
         }
 
         private void FormSubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(ResourceTextBox.Text) && !string.IsNullOrEmpty(LoginTextBox.Text) && !string.IsNullOrEmpty(PasswordTextBox.Text))
+            if (!string.IsNullOrEmpty(ResourceTextBox.Text) && !string.IsNullOrEmpty(LoginTextBox.Text) && !string.IsNullOrEmpty(HiddenPasswordTextBox.Text))
             {
                 if (string.IsNullOrEmpty(IdTextBox.Text))
                 {
-                    dataVM.AuthenticationDataViewModels.Add(new Models.AuthenticationData(ResourceTextBox.Text, LoginTextBox.Text, PasswordTextBox.Text));
+                    dataVM.AuthenticationDataViewModels.Add(new Models.AuthenticationData(ResourceTextBox.Text, LoginTextBox.Text, HiddenPasswordTextBox.Text));
                     FormClosingAnimation();
                     ShowNotification(Properties.Resources.RecordAddedNotification);
 
@@ -178,7 +178,7 @@ namespace PasswordManager.MainWindow.Pages
                     int index = int.Parse(IdTextBox.Text);
                     dataVM.AuthenticationDataViewModels[index].Resource = ResourceTextBox.Text;
                     dataVM.AuthenticationDataViewModels[index].Login = LoginTextBox.Text;
-                    dataVM.AuthenticationDataViewModels[index].Password = PasswordTextBox.Text;
+                    dataVM.AuthenticationDataViewModels[index].Password = HiddenPasswordTextBox.Text;
                     FormClosingAnimation();
                     ShowNotification(Properties.Resources.RecordEditedNotification);
 
@@ -196,7 +196,7 @@ namespace PasswordManager.MainWindow.Pages
         {
             ResourceTextBox.Text = string.Empty;
             LoginTextBox.Text = string.Empty;
-            PasswordTextBox.Text = string.Empty;
+            HiddenPasswordTextBox.Text = string.Empty;
         }
        private Storyboard sb = new Storyboard();
         private void ShowNotification(string NotificationMessage)
@@ -278,9 +278,21 @@ namespace PasswordManager.MainWindow.Pages
         }
         private void CopyCellText(object sender, MouseButtonEventArgs e)
         {
-            string cellText = ((TextBlock)((DataGridCell)sender).Content).Text;
-            Clipboard.SetText(cellText);
-            ShowNotification(Properties.Resources.TextCopiedToClipboardNotification);
+            //DataGridCell cell = (DataGridCell)sender;
+            //string cellText;
+            //int row = MainDataGrid.Items.IndexOf(cell);
+         
+            //if (((DataGridCell)sender).Column.DisplayIndex == 2)
+            //{
+            //    cellText = ((AuthenticationData)cell.DataContext).Password;
+             
+            //}
+            //else
+            //{
+            //    cellText = ((TextBlock)cell.Content).Text;
+            //}
+            //Clipboard.SetText(cellText);
+            //ShowNotification(Properties.Resources.TextCopiedToClipboardNotification);
         }
 
         private void PopupMenuButton_Click(object sender, RoutedEventArgs e)
@@ -301,7 +313,7 @@ namespace PasswordManager.MainWindow.Pages
             int index = MainDataGrid.Items.IndexOf(item);
             ResourceTextBox.Text = item.Resource;
             LoginTextBox.Text = item.Login;
-            PasswordTextBox.Text = item.Password;
+            HiddenPasswordTextBox.Text = item.Password;
             IdTextBox.Text = index.ToString();
             FormOpeninganimation();
         }

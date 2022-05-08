@@ -42,6 +42,7 @@ namespace PasswordManager.MainWindow
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
             Home.IsChecked = true;
+            MaximizeWindow.IsChecked = true;
         }
 
         private void SetColorTheme()
