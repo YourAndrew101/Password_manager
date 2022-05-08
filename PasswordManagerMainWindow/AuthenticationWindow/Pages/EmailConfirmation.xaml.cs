@@ -35,8 +35,8 @@ namespace PasswordManager.AuthenticationWindow.Pages
             }
         }
 
-        EMailService _eMailService;
-        User _user;
+        private EMailService _eMailService;
+        private readonly User _user;
 
         public EmailConfirmation(User user)
         {
@@ -57,6 +57,8 @@ namespace PasswordManager.AuthenticationWindow.Pages
             if(_eMailService.ConfirmationCode == CurrentConfirmationCode)
             {
                 //UsersService.AddUser(_user);
+
+                SettingsService.SaveSettings(new Settings(_user));
 
                 ((AuthenticationWindow)Window.GetWindow(this)).StartMainWindow(_user);
             }

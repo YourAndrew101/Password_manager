@@ -29,7 +29,7 @@ namespace PasswordManager.AuthenticationWindow.Pages
         private string Email { get => EmailTextBox.Text; } 
         private string Password { get => HiddenPasswordTextBox.Password; }
 
-        private bool? RemmemberMeFlag { get => RemmemberMeCheckBox.IsChecked; }
+        private bool? RememberMeFlag { get => RememberMeCheckBox.IsChecked; }
 
         public Login()
         {
@@ -56,7 +56,7 @@ namespace PasswordManager.AuthenticationWindow.Pages
                 throw;
             }
 
-            if (RemmemberMeFlag == true) SettingsService.SaveSignUpSettings(new Settings(_user));
+            if (RememberMeFlag == true) SettingsService.SaveSettings(new Settings(_user));
 
             ((AuthenticationWindow)Window.GetWindow(this)).StartMainWindow(_user);
         }

@@ -27,14 +27,14 @@ namespace PasswordManager.AuthenticationWindow.Pages
     /// </summary>
     public partial class Signup : Page
     {
-        private string Password { get =>RevealedPasswordTextBox.Text; }
+        private string Password { get => RevealedPasswordTextBox.Text; }
         private string Email { get => EmailTextBox.Text; }
 
         private string PasswordComplexityText { set => PasswordComplexityTextBlock.Text = value; }
         private Brush PasswordComplexityTextColor { set => PasswordComplexityTextBlock.Foreground = value; }
 
         private string ErrorMessage
-        { 
+        {
             set
             {
                 AuthErrorTextBlock.Visibility = Visibility.Visible;
@@ -113,6 +113,7 @@ namespace PasswordManager.AuthenticationWindow.Pages
             else ShowPasswordToggleButton.Visibility = Visibility.Visible;
         }
 
+        //TODO rewrite
         private void SetPasswordComplexity(PasswordScore passwordScore)
         {
             switch (passwordScore)
@@ -171,11 +172,11 @@ namespace PasswordManager.AuthenticationWindow.Pages
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
             HiddenPasswordTextBox.Visibility = Visibility.Collapsed;
-           RevealedPasswordTextBox.Visibility = Visibility.Visible;
+            RevealedPasswordTextBox.Visibility = Visibility.Visible;
         }
         private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
-           RevealedPasswordTextBox.Visibility = Visibility.Collapsed;
+            RevealedPasswordTextBox.Visibility = Visibility.Collapsed;
             HiddenPasswordTextBox.Visibility = Visibility.Visible;
         }
 
@@ -197,8 +198,6 @@ namespace PasswordManager.AuthenticationWindow.Pages
                 }
                 throw;
             }
-
-            SettingsService.SaveSignUpSettings(new Settings(user));
 
             EmailConfirmation nextPage = new EmailConfirmation(user);
             NavigationService navService = NavigationService.GetNavigationService(this);

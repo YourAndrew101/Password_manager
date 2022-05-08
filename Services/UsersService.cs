@@ -43,7 +43,7 @@ namespace ServicesLibrary
                 connection.Open();
                 SqlCommand command = new SqlCommand(request, connection);
                 command.Parameters.AddWithValue("@EMail", user.Email);
-                command.Parameters.AddWithValue("@Password", user.AuthPassword);
+                command.Parameters.AddWithValue("@Password", user.HashAuthPassword);
                 command.Parameters.AddWithValue("@Salt", user.Salt);
 
                 command.ExecuteNonQuery();

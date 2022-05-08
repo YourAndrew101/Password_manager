@@ -27,27 +27,35 @@ namespace PasswordManager.AuthenticationWindow
         public AuthenticationWindow()
         {
             InitializeComponent();
-
-            //LaunchPreparation();
-
-            SetPage();
-            SetColorTheme();
+            LaunchPreparation();      
         }
 
-        //private void LaunchPreparation()
-        //{
-        //    if(InternetService.IsConnectedToInternet)
+        private void LaunchPreparation()
+        {
+            User user;
+            if (SettingsService.IsSavedUser)
+            {
+                user = (User)SettingsService.GetSettings();
+                StartMainWindow(user);
+            }
+            else
+            {
+                SetStartUpPage();
+                SetSystemColorTheme();
+            }
 
-        //}
+            //if(InternetService.IsConnectedToInternet)
+
+        }
 
 
 
-        private void SetPage()
+        private void SetStartUpPage()
         {
             AuthFrame.Content = new Login();
         }
 
-        private void SetColorTheme()
+        private void SetSystemColorTheme()
         {
             ThemesService.Themes theme = ThemesService.GetSystemTheme();
 
@@ -58,9 +66,9 @@ namespace PasswordManager.AuthenticationWindow
 
 
 
-        public void StartMainWindow(User _user)
+        public void StartMainWindow(User user)
         {
-            MainWindow.MainWindow mainWindow = new MainWindow.MainWindow(_user);
+            MainWindow.MainWindow mainWindow = new MainWindow.MainWindow(user);
             mainWindow.Show();
 
             CloseWindow(new object(), new RoutedEventArgs());
