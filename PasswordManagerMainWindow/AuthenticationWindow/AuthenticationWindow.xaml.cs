@@ -19,14 +19,14 @@ using UsersLibrary;
 
 namespace PasswordManager.AuthenticationWindow
 {
-    /// <summary>
-    /// Логика взаимодействия для AuthenticationWindow.xaml
-    /// </summary>
     public partial class AuthenticationWindow : Window
     {
         public AuthenticationWindow()
         {
             InitializeComponent();
+
+            //SettingsService.SaveEmptySettings();
+
             LaunchPreparation();      
         }
 

@@ -116,39 +116,31 @@ namespace PasswordManager.AuthenticationWindow.Pages
         //TODO rewrite
         private void SetPasswordComplexity(PasswordScore passwordScore)
         {
+            SolidColorBrush solidColorBrush;
             switch (passwordScore)
             {
                 case PasswordScore.VeryWeak:
-                    SolidColorBrush colorBrush = new SolidColorBrush(_veryWeakPasswordRectangleColor);
-                    SetPasswordComplexityText(Properties.Resources.PswdVeryWeak, colorBrush);
-                    SetPasswordComplexityRectangles(colorBrush, passwordScore);
+                    solidColorBrush = new SolidColorBrush(_veryWeakPasswordRectangleColor);                  
                     break;
                 case PasswordScore.Weak:
-                    colorBrush = new SolidColorBrush(_weakPasswordRectangleColor);
-                    SetPasswordComplexityText(Properties.Resources.PswdWeak, colorBrush);
-                    SetPasswordComplexityRectangles(colorBrush, passwordScore);
+                    solidColorBrush = new SolidColorBrush(_weakPasswordRectangleColor);
                     break;
                 case PasswordScore.Medium:
-                    colorBrush = new SolidColorBrush(_normalPasswordRectangleColor);
-                    SetPasswordComplexityText(Properties.Resources.PswdNormal, colorBrush);
-                    SetPasswordComplexityRectangles(colorBrush, passwordScore);
+                    solidColorBrush = new SolidColorBrush(_normalPasswordRectangleColor);
                     break;
                 case PasswordScore.Strong:
-                    colorBrush = new SolidColorBrush(_strongPasswordRectangleColor);
-                    SetPasswordComplexityText(Properties.Resources.PswdStrong, colorBrush);
-                    SetPasswordComplexityRectangles(colorBrush, passwordScore);
+                    solidColorBrush = new SolidColorBrush(_strongPasswordRectangleColor);
                     break;
                 case PasswordScore.VeryStrong:
-                    colorBrush = new SolidColorBrush(_veryStrongPasswordRectangleColor);
-                    SetPasswordComplexityText(Properties.Resources.PswdVeryStrong, colorBrush);
-                    SetPasswordComplexityRectangles(colorBrush, passwordScore);
+                    solidColorBrush = new SolidColorBrush(_veryStrongPasswordRectangleColor);
                     break;
                 default:
-                    colorBrush = new SolidColorBrush(_nullPasswordRectangleColor);
-                    SetPasswordComplexityText("", colorBrush);
-                    SetPasswordComplexityRectangles(colorBrush, passwordScore);
+                    solidColorBrush = new SolidColorBrush(_nullPasswordRectangleColor);
                     break;
             }
+
+            SetPasswordComplexityText(Properties.Resources.PswdVeryWeak, solidColorBrush);
+            SetPasswordComplexityRectangles(solidColorBrush, passwordScore);
         }
         private void SetPasswordComplexityText(string message, SolidColorBrush colorBrush)
         {

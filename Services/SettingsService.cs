@@ -30,7 +30,7 @@ namespace ServicesLibrary
             return new Settings(email, password, salt);
         }
 
-        public static void SaveNullSettings()
+        public static void SaveEmptySettings()
         {
             PasswordManager.Properties.Settings.Default.Email = "";
             PasswordManager.Properties.Settings.Default.Password = "";
