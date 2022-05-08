@@ -93,9 +93,9 @@
                         <DataTemplate>
                            
                             <Grid x:Name="Content">
-                                <TextBlock Text="●●●●●●●" x:Name="HiddenPasswordTextBlock"/>
-                                <TextBlock Text="{Binding Path=Password}" x:Name="RevealedPasswordTextBlock" Visibility="Collapsed"/>
-                                <ToggleButton x:Name="RevealPassword" Checked="RevealPassword_Checked" Height="20" Width="20" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+                                <TextBlock Text="●●●●●●●" x:Name="HiddenPasswordTextBlock" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding Path=Password}" x:Name="RevealedPasswordTextBlock" Visibility="Collapsed" VerticalAlignment="Center" Margin="0,0,30,0"/>
+                                <ToggleButton x:Name="RevealPassword" Checked="RevealPassword_Checked" Unchecked="RevealPassword_Unchecked" Height="25" Width="25" Style="{StaticResource RevealPasswordToggleButtonStyle}"/>
 
                             </Grid>
 
@@ -242,7 +242,7 @@
                 
                  Height="40"  
                  />
-            <Button x:Name="SuggestPassword" Content="{x:Static res:Resources.FormSuggestPassword}"  Height="30" Width="320" Grid.Column="1" Grid.Row="11" Grid.RowSpan="3" Style="{StaticResource SuggestPassword}" Click="SuggestPassword_Click"/>
+            <Button x:Name="SuggestPassword" Panel.ZIndex="1" Content="{x:Static res:Resources.FormSuggestPassword}"  Height="30" Width="320" Grid.Column="1" Grid.Row="11" Grid.RowSpan="3" Style="{StaticResource SuggestPassword}" Click="SuggestPassword_Click"/>
             <StackPanel Grid.Row="13" 
                     Grid.Column="1">
                 <DockPanel x:Name="PasswordComplexityPanel">

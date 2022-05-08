@@ -81,6 +81,7 @@ namespace PasswordManager.AuthenticationWindow.Pages
         {
             HiddenPasswordTextBox.Visibility = Visibility.Collapsed;
            RevealedPasswordTextBox.Visibility = Visibility.Visible;
+           
         }
         private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {

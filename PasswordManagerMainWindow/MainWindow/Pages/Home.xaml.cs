@@ -44,7 +44,7 @@ namespace PasswordManager.MainWindow.Pages
         private void FormOpeninganimation() { 
          AddEditForm.Visibility = Visibility.Visible;
             ShadowEffectHomePage.Visibility = Visibility.Visible;
-            ((MainWindow)App.Current.MainWindow).Shadow.Visibility = Visibility.Visible;
+          ((MainWindow) App.Current.Windows[0]).Shadow.Visibility = Visibility.Visible;
             DoubleAnimation formScaleAnimation = new DoubleAnimation()
             {
                 From = 1.2,
@@ -71,8 +71,8 @@ namespace PasswordManager.MainWindow.Pages
                 To = 0.75,
             };
             ShadowEffectHomePage.BeginAnimation(OpacityProperty, shadowAppearingAnimation);
-           
-            ((MainWindow)App.Current.MainWindow).Shadow.BeginAnimation(OpacityProperty, shadowAppearingAnimation);
+
+            ((MainWindow)App.Current.Windows[0]).Shadow.BeginAnimation(OpacityProperty, shadowAppearingAnimation);
             
         }
         private void CloseEditAddForm_Click(object sender, RoutedEventArgs e)
@@ -112,12 +112,12 @@ namespace PasswordManager.MainWindow.Pages
             };
             shadowDisappearingAnimation.Completed += ShadowDisappearingAnimation_Completed;
             ShadowEffectHomePage.BeginAnimation(OpacityProperty, shadowDisappearingAnimation);
-            ((MainWindow)App.Current.MainWindow).Shadow.BeginAnimation(OpacityProperty, shadowDisappearingAnimation);
+            ((MainWindow)App.Current.Windows[0]).Shadow.BeginAnimation(OpacityProperty, shadowDisappearingAnimation);
         }
         private void ShadowDisappearingAnimation_Completed(object sender, EventArgs e)
         {
             ShadowEffectHomePage.Visibility = Visibility.Collapsed;
-            ((MainWindow)App.Current.MainWindow).Shadow.Visibility = Visibility.Collapsed;
+            ((MainWindow)App.Current.Windows[0]).Shadow.Visibility = Visibility.Collapsed;
         }
 
         private void formDisapperingAnimation_Comleted(object sender, EventArgs e)
@@ -275,6 +275,14 @@ namespace PasswordManager.MainWindow.Pages
             HiddenPasswordTextBlock.Visibility = Visibility.Collapsed;
 
 
+        }
+        private void RevealPassword_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Grid parent = ((Grid)((ToggleButton)sender).Parent);
+            TextBlock RevealedPasswordTextBlock = (TextBlock)parent.FindName("RevealedPasswordTextBlock");
+            TextBlock HiddenPasswordTextBlock = (TextBlock)parent.FindName("HiddenPasswordTextBlock");
+            RevealedPasswordTextBlock.Visibility = Visibility.Collapsed;
+            HiddenPasswordTextBlock.Visibility = Visibility.Visible;
         }
         private void CopyCellText(object sender, MouseButtonEventArgs e)
         {
