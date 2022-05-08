@@ -49,7 +49,7 @@ namespace Services
                 command.ExecuteNonQuery();
             }
 
-            CreateUserServicesTable(user);
+            //CreateUserServicesTable(user);
         }
         private static void CreateUserServicesTable(User user)
         {

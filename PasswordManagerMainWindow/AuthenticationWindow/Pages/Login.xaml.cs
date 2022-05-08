@@ -54,10 +54,7 @@ namespace PasswordManager.AuthenticationWindow.Pages
                 throw;
             }
 
-            MainWindow.MainWindow mainWindow = new MainWindow.MainWindow(_user);
-            mainWindow.Show();
-            Window parentWindow = Window.GetWindow(this);
-            parentWindow.Close();
+            ((AuthenticationWindow)Window.GetWindow(this)).StartMainWindow(_user);
         }
 
         private bool CheckAuthData()
@@ -69,6 +66,7 @@ namespace PasswordManager.AuthenticationWindow.Pages
 
             return true;
         }
+
         //TODO функціонал запам'ятати мене
         private void SetErrorMessage(string message)
         {
@@ -92,6 +90,7 @@ namespace PasswordManager.AuthenticationWindow.Pages
         {
             SetShowPasswordToggleButton();
         }
+
         private void SetShowPasswordToggleButton()
         {
             if (string.IsNullOrEmpty(Password)) ShowPasswordToggleButton.Visibility = Visibility.Hidden;

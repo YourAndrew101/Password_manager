@@ -58,9 +58,7 @@ namespace PasswordManager.AuthenticationWindow.Pages
             {
                 UsersService.AddUser(_user);
 
-                MainWindow.MainWindow mainWindow = new MainWindow.MainWindow(_user);
-                mainWindow.Show();
-                Window.GetWindow(this).Close();
+                ((AuthenticationWindow)Window.GetWindow(this)).StartMainWindow(_user);
             }
             else
             {
