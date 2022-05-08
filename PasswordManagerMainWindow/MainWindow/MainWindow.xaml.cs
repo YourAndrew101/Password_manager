@@ -13,7 +13,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using PasswordManager.Services;
-using PasswordManagerWindow.Pages;
+using PasswordManager.MainWindow.Pages;
 using UsersLibrary;
 
 namespace PasswordManager.MainWindow
@@ -31,7 +31,7 @@ namespace PasswordManager.MainWindow
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
             Home.IsChecked = true;
-           
+
 
         }
 
@@ -41,13 +41,14 @@ namespace PasswordManager.MainWindow
             SetColorTheme();
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
+            Home.IsChecked = true;
         }
 
         private void SetColorTheme()
         {
             ThemesService.Themes theme = ThemesService.GetSystemTheme();
 
-            ResourceDictionary dict = new ResourceDictionary { Source = new Uri($"/Themes/MainWindowThemes/{theme}Theme.xaml", UriKind.Relative) };
+            ResourceDictionary dict = new ResourceDictionary { Source = new Uri($"/MainWindow/Themes/{theme}Theme.xaml", UriKind.Relative) };
             Application.Current.Resources.MergedDictionaries.Add(dict);
 
         }

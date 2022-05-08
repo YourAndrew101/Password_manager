@@ -66,8 +66,7 @@
     <Color x:Key="RememberMeCheckBox.Static.Glyph" >White</Color>
     <Color x:Key="RememberMeCheckBox.Foreground" >White</Color>
 
-    <ImageSource x:Key="ClosedEye">/Auth/Assets/closed_eye_white.png</ImageSource>
-    <ImageSource x:Key="OpenEye">/Auth/Assets/eye_white.png</ImageSource>
+ 
 
 
     <Color x:Key="NavmenuItem.Active.Foreground">#ffffff</Color>

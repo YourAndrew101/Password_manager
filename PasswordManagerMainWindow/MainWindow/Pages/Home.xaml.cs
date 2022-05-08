@@ -16,7 +16,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using PasswordManager.MainWindow;
-using PasswordManagerWindow.ViewModels;
+using PasswordManager.MainWindow.Models;
+using PasswordManager.MainWindow.ViewModels;
 
 namespace PasswordManager.MainWindow.Pages
 {
