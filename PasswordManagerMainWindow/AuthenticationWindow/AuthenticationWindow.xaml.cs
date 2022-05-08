@@ -14,24 +14,33 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using PasswordManager.AuthenticationWindow.Pages;
-using PasswordManager.Services;
+using ServicesLibrary;
 using UsersLibrary;
 
 namespace PasswordManager.AuthenticationWindow
 {
     /// <summary>
-    /// Логика взаимодействия для Auth.xaml
+    /// Логика взаимодействия для AuthenticationWindow.xaml
     /// </summary>
     public partial class AuthenticationWindow : Window
     {
         public AuthenticationWindow()
         {
             InitializeComponent();
+
+            //LaunchPreparation();
+
             SetPage();
             SetColorTheme();
-
-
         }
+
+        //private void LaunchPreparation()
+        //{
+        //    if(InternetService.IsConnectedToInternet)
+
+        //}
+
+
 
         private void SetPage()
         {
@@ -45,6 +54,8 @@ namespace PasswordManager.AuthenticationWindow
             ResourceDictionary dict = new ResourceDictionary { Source = new Uri($"AuthenticationWindow/Themes/{theme}Theme.xaml", UriKind.Relative) };
             Application.Current.Resources.MergedDictionaries.Add(dict);
         }
+
+
 
 
         public void StartMainWindow(User _user)

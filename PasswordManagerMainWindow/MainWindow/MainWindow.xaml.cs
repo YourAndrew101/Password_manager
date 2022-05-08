@@ -12,8 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using PasswordManager.Services;
 using PasswordManager.MainWindow.Pages;
+using ServicesLibrary;
 using UsersLibrary;
 
 namespace PasswordManager.MainWindow

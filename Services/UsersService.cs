@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using UsersLibrary;
 using static UsersLibrary.UsersExceptions;
 
-namespace Services
+namespace ServicesLibrary
 {
     public static class UsersService
     {
