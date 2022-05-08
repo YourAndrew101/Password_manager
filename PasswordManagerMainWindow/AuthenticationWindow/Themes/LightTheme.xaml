@@ -54,9 +54,9 @@
     <Color x:Key="RememberMeCheckBox.Foreground" >Black</Color>
 
 
-    <ImageSource x:Key="ClosedEye">/Auth/Assets/closed_eye.png</ImageSource>
-    <ImageSource x:Key="OpenEye">/Auth/Assets/eye.png</ImageSource>
+    <ImageSource x:Key="ClosedEye">/AuthenticationWindow/Assets/closed_eye.png</ImageSource>
+    <ImageSource x:Key="OpenEye">/AuthenticationWindow/Assets/eye.png</ImageSource>
 
-    
-    
+
+
 </ResourceDictionary>

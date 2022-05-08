@@ -26,7 +26,7 @@ namespace PasswordManager.AuthenticationWindow.Pages
         private User _user;
 
         private string Email { get => EmailTextBox.Text; } 
-        private string Password { get => PasswordTextBox.Password; }
+        private string Password { get => HiddenPasswordTextBox.Password; }
 
 
         public Login()
@@ -77,13 +77,13 @@ namespace PasswordManager.AuthenticationWindow.Pages
 
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
-            PasswordTextBox.Visibility = Visibility.Collapsed;
-            KindaPasswordTextBox.Visibility = Visibility.Visible;
+            HiddenPasswordTextBox.Visibility = Visibility.Collapsed;
+           RevealedPasswordTextBox.Visibility = Visibility.Visible;
         }
         private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
-            KindaPasswordTextBox.Visibility = Visibility.Collapsed;
-            PasswordTextBox.Visibility = Visibility.Visible;
+           RevealedPasswordTextBox.Visibility = Visibility.Collapsed;
+            HiddenPasswordTextBox.Visibility = Visibility.Visible;
         }
 
         private void KindaPassword_TextChanged(object sender, TextChangedEventArgs e)

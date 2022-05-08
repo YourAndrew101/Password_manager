@@ -56,7 +56,7 @@ namespace PasswordManager.AuthenticationWindow.Pages
         {
             if(_eMailService.ConfirmationCode == CurrentConfirmationCode)
             {
-                UsersService.AddUser(_user);
+                //UsersService.AddUser(_user);
 
                 ((AuthenticationWindow)Window.GetWindow(this)).StartMainWindow(_user);
             }
