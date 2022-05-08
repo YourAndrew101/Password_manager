@@ -130,7 +130,7 @@
                    Grid.Column="1" 
                    Style="{StaticResource AuthErrorTextBlockStyle}"/>
 
-        <CheckBox x:Name="RemmemberMeCheckBox" 
+        <CheckBox x:Name="RememberMeCheckBox" 
                   Content="{x:Static res:Resources.RememberMe}"
                   Grid.Row="10" 
                   Grid.Column="1"

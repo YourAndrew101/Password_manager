@@ -12,8 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using PasswordManager.Services;
 using PasswordManager.MainWindow.Pages;
+using ServicesLibrary;
 using UsersLibrary;
 
 namespace PasswordManager.MainWindow
@@ -22,27 +22,24 @@ namespace PasswordManager.MainWindow
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
-    {
-           
-        public MainWindow()
-        {
-            InitializeComponent();
-            SetColorTheme();
-            MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
-            MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
-            Home.IsChecked = true;
-
-
-        }
+    {  
+        internal User User { get; set; }
 
         public MainWindow(User user)
         {
             InitializeComponent();
             SetColorTheme();
+            SetWindowSettings();
+        
+            User = user;
+        }
+
+        private void SetWindowSettings()
+        {
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
             Home.IsChecked = true;
-            MaximizeWindow.IsChecked = true;
+            WindowState = WindowState.Normal;
         }
 
         private void SetColorTheme()
@@ -53,7 +50,7 @@ namespace PasswordManager.MainWindow
             Application.Current.Resources.MergedDictionaries.Add(dict);
 
         }
-        
+
 
         private void CloseApp_Click(object sender, RoutedEventArgs e)
         {
@@ -69,7 +66,7 @@ namespace PasswordManager.MainWindow
         {
             WindowState = WindowState.Minimized;
         }
-       
+
 
         private void MaximizeWindow_Unchecked(object sender, RoutedEventArgs e)
         {
@@ -79,14 +76,11 @@ namespace PasswordManager.MainWindow
         protected override void OnStateChanged(EventArgs e)
         {
             base.OnStateChanged(e);
-            if(this.WindowState==WindowState.Maximized && MaximizeWindow.IsChecked == false)
-            {
+
+            if (WindowState == WindowState.Maximized && MaximizeWindow.IsChecked == false)
                 MaximizeWindow.IsChecked = true;
-            }
-            if(this.WindowState == WindowState.Normal && MaximizeWindow.IsChecked == true)
-            {
+            if (WindowState == WindowState.Normal && MaximizeWindow.IsChecked == true)
                 MaximizeWindow.IsChecked = false;
-            }
         }
         private void Home_Checked(object sender, RoutedEventArgs e)
         {
@@ -109,8 +103,8 @@ namespace PasswordManager.MainWindow
             MainFrame.Content = new Account();
         }
 
-     
 
-        
+
+
     }
 }

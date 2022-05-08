@@ -8,12 +8,14 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Runtime.Serialization;
 using static UsersLibrary.UsersExceptions;
+using UsersLibrary.Settings;
 
 namespace UsersLibrary
 {
     public class User
     {
         readonly Random _random = new Random();
+
 
         public string _email;
         public string Email
@@ -27,11 +29,13 @@ namespace UsersLibrary
         }
         public string HashEmail { get; private set; }
 
+
         private string _password;
-        public string AuthPassword
+        public string AuthPassword { get; private set; }
+        public string HashAuthPassword
         {
             get => _password;
-            set
+            private set
             {
                 value += Salt;
                 _password = GetSHA256Hash(value);
@@ -48,15 +52,27 @@ namespace UsersLibrary
                 if (string.IsNullOrEmpty(_salt)) _salt = string.Join("", Enumerable.Range(0, 20).Select(_ => (char)_random.Next(65, 90)));
                 return _salt;
             }
+
+            private set => _salt = value;
         }
+
 
         public User() { }
         public User(string email, string password)
         {
             Email = email;
             AuthPassword = password;
-            CryptoPassword = password;
+            HashAuthPassword = password;
         }
+
+        public User(string email, string password, string salt)
+        {
+            Email = email;
+            AuthPassword = password;
+            HashAuthPassword = password;
+            Salt = salt; 
+        }
+
 
         private string GetSHA256Hash(string inputString)
         {
@@ -68,6 +84,11 @@ namespace UsersLibrary
             }
 
             return outString;
+        }
+
+        public static implicit operator User(Settings.Settings settings)
+        {
+            return new User(settings.Email, settings.Password, settings.Salt);
         }
     }
 }

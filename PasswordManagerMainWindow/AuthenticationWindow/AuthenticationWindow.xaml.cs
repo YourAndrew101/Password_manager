@@ -14,33 +14,64 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using PasswordManager.AuthenticationWindow.Pages;
-using PasswordManager.Services;
+using ServicesLibrary;
+using UsersLibrary;
 
 namespace PasswordManager.AuthenticationWindow
 {
-    /// <summary>
-    /// Логика взаимодействия для Auth.xaml
-    /// </summary>
-    public partial class Auth : Window
+    public partial class AuthenticationWindow : Window
     {
-        public Auth()
+        public AuthenticationWindow()
         {
             InitializeComponent();
-            SetPage();
-            SetColorTheme();
+
+            //SettingsService.SaveEmptySettings();
+
+            LaunchPreparation();      
         }
 
-        private void SetPage()
+        private void LaunchPreparation()
+        {
+            User user;
+            if (SettingsService.IsSavedUser)
+            {
+                user = (User)SettingsService.GetSettings();
+                StartMainWindow(user);
+            }
+            else
+            {
+                SetStartUpPage();
+                SetSystemColorTheme();
+            }
+
+            //if(InternetService.IsConnectedToInternet)
+
+        }
+
+
+
+        private void SetStartUpPage()
         {
             AuthFrame.Content = new Login();
         }
 
-        private void SetColorTheme()
+        private void SetSystemColorTheme()
         {
             ThemesService.Themes theme = ThemesService.GetSystemTheme();
 
             ResourceDictionary dict = new ResourceDictionary { Source = new Uri($"AuthenticationWindow/Themes/{theme}Theme.xaml", UriKind.Relative) };
             Application.Current.Resources.MergedDictionaries.Add(dict);
+        }
+
+
+
+
+        public void StartMainWindow(User user)
+        {
+            MainWindow.MainWindow mainWindow = new MainWindow.MainWindow(user);
+            mainWindow.Show();
+
+            CloseWindow(new object(), new RoutedEventArgs());
         }
 
         public void CloseWindow(object sender, RoutedEventArgs e)

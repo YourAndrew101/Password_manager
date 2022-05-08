@@ -14,7 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Services;
+using ServicesLibrary;
 using UsersLibrary;
 using UsersLibrary.Settings;
 
@@ -35,8 +35,8 @@ namespace PasswordManager.AuthenticationWindow.Pages
             }
         }
 
-        EMailService _eMailService;
-        User _user;
+        private EMailService _eMailService;
+        private readonly User _user;
 
         public EmailConfirmation(User user)
         {
@@ -58,9 +58,9 @@ namespace PasswordManager.AuthenticationWindow.Pages
             {
                 //UsersService.AddUser(_user);
 
-                MainWindow.MainWindow mainWindow = new MainWindow.MainWindow(_user);
-                mainWindow.Show();
-                Window.GetWindow(this).Close();
+                SettingsService.SaveSettings(new Settings(_user));
+
+                ((AuthenticationWindow)Window.GetWindow(this)).StartMainWindow(_user);
             }
             else
             {

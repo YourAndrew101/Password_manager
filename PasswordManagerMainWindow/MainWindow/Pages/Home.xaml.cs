@@ -41,8 +41,9 @@ namespace PasswordManager.MainWindow.Pages
 
         }
 
-        private void FormOpeninganimation() { 
-         AddEditForm.Visibility = Visibility.Visible;
+        private void FormOpeninganimation()
+        {
+            AddEditForm.Visibility = Visibility.Visible;
             ShadowEffectHomePage.Visibility = Visibility.Visible;
           ((MainWindow) App.Current.Windows[0]).Shadow.Visibility = Visibility.Visible;
             DoubleAnimation formScaleAnimation = new DoubleAnimation()
@@ -188,27 +189,27 @@ namespace PasswordManager.MainWindow.Pages
             }
             else
             {
-                PasswordComplexityTextBlock.Text =Properties.Resources.FormFillAllFields;
+                PasswordComplexityTextBlock.Text = Properties.Resources.FormFillAllFields;
                 PasswordComplexityTextBlock.Foreground = new SolidColorBrush(Colors.Red);
             }
         }
-         private void ClearForm()
+        private void ClearForm()
         {
             ResourceTextBox.Text = string.Empty;
             LoginTextBox.Text = string.Empty;
             HiddenPasswordTextBox.Text = string.Empty;
         }
-       private Storyboard sb = new Storyboard();
+        private Storyboard sb = new Storyboard();
         private void ShowNotification(string NotificationMessage)
         {
-           sb.Completed-= Notification_Completed;
-           // sb.Stop();
+            sb.Completed -= Notification_Completed;
+            // sb.Stop();
 
             NotificationBody.Visibility = Visibility.Visible;
 
             NotificationText.Text = NotificationMessage;
 
-            
+
 
             DoubleAnimation notificationAppearingTranslate = new DoubleAnimation()
             {
@@ -241,7 +242,7 @@ namespace PasswordManager.MainWindow.Pages
             };
             Storyboard.SetTargetName(notificationAppearingTranslate, "NotificationTranslateTransform");
             Storyboard.SetTargetProperty(notificationAppearingTranslate, new PropertyPath(TranslateTransform.YProperty));
-            
+
             sb.Completed += Notification_Completed;
             sb.Children.Add(notificationAppearingTranslate);
 
@@ -305,13 +306,13 @@ namespace PasswordManager.MainWindow.Pages
 
         private void PopupMenuButton_Click(object sender, RoutedEventArgs e)
         {
-        var parent = (StackPanel)((Button)sender).Parent;
-        Popup pp =  (Popup)parent.FindName("PopupMenu");
-        pp.IsOpen = true;
-            
+            var parent = (StackPanel)((Button)sender).Parent;
+            Popup pp = (Popup)parent.FindName("PopupMenu");
+            pp.IsOpen = true;
+
         }
 
-        
+
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
             var popupEl = (Popup)((Border)((StackPanel)(((Button)sender).Parent)).Parent).Parent;
@@ -327,11 +328,11 @@ namespace PasswordManager.MainWindow.Pages
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
-        { 
+        {
             dataVM.AuthenticationDataViewModels.Remove((AuthenticationData)MainDataGrid.CurrentItem);
             ShowNotification(Properties.Resources.RecordRemovedNotification);
         }
 
-       
+
     }
 }

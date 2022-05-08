@@ -5,24 +5,37 @@ using System.Text;
 using System.Threading.Tasks;
 using UsersLibrary.Settings;
 
-namespace Services
+namespace ServicesLibrary
 {
     public class SettingsService
     {
-        public static void SaveSignUpSettings(Settings settings)
+        public static bool IsSavedUser
+        {
+            get => !string.IsNullOrEmpty(GetSettings().Email);
+        }
+
+        public static void SaveSettings(Settings settings)
         {
             PasswordManager.Properties.Settings.Default.Email = settings.Email;
             PasswordManager.Properties.Settings.Default.Password = settings.Password;
+            PasswordManager.Properties.Settings.Default.Salt = settings.Salt;
             PasswordManager.Properties.Settings.Default.Save();
         }
 
-        public static Settings GetSignUpSettings()
+        public static Settings GetSettings()
         {
-            return new Settings()
-            {
-                Email = PasswordManager.Properties.Settings.Default.Email,
-                Password = PasswordManager.Properties.Settings.Default.Password
-            };
+            string email = PasswordManager.Properties.Settings.Default.Email;
+            string password = PasswordManager.Properties.Settings.Default.Password;
+            string salt = PasswordManager.Properties.Settings.Default.Salt;
+            return new Settings(email, password, salt);
+        }
+
+        public static void SaveEmptySettings()
+        {
+            PasswordManager.Properties.Settings.Default.Email = "";
+            PasswordManager.Properties.Settings.Default.Password = "";
+            PasswordManager.Properties.Settings.Default.Salt = "";
+            PasswordManager.Properties.Settings.Default.Save();
         }
     }
 }

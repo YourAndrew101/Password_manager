@@ -15,7 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Services;
+using ServicesLibrary;
 using UsersLibrary;
 using UsersLibrary.Settings;
 using static UsersLibrary.UsersExceptions;
@@ -27,14 +27,14 @@ namespace PasswordManager.AuthenticationWindow.Pages
     /// </summary>
     public partial class Signup : Page
     {
-        private string Password { get =>RevealedPasswordTextBox.Text; }
+        private string Password { get => RevealedPasswordTextBox.Text; }
         private string Email { get => EmailTextBox.Text; }
 
         private string PasswordComplexityText { set => PasswordComplexityTextBlock.Text = value; }
         private Brush PasswordComplexityTextColor { set => PasswordComplexityTextBlock.Foreground = value; }
 
         private string ErrorMessage
-        { 
+        {
             set
             {
                 AuthErrorTextBlock.Visibility = Visibility.Visible;
@@ -113,41 +113,34 @@ namespace PasswordManager.AuthenticationWindow.Pages
             else ShowPasswordToggleButton.Visibility = Visibility.Visible;
         }
 
+        //TODO rewrite
         private void SetPasswordComplexity(PasswordScore passwordScore)
         {
+            SolidColorBrush solidColorBrush;
             switch (passwordScore)
             {
                 case PasswordScore.VeryWeak:
-                    SolidColorBrush colorBrush = new SolidColorBrush(_veryWeakPasswordRectangleColor);
-                    SetPasswordComplexityText(Properties.Resources.PswdVeryWeak, colorBrush);
-                    SetPasswordComplexityRectangles(colorBrush, passwordScore);
+                    solidColorBrush = new SolidColorBrush(_veryWeakPasswordRectangleColor);                  
                     break;
                 case PasswordScore.Weak:
-                    colorBrush = new SolidColorBrush(_weakPasswordRectangleColor);
-                    SetPasswordComplexityText(Properties.Resources.PswdWeak, colorBrush);
-                    SetPasswordComplexityRectangles(colorBrush, passwordScore);
+                    solidColorBrush = new SolidColorBrush(_weakPasswordRectangleColor);
                     break;
                 case PasswordScore.Medium:
-                    colorBrush = new SolidColorBrush(_normalPasswordRectangleColor);
-                    SetPasswordComplexityText(Properties.Resources.PswdNormal, colorBrush);
-                    SetPasswordComplexityRectangles(colorBrush, passwordScore);
+                    solidColorBrush = new SolidColorBrush(_normalPasswordRectangleColor);
                     break;
                 case PasswordScore.Strong:
-                    colorBrush = new SolidColorBrush(_strongPasswordRectangleColor);
-                    SetPasswordComplexityText(Properties.Resources.PswdStrong, colorBrush);
-                    SetPasswordComplexityRectangles(colorBrush, passwordScore);
+                    solidColorBrush = new SolidColorBrush(_strongPasswordRectangleColor);
                     break;
                 case PasswordScore.VeryStrong:
-                    colorBrush = new SolidColorBrush(_veryStrongPasswordRectangleColor);
-                    SetPasswordComplexityText(Properties.Resources.PswdVeryStrong, colorBrush);
-                    SetPasswordComplexityRectangles(colorBrush, passwordScore);
+                    solidColorBrush = new SolidColorBrush(_veryStrongPasswordRectangleColor);
                     break;
                 default:
-                    colorBrush = new SolidColorBrush(_nullPasswordRectangleColor);
-                    SetPasswordComplexityText("", colorBrush);
-                    SetPasswordComplexityRectangles(colorBrush, passwordScore);
+                    solidColorBrush = new SolidColorBrush(_nullPasswordRectangleColor);
                     break;
             }
+
+            SetPasswordComplexityText(Properties.Resources.PswdVeryWeak, solidColorBrush);
+            SetPasswordComplexityRectangles(solidColorBrush, passwordScore);
         }
         private void SetPasswordComplexityText(string message, SolidColorBrush colorBrush)
         {
@@ -171,11 +164,11 @@ namespace PasswordManager.AuthenticationWindow.Pages
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
             HiddenPasswordTextBox.Visibility = Visibility.Collapsed;
-           RevealedPasswordTextBox.Visibility = Visibility.Visible;
+            RevealedPasswordTextBox.Visibility = Visibility.Visible;
         }
         private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
-           RevealedPasswordTextBox.Visibility = Visibility.Collapsed;
+            RevealedPasswordTextBox.Visibility = Visibility.Collapsed;
             HiddenPasswordTextBox.Visibility = Visibility.Visible;
         }
 
@@ -197,8 +190,6 @@ namespace PasswordManager.AuthenticationWindow.Pages
                 }
                 throw;
             }
-
-            SettingsService.SaveSignUpSettings(new Settings(user));
 
             EmailConfirmation nextPage = new EmailConfirmation(user);
             NavigationService navService = NavigationService.GetNavigationService(this);

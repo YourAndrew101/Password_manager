@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using UsersLibrary;
 using static UsersLibrary.UsersExceptions;
 
-namespace Services
+namespace ServicesLibrary
 {
     public static class UsersService
     {
@@ -43,13 +43,13 @@ namespace Services
                 connection.Open();
                 SqlCommand command = new SqlCommand(request, connection);
                 command.Parameters.AddWithValue("@EMail", user.Email);
-                command.Parameters.AddWithValue("@Password", user.AuthPassword);
+                command.Parameters.AddWithValue("@Password", user.HashAuthPassword);
                 command.Parameters.AddWithValue("@Salt", user.Salt);
 
                 command.ExecuteNonQuery();
             }
 
-            CreateUserServicesTable(user);
+            //CreateUserServicesTable(user);
         }
         private static void CreateUserServicesTable(User user)
         {

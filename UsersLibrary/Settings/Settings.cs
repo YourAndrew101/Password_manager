@@ -8,20 +8,24 @@ namespace UsersLibrary.Settings
 {
     public class Settings
     {
-        private User _user;
-        public string Email { get; set; }
-        public string Password { get; set; }
+        public string Email { get; private set; }
+        public string Password { get; private set; }
+        public string Salt { get; private set; }
 
         public Settings(User user)
         {
             Email = user.Email;
+            Salt = user.Salt;
             Password = user.AuthPassword;
         }
+
         public Settings() { }
-        public Settings(string email, string password)
+
+        public Settings(string email, string password, string salt)
         {
             Email = email;
             Password = password;
+            Salt = salt;
         }
     }
 }
