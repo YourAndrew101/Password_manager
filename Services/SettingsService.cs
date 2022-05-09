@@ -11,30 +11,27 @@ namespace ServicesLibrary
     {
         public static bool IsSavedUser
         {
-            get => !string.IsNullOrEmpty(GetSettings().Email);
+            get => !string.IsNullOrEmpty(GetSignUpSettings().Email);
         }
 
-        public static void SaveSettings(Settings settings)
+        public static void SaveSignUpSettings(SignUpSettings settings)
         {
             PasswordManager.Properties.Settings.Default.Email = settings.Email;
             PasswordManager.Properties.Settings.Default.Password = settings.Password;
-            PasswordManager.Properties.Settings.Default.Salt = settings.Salt;
             PasswordManager.Properties.Settings.Default.Save();
         }
 
-        public static Settings GetSettings()
+        public static SignUpSettings GetSignUpSettings()
         {
             string email = PasswordManager.Properties.Settings.Default.Email;
             string password = PasswordManager.Properties.Settings.Default.Password;
-            string salt = PasswordManager.Properties.Settings.Default.Salt;
-            return new Settings(email, password, salt);
+            return new SignUpSettings(email, password);
         }
 
-        public static void SaveEmptySettings()
+        public static void SaveEmptySignUpSettings()
         {
             PasswordManager.Properties.Settings.Default.Email = "";
             PasswordManager.Properties.Settings.Default.Password = "";
-            PasswordManager.Properties.Settings.Default.Salt = "";
             PasswordManager.Properties.Settings.Default.Save();
         }
     }

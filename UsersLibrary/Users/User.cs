@@ -16,8 +16,7 @@ namespace UsersLibrary
     {
         readonly Random _random = new Random();
 
-
-        public string _email;
+        private string _email;
         public string Email
         {
             get => _email;
@@ -30,51 +29,53 @@ namespace UsersLibrary
         public string HashEmail { get; private set; }
 
 
-        private string _password;
+        private string _hashPassword;
         public string AuthPassword { get; private set; }
         public string HashAuthPassword
         {
-            get => _password;
+            get => _hashPassword;
             private set
             {
                 value += Salt;
-                _password = GetSHA256Hash(value);
+                _hashPassword = GetSHA256Hash(value);
             }
         }
 
         public string CryptoPassword { get; set; }
 
-        private string _salt;
-        public string Salt
+        public string Salt { get; set; }
+        private void CreateSalt()
         {
-            get
-            {
-                if (string.IsNullOrEmpty(_salt)) _salt = string.Join("", Enumerable.Range(0, 20).Select(_ => (char)_random.Next(65, 90)));
-                return _salt;
-            }
-
-            private set => _salt = value;
+            if (string.IsNullOrEmpty(Salt))
+                Salt = string.Join("", Enumerable.Range(0, 20).Select(_ => (char)_random.Next(65, 90)));
         }
-
 
         public User() { }
         public User(string email, string password)
         {
+            CreateSalt();
+
             Email = email;
             AuthPassword = password;
             HashAuthPassword = password;
         }
 
-        public User(string email, string password, string salt)
+
+        public static User CreateAlreadyExistUser(string email, string password)
         {
-            Email = email;
-            AuthPassword = password;
-            HashAuthPassword = password;
-            Salt = salt; 
+            return new User()
+            {
+                Email = email,
+                AuthPassword = password,
+            };
+        }
+        public void SetHashAuthPassword(string salt)
+        {
+            Salt = salt;
+            HashAuthPassword = AuthPassword;
         }
 
-
-        private string GetSHA256Hash(string inputString)
+        public static string GetSHA256Hash(string inputString)
         {
             string outString;
             using (SHA256 sHA256 = SHA256.Create())
@@ -86,9 +87,14 @@ namespace UsersLibrary
             return outString;
         }
 
-        public static implicit operator User(Settings.Settings settings)
+        public static implicit operator User(Settings.SignUpSettings settings)
         {
-            return new User(settings.Email, settings.Password, settings.Salt);
+            return new User()
+            {
+                Email = settings.Email,
+                AuthPassword = settings.Password
+            };
+
         }
     }
 }

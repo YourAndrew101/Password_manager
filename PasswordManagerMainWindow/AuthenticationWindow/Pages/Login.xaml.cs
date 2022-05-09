@@ -34,12 +34,6 @@ namespace PasswordManager.AuthenticationWindow.Pages
         public Login()
         {
             InitializeComponent();
-
-            SetConnectionDataBase();
-        }
-        private void SetConnectionDataBase()
-        {
-            UsersService.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
         }
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
@@ -47,7 +41,12 @@ namespace PasswordManager.AuthenticationWindow.Pages
             if (!CheckAuthData()) return;
 
             //TODO обмежена кількість спроб
-            try { _user = UsersService.GetUser(Email, Password); }
+
+            //TODO переписати з новими методами
+            try 
+            { 
+                //_user = UsersService.CheckUserData(Email, Password);
+            }
             catch (Exception ex)
             {
                 if (ex is NonExistenMailException) { SetErrorMessage(Properties.Resources.UserNotExists); return; }
@@ -56,7 +55,7 @@ namespace PasswordManager.AuthenticationWindow.Pages
                 throw;
             }
 
-            if (RememberMeFlag == true) SettingsService.SaveSettings(new Settings(_user));
+            if (RememberMeFlag == true) SettingsService.SaveSignUpSettings(new SignUpSettings(_user));
 
             ((AuthenticationWindow)Window.GetWindow(this)).StartMainWindow(_user);
         }

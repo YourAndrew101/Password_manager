@@ -25,7 +25,10 @@ namespace ServicesLibrary
                 SqlCommand command = new SqlCommand(request, connection);
                 command.Parameters.AddWithValue("@EMail", email);
 
-                return (int)command.ExecuteScalar() != 0;
+                bool result = (int)command.ExecuteScalar() != 0;
+                connection.Close();
+
+                return result;
             }
         }      
         
@@ -47,6 +50,8 @@ namespace ServicesLibrary
                 command.Parameters.AddWithValue("@Salt", user.Salt);
 
                 command.ExecuteNonQuery();
+
+                connection.Close();
             }
 
             //CreateUserServicesTable(user);
@@ -55,19 +60,21 @@ namespace ServicesLibrary
         {
             string request = $"CREATE TABLE \"{user.HashEmail}\" (ServiceID int, ServiceName varchar(255),ServiceLogin varchar(255),ServicePassword varchar(255))";
             using (SqlConnection connection = new SqlConnection(ConnectionString))
-            {
+            {           
                 connection.Open();
                 SqlCommand command = new SqlCommand(request, connection);
                 command.ExecuteNonQuery();
+
+                connection.Close();
             }
         }
 
 
-        public static User GetUser(string email, string password)
+        public static bool CheckUserData(string email, string password)
         {
             if (!CheckPassword(email, password)) throw new IncorrectPasswordException();
 
-            return new User(email, password);
+            return true;
         }
 
         private static Dictionary<string, string> GetDataByEmail(string email)
@@ -86,9 +93,21 @@ namespace ServicesLibrary
                 while (sqlDataReader.Read())
                     for (int i = 0; i < sqlDataReader.FieldCount; i++)
                         sqlData.Add(sqlDataReader.GetName(i), sqlDataReader.GetValue(i).ToString());
+
+                connection.Close();
             }
 
             return sqlData;
+        }
+
+        public static User GetHashAndSaltFromDB(User user)
+        {
+            if (!IsExistsEmail(user.Email)) throw new NonExistenMailException();
+
+            Dictionary<string, string> sqlData = GetDataByEmail(user.Email);
+            user.SetHashAuthPassword(sqlData["Salt"]);
+
+            return user;
         }
 
         private static bool CheckPassword(string email, string password)
@@ -99,11 +118,7 @@ namespace ServicesLibrary
             string passwordCheck = sqlData["Password"];
             password += sqlData["Salt"];
 
-            using (SHA256 sHA256 = SHA256.Create())
-            {
-                byte[] hash = sHA256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                return string.Join("", hash.Select(c => c.ToString("x2"))) == passwordCheck;
-            }
+            return User.GetSHA256Hash(password) == passwordCheck;
         }
     }
 }

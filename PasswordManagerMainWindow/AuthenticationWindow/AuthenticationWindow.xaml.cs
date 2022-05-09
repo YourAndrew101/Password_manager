@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -16,6 +17,8 @@ using System.Windows.Shapes;
 using PasswordManager.AuthenticationWindow.Pages;
 using ServicesLibrary;
 using UsersLibrary;
+using UsersLibrary.Settings;
+using static UsersLibrary.UsersExceptions;
 
 namespace PasswordManager.AuthenticationWindow
 {
@@ -24,37 +27,65 @@ namespace PasswordManager.AuthenticationWindow
         public AuthenticationWindow()
         {
             InitializeComponent();
-
+            SetConnectionDataBase();
             //SettingsService.SaveEmptySettings();
 
-            LaunchPreparation();      
+            LaunchPreparation();
+        }
+
+        private void SetConnectionDataBase()
+        {
+            UsersService.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
         }
 
         private void LaunchPreparation()
         {
-            User user;
-            if (SettingsService.IsSavedUser)
+            if (!SettingsService.IsSavedUser)
             {
-                user = (User)SettingsService.GetSettings();
-                StartMainWindow(user);
+                StartAuthenticationWindow();
+                return;
             }
+
+            SignUpSettings settings = SettingsService.GetSignUpSettings();
+            User user = User.CreateAlreadyExistUser(settings.Email, settings.Password);
+
+            if (InternetService.IsConnectedToInternet)
+                GetUserDataFromDB(user);
             else
-            {
-                SetStartUpPage();
-                SetSystemColorTheme();
-            }
-
-            //if(InternetService.IsConnectedToInternet)
-
+                GetUserDataFromLocalStorage(user);                      
         }
 
+        private void GetUserDataFromDB(User user)
+        {
+            try
+            {
+                user = UsersService.GetHashAndSaltFromDB(user);
+                if(UsersService.CheckUserData(user.Email, user.AuthPassword))
+                {
+                    StartMainWindow(user);
+                    return;
+                }
+            }
+            catch (Exception)
+            {
+                StartAuthenticationWindow();
+                return;
+            }
+        }
+        private void GetUserDataFromLocalStorage(User user)
+        {
+            throw new NotImplementedException();
+        }
 
-
+        private void StartAuthenticationWindow()
+        {
+            SetStartUpPage();
+            SetSystemColorTheme();
+        }
         private void SetStartUpPage()
         {
             AuthFrame.Content = new Login();
         }
-
         private void SetSystemColorTheme()
         {
             ThemesService.Themes theme = ThemesService.GetSystemTheme();
@@ -64,14 +95,14 @@ namespace PasswordManager.AuthenticationWindow
         }
 
 
-
-
         public void StartMainWindow(User user)
         {
             MainWindow.MainWindow mainWindow = new MainWindow.MainWindow(user);
             mainWindow.Show();
 
             CloseWindow(new object(), new RoutedEventArgs());
+
+            return;
         }
 
         public void CloseWindow(object sender, RoutedEventArgs e)

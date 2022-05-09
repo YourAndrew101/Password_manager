@@ -46,17 +46,5 @@ namespace PasswordManager.Properties {
                 this["Password"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string Salt {
-            get {
-                return ((string)(this["Salt"]));
-            }
-            set {
-                this["Salt"] = value;
-            }
-        }
     }
 }
