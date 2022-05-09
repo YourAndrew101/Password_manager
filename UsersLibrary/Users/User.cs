@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Runtime.Serialization;
 using static UsersLibrary.UsersExceptions;
 using UsersLibrary.Settings;
+using UsersLibrary.Services;
 
 namespace UsersLibrary
 {
@@ -27,6 +28,8 @@ namespace UsersLibrary
             }
         }
         public string HashEmail { get; private set; }
+
+        public List<Service> Services { get; private set; }
 
 
         private string _hashPassword;
@@ -50,6 +53,7 @@ namespace UsersLibrary
                 Salt = string.Join("", Enumerable.Range(0, 20).Select(_ => (char)_random.Next(65, 90)));
         }
 
+
         public User() { }
         public User(string email, string password)
         {
@@ -58,6 +62,8 @@ namespace UsersLibrary
             Email = email;
             AuthPassword = password;
             HashAuthPassword = password;
+
+            Services = new List<Service>();
         }
 
 

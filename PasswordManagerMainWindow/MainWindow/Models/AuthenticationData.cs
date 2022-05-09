@@ -14,8 +14,6 @@ namespace PasswordManager.MainWindow.Models
         private string login;
         private string password;
 
-      
-
 
         public string Resource
         {
