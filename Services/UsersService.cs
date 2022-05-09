@@ -77,6 +77,12 @@ namespace ServicesLibrary
 
             return true;
         }
+        public static bool CheckUserData(User user)
+        {
+            if (!CheckPassword(user.Email, user.AuthPassword)) throw new IncorrectPasswordException();
+
+            return true;
+        }
 
         private static Dictionary<string, string> GetDataByEmail(string email)
         {

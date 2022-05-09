@@ -26,7 +26,7 @@ namespace PasswordManager.AuthenticationWindow.Pages
         {
             InitializeComponent();
         }
-
+        //TODO скидання паролю
         private void SendCode_Click(object sender, RoutedEventArgs e)
         {
             try { _ = new MailAddress(EmailTextBox.Text).Address; }

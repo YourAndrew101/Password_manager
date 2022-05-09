@@ -42,10 +42,12 @@ namespace PasswordManager.AuthenticationWindow.Pages
 
             //TODO обмежена кількість спроб
 
-            //TODO переписати з новими методами
             try 
             { 
-                //_user = UsersService.CheckUserData(Email, Password);
+                _user = User.CreateAlreadyExistUser(Email, Password);
+                _user = UsersService.GetHashAndSaltFromDB(_user);
+
+                if (!UsersService.CheckUserData(_user)) return;
             }
             catch (Exception ex)
             {

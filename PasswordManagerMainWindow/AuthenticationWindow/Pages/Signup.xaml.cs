@@ -113,7 +113,6 @@ namespace PasswordManager.AuthenticationWindow.Pages
             else ShowPasswordToggleButton.Visibility = Visibility.Visible;
         }
 
-        //TODO rewrite
         private void SetPasswordComplexity(PasswordScore passwordScore)
         {
             SolidColorBrush solidColorBrush;
