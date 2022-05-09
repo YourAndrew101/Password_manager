@@ -36,6 +36,7 @@ namespace ServicesLibrary
         {
             if (!IsExistsEmail(email)) throw new NonExistenMailException();
         }
+
         public static void AddUser(User user)
         {
             if (IsExistsEmail(user.Email)) throw new DuplicateMailException();
@@ -54,11 +55,11 @@ namespace ServicesLibrary
                 connection.Close();
             }
 
-            //CreateUserServicesTable(user);
+            CreateUserServicesTable(user);
         }
         private static void CreateUserServicesTable(User user)
         {
-            string request = $"CREATE TABLE \"{user.HashEmail}\" (ServiceID int, ServiceName varchar(255),ServiceLogin varchar(255),ServicePassword varchar(255))";
+            string request = $"CREATE TABLE \"{user.HashEmail}\" (Id int, Name varchar(255), Login varchar(255), Password varchar(255))";
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {           
                 connection.Open();
