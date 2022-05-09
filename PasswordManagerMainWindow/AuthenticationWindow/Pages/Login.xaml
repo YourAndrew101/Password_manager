@@ -119,7 +119,7 @@
                       Grid.Row="9" 
                       Grid.Column="1" 
                       Height="25" Width="25" 
-                      BorderThickness="0" FontSize="16"
+                      BorderThickness="0"
                       Checked="ToggleButton_Checked"
                       Unchecked="ToggleButton_Unchecked"
                       IsChecked="False"

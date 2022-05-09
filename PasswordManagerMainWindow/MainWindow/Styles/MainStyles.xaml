@@ -598,14 +598,16 @@
         <Setter Property="FontSize" Value="14"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
+        
 
     </Style>
 
     <Style TargetType="{x:Type DataGridCell}" x:Key="DataGridCellStyle">
+        <Style.Setters>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type DataGridCell}">
-                    <Grid Background="{TemplateBinding Background}">
+                    <Border Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}">
                         <ContentPresenter VerticalAlignment="Center">
                             <ContentPresenter.ToolTip>
                                 <ToolTip ToolTipService.InitialShowDelay="10000"  Background="Transparent" Padding="0,0,0,0" BorderBrush="Transparent">
@@ -623,12 +625,14 @@
                                 </ToolTip>
                             </ContentPresenter.ToolTip>
                         </ContentPresenter>
-                    </Grid>
+                    </Border>
                 </ControlTemplate>
 
             </Setter.Value>
 
         </Setter>
+            <Setter Property="Padding" Value="5,0,5,0"/>
+        </Style.Setters>
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Cursor" Value="Hand"/>
@@ -759,6 +763,33 @@
             <Setter Property="CornerRadius" Value="3"/>
             <Setter Property="Background" Value="{DynamicResource DataGridStyle.PopupMenu.Background}"/>
             <Setter Property="BorderBrush" Value="{DynamicResource DataGridStyle.DropDownBorder.BorderBrush}"/>
+        </Style.Setters>
+    </Style>
+
+    <Style x:Key="RevealPasswordToggleButtonStyle" TargetType="ToggleButton">
+        <Style.Setters>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Image x:Name="img" HorizontalAlignment="Center" VerticalAlignment="Center" Stretch="Fill">
+                            <Image.Style>
+                                <Style TargetType="Image">
+                                    <Setter Property="Source" Value="{DynamicResource ResourceKey=OpenEye}"/>
+                                </Style>
+                            </Image.Style>
+                        </Image>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="img" Property="Source" Value="{DynamicResource ResourceKey=ClosedEye}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="Margin" Value="5,0,0,0"/>
         </Style.Setters>
     </Style>
 </ResourceDictionary>
