@@ -35,7 +35,7 @@ namespace PasswordManager.AuthenticationWindow
 
         private void SetConnectionDataBase()
         {
-            UsersService.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            UsersService.ConnectionString = App.ConnectionString;
         }
 
         private void LaunchPreparation()
