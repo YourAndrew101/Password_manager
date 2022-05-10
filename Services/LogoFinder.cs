@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using Newtonsoft.Json;
 
 namespace Services
@@ -68,13 +69,27 @@ namespace Services
     }
    public class LogoFinder
     {
+
         private static void GetLogoFromAPI(string resourceName)
         {
+            XmlDocument xml = new XmlDocument();
+            xml.Load("../../../Services/APIList.xml");
+            XmlElement root = xml.DocumentElement;
+            string key= root.FirstChild.InnerText;
             string uri = $"https://api.brandfetch.io/v2/brands/{resourceName}";
             WebRequest request = WebRequest.Create(uri);
-            request.Headers.Add(HttpRequestHeader.Authorization, "Bearer EdPUEywZxj74PT9Mt/Rumbp+QtYkL6gH4k5H2K+cHXM=");
-            WebResponse response = request.GetResponse();
-
+            request.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {key}");
+            WebResponse response = null;
+            try
+            {
+               response = request.GetResponse();
+            }
+            catch (Exception)
+            {             
+                root.RemoveChild(root.FirstChild);
+                xml.Save("../../../Services/APIList.xml");
+                GetLogoFromAPI(resourceName);
+            }
             StreamReader streamReader = new StreamReader(response.GetResponseStream());
             string json = streamReader.ReadToEnd();
             streamReader.Close();
@@ -112,5 +127,6 @@ namespace Services
             }
             return path; 
         }
+        
     }
 }
