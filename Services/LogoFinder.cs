@@ -81,17 +81,24 @@ namespace Services
             response.Close();
 
             Root data = JsonConvert.DeserializeObject<Root>(json);
-            string logoUri = data.logos.Find(e => e.type == "icon").formats[0].src;
-
-            string path= $"../../MainWindow/Assets/{resourceName}.png";
-            using (WebClient webClient = new WebClient())
+            if (data.logos.Count != 0)
             {
-                webClient.DownloadFile(new Uri(logoUri), path);
-            }   
+                string logoUri = data.logos.Find(e => e.type == "icon").formats[0].src;
+                string path = $"../../MainWindow/LogosServices/{resourceName}.png";
+                using (WebClient webClient = new WebClient())
+                {
+                    webClient.DownloadFile(new Uri(logoUri), path);
+                }
+            }
+            else
+            {
+                throw new Exception();
+            }
+            
         }
         public static string GetLogo(string resourceName)
         {
-            string path= $"../../MainWindow/Assets/{resourceName}.png";
+            string path= $"../../MainWindow/LogosServices/{resourceName}.png";
             if (!File.Exists(path))
             {
                 try
@@ -100,7 +107,7 @@ namespace Services
                 }
                 catch (Exception)
                 {
-                    File.Copy($"../../MainWindow/Assets/defaultLogo.png", $"../../MainWindow/Assets/{resourceName}.png");
+                    File.Copy($"../../MainWindow/LogosServices/defaultLogo.png", $"../../MainWindow/LogosServices/{resourceName}.png");
                 }              
             }
             return path; 

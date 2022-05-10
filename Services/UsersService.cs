@@ -36,6 +36,7 @@ namespace ServicesLibrary
         {
             if (!IsExistsEmail(email)) throw new NonExistenMailException();
         }
+
         public static void AddUser(User user)
         {
             if (IsExistsEmail(user.Email)) throw new DuplicateMailException();
@@ -54,11 +55,11 @@ namespace ServicesLibrary
                 connection.Close();
             }
 
-            //CreateUserServicesTable(user);
+            CreateUserServicesTable(user);
         }
         private static void CreateUserServicesTable(User user)
         {
-            string request = $"CREATE TABLE \"{user.HashEmail}\" (ServiceID int, ServiceName varchar(255),ServiceLogin varchar(255),ServicePassword varchar(255))";
+            string request = $"CREATE TABLE \"{user.HashEmail}\" (Id int, Name varchar(255), Login varchar(255), Password varchar(255))";
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {           
                 connection.Open();
@@ -75,6 +76,22 @@ namespace ServicesLibrary
             if (!CheckPassword(email, password)) throw new IncorrectPasswordException();
 
             return true;
+        }
+        public static bool CheckUserData(User user)
+        {
+            if (!CheckPassword(user.Email, user.AuthPassword)) throw new IncorrectPasswordException();
+
+            return true;
+        }
+        private static bool CheckPassword(string email, string password)
+        {
+            if (!IsExistsEmail(email)) throw new NonExistenMailException();
+
+            Dictionary<string, string> sqlData = GetDataByEmail(email);
+            string passwordCheck = sqlData["Password"];
+            password += sqlData["Salt"];
+
+            return User.GetSHA256Hash(password) == passwordCheck;
         }
 
         private static Dictionary<string, string> GetDataByEmail(string email)
@@ -108,17 +125,6 @@ namespace ServicesLibrary
             user.SetHashAuthPassword(sqlData["Salt"]);
 
             return user;
-        }
-
-        private static bool CheckPassword(string email, string password)
-        {
-            if (!IsExistsEmail(email)) throw new NonExistenMailException();
-
-            Dictionary<string, string> sqlData = GetDataByEmail(email);
-            string passwordCheck = sqlData["Password"];
-            password += sqlData["Salt"];
-
-            return User.GetSHA256Hash(password) == passwordCheck;
         }
     }
 }

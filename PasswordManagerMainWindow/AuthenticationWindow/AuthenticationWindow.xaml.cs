@@ -18,7 +18,6 @@ using PasswordManager.AuthenticationWindow.Pages;
 using ServicesLibrary;
 using UsersLibrary;
 using UsersLibrary.Settings;
-using static UsersLibrary.UsersExceptions;
 
 namespace PasswordManager.AuthenticationWindow
 {
@@ -28,14 +27,14 @@ namespace PasswordManager.AuthenticationWindow
         {
             InitializeComponent();
             SetConnectionDataBase();
-            //SettingsService.SaveEmptySettings();
+        //    SettingsService.SaveEmptySignUpSettings();
 
             LaunchPreparation();
         }
 
         private void SetConnectionDataBase()
         {
-            UsersService.ConnectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            UsersService.ConnectionString = App.ConnectionString;
         }
 
         private void LaunchPreparation()

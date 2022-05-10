@@ -14,7 +14,6 @@ namespace PasswordManager
     /// </summary>
     public partial class App : Application
     {
-        private App() {
-        }
+        public static string ConnectionString { get => ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString; }
     }
 }

@@ -655,11 +655,12 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="NotSelectableColumnStyle" TargetType="{x:Type DataGridCell}">
-       
+        
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
                 <Setter Property="Background" Value="{DynamicResource DataGridStyle.Static.Background}"/>
                 <Setter Property="BorderBrush" Value="Transparent"/>
+               
             </Trigger>
         </Style.Triggers>
     </Style>
