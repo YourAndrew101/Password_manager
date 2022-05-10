@@ -15,8 +15,8 @@
       RenderOptions.EdgeMode="Aliased"
       UseLayoutRounding="True"
       SnapsToDevicePixels="True"
-      RenderOptions.BitmapScalingMode="NearestNeighbor"
-      >
+      RenderOptions.BitmapScalingMode="NearestNeighbor">
+    
     <Page.RenderTransform >
         <TranslateTransform x:Name="PageAxis"/>
     </Page.RenderTransform>

@@ -26,7 +26,7 @@ namespace PasswordManager.AuthenticationWindow.Pages
     {
         private User _user;
 
-        private string Email { get => EmailTextBox.Text; } 
+        private string Email { get => EmailTextBox.Text; }
         private string Password { get => HiddenPasswordTextBox.Password; }
 
         private bool? RememberMeFlag { get => RememberMeCheckBox.IsChecked; }
@@ -41,9 +41,8 @@ namespace PasswordManager.AuthenticationWindow.Pages
             if (!CheckAuthData()) return;
 
             //TODO обмежена кількість спроб
-
-            try 
-            { 
+            try
+            {
                 _user = User.CreateAlreadyExistUser(Email, Password);
                 _user = UsersService.GetHashAndSaltFromDB(_user);
 
@@ -72,7 +71,6 @@ namespace PasswordManager.AuthenticationWindow.Pages
             return true;
         }
 
-        //TODO функціонал запам'ятати мене
         private void SetErrorMessage(string message)
         {
             AuthErrorTextBlock.Visibility = Visibility.Visible;
@@ -83,12 +81,12 @@ namespace PasswordManager.AuthenticationWindow.Pages
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
             HiddenPasswordTextBox.Visibility = Visibility.Collapsed;
-           RevealedPasswordTextBox.Visibility = Visibility.Visible;
-           
+            RevealedPasswordTextBox.Visibility = Visibility.Visible;
+
         }
         private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
-           RevealedPasswordTextBox.Visibility = Visibility.Collapsed;
+            RevealedPasswordTextBox.Visibility = Visibility.Collapsed;
             HiddenPasswordTextBox.Visibility = Visibility.Visible;
         }
 

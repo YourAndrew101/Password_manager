@@ -83,6 +83,16 @@ namespace ServicesLibrary
 
             return true;
         }
+        private static bool CheckPassword(string email, string password)
+        {
+            if (!IsExistsEmail(email)) throw new NonExistenMailException();
+
+            Dictionary<string, string> sqlData = GetDataByEmail(email);
+            string passwordCheck = sqlData["Password"];
+            password += sqlData["Salt"];
+
+            return User.GetSHA256Hash(password) == passwordCheck;
+        }
 
         private static Dictionary<string, string> GetDataByEmail(string email)
         {
@@ -115,17 +125,6 @@ namespace ServicesLibrary
             user.SetHashAuthPassword(sqlData["Salt"]);
 
             return user;
-        }
-
-        private static bool CheckPassword(string email, string password)
-        {
-            if (!IsExistsEmail(email)) throw new NonExistenMailException();
-
-            Dictionary<string, string> sqlData = GetDataByEmail(email);
-            string passwordCheck = sqlData["Password"];
-            password += sqlData["Salt"];
-
-            return User.GetSHA256Hash(password) == passwordCheck;
         }
     }
 }

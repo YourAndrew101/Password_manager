@@ -28,7 +28,7 @@ namespace PasswordManager.AuthenticationWindow
         {
             InitializeComponent();
             SetConnectionDataBase();
-            SettingsService.SaveEmptySignUpSettings();
+            //SettingsService.SaveEmptySignUpSettings();
 
             LaunchPreparation();
         }
