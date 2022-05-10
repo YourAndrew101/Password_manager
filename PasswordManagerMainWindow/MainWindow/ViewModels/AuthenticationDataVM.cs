@@ -34,35 +34,9 @@ namespace PasswordManager.MainWindow.ViewModels
 
             AuthenticationDataViewModels = new ObservableCollection<AuthenticationData>
             {
-                new AuthenticationData("specialshit", "ggd","vfvfg"),
+               // new AuthenticationData("discord.com", "ggd","vfvfg"),
                 new AuthenticationData("test 23", "asf@gnauk.com", "1234567899"),
-                new AuthenticationData("tenuhbcud", "dfvfdvasf@gnaukfvdf.com", "1234567899"),
-                new AuthenticationData("vudvudvbduvb", "asf@dfvfdvfdvdfvgnauk.com", "1234567899"),
-                new AuthenticationData("test 23", "asf@gnauk.com", "1234567899"),
-                new AuthenticationData("tenuhbcud", "dfvfdvasf@gnaukfvdf.com", "1234567899"),
-                new AuthenticationData("vudvudvbduvb", "asf@dfvfdvfdvdfvgnauk.com", "1234567899"),
-                new AuthenticationData("test 23", "asf@gnauk.com", "1234567899"),
-                new AuthenticationData("tenuhbcud", "dfvfdvasf@gnaukfvdf.com", "1234567899"),
-                new AuthenticationData("vudvudvbduvb", "asf@dfvfdvfdvdfvgnauk.com", "1234567899"),
-                new AuthenticationData("test 23", "asf@gnauk.com", "1234567899"),
-                new AuthenticationData("tenuhbcud", "dfvfdvasf@gnaukfvdf.com", "1234567899"),
-                new AuthenticationData("vudvudvbduvb", "asf@dfvfdvfdvdfvgnauk.com", "1234567899"),
-                new AuthenticationData("test 23", "asf@gnauk.com", "1234567899"),
-                new AuthenticationData("tenuhbcud", "dfvfdvasf@gnaukfvdf.com", "1234567899"),
-                new AuthenticationData("vudvudvbduvb", "asf@dfvfdvfdvdfvgnauk.com", "1234567899"),
-                new AuthenticationData("test 23", "asf@gnauk.com", "1234567899"),
-                new AuthenticationData("tenuhbcud", "dfvfdvasf@gnaukfvdf.com", "1234567899"),
-                new AuthenticationData("vudvudvbduvb", "asf@dfvfdvfdvdfvgnauk.com", "1234567899"),
-                new AuthenticationData("test 23", "asf@gnauk.com", "1234567899"),
-                new AuthenticationData("tenuhbcud", "dfvfdvasf@gnaukfvdf.com", "1234567899"),
-                new AuthenticationData("vudvudvbduvb", "asf@dfvfdvfdvdfvgnauk.com", "1234567899"),
-                new AuthenticationData("test 23", "asf@gnauk.com", "1234567899"),
-                new AuthenticationData("tenuhbcud", "dfvfdvasf@gnaukfvdf.com", "1234567899"),
-                new AuthenticationData("vudvudvbduvb", "asf@dfvfdvfdvdfvgnauk.com", "1234567899"),
-                new AuthenticationData("test 23", "asf@gnauk.com", "1234567899"),
-                new AuthenticationData("tenuhbcud", "dfvfdvasf@gnaukfvdf.com", "1234567899"),
-                new AuthenticationData("vudvudvbduvb", "asf@dfvfdvfdvdfvgnauk.com", "1234567899"),
-                new AuthenticationData("test 23", "asf@gnauk.com", "1234567899"),
+
             };
             AuthenticationDataCollectionView = CollectionViewSource.GetDefaultView(AuthenticationDataViewModels);
             AuthenticationDataCollectionView.Filter = FilterData;

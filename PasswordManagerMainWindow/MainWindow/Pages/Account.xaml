@@ -12,7 +12,7 @@
 
     
         <Grid Background="NavajoWhite">
-            <TextBlock Text="Account" Foreground="White" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        </Grid>
+        <TextBlock Text="Account" Foreground="White" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Grid>
     
 </Page>

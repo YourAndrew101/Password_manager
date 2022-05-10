@@ -4,16 +4,28 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
+using Services;
+
 
 namespace PasswordManager.MainWindow.Models
 {
     public class AuthenticationData : BaseModel
     {
-
         private string resource;
         private string login;
         private string password;
 
+
+        public ImageSource LogoPath
+        {
+            get
+            {
+                ImageSourceConverter converter = new ImageSourceConverter();
+                
+                return (ImageSource)converter.ConvertFromString(LogoFinder.GetLogo(Resource));
+            }
+        }
 
         public string Resource
         {
@@ -40,6 +52,7 @@ namespace PasswordManager.MainWindow.Models
         public AuthenticationData() { }
         public AuthenticationData(string Resource, string Login, string Password)
         {
+
             this.Resource = Resource;
             this.Login = Login;
             this.Password = Password;
