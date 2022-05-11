@@ -19,7 +19,7 @@ namespace PasswordManager.Properties {
     // с помощью такого средства, как ResGen или Visual Studio.
     // Чтобы добавить или удалить член, измените файл .ResX и снова запустите ResGen
     // с параметром /str или перестройте свой проект VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class Resources {
@@ -543,6 +543,42 @@ namespace PasswordManager.Properties {
         public static string TextCopiedToClipboardNotification {
             get {
                 return ResourceManager.GetString("TextCopiedToClipboardNotification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Cancel.
+        /// </summary>
+        public static string TwoStepAuthenticationCancel {
+            get {
+                return ResourceManager.GetString("TwoStepAuthenticationCancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Enter 6-digit code that tou&apos;ve received by email.
+        /// </summary>
+        public static string TwoStepAuthenticationHint {
+            get {
+                return ResourceManager.GetString("TwoStepAuthenticationHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Submit.
+        /// </summary>
+        public static string TwoStepAuthenticationSubmit {
+            get {
+                return ResourceManager.GetString("TwoStepAuthenticationSubmit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Two step authentication.
+        /// </summary>
+        public static string TwoStepAuthenticationTitle {
+            get {
+                return ResourceManager.GetString("TwoStepAuthenticationTitle", resourceCulture);
             }
         }
         

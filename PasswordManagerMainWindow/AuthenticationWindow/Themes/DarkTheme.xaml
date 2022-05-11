@@ -13,7 +13,8 @@
     <Color x:Key="AuthErrorTextBlock.Static.Foreground" >Red</Color>
 
     <Color x:Key="SubmitButton.Static.Background" >#7289da</Color>
-    <Color x:Key="SubmitButton.IsPressed.Background" >#99aab5</Color>
+    <Color x:Key="SubmitButton.IsMouseOver.Background" >#506099</Color>
+    <Color x:Key="SubmitButton.IsPressed.Background" >#445283</Color>
     <Color x:Key="SubmitButton.IsEnabledFalse.Background" >#99aab5</Color>
     <Color x:Key="SubmitButton.Text.Foreground" >White</Color>
 

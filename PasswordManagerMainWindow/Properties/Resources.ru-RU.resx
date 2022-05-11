@@ -279,6 +279,18 @@
   <data name="TextCopiedToClipboardNotification" xml:space="preserve">
     <value>Скопировано в буфер обмена</value>
   </data>
+  <data name="TwoStepAuthenticationCancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
+  <data name="TwoStepAuthenticationHint" xml:space="preserve">
+    <value>Введите код, который вы получили по почте</value>
+  </data>
+  <data name="TwoStepAuthenticationSubmit" xml:space="preserve">
+    <value>Подтвердить</value>
+  </data>
+  <data name="TwoStepAuthenticationTitle" xml:space="preserve">
+    <value>Двохфакторная аунтефикация</value>
+  </data>
   <data name="UserExists" xml:space="preserve">
     <value>Пользователь уже существует</value>
   </data>

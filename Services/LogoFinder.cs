@@ -80,15 +80,22 @@ namespace Services
             WebRequest request = WebRequest.Create(uri);
             request.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {key}");
             WebResponse response = null;
+            
             try
             {
                response = request.GetResponse();
             }
-            catch (Exception)
-            {             
-                root.RemoveChild(root.FirstChild);
-                xml.Save("../../../Services/APIList.xml");
-                GetLogoFromAPI(resourceName);
+            catch (WebException we)
+            {
+                HttpWebResponse errorResponse = (HttpWebResponse)we.Response;
+               
+                if (errorResponse.StatusCode==HttpStatusCode.Forbidden)
+                {
+                    root.RemoveChild(root.FirstChild);
+                    xml.Save("../../../Services/APIList.xml");
+                    GetLogoFromAPI(resourceName);
+                }
+                else { return; }
             }
             StreamReader streamReader = new StreamReader(response.GetResponseStream());
             string json = streamReader.ReadToEnd();
@@ -96,9 +103,9 @@ namespace Services
             response.Close();
 
             Root data = JsonConvert.DeserializeObject<Root>(json);
-            if (data.logos.Count != 0)
+            if (data.logos.Contains(data.logos.FirstOrDefault(e => e.type == "icon")))
             {
-                string logoUri = data.logos.Find(e => e.type == "icon").formats[0].src;
+                string logoUri = data.logos.FirstOrDefault(e => e.type == "icon").formats[0].src;
                 string path = $"../../MainWindow/LogosServices/{resourceName}.png";
                 using (WebClient webClient = new WebClient())
                 {
