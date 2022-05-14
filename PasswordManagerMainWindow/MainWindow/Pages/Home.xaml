@@ -62,7 +62,7 @@
                 <DataGridTemplateColumn Width="30" CellStyle="{StaticResource NotSelectableColumnStyle}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Image Source="{Binding Path = LogoPath}" Stretch="Fill" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor" SnapsToDevicePixels="True"/>
+                            <Image Source="{Binding Path = LogoPath,IsAsync=True}" Stretch="Fill" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor" SnapsToDevicePixels="True"/>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>

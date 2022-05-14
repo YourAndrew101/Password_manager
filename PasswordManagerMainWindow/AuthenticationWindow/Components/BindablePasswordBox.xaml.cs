@@ -17,16 +17,15 @@ namespace PasswordManager.Components
 {
     public partial class BindablePasswordBox : UserControl
     {
-        private bool _isPasswordChanging;
+       
 
         public static readonly DependencyProperty PasswordProperty = DependencyProperty.Register("Password", typeof(string), typeof(BindablePasswordBox),
-            new FrameworkPropertyMetadata(string.Empty, FrameworkPropertyMetadataOptions.BindsTwoWayByDefault,
-                PasswordPropertyChanged, null, false, UpdateSourceTrigger.PropertyChanged));
+            new PropertyMetadata(string.Empty, PasswordPropertyChanged));
 
         private static void PasswordPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
-            if (d is BindablePasswordBox passwordBox)
-                passwordBox.UpdatePassword();
+            if (d is BindablePasswordBox bindablePassword)
+                bindablePassword.UpdatePasswordBox();
         }
 
         public string Password
@@ -39,17 +38,19 @@ namespace PasswordManager.Components
         {
             InitializeComponent();
         }
-
-        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        private bool UpdatePasswordBoxFlag;
+        private void UpdatePasswordProperty(object sender, RoutedEventArgs e)
         {
-            _isPasswordChanging = true;
+            UpdatePasswordBoxFlag = true;
             Password = passwordBox.Password;
-            _isPasswordChanging = false;
+            UpdatePasswordBoxFlag = false;
         }
-        private void UpdatePassword()
+        private  void UpdatePasswordBox()
         {
-            if (!_isPasswordChanging)
+            if (!UpdatePasswordBoxFlag)
+            {
                 passwordBox.Password = Password;
+            }
         }
     }
 }

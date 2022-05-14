@@ -46,7 +46,7 @@ namespace PasswordManager.AuthenticationWindow.Pages
                 _user = User.CreateAlreadyExistUser(Email, Password);
                 _user = UsersService.GetHashAndSaltFromDB(_user);
 
-                if (!UsersService.CheckUserData(_user)) return;
+               if (!UsersService.CheckUserData(_user)) return;
             }
             catch (Exception ex)
             {
@@ -90,7 +90,7 @@ namespace PasswordManager.AuthenticationWindow.Pages
             HiddenPasswordTextBox.Visibility = Visibility.Visible;
         }
 
-        private void KindaPassword_TextChanged(object sender, TextChangedEventArgs e)
+        private void RevealedPassword_TextChanged(object sender, TextChangedEventArgs e)
         {
             SetShowPasswordToggleButton();
         }

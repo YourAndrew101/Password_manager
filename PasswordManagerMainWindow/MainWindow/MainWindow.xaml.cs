@@ -28,7 +28,7 @@ namespace PasswordManager.MainWindow
         public MainWindow(User user)
         {
             InitializeComponent();
-            SetColorTheme();
+            SetSystemColorTheme();
             SetWindowSettings();
         
             User = user;
@@ -42,7 +42,7 @@ namespace PasswordManager.MainWindow
             WindowState = WindowState.Normal;
         }
 
-        private void SetColorTheme()
+        private void SetSystemColorTheme()
         {
             ThemesService.Themes theme = ThemesService.GetSystemTheme();
 

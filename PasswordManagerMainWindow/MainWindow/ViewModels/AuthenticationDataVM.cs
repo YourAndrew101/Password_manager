@@ -34,8 +34,14 @@ namespace PasswordManager.MainWindow.ViewModels
 
             AuthenticationDataViewModels = new ObservableCollection<AuthenticationData>
             {
-               // new AuthenticationData("discord.com", "ggd","vfvfg"),
+                new AuthenticationData("discord.com", "ggd","vfvfg"),
                 new AuthenticationData("test 23", "asf@gnauk.com", "1234567899"),
+                new AuthenticationData("steam.com", "asf@gnauk.com", "1234567899"),
+               
+                new AuthenticationData("robinhood.com", "asf@gnauk.com", "1234567899"),
+                new AuthenticationData("binance.com", "asf@gnauk.com", "1234567899"),
+                new AuthenticationData("facebook.com", "asf@gnauk.com", "1234567899"),
+                new AuthenticationData("twitter.com", "asf@gnauk.com", "1234567899"),
 
             };
             AuthenticationDataCollectionView = CollectionViewSource.GetDefaultView(AuthenticationDataViewModels);

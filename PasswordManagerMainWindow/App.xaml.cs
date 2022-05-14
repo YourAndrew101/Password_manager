@@ -15,5 +15,9 @@ namespace PasswordManager
     public partial class App : Application
     {
         public static string ConnectionString { get => ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString; }
+        App() {
+            CultureInfo.CurrentUICulture = new CultureInfo("uk-UA");
+        }
+
     }
 }
