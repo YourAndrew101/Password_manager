@@ -67,7 +67,7 @@ namespace Services
         public List<Font> fonts { get; set; }
         public List<Image> images { get; set; }
     }
-   public class LogoFinder
+   public class LogoService
     {
 
         private static void GetLogoFromAPI(string resourceName)

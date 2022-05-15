@@ -23,7 +23,7 @@ namespace PasswordManager.MainWindow.Models
             {
                 ImageSourceConverter converter = new ImageSourceConverter();
                 
-                return (ImageSource)converter.ConvertFromString(LogoFinder.GetLogo(Resource));
+                return (ImageSource)converter.ConvertFromString(LogoService.GetLogo(Resource));
             }
         }
 
