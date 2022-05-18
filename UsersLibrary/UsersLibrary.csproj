@@ -62,7 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Services\Service.cs" />
-    <Compile Include="Services\ServiceContext.cs" />
     <Compile Include="Settings\SignUpSettings.cs" />
     <Compile Include="Users\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

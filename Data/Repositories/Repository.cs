@@ -35,6 +35,8 @@ namespace Data.Repositories
         public void Add(Service entity)
         {
             Context.Services.Add(entity);
+
+
         }
 
         public void AddRange(IEnumerable<Service> entities)
