@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using System.Windows.Shapes;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace ServicesLibrary
 {
