@@ -7,7 +7,7 @@ using UsersLibrary.Settings;
 
 namespace ServicesLibrary
 {
-    public class SettingsService
+    public static class SettingsService
     {
         public static bool IsSavedUser
         {

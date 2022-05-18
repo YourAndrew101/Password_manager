@@ -9,7 +9,7 @@ namespace Data
 {
     public class DataContext
     {
-        public List<Service> Services { get; private set; }
+        internal List<Service> Services { get; private set; }
 
         public DataContext() => Services = new List<Service>(); 
         public DataContext(List<Service> services) => Services = services; 
