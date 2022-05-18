@@ -2,13 +2,13 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
 
-    <SolidColorBrush x:Key="EmailTextBoxStyle.Static.Border.Background" Color="{DynamicResource EmailTextBox.Static.Border.Background}"/>
-    <SolidColorBrush x:Key="EmailTextBoxStyle.Static.Border.BorderBrush" Color="{DynamicResource EmailTextBox.Static.Border.BorderBrush}"/>
-    <SolidColorBrush x:Key="EmailTextBoxStyle.IsMouseOver.Border.BorderBrush" Color="{DynamicResource EmailTextBox.IsMouseOver.Border.BorderBrush}"/>
-    <SolidColorBrush x:Key="EmailTextBoxStyle.IsFocused.Border.BorderBrush" Color="{DynamicResource EmailTextBox.IsFocused.Border.BorderBrush}"/>
-    <SolidColorBrush x:Key="EmailTextBoxStyle.Static.BorderBrush" Color="{DynamicResource EmailTextBox.Static.BorderBrush}"/>
-    <SolidColorBrush x:Key="EmailTextBoxStyle.IsEnabledFalse.BorderBrush" Color="{DynamicResource EmailTextBox.IsEnabledFalse.Border.BorderBrush}"/>
-    <SolidColorBrush x:Key="EmailTextBoxStyle.IsEnabledFalse.Background" Color="{DynamicResource EmailTextBox.IsEnabledFalse.Background}"/>
+    <SolidColorBrush x:Key="PrimaryTextBoxStyle.Static.Border.Background" Color="{DynamicResource EmailTextBox.Static.Border.Background}"/>
+    <SolidColorBrush x:Key="PrimaryTextBoxStyle.Static.Border.BorderBrush" Color="{DynamicResource EmailTextBox.Static.Border.BorderBrush}"/>
+    <SolidColorBrush x:Key="PrimaryTextBoxStyle.IsMouseOver.Border.BorderBrush" Color="{DynamicResource EmailTextBox.IsMouseOver.Border.BorderBrush}"/>
+    <SolidColorBrush x:Key="PrimaryTextBoxStyle.IsFocused.Border.BorderBrush" Color="{DynamicResource EmailTextBox.IsFocused.Border.BorderBrush}"/>
+    <SolidColorBrush x:Key="PrimaryTextBoxStyle.Static.BorderBrush" Color="{DynamicResource EmailTextBox.Static.BorderBrush}"/>
+    <SolidColorBrush x:Key="PrimaryTextBoxStyle.IsEnabledFalse.BorderBrush" Color="{DynamicResource EmailTextBox.IsEnabledFalse.Border.BorderBrush}"/>
+    <SolidColorBrush x:Key="PrimaryTextBoxStyle.IsEnabledFalse.Background" Color="{DynamicResource EmailTextBox.IsEnabledFalse.Background}"/>
 
     <SolidColorBrush x:Key="AuthErrorTextBlockStyle.Static.Foreground" Color="{DynamicResource AuthErrorTextBlock.Static.Foreground}"/>
 
@@ -27,7 +27,7 @@
     <SolidColorBrush x:Key="SubmitButtonStyle.Text.Foreground" Color="{DynamicResource SubmitButton.Text.Foreground}"/>
     
     
-    <Style x:Key="EmailTextBoxStyle" TargetType="TextBox">
+    <Style x:Key="PrimaryTextBoxStyle" TargetType="TextBox">
         <Style.Setters>
             <Setter Property="CaretBrush" Value="{DynamicResource TextColor}"/>
             <Setter Property="OverridesDefaultStyle" Value="True"></Setter>
@@ -35,21 +35,21 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
                         <Border x:Name="border" BorderThickness="2" 
-                                CornerRadius="5" Background="{DynamicResource EmailTextBoxStyle.Static.Border.Background}" 
-                                BorderBrush="{DynamicResource EmailTextBoxStyle.Static.Border.BorderBrush}">
+                                CornerRadius="5" Background="{DynamicResource PrimaryTextBoxStyle.Static.Border.Background}" 
+                                BorderBrush="{DynamicResource PrimaryTextBoxStyle.Static.Border.BorderBrush}">
                             <ScrollViewer x:Name="PART_ContentHost" Padding="{TemplateBinding Padding}"/>
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource EmailTextBoxStyle.IsMouseOver.Border.BorderBrush}"></Setter>
+                                <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource PrimaryTextBoxStyle.IsMouseOver.Border.BorderBrush}"></Setter>
                             </Trigger>
                             <Trigger Property="IsFocused" Value="True">
-                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource EmailTextBoxStyle.IsFocused.Border.BorderBrush}"/>
+                                <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource PrimaryTextBoxStyle.IsFocused.Border.BorderBrush}"/>
                             </Trigger>
                             <Trigger Property="IsEnabled" Value="False">
                                 <Trigger.Setters>
-                                    <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource EmailTextBoxStyle.IsEnabledFalse.BorderBrush}"></Setter>
-                                    <Setter TargetName="border" Property="Background" Value="{DynamicResource EmailTextBoxStyle.IsEnabledFalse.Background}"></Setter>
+                                    <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource PrimaryTextBoxStyle.IsEnabledFalse.BorderBrush}"></Setter>
+                                    <Setter TargetName="border" Property="Background" Value="{DynamicResource PrimaryTextBoxStyle.IsEnabledFalse.Background}"></Setter>
                                 </Trigger.Setters>
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -62,7 +62,7 @@
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="FontSize" Value="16"/>
-            <Setter Property="BorderBrush" Value="{DynamicResource EmailTextBoxStyle.Static.BorderBrush}"/>
+            <Setter Property="BorderBrush" Value="{DynamicResource PrimaryTextBoxStyle.Static.BorderBrush}"/>
         </Style.Setters>
     </Style>
 
@@ -103,7 +103,6 @@
             <Setter Property="FontFamily" Value="Global Sans Serif"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="Margin" Value="0,15,0,0"/>
             <Setter Property="Visibility" Value="Hidden"/>
         </Style.Setters>
     </Style>

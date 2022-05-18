@@ -50,7 +50,7 @@
                  Grid.Column="1" 
                  BorderThickness="2" 
                  Height="40"
-                 Style="{StaticResource EmailTextBoxStyle}"/>
+                 Style="{StaticResource PrimaryTextBoxStyle}"/>
 
         <TextBlock x:Name="ErrorTextBlock" 
                    Grid.Row="6"
@@ -59,14 +59,14 @@
                    VerticalAlignment="Center"                
                    Style="{StaticResource AuthErrorTextBlockStyle}"/>
 
-        <TextBlock x:Name="BackTextBlock"
+        <TextBlock x:Name="LoginTextBlock"
                    Grid.Row="7" 
                    Grid.Column="1"
                    HorizontalAlignment="Left" 
                    VerticalAlignment="Center"
                    FontSize="14" >        
-            <Hyperlink x:Name="LogInHyperLink"
-                       NavigateUri="Signup.xaml" 
+            <Hyperlink x:Name="LoginHyperLink"
+                       NavigateUri="Login.xaml" 
                        Foreground="#7289da"
                        FontFamily="Global Sans Serif" 
                        FontWeight="Bold" 

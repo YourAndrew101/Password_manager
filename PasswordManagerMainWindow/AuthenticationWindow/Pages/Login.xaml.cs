@@ -57,8 +57,9 @@ namespace PasswordManager.AuthenticationWindow.Pages
             }
 
             if (RememberMeFlag == true) SettingsService.SaveSignUpSettings(new SignUpSettings(_user));
+            //NavigationService.Navigate(new TwoStepVerification());
 
-            ((AuthenticationWindow)Window.GetWindow(this)).StartMainWindow(_user);
+           ((AuthenticationWindow)Window.GetWindow(this)).StartMainWindow(_user);
         }
 
         private bool CheckAuthData()

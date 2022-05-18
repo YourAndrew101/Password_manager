@@ -23,6 +23,8 @@ namespace PasswordManager.MainWindow.Pages
         public Settings()
         {
             InitializeComponent();
+          
         }
+
     }
 }

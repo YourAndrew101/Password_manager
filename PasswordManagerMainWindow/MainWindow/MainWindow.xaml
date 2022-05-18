@@ -16,6 +16,7 @@
         Background="{DynamicResource MainColor}"
         Foreground="{DynamicResource TextColor}"
         WindowState="Minimized"
+        
       
         >
     <!--Maximized window sizes: Height - 838.4; Width - 1550.4-->
@@ -63,7 +64,7 @@
                     Click="CloseApp_Click"
                     />
         </StackPanel>
-        <Viewbox Grid.Row="1" >
+        <Viewbox Grid.Row="1"  >
             <Grid Height="808.4" Width="1550.4" x:Name="ResizebleGrid">
                 <!--<Rectangle Fill="Aquamarine" Height="100" Width="400">
                     

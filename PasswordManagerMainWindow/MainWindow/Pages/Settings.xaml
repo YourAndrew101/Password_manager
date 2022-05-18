@@ -3,16 +3,58 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      xmlns:local="clr-namespace:PasswordManager.MainWindow.Pages"
+      xmlns:local="clr-namespace:PasswordManager.MainWindow.Pages" 
+            xmlns:res="clr-namespace:PasswordManager.Properties"
       mc:Ignorable="d" 
       Width="1550.4"
       Height="700"
       Title="Settings"
-      ShowsNavigationUI="False">
+      ShowsNavigationUI="False"
+       
+      Background="{DynamicResource MainColor}"
+      Foreground="{DynamicResource TextColor}"
+      RenderOptions.EdgeMode="Aliased"
+      UseLayoutRounding="True"
+      SnapsToDevicePixels="True"
+      RenderOptions.BitmapScalingMode="NearestNeighbor">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+           
+            <!--Separator-->
+            <RowDefinition Height="50"/>
+            
+            <!--Separator-->
 
-   
-        <Grid Background="NavajoWhite">
-            <TextBlock Text="SETTINGS" Foreground="White" FontSize="50" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        </Grid>
-    
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="{x:Static res:Resources.SettingsHeader}" Style="{StaticResource PageHeader}" />
+        <ListView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Width="1300" Name="SettingsList" Style="{StaticResource SettingsListView}">
+            <ListViewItem x:Name="LanguageSetting" Height="50" >
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{x:Static res:Resources.LanguageSettingHeader}" Width="1100" FontSize="22"/>
+                    <ComboBox Name="LanguageSelector" Width="190">
+                        <ComboBoxItem Name="LanguageSystem">
+                            <TextBlock Text="{x:Static res:Resources.LanguageSettingSystem}"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem  Name="LanguageEnglish">
+                            <TextBlock Text="{x:Static res:Resources.LanguageSettingEnglish}"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem  Name="LanguageUkrainian">
+                            <TextBlock Text="{x:Static res:Resources.LanguageSettingUkrainian}"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem  Name="LanguageRussian">
+                            <TextBlock Text="{x:Static res:Resources.LanguageSettingRussian}"/>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+            </ListViewItem>
+        </ListView>
+    </Grid>
+
 </Page>
