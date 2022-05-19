@@ -17,7 +17,7 @@ namespace ServicesLibrary
         public static void SaveSignUpSettings(SignUpSettings settings)
         {
             PasswordManager.Properties.Settings.Default.Email = settings.Email;
-            PasswordManager.Properties.Settings.Default.Password = settings.Password;
+            PasswordManager.Properties.Settings.Default.Password = settings.AuthPassword;
             PasswordManager.Properties.Settings.Default.Save();
         }
 

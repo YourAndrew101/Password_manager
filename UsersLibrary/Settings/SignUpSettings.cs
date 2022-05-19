@@ -9,12 +9,14 @@ namespace UsersLibrary.Settings
     public class SignUpSettings
     {
         public string Email { get; private set; }
-        public string Password { get; private set; }
+        public string AuthPassword { get; private set; }
 
+        //TODO йобаний рот
         public SignUpSettings(User user)
         {
             Email = user.Email;
-            Password = user.AuthPassword;
+            AuthPassword = user.AuthPassword;
+            CryptoPassword = user.
         }
 
         public SignUpSettings() { }
@@ -22,7 +24,7 @@ namespace UsersLibrary.Settings
         public SignUpSettings(string email, string password)
         {
             Email = email;
-            Password = password;
+            AuthPassword = password;
         }
     }
 }

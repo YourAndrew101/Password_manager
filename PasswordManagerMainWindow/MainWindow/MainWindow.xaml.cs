@@ -23,7 +23,7 @@ namespace PasswordManager.MainWindow
     /// </summary>
     public partial class MainWindow : Window
     {  
-        internal User User { get; set; }
+        private User User { get; set; }
 
         public MainWindow(User user)
         {
@@ -86,7 +86,7 @@ namespace PasswordManager.MainWindow
         {
             DoubleAnimation da = new DoubleAnimation(0, new Duration(TimeSpan.FromSeconds(0.3)));
             Axis.BeginAnimation(TranslateTransform.XProperty, da);
-            MainFrame.Content = new Home();
+            MainFrame.Content = new Home(User);
         }
 
         private void Settings_Checked(object sender, RoutedEventArgs e)
