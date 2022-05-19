@@ -176,7 +176,7 @@ namespace UsersLibrary
                 AuthPassword = password,
             };
         }
-        public void SetHashAuthPassword(string salt)
+        public void SetSaltAndHashAuthPassword(string salt)
         {
             Salt = salt;
             HashAuthPassword = AuthPassword;
