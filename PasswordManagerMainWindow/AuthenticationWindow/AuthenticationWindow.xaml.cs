@@ -59,7 +59,7 @@ namespace PasswordManager.AuthenticationWindow
             try
             {
                 user = UsersService.GetHashAndSaltFromDB(user);
-                if(UsersService.CheckUserData(user.Email, user.AuthPassword))
+                if(UsersService.CheckUserData(user))
                 {
                     StartMainWindow(user);
                     return;

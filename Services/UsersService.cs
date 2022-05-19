@@ -71,15 +71,9 @@ namespace ServicesLibrary
         }
 
 
-        public static bool CheckUserData(string email, string password)
-        {
-            if (!CheckPassword(email, password)) throw new IncorrectPasswordException();
-
-            return true;
-        }
         public static bool CheckUserData(User user)
         {
-            if (!CheckPassword(user.Email, user.AuthPassword)) throw new IncorrectPasswordException();
+            if (!CheckPassword(user.Email, user.HashAuthPassword)) throw new IncorrectPasswordException();
 
             return true;
         }
@@ -91,7 +85,7 @@ namespace ServicesLibrary
             string passwordCheck = sqlData["Password"];
             password += sqlData["Salt"];
 
-            return User.GetSHA256Hash(password) == passwordCheck;
+            return password == passwordCheck;
         }
 
         private static Dictionary<string, string> GetDataByEmail(string email)

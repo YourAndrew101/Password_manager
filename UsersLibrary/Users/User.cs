@@ -34,7 +34,7 @@ namespace UsersLibrary
 
 
         private string _hashPassword;
-        public string AuthPassword { get; private set; }
+        private string AuthPassword { get; set; }
         public string HashAuthPassword
         {
             get => _hashPassword;
@@ -81,8 +81,7 @@ namespace UsersLibrary
             }
 
             return new CryptedService(service.Name, encryptLogin, encryptPasswrod) { Id = service.Id};
-        }
-        
+        }     
         public Service DecryptService(CryptedService service)
         {
             string decryptLogin, decryptPasswrod;
@@ -96,7 +95,6 @@ namespace UsersLibrary
 
             return new Service(service.Name, decryptLogin, decryptPasswrod) { Id = service.Id };
         }
-
         static byte[] EncryptStringToBytes_Aes(string plainText, byte[] Key, byte[] IV)
         {
             if (plainText == null || plainText.Length <= 0)
@@ -130,7 +128,6 @@ namespace UsersLibrary
 
             return encrypted;
         }
-
         static string DecryptStringFromBytes_Aes(byte[] cipherText, byte[] Key, byte[] IV)
         {
             if (cipherText == null || cipherText.Length <= 0)
@@ -181,7 +178,7 @@ namespace UsersLibrary
             HashAuthPassword = AuthPassword;
         }
 
-        public static string GetSHA256Hash(string inputString)
+        private static string GetSHA256Hash(string inputString)
         {
             string outString;
             using (SHA256 sHA256 = SHA256.Create())
@@ -201,6 +198,11 @@ namespace UsersLibrary
                 AuthPassword = settings.AuthPassword,
             };
 
+        }
+        
+        public static implicit operator SignUpSettings(User user)
+        {
+            return new SignUpSettings(user.Email, user.AuthPassword) { };
         }
     }
 }

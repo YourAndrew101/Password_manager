@@ -11,14 +11,6 @@ namespace UsersLibrary.Settings
         public string Email { get; private set; }
         public string AuthPassword { get; private set; }
 
-        //TODO йобаний рот
-        public SignUpSettings(User user)
-        {
-            Email = user.Email;
-            AuthPassword = user.AuthPassword;
-            CryptoPassword = user.
-        }
-
         public SignUpSettings() { }
 
         public SignUpSettings(string email, string password)
