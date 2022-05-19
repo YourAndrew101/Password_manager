@@ -25,7 +25,6 @@ namespace PasswordManager.MainWindow
     {  
         private User User { get; set; }
 
-        //TODO WPF окремо бек окремо
         public MainWindow(User user)
         {
             User = user;
@@ -49,7 +48,6 @@ namespace PasswordManager.MainWindow
 
             ResourceDictionary dict = new ResourceDictionary { Source = new Uri($"/MainWindow/Themes/{theme}Theme.xaml", UriKind.Relative) };
             Application.Current.Resources.MergedDictionaries.Add(dict);
-
         }
 
 
@@ -103,9 +101,5 @@ namespace PasswordManager.MainWindow
             Axis.BeginAnimation(TranslateTransform.XProperty, da);
             MainFrame.Content = new Account();
         }
-
-
-
-
     }
 }

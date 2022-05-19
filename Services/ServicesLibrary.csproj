@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBConnectionSingleton.cs" />
     <Compile Include="EMailService.cs" />
     <Compile Include="InternetService.cs" />
     <Compile Include="LogoService.cs" />
