@@ -98,4 +98,6 @@
     
     <ImageSource x:Key="ClosedEye">/MainWindow/Assets/closed_eye.png</ImageSource>
     <ImageSource x:Key="OpenEye">/MainWindow/Assets/eye.png</ImageSource>
+
+    <Color x:Key="SettingsListView.Background">White</Color>
 </ResourceDictionary>

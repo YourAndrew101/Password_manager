@@ -793,4 +793,14 @@
             <Setter Property="Margin" Value="5,0,0,0"/>
         </Style.Setters>
     </Style>
+
+
+    <SolidColorBrush x:Key="SettingsListViewStyle.Background" Color="{DynamicResource SettingsListView.Background}"/>
+    
+    <Style TargetType="ListView" x:Key="SettingsListView">
+        <Setter Property="Background" Value="{DynamicResource SettingsListViewStyle.Background}"/>
+        <Setter Property= "ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+        <Setter Property="BorderThickness" Value="0"/>
+
+    </Style>
 </ResourceDictionary>

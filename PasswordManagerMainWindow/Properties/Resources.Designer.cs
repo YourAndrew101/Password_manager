@@ -277,6 +277,51 @@ namespace PasswordManager.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на English.
+        /// </summary>
+        public static string LanguageSettingEnglish {
+            get {
+                return ResourceManager.GetString("LanguageSettingEnglish", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на App language.
+        /// </summary>
+        public static string LanguageSettingHeader {
+            get {
+                return ResourceManager.GetString("LanguageSettingHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Russian.
+        /// </summary>
+        public static string LanguageSettingRussian {
+            get {
+                return ResourceManager.GetString("LanguageSettingRussian", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на System language.
+        /// </summary>
+        public static string LanguageSettingSystem {
+            get {
+                return ResourceManager.GetString("LanguageSettingSystem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Ukrainian.
+        /// </summary>
+        public static string LanguageSettingUkrainian {
+            get {
+                return ResourceManager.GetString("LanguageSettingUkrainian", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Log In.
         /// </summary>
         public static string Log_In {
@@ -516,6 +561,15 @@ namespace PasswordManager.Properties {
         public static string ResetPassword {
             get {
                 return ResourceManager.GetString("ResetPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Settings.
+        /// </summary>
+        public static string SettingsHeader {
+            get {
+                return ResourceManager.GetString("SettingsHeader", resourceCulture);
             }
         }
         

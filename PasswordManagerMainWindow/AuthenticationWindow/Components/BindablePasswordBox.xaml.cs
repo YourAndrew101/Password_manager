@@ -25,7 +25,9 @@ namespace PasswordManager.Components
         private static void PasswordPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             if (d is BindablePasswordBox bindablePassword)
+            {
                 bindablePassword.UpdatePasswordBox();
+            }
         }
 
         public string Password

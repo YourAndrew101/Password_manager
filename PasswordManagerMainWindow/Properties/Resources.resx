@@ -189,6 +189,21 @@
   <data name="IncorrectPassword" xml:space="preserve">
     <value>Incorrect password</value>
   </data>
+  <data name="LanguageSettingEnglish" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="LanguageSettingHeader" xml:space="preserve">
+    <value>App language</value>
+  </data>
+  <data name="LanguageSettingRussian" xml:space="preserve">
+    <value>Russian</value>
+  </data>
+  <data name="LanguageSettingSystem" xml:space="preserve">
+    <value>System language</value>
+  </data>
+  <data name="LanguageSettingUkrainian" xml:space="preserve">
+    <value>Ukrainian</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>
@@ -269,6 +284,9 @@
   </data>
   <data name="ResetPassword" xml:space="preserve">
     <value>Reset password</value>
+  </data>
+  <data name="SettingsHeader" xml:space="preserve">
+    <value>Settings</value>
   </data>
   <data name="SignUp" xml:space="preserve">
     <value>Sign Up</value>

@@ -189,6 +189,21 @@
   <data name="IncorrectPassword" xml:space="preserve">
     <value>Неправильний пароль</value>
   </data>
+  <data name="LanguageSettingEnglish" xml:space="preserve">
+    <value>Анлійська </value>
+  </data>
+  <data name="LanguageSettingHeader" xml:space="preserve">
+    <value>Мова програми</value>
+  </data>
+  <data name="LanguageSettingRussian" xml:space="preserve">
+    <value>Російська</value>
+  </data>
+  <data name="LanguageSettingSystem" xml:space="preserve">
+    <value>Мова системи</value>
+  </data>
+  <data name="LanguageSettingUkrainian" xml:space="preserve">
+    <value>Українська</value>
+  </data>
   <data name="Login" xml:space="preserve">
     <value>Логін</value>
   </data>
@@ -269,6 +284,9 @@
   </data>
   <data name="ResetPassword" xml:space="preserve">
     <value>Скинути пароль</value>
+  </data>
+  <data name="SettingsHeader" xml:space="preserve">
+    <value>Налаштування</value>
   </data>
   <data name="SignUp" xml:space="preserve">
     <value>Зареєструватися</value>

@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using Newtonsoft.Json;
+using ServicesLibrary;
 
 namespace Services
 {
@@ -70,62 +71,103 @@ namespace Services
    public class LogoService
     {
 
-        private static void GetLogoFromAPI(string resourceName)
-        {
-            XmlDocument xml = new XmlDocument();
-            xml.Load("../../../Services/APIList.xml");
-            XmlElement root = xml.DocumentElement;
-            string key= root.FirstChild.InnerText;
-            string uri = $"https://api.brandfetch.io/v2/brands/{resourceName}";
-            WebRequest request = WebRequest.Create(uri);
-            request.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {key}");
-            WebResponse response = null;
-            
-            try
-            {
-               response = request.GetResponse();
-            }
-            catch (WebException we)
-            {
-                HttpWebResponse errorResponse = (HttpWebResponse)we.Response;
-               
-                if (errorResponse.StatusCode==HttpStatusCode.Forbidden)
-                {
-                    root.RemoveChild(root.FirstChild);
-                    xml.Save("../../../Services/APIList.xml");
-                    GetLogoFromAPI(resourceName);
-                }
-                else { return; }
-            }
-            StreamReader streamReader = new StreamReader(response.GetResponseStream());
-            string json = streamReader.ReadToEnd();
-            streamReader.Close();
-            response.Close();
+        //private static void GetLogoFromAPI(string resourceName)
+        //{
 
-            Root data = JsonConvert.DeserializeObject<Root>(json);
-            if (data.logos.Contains(data.logos.FirstOrDefault(e => e.type == "icon")))
-            {
-                string logoUri = data.logos.FirstOrDefault(e => e.type == "icon").formats[0].src;
-                string path = $"../../MainWindow/LogosServices/{resourceName}.png";
-                using (WebClient webClient = new WebClient())
-                {
-                    webClient.DownloadFile(new Uri(logoUri), path);
-                }
-            }
-            else
-            {
-                throw new Exception();
-            }
-            
-        }
+        //    XmlDocument xml = new XmlDocument();
+        //    xml.Load("../../../Services/APIList.xml");
+        //    XmlElement root = xml.DocumentElement;
+        //    string key = root.FirstChild.InnerText;
+        //    string uri = $"https://api.brandfetch.io/v2/brands/{resourceName}";
+        //    WebRequest request = WebRequest.Create(uri);
+        //    request.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {key}");
+        //    WebResponse response = null;
+
+        //    try
+        //    {
+        //        response = request.GetResponse();
+        //    }
+        //    catch (WebException we)
+        //    {
+        //        HttpWebResponse errorResponse = (HttpWebResponse)we.Response;
+
+        //        if (errorResponse.StatusCode == HttpStatusCode.Forbidden)
+        //        {
+        //            root.RemoveChild(root.FirstChild);
+        //            xml.Save("../../../Services/APIList.xml");
+        //            GetLogoFromAPI(resourceName);
+        //        }
+        //        else { return; }
+        //    }
+        //    StreamReader streamReader = new StreamReader(response.GetResponseStream());
+        //    string json = streamReader.ReadToEnd();
+        //    streamReader.Close();
+        //    response.Close();
+
+        //    Root data = JsonConvert.DeserializeObject<Root>(json);
+        //    if (data.logos.Contains(data.logos.FirstOrDefault(e => e.type == "icon")))
+        //    {
+        //        string logoUri = data.logos.FirstOrDefault(e => e.type == "icon").formats[0].src;
+        //        string path = $"../../MainWindow/LogosServices/{resourceName}.png";
+        //        using (WebClient webClient = new WebClient())
+        //        {
+        //            webClient.DownloadFile(new Uri(logoUri), path);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        throw new Exception();
+        //    }
+        //}
         public static string GetLogo(string resourceName)
         {
             string path= $"../../MainWindow/LogosServices/{resourceName}.png";
             if (!File.Exists(path))
             {
+                if (!InternetService.IsConnectedToInternet) return $"../../MainWindow/LogosServices/defaultLogo.png";
                 try
                 {
-                    GetLogoFromAPI(resourceName);                    
+                    XmlDocument xml = new XmlDocument();
+                    xml.Load("../../../Services/APIList.xml");
+                    XmlElement root = xml.DocumentElement;
+                    string key = root.FirstChild.InnerText;
+                    string uri = $"https://api.brandfetch.io/v2/brands/{resourceName}";
+                    WebRequest request = WebRequest.Create(uri);
+                    request.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {key}");
+                    WebResponse response = null;
+
+                    try
+                    {
+                        response = request.GetResponse();
+                    }
+                    catch (WebException we)
+                    {
+                        HttpWebResponse errorResponse = (HttpWebResponse)we.Response;
+
+                        if (errorResponse.StatusCode == HttpStatusCode.Forbidden)
+                        {
+                            response.Close();
+                            root.RemoveChild(root.FirstChild);
+                            xml.Save("../../../Services/APIList.xml");
+                            return GetLogo(resourceName);
+                        }
+
+                    }
+                    StreamReader streamReader = new StreamReader(response.GetResponseStream());
+                    string json = streamReader.ReadToEnd();
+                    streamReader.Close();
+                    response.Close();
+
+                    Root data = JsonConvert.DeserializeObject<Root>(json);
+                    if (!data.logos.Contains(data.logos.FirstOrDefault(e => e.type == "icon")))
+                    {
+                        throw new Exception();
+                    }
+                    string logoUri = data.logos.FirstOrDefault(e => e.type == "icon").formats[0].src;
+                        using (WebClient webClient = new WebClient())
+                        {
+                            webClient.DownloadFile(new Uri(logoUri), path);
+                        }
                 }
                 catch (Exception)
                 {
