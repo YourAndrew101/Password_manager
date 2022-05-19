@@ -29,9 +29,7 @@ namespace UsersLibrary
         }
         public string HashEmail { get; private set; }
 
-
         public List<Service> Services { get; private set; }
-
 
         private string _hashPassword;
         private string AuthPassword { get; set; }
@@ -53,7 +51,7 @@ namespace UsersLibrary
         }
 
 
-        public User() { }
+        private User() { }
         public User(string email, string password)
         {
             CreateSalt();
@@ -64,18 +62,23 @@ namespace UsersLibrary
 
             Services = new List<Service>();
         }
+            
 
 
+        private string AddStringToCharsCount(string inputString, int count)
+        {
+            return string.Join("", Enumerable.Repeat(inputString, count / AuthPassword.Length + 1)).Substring(0, count);
+        }
         public CryptedService EncryptService(Service service)
         {
             string encryptLogin, encryptPasswrod;
             using (Aes myAes = Aes.Create())
             {
-                myAes.Key = Encoding.ASCII.GetBytes(AuthPassword);
+                myAes.Key = Encoding.ASCII.GetBytes(AddStringToCharsCount(AuthPassword, myAes.KeySize / 8));
+                myAes.IV = Encoding.ASCII.GetBytes(AddStringToCharsCount(AuthPassword, myAes.IV.Length));
 
                 byte[] encrypted = EncryptStringToBytes_Aes(service.Login, myAes.Key, myAes.IV);
                 encryptLogin = Convert.ToBase64String(encrypted);
-
                 encrypted = EncryptStringToBytes_Aes(service.Password, myAes.Key, myAes.IV);
                 encryptPasswrod = Convert.ToBase64String(encrypted);
             }
@@ -87,7 +90,8 @@ namespace UsersLibrary
             string decryptLogin, decryptPasswrod;
             using (Aes myAes = Aes.Create())
             {
-                myAes.Key = Encoding.ASCII.GetBytes(AuthPassword);
+                myAes.Key = Encoding.ASCII.GetBytes(AddStringToCharsCount(AuthPassword, myAes.KeySize / 8));
+                myAes.IV = Encoding.ASCII.GetBytes(AddStringToCharsCount(AuthPassword, myAes.IV.Length));
 
                 decryptLogin = DecryptStringFromBytes_Aes(Convert.FromBase64String(service.Login), myAes.Key, myAes.IV);
                 decryptPasswrod = DecryptStringFromBytes_Aes(Convert.FromBase64String(service.Password), myAes.Key, myAes.IV);

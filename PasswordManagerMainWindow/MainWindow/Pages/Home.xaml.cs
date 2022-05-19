@@ -37,11 +37,6 @@ namespace PasswordManager.MainWindow.Pages
 
             User = user;
             DataContext = dataVM;
-
-            //Service service = new Service("test", "tets", "tetst");
-            //CryptedService cs = User.EncryptService(service);
-            //Service s = User.DecryptService(cs);
-
         }
 
         private void AddPasswordButton_Click(object sender, RoutedEventArgs e)

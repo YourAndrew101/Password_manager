@@ -25,21 +25,22 @@ namespace PasswordManager.MainWindow
     {  
         private User User { get; set; }
 
+        //TODO WPF окремо бек окремо
         public MainWindow(User user)
         {
+            User = user;
+
             InitializeComponent();
             SetSystemColorTheme();
             SetWindowSettings();
-        
-            User = user;
         }
 
         private void SetWindowSettings()
         {
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
-            Home.IsChecked = true;
             WindowState = WindowState.Normal;
+            Home.IsChecked = true;
         }
 
         private void SetSystemColorTheme()

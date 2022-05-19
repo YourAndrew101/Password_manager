@@ -83,7 +83,6 @@ namespace ServicesLibrary
 
             Dictionary<string, string> sqlData = GetDataByEmail(email);
             string passwordCheck = sqlData["Password"];
-            password += sqlData["Salt"];
 
             return password == passwordCheck;
         }
