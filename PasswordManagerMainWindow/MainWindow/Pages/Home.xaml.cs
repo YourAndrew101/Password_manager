@@ -15,6 +15,7 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Data.DataProviders.Products;
 using PasswordManager.MainWindow;
 using PasswordManager.MainWindow.Models;
 using PasswordManager.MainWindow.ViewModels;

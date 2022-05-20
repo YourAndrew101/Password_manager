@@ -1,30 +1,89 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ServicesLibrary;
 using UsersLibrary;
 using UsersLibrary.Services;
 
 namespace Data.DataProviders.Products
 {
-    public class SQLDataProvider
+    public class SQLDataProvider : IDataProvider
     {
-        private string _tableName;
-
-        public List<Service> Load()
+        public List<Service> Load(User user)
         {
-            throw new NotImplementedException();
+            List<Service> list = new List<Service>();
+
+            string request = $"Select * from \"{user.HashEmail}\"";
+            SqlConnection connection = DBConnectionSingleton.GetInstance().SqlConnection;
+            connection.Open();
+
+            SqlCommand command = new SqlCommand(request, connection);
+
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        int id = Convert.ToInt32(reader["ID"]);
+                        string name = Convert.ToString(reader["Name"]);
+                        string login = Convert.ToString(reader["Login"]);
+                        string password = Convert.ToString(reader["Password"]);
+
+                        CryptedService service = new CryptedService(name, login, password) { Id = id };
+                        list.Add(user.DecryptService(service));
+                    }
+                    reader.Close();
+                }
+            }
+
+            connection.Close();
+            return list;
         }
 
         public void Save(User user, Service service)
         {
-            throw new NotImplementedException();
+            CryptedService cryptedService = user.EncryptService(service);
+
+            string request = $"INSERT INTO \"{user.HashEmail}\" (Id, Name, Login, Password) VALUES (@Id, @Name, @Login, @Password)";
+            SqlConnection connection = DBConnectionSingleton.GetInstance().SqlConnection;
+            connection.Open();
+
+            SqlCommand command = new SqlCommand(request, connection);
+            command.Parameters.AddWithValue("@Id", cryptedService.Id);
+            command.Parameters.AddWithValue("@Name", cryptedService.Name);
+            command.Parameters.AddWithValue("@Login", cryptedService.Login);
+            command.Parameters.AddWithValue("@Password", cryptedService.Password);
+            command.ExecuteNonQuery();
+
+            connection.Close();
         }
 
-        public SQLDataProvider(string tableName)
+        public void Delete(User user, Service service)
         {
-            _tableName = tableName;
+            string request = $"DELETE FROM \"{user.HashEmail}\" WHERE Id = {service.Id}";
+            SqlConnection connection = DBConnectionSingleton.GetInstance().SqlConnection;
+            connection.Open();
+
+            SqlCommand command = new SqlCommand(request, connection);
+            command.ExecuteNonQuery();
+
+            connection.Close();
+        }
+
+        public void Clear(User user)
+        {
+            string request = $"DELETE FROM \"{user.HashEmail}\"";
+            SqlConnection connection = DBConnectionSingleton.GetInstance().SqlConnection;
+            connection.Open();
+
+            SqlCommand command = new SqlCommand(request, connection);
+            command.ExecuteNonQuery();
+
+            connection.Close();
         }
     }
 }
