@@ -26,5 +26,9 @@ namespace PasswordManager.MainWindow.Pages
           
         }
 
+        private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

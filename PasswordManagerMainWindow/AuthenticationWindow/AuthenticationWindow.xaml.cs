@@ -51,7 +51,7 @@ namespace PasswordManager.AuthenticationWindow
             if (InternetService.IsConnectedToInternet)
                 GetUserDataFromDB(user);
             else
-                GetUserDataFromLocalStorage(user);                      
+                GetUserDataFromLocalStorage(user);
         }
 
         private void GetUserDataFromDB(User user)
