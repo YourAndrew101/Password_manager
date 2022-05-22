@@ -119,18 +119,22 @@ namespace Data.DataProviders.Products
         }
 
         public DateTime GetLastModifyTime(User user)
-        {
-            if(!UsersService.IsExistsEmail(user.Email)) return DateTime.MinValue;
-
+        {         
+            if (!UsersService.IsExistsEmail(user.Email)) return DateTime.MinValue;
+            
             SqlConnection connection = DBConnectionSingleton.GetInstance().SqlConnection;
             connection.Open();
 
             string request = $"select LastDataAdd from \"{user.HashEmail}\" order by LastDataAdd desc";
             SqlCommand command = new SqlCommand(request, connection);
-
             SqlDataReader sqlDataReader = command.ExecuteReader();
-            sqlDataReader.Read();
-            DateTime dateTime = (DateTime)sqlDataReader["LastDataAdd"];
+
+            DateTime dateTime = new DateTime();
+            if (sqlDataReader.HasRows)
+            {
+                sqlDataReader.Read();
+                dateTime = (DateTime)sqlDataReader["LastDataAdd"];
+            }
 
             sqlDataReader.Close();
             connection.Close();

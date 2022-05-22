@@ -18,6 +18,8 @@ namespace PasswordManager.AuthenticationWindow.Pages
     /// <summary>
     /// Логика взаимодействия для TwoStepVerification.xaml
     /// </summary>
+
+    //TODO подвійна верифікація
     public partial class TwoStepVerification : Page
     {
         public TwoStepVerification()

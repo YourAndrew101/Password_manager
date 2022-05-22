@@ -28,17 +28,6 @@ namespace PasswordManager.AuthenticationWindow
 {
     public partial class AuthenticationWindow : Window
     {
-        private IEnumerable<Service> Services = new List<Service>() 
-        {
-            new Service("testName", "testLogin", "testPassword") { Id = 1},
-            new Service("testName1", "testLogin1", "testPassword1") { Id = 2},
-            new Service("testName2", "testLogin2", "testPassword2") { Id = 3},
-            new Service("testName3", "testLogin3", "testPassword3") { Id = 4},
-            new Service("testName4", "testLogin4", "testPassword4") { Id = 5},
-            new Service("testName5", "testLogin5", "testPassword5") { Id = 6},
-            new Service("testName6", "testLogin6", "testPassword6") { Id = 7},
-        };
-
         public AuthenticationWindow()
         {
             InitializeComponent();
@@ -63,10 +52,6 @@ namespace PasswordManager.AuthenticationWindow
 
             SignUpSettings settings = SettingsService.GetSignUpSettings();
             User user = User.CreateAlreadyExistUser(settings.Email, settings.AuthPassword);
-
-            IDataProvider dataProvider = new SQLDataProvider();
-            dataProvider.Save(user, Services);
-
 
             GetServicesData(user);
 
@@ -95,8 +80,10 @@ namespace PasswordManager.AuthenticationWindow
             for (int i = 0; i < dataProviderFactories.Length; i++)
             {
                 if (i == lastModifyDateTimeIndex) continue;
+                IDataProvider dataProvider = dataProviderFactories[i].GetDataProvider();
 
-                dataProviderFactories[i].GetDataProvider().Save(user, services);
+                dataProvider.Clear(user);
+                dataProvider.Save(user, services);
             }
         }
 

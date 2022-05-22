@@ -16,6 +16,8 @@ using System.Windows.Shapes;
 using UsersLibrary;
 using PasswordManager.MainWindow;
 using System.Configuration;
+using Data.DataProviders.Factories;
+using Data.DataProviders.Products;
 using static UsersLibrary.UsersExceptions;
 using ServicesLibrary;
 using UsersLibrary.Settings;
@@ -57,6 +59,10 @@ namespace PasswordManager.AuthenticationWindow.Pages
             }
 
             if (RememberMeFlag == true) SettingsService.SaveSignUpSettings((SignUpSettings)_user);
+
+            CommonDataProviderFactory dataProviderFactory = new SQLDataProviderFactory();
+            _user.Services = dataProviderFactory.GetDataProvider().Load(_user);
+
             //NavigationService.Navigate(new TwoStepVerification());
 
            ((AuthenticationWindow)Window.GetWindow(this)).StartMainWindow(_user);
