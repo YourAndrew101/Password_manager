@@ -42,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContext.cs" />
+    <Compile Include="DataProviders\Factories\IDataProviderFactory.cs" />
+    <Compile Include="DataProviders\Factories\XMLDataProviderFactory.cs" />
+    <Compile Include="DataProviders\Factories\SQLDataProviderFactory.cs" />
     <Compile Include="DataProviders\Products\XMLDataProvider.cs" />
     <Compile Include="DataProviders\Products\IDataProvider.cs" />
     <Compile Include="DataProviders\Products\SQLDataProvider.cs" />
@@ -59,8 +62,6 @@
       <Name>UsersLibrary</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataProviders\Factories\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
