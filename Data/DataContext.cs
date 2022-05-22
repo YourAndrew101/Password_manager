@@ -13,15 +13,5 @@ namespace Data
 
         public DataContext() => Services = new List<Service>(); 
         public DataContext(List<Service> services) => Services = services; 
-
-        public void Save()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void Update()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

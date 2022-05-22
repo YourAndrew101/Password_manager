@@ -30,11 +30,6 @@ namespace ServicesLibrary
             return result;
         }
 
-        public static void IsUserExists(string email)
-        {
-            if (!IsExistsEmail(email)) throw new NonExistenMailException();
-        }
-
         public static void AddUser(User user)
         {
             if (IsExistsEmail(user.Email)) throw new DuplicateMailException();

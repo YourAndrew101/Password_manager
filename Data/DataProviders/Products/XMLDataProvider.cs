@@ -111,5 +111,10 @@ namespace Data.DataProviders.Products
 
             xdoc.Save(string.Format(_filePath, user.HashEmail));
         }
+
+        public DateTime GetLastModifyTime(User user)
+        {
+            return File.GetLastWriteTime(string.Format(_filePath, user.HashEmail));
+        }
     }
 }

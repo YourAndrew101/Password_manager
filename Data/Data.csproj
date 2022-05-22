@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContext.cs" />
-    <Compile Include="DataProviders\Factories\IDataProviderFactory.cs" />
+    <Compile Include="DataProviders\Factories\CommonDataProviderFactory.cs" />
     <Compile Include="DataProviders\Factories\XMLDataProviderFactory.cs" />
     <Compile Include="DataProviders\Factories\SQLDataProviderFactory.cs" />
     <Compile Include="DataProviders\Products\XMLDataProvider.cs" />

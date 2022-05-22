@@ -15,5 +15,7 @@ namespace Data.DataProviders.Products
         void Delete(User user, int id);
         List<Service> Load(User user);
         void Clear(User user);
+
+        DateTime GetLastModifyTime(User user);
     }
 }

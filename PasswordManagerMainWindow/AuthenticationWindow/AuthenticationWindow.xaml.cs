@@ -14,6 +14,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Data.DataProviders.Factories;
 using PasswordManager.AuthenticationWindow.Pages;
 using ServicesLibrary;
 using UsersLibrary;
@@ -48,10 +49,23 @@ namespace PasswordManager.AuthenticationWindow
             SignUpSettings settings = SettingsService.GetSignUpSettings();
             User user = User.CreateAlreadyExistUser(settings.Email, settings.AuthPassword);
 
+            GetServicesData(user);
+
             if (InternetService.IsConnectedToInternet)
                 GetUserDataFromDB(user);
             else
                 GetUserDataFromLocalStorage(user);
+        }
+
+        private void GetServicesData(User user)
+        {
+            CommonDataProviderFactory[] dataProviderFactories = CommonDataProviderFactory.CreateFactories();
+            DateTime[] modifyDateTimes = new DateTime[dataProviderFactories.Length];
+
+            for (int i = 0; i < dataProviderFactories.Length; i++)
+            {
+
+            }
         }
 
         private void GetUserDataFromDB(User user)
@@ -59,7 +73,7 @@ namespace PasswordManager.AuthenticationWindow
             try
             {
                 user = UsersService.GetHashAndSaltFromDB(user);
-                if(UsersService.CheckUserData(user))
+                if (UsersService.CheckUserData(user))
                 {
                     StartMainWindow(user);
                     return;

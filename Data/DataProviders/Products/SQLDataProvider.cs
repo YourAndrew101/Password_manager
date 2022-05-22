@@ -96,5 +96,24 @@ namespace Data.DataProviders.Products
 
             connection.Close();
         }
+
+        public DateTime GetLastModifyTime(User user)
+        {
+            SqlConnection connection = DBConnectionSingleton.GetInstance().SqlConnection;
+            connection.Open();
+
+            string request = "select * from sys.objects order by modify_date desc";
+            SqlCommand command = new SqlCommand(request, connection);
+
+            SqlDataReader sqlDataReader = command.ExecuteReader();
+            while (sqlDataReader.Read())
+                if ((string)sqlDataReader["name"] == user.HashEmail)
+                {
+                    connection.Close();
+                    return (DateTime)sqlDataReader["modify_date"];
+                }
+
+            return DateTime.MaxValue;
+        }
     }
 }
