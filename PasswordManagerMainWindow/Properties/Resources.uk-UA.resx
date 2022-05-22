@@ -190,7 +190,7 @@
     <value>Неправильний пароль</value>
   </data>
   <data name="LanguageSettingEnglish" xml:space="preserve">
-    <value>Анлійська </value>
+    <value>Англійська</value>
   </data>
   <data name="LanguageSettingHeader" xml:space="preserve">
     <value>Мова програми</value>
@@ -296,6 +296,21 @@
   </data>
   <data name="TextCopiedToClipboardNotification" xml:space="preserve">
     <value>Скопійовано в буфер обміну</value>
+  </data>
+  <data name="ThemeSettingDark" xml:space="preserve">
+    <value>Темна</value>
+  </data>
+  <data name="ThemeSettingHeader" xml:space="preserve">
+    <value>Тема програми</value>
+  </data>
+  <data name="ThemeSettingLight" xml:space="preserve">
+    <value>Світла</value>
+  </data>
+  <data name="ThemeSettingSystem" xml:space="preserve">
+    <value>Системна</value>
+  </data>
+  <data name="TraySettingHeader" xml:space="preserve">
+    <value>Згортати в трей</value>
   </data>
   <data name="TwoStepAuthenticationCancel" xml:space="preserve">
     <value>Скасувати</value>

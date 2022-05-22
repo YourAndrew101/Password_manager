@@ -34,24 +34,46 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock Text="{x:Static res:Resources.SettingsHeader}" Style="{StaticResource PageHeader}" />
-        <ListView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Width="1300" Name="SettingsList" Style="{StaticResource SettingsListView}">
-            <ListViewItem x:Name="LanguageSetting" Height="50" >
+        <ListView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Width="900" Name="SettingsList" Style="{StaticResource SettingsListView}">
+            <ListViewItem x:Name="LanguageSetting" Style="{StaticResource SettingsListViewItem}" >
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{x:Static res:Resources.LanguageSettingHeader}" Width="1100" FontSize="22"/>
-                    <ComboBox Name="LanguageSelector" Width="190">
-                        <ComboBoxItem Name="LanguageSystem">
+                    <TextBlock Text="{x:Static res:Resources.LanguageSettingHeader}" Style="{StaticResource SettingHeaderStyle}"/>
+                    <ComboBox Name="LanguageSelector" Style="{DynamicResource SettingComboBoxStyle}">
+                        <ComboBoxItem Name="LanguageSystem" Style="{StaticResource SettingComboBoxItemStyle}">
                             <TextBlock Text="{x:Static res:Resources.LanguageSettingSystem}"/>
                         </ComboBoxItem>
-                        <ComboBoxItem  Name="LanguageEnglish">
+                        <ComboBoxItem  Name="LanguageEnglish" Style="{StaticResource SettingComboBoxItemStyle}">
                             <TextBlock Text="{x:Static res:Resources.LanguageSettingEnglish}"/>
                         </ComboBoxItem>
-                        <ComboBoxItem  Name="LanguageUkrainian">
+                        <ComboBoxItem  Name="LanguageUkrainian" Style="{StaticResource SettingComboBoxItemStyle}">
                             <TextBlock Text="{x:Static res:Resources.LanguageSettingUkrainian}"/>
                         </ComboBoxItem>
-                        <ComboBoxItem  Name="LanguageRussian">
+                        <ComboBoxItem  Name="LanguageRussian" Style="{StaticResource SettingComboBoxItemStyle}" >
                             <TextBlock Text="{x:Static res:Resources.LanguageSettingRussian}"/>
                         </ComboBoxItem>
                     </ComboBox>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem x:Name="ThemeSetting" Style="{StaticResource SettingsListViewItem}" >
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{x:Static res:Resources.ThemeSettingHeader}" Style="{StaticResource SettingHeaderStyle}"/>
+                    <ComboBox Name="ThemeSelector" Style="{DynamicResource SettingComboBoxStyle}">
+                        <ComboBoxItem  Name="SystemTheme" Style="{StaticResource SettingComboBoxItemStyle}">
+                            <TextBlock Text="{x:Static res:Resources.ThemeSettingSystem}"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem Name="DarkTheme" Style="{StaticResource SettingComboBoxItemStyle}">
+                            <TextBlock Text="{x:Static res:Resources.ThemeSettingDark}"/>
+                        </ComboBoxItem>
+                        <ComboBoxItem  Name="LightTheme" Style="{StaticResource SettingComboBoxItemStyle}">
+                            <TextBlock Text="{x:Static res:Resources.ThemeSettingLight}"/>
+                        </ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+            </ListViewItem>
+            <ListViewItem x:Name="TraySetting" Style="{StaticResource SettingsListViewItem}" >
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{x:Static res:Resources.TraySettingHeader}" Style="{StaticResource SettingHeaderStyle}"/>
+                    <ToggleButton HorizontalAlignment="Right" Style="{StaticResource SettingToggleButton}" Unchecked="ToggleButton_Unchecked"/>
                 </StackPanel>
             </ListViewItem>
         </ListView>

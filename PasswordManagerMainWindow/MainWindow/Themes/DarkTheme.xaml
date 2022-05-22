@@ -105,4 +105,18 @@
     <ImageSource x:Key="OpenEye">/MainWindow/Assets/eye_white.png</ImageSource>
 
     <Color x:Key="SettingsListView.Background">#2c2f33</Color>
+    <Color x:Key="SettingsListViewItem.Static.Background">#2c2f33</Color>
+
+    <Color x:Key="SettingComboBox.Background">#2c2f33</Color>
+    <Color x:Key="SettingComboBox.BorderBrush.Static">LightGray</Color>
+    <Color x:Key="SettingComboBox.BorderBrush.Checked">#7289da</Color>
+    <Color x:Key="SettingComboBox.Glyph.Static">LightGray</Color>
+    <Color x:Key="SettingComboBox.Glyph.Checked">#7289da</Color>
+    
+    <Color x:Key="SettingComboBoxItem.IsHighlighted.Background">#56595c</Color>
+    <Color x:Key="SettingComboBoxItem.Static.Background">#2c2f33</Color>
+
+    <Color x:Key="SettingToggleButton.BackRectangle.Background.Unchecked">#414447</Color>
+    <Color x:Key="SettingToggleButton.BackRectangle.Background.Checked">#7289da</Color>
+    <Color x:Key="SettingToggleButton.FrontRectangle.Background">White</Color>
 </ResourceDictionary>

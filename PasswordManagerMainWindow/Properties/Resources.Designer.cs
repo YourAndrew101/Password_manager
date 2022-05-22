@@ -601,6 +601,51 @@ namespace PasswordManager.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Dark.
+        /// </summary>
+        public static string ThemeSettingDark {
+            get {
+                return ResourceManager.GetString("ThemeSettingDark", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на App theme.
+        /// </summary>
+        public static string ThemeSettingHeader {
+            get {
+                return ResourceManager.GetString("ThemeSettingHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Light.
+        /// </summary>
+        public static string ThemeSettingLight {
+            get {
+                return ResourceManager.GetString("ThemeSettingLight", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на System.
+        /// </summary>
+        public static string ThemeSettingSystem {
+            get {
+                return ResourceManager.GetString("ThemeSettingSystem", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Minimize app to tray.
+        /// </summary>
+        public static string TraySettingHeader {
+            get {
+                return ResourceManager.GetString("TraySettingHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Cancel.
         /// </summary>
         public static string TwoStepAuthenticationCancel {
