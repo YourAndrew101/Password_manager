@@ -32,26 +32,25 @@ namespace Data.Repositories
             return Context.Services.Where(predicate);
         }
 
-        public void Add(Service entity)
+        public void Add(Service service)
         {
-            Context.Services.Add(entity);
-
-
+            service.Id = Context.Services.Any() ? Context.Services.Max(s => s.Id) : 0;
+            Context.Services.Add(service);
         }
 
-        public void AddRange(IEnumerable<Service> entities)
+        public void AddRange(IEnumerable<Service> services)
         {
-            Context.Services.AddRange(entities);
+            Context.Services.AddRange(services);
         }
 
-        public void Remove(Service entity)
+        public void Remove(Service service)
         {
-            Context.Services.Remove(entity);
+            Context.Services.Remove(service);
         }
 
-        public void RemoveRange(IEnumerable<Service> entities)
+        public void RemoveRange(IEnumerable<Service> services)
         {
-            foreach (var item in entities)
+            foreach (var item in services)
                 Context.Services.Remove(item);
         }
     }

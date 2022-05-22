@@ -50,6 +50,10 @@
     <Compile Include="Repositories\Repository.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Services\ServicesLibrary.csproj">
+      <Project>{197BFFCB-A95B-4DA8-A4AF-9905997D6039}</Project>
+      <Name>ServicesLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UsersLibrary\UsersLibrary.csproj">
       <Project>{1283c04d-3957-4e0f-a625-bc253090a7e7}</Project>
       <Name>UsersLibrary</Name>

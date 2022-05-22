@@ -8,9 +8,6 @@ namespace UsersLibrary.Services
 {
     public class CryptedService : Service
     {
-        public CryptedService(int id, string name, string login, string password) : base(name, login, password)
-        {
-            Id = id;
-        }
+        public CryptedService(string name, string login, string password) : base(name, login, password) { }
     }
 }

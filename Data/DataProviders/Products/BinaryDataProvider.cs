@@ -22,6 +22,21 @@ namespace Data.DataProviders.Products
             throw new NotImplementedException();
         }
 
+        public void Delete(User user, Service service)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Service> Load(User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Clear(User user)
+        {
+            throw new NotImplementedException();
+        }
+
         public BinaryDataProvider(string fileName)
         {
             _fileName = fileName;

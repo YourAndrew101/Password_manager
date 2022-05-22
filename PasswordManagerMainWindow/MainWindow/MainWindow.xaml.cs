@@ -23,23 +23,23 @@ namespace PasswordManager.MainWindow
     /// </summary>
     public partial class MainWindow : Window
     {  
-        internal User User { get; set; }
+        private User User { get; set; }
 
         public MainWindow(User user)
         {
+            User = user;
+
             InitializeComponent();
             SetSystemColorTheme();
             SetWindowSettings();
-        
-            User = user;
         }
 
         private void SetWindowSettings()
         {
             MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
-            Home.IsChecked = true;
             WindowState = WindowState.Normal;
+            Home.IsChecked = true;
         }
 
         private void SetSystemColorTheme()
@@ -48,7 +48,6 @@ namespace PasswordManager.MainWindow
 
             ResourceDictionary dict = new ResourceDictionary { Source = new Uri($"/MainWindow/Themes/{theme}Theme.xaml", UriKind.Relative) };
             Application.Current.Resources.MergedDictionaries.Add(dict);
-
         }
 
 
@@ -86,7 +85,7 @@ namespace PasswordManager.MainWindow
         {
             DoubleAnimation da = new DoubleAnimation(0, new Duration(TimeSpan.FromSeconds(0.3)));
             Axis.BeginAnimation(TranslateTransform.XProperty, da);
-            MainFrame.Content = new Home();
+            MainFrame.Content = new Home(User);
         }
 
         private void Settings_Checked(object sender, RoutedEventArgs e)
@@ -102,9 +101,5 @@ namespace PasswordManager.MainWindow
             Axis.BeginAnimation(TranslateTransform.XProperty, da);
             MainFrame.Content = new Account();
         }
-
-
-
-
     }
 }

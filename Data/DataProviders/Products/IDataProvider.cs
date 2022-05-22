@@ -10,8 +10,9 @@ namespace Data.DataProviders.Products
 {
     public interface IDataProvider
     {
-        void Save(User user, Service services);
-        List<Service> Load();
-
+        void Save(User user, Service service);
+        void Delete(User user, Service service);
+        List<Service> Load(User user);
+        void Clear(User user);
     }
 }

@@ -6,6 +6,7 @@ using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using ServicesLibrary;
 
 namespace PasswordManager
 {
@@ -15,8 +16,10 @@ namespace PasswordManager
     public partial class App : Application
     {
         public static string ConnectionString { get => ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString; }
-        App() {
-            CultureInfo.CurrentUICulture = new CultureInfo("uk-UA");
+
+        App()
+        {
+            DBConnectionSingleton.ConnectionString = ConnectionString;
         }
 
     }

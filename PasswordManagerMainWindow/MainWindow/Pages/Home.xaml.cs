@@ -15,9 +15,12 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Data.DataProviders.Products;
 using PasswordManager.MainWindow;
 using PasswordManager.MainWindow.Models;
 using PasswordManager.MainWindow.ViewModels;
+using UsersLibrary;
+using UsersLibrary.Services;
 
 namespace PasswordManager.MainWindow.Pages
 {
@@ -25,12 +28,15 @@ namespace PasswordManager.MainWindow.Pages
     /// Логика взаимодействия для Home.xaml
     /// </summary>
     public partial class Home : Page
-
     {
+        private User User { get; set; }
+
         AuthenticationDataVM dataVM = new AuthenticationDataVM();
-        public Home()
+        public Home(User user)
         {
             InitializeComponent();
+
+            User = user;
             DataContext = dataVM;
         }
 
@@ -45,7 +51,7 @@ namespace PasswordManager.MainWindow.Pages
         {
             AddEditForm.Visibility = Visibility.Visible;
             ShadowEffectHomePage.Visibility = Visibility.Visible;
-          ((MainWindow) App.Current.Windows[0]).Shadow.Visibility = Visibility.Visible;
+            ((MainWindow)App.Current.Windows[0]).Shadow.Visibility = Visibility.Visible;
             DoubleAnimation formScaleAnimation = new DoubleAnimation()
             {
                 From = 1.2,
@@ -74,7 +80,7 @@ namespace PasswordManager.MainWindow.Pages
             ShadowEffectHomePage.BeginAnimation(OpacityProperty, shadowAppearingAnimation);
 
             ((MainWindow)App.Current.Windows[0]).Shadow.BeginAnimation(OpacityProperty, shadowAppearingAnimation);
-            
+
         }
         private void CloseEditAddForm_Click(object sender, RoutedEventArgs e)
         {
@@ -290,11 +296,11 @@ namespace PasswordManager.MainWindow.Pages
             //DataGridCell cell = (DataGridCell)sender;
             //string cellText;
             //int row = MainDataGrid.Items.IndexOf(cell);
-         
+
             //if (((DataGridCell)sender).Column.DisplayIndex == 2)
             //{
             //    cellText = ((AuthenticationData)cell.DataContext).Password;
-             
+
             //}
             //else
             //{

@@ -27,7 +27,7 @@ namespace PasswordManager.AuthenticationWindow
         {
             InitializeComponent();
             SetConnectionDataBase();
-     //   SettingsService.SaveEmptySignUpSettings();
+            //SettingsService.SaveEmptySignUpSettings();
 
             LaunchPreparation();
         }
@@ -46,7 +46,7 @@ namespace PasswordManager.AuthenticationWindow
             }
 
             SignUpSettings settings = SettingsService.GetSignUpSettings();
-            User user = User.CreateAlreadyExistUser(settings.Email, settings.Password);
+            User user = User.CreateAlreadyExistUser(settings.Email, settings.AuthPassword);
 
             if (InternetService.IsConnectedToInternet)
                 GetUserDataFromDB(user);
@@ -59,7 +59,7 @@ namespace PasswordManager.AuthenticationWindow
             try
             {
                 user = UsersService.GetHashAndSaltFromDB(user);
-                if(UsersService.CheckUserData(user.Email, user.AuthPassword))
+                if(UsersService.CheckUserData(user))
                 {
                     StartMainWindow(user);
                     return;
