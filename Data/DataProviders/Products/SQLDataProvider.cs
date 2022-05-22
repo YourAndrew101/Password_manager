@@ -61,6 +61,27 @@ namespace Data.DataProviders.Products
 
             connection.Close();
         }
+        public void Save(User user, IEnumerable<Service> services)
+        {
+            string request = $"INSERT INTO \"{user.HashEmail}\" (Id, Name, Login, Password, LastDataAdd) VALUES (@Id, @Name, @Login, @Password, @LastDataAdd)";
+            SqlConnection connection = DBConnectionSingleton.GetInstance().SqlConnection;
+            connection.Open();
+
+            foreach (Service service in services)
+            {
+                CryptedService cryptedService = user.EncryptService(service);
+
+                SqlCommand command = new SqlCommand(request, connection);
+                command.Parameters.AddWithValue("@Id", cryptedService.Id);
+                command.Parameters.AddWithValue("@Name", cryptedService.Name);
+                command.Parameters.AddWithValue("@Login", cryptedService.Login);
+                command.Parameters.AddWithValue("@Password", cryptedService.Password);
+                command.Parameters.AddWithValue("@LastDataAdd", DateTime.Now);
+                command.ExecuteNonQuery();
+            }
+
+            connection.Close();
+        }
 
         public void Delete(User user, Service service)
         {
@@ -99,21 +120,21 @@ namespace Data.DataProviders.Products
 
         public DateTime GetLastModifyTime(User user)
         {
+            if(!UsersService.IsExistsEmail(user.Email)) return DateTime.MinValue;
+
             SqlConnection connection = DBConnectionSingleton.GetInstance().SqlConnection;
             connection.Open();
 
-            string request = "select * from sys.objects order by modify_date desc";
+            string request = $"select LastDataAdd from \"{user.HashEmail}\" order by LastDataAdd desc";
             SqlCommand command = new SqlCommand(request, connection);
 
             SqlDataReader sqlDataReader = command.ExecuteReader();
-            while (sqlDataReader.Read())
-                if ((string)sqlDataReader["name"] == user.HashEmail)
-                {
-                    connection.Close();
-                    return (DateTime)sqlDataReader["modify_date"];
-                }
+            sqlDataReader.Read();
+            DateTime dateTime = (DateTime)sqlDataReader["LastDataAdd"];
 
-            return DateTime.MaxValue;
+            sqlDataReader.Close();
+            connection.Close();
+            return dateTime;
         }
     }
 }

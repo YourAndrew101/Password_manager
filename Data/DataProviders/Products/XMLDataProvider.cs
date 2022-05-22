@@ -34,6 +34,30 @@ namespace Data.DataProviders.Products
 
             xdoc.Save(string.Format(_filePath, user.HashEmail));
         }
+         public void Save(User user, IEnumerable<Service> services)
+        {
+            XDocument xdoc = new XDocument();
+            XElement root = new XElement("services");
+            xdoc.Add(root);
+
+            if (File.Exists(string.Format(_filePath, user.HashEmail)))
+            {
+                xdoc = XDocument.Load(string.Format(_filePath, user.HashEmail));
+                root = xdoc.Element("services");
+            }
+
+            foreach (Service service in services)
+            {
+                CryptedService cryptedService = user.EncryptService(service);
+
+                if (root != null)
+                    root.Add(GetXElement(cryptedService));
+            }
+
+            
+
+            xdoc.Save(string.Format(_filePath, user.HashEmail));
+        }
 
         private XElement GetXElement(CryptedService cryptedService)
         {
@@ -114,6 +138,8 @@ namespace Data.DataProviders.Products
 
         public DateTime GetLastModifyTime(User user)
         {
+            if (!File.Exists(string.Format(_filePath, user.HashEmail))) return DateTime.MinValue;
+
             return File.GetLastWriteTime(string.Format(_filePath, user.HashEmail));
         }
     }
