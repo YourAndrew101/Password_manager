@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContext.cs" />
-    <Compile Include="DataProviders\Products\BinaryDataProvider.cs" />
+    <Compile Include="DataProviders\Products\XMLDataProvider.cs" />
     <Compile Include="DataProviders\Products\IDataProvider.cs" />
     <Compile Include="DataProviders\Products\SQLDataProvider.cs" />
     <Compile Include="Repositories\IRepository.cs" />

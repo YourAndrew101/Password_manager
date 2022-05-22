@@ -73,6 +73,17 @@ namespace Data.DataProviders.Products
 
             connection.Close();
         }
+        public void Delete(User user, int id)
+        {
+            string request = $"DELETE FROM \"{user.HashEmail}\" WHERE Id = {id}";
+            SqlConnection connection = DBConnectionSingleton.GetInstance().SqlConnection;
+            connection.Open();
+
+            SqlCommand command = new SqlCommand(request, connection);
+            command.ExecuteNonQuery();
+
+            connection.Close();
+        }
 
         public void Clear(User user)
         {

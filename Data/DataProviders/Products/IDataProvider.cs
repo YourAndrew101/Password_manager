@@ -12,6 +12,7 @@ namespace Data.DataProviders.Products
     {
         void Save(User user, Service service);
         void Delete(User user, Service service);
+        void Delete(User user, int id);
         List<Service> Load(User user);
         void Clear(User user);
     }

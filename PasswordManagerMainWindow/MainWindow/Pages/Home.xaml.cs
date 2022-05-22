@@ -38,6 +38,15 @@ namespace PasswordManager.MainWindow.Pages
 
             User = user;
             DataContext = dataVM;
+
+            testc();
+        }
+
+        private void testc()
+        {
+            Service service = new Service("test", "tetss", "std");
+            IDataProvider dataProvider = new XMLDataProvider();
+            dataProvider.Save(User, service);
         }
 
         private void AddPasswordButton_Click(object sender, RoutedEventArgs e)
