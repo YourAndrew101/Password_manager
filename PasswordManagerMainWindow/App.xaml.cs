@@ -19,6 +19,7 @@ namespace PasswordManager
 
         App()
         {
+            CultureInfo.CurrentUICulture = new CultureInfo("en-UK");
             DBConnectionSingleton.ConnectionString = ConnectionString;
         }
 

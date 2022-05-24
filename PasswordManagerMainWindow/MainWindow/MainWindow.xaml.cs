@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,11 +25,16 @@ namespace PasswordManager.MainWindow
     public partial class MainWindow : Window
     {  
         private User User { get; set; }
-
+        private Home home;
+        private Settings settings;
+        private Account account;
+            
         public MainWindow(User user)
         {
             User = user;
-
+            home = new Home(User);                 
+            settings = new Settings();
+            account = new Account();                        
             InitializeComponent();
             SetSystemColorTheme();
             SetWindowSettings();
@@ -84,22 +90,30 @@ namespace PasswordManager.MainWindow
         private void Home_Checked(object sender, RoutedEventArgs e)
         {
             DoubleAnimation da = new DoubleAnimation(0, new Duration(TimeSpan.FromSeconds(0.3)));
-            Axis.BeginAnimation(TranslateTransform.XProperty, da);
-            MainFrame.Content = new Home(User);
+            Axis.BeginAnimation(TranslateTransform.XProperty, da);                
+            MainFrame.Content = home;
         }
 
         private void Settings_Checked(object sender, RoutedEventArgs e)
         {
             DoubleAnimation da = new DoubleAnimation(504, new Duration(TimeSpan.FromSeconds(0.3)));
             Axis.BeginAnimation(TranslateTransform.XProperty, da);
-            MainFrame.Content = new Settings();
+            //Thread thread = new Thread(() => this.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal, (ThreadStart)delegate ()
+
+            //{
+            //}));thread.Start(); 
+            MainFrame.Content = settings;
+
+            
+                 
+            
         }
 
         private void Account_Checked(object sender, RoutedEventArgs e)
         {
             DoubleAnimation da = new DoubleAnimation(1008, new Duration(TimeSpan.FromSeconds(0.3)));
-            Axis.BeginAnimation(TranslateTransform.XProperty, da);
-            MainFrame.Content = new Account();
+            Axis.BeginAnimation(TranslateTransform.XProperty, da);            
+            MainFrame.Content = account;
         }
     }
 }

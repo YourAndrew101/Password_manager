@@ -16,7 +16,7 @@
       RenderOptions.EdgeMode="Aliased"
       UseLayoutRounding="True"
       SnapsToDevicePixels="True"
-      RenderOptions.BitmapScalingMode="NearestNeighbor">
+     >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -73,7 +73,7 @@
             <ListViewItem x:Name="TraySetting" Style="{StaticResource SettingsListViewItem}" >
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="{x:Static res:Resources.TraySettingHeader}" Style="{StaticResource SettingHeaderStyle}"/>
-                    <ToggleButton HorizontalAlignment="Right" Style="{StaticResource SettingToggleButton}" Unchecked="ToggleButton_Unchecked"/>
+                    <ToggleButton  Name ="TrayTB" HorizontalAlignment="Right" Style="{StaticResource SettingToggleButton}" Unchecked="ToggleButton_Unchecked" />
                 </StackPanel>
             </ListViewItem>
         </ListView>

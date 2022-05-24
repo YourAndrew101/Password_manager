@@ -132,6 +132,9 @@
   <data name="DataGridResource" xml:space="preserve">
     <value>Ресурс</value>
   </data>
+  <data name="DeleteRecordFormHeader" xml:space="preserve">
+    <value>Ви впевнені, що хочете видалити цей запис?</value>
+  </data>
   <data name="EditFormHeader" xml:space="preserve">
     <value>Редагувати запис</value>
   </data>

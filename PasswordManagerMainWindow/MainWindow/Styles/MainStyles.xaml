@@ -335,12 +335,13 @@
         </Style.Triggers>-->
     </Style>
     <!--Visibility="Collapsed" x:Name="FormBody" Background="Red" VerticalAlignment="Center" HorizontalAlignment="Center"-->
-    <Style x:Key="AddEditForm" TargetType="{x:Type Grid}">
+    <Style x:Key="OverlayFormStyle" TargetType="{x:Type Grid}">
 
         <Setter Property="Visibility" Value="Collapsed"/>
         <Setter Property="Background" Value="{DynamicResource MainColor}"/>
 
     </Style>
+   
 
     <Style x:Key="TextBoxStyle" TargetType="{x:Type TextBox}">
         <Setter Property="CaretBrush" Value="{DynamicResource TextColor}"/>
@@ -632,6 +633,7 @@
 
         </Setter>
         <Setter Property="Padding" Value="5,0,5,0"/>
+       
         <Style.Triggers>
             <Trigger Property="IsMouseOver" Value="True">
                 <Setter Property="Cursor" Value="Hand"/>
@@ -652,7 +654,7 @@
         </Style.Triggers>
     </Style>
     <Style x:Key="NotSelectableColumnStyle" TargetType="{x:Type DataGridCell}">
-
+        <Setter Value="False" Property="Focusable"/>
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
                 <Setter Property="Background" Value="{DynamicResource DataGridStyle.Static.Background}"/>
@@ -977,22 +979,22 @@
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
                     <Grid>
-                        <Border x:Name="backRect" CornerRadius="15" SnapsToDevicePixels="True" Background="{DynamicResource SettingToggleButtonStyle.BackRectangle.Background.Unchecked}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}">
+                        <Border x:Name="backRect" CornerRadius="15" Margin="-1" Background="{DynamicResource SettingToggleButtonStyle.BackRectangle.Background.Unchecked}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}" SnapsToDevicePixels="True" RenderOptions.BitmapScalingMode="Fant" RenderOptions.EdgeMode="Aliased" UseLayoutRounding="True">
                     </Border>
-                        <Border x:Name="frontRect" Height="20" Width="20" CornerRadius="12"  SnapsToDevicePixels="True" Background="{DynamicResource SettingToggleButtonStyle.FrontRectangle.Background}">
+                        <Border x:Name="frontRect"  Height="20" Width="20" CornerRadius="12" Margin="-1" Background="{DynamicResource SettingToggleButtonStyle.FrontRectangle.Background}" SnapsToDevicePixels="True" RenderOptions.BitmapScalingMode="Fant" RenderOptions.EdgeMode="Aliased" UseLayoutRounding="True">
                             <Border.RenderTransform>
-                                <TransformGroup>
                                 <TranslateTransform x:Name="frontRectMovement"/>
-                                <ScaleTransform x:Name="frontRectScailing" />
-                                </TransformGroup>
                             </Border.RenderTransform>
                             <ContentPresenter
                HorizontalAlignment="Center" 
                VerticalAlignment="Center"/>
                         </Border>
                     </Grid>
+                    <ControlTemplate.Resources>
+                        
+                    </ControlTemplate.Resources>
                     <ControlTemplate.Triggers>
-                       
+                        
                         <Trigger Property="IsChecked" Value="False">
                 <Trigger.EnterActions>
                     <BeginStoryboard>
@@ -1004,19 +1006,21 @@
                     </BeginStoryboard>
                 </Trigger.EnterActions>
                             
+                            
             </Trigger>
                         <Trigger Property="IsChecked" Value="True">
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <DoubleAnimation Duration="0:0:0.3" To="10" Storyboard.TargetName="frontRectMovement" Storyboard.TargetProperty="X"/>
+                                        <DoubleAnimation Duration="0:0:0.3" To="10" From="-10" Storyboard.TargetName="frontRectMovement" Storyboard.TargetProperty="X"/>
                                         <DoubleAnimation Duration="0:0:0.15" From="20" To="35" Storyboard.TargetName="frontRect" Storyboard.TargetProperty="Width"/>
                                         <DoubleAnimation Duration="0:0:0.15" From="35" To="20" BeginTime="0:0:0.15" Storyboard.TargetName="frontRect" Storyboard.TargetProperty="Width"/>
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
-                            
+
                             <Trigger.ExitActions>
+                                
                                 <BeginStoryboard>
                                     <Storyboard>
                                         <DoubleAnimation  Duration="0:0:0.3" To="-10" From ="10" Storyboard.TargetName="frontRectMovement" Storyboard.TargetProperty="X"/>
@@ -1035,6 +1039,7 @@
         <!--<Setter Property="IsChecked" Value="True"/>-->
         <Setter Property="Height" Value="30"/>
         <Setter Property="Width" Value="50"/>
+        <Setter Property="Focusable" Value="False"/>
         <Style.Triggers>
             
 

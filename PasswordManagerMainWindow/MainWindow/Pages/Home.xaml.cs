@@ -38,18 +38,21 @@ namespace PasswordManager.MainWindow.Pages
 
             User = user;
             DataContext = dataVM;
+          
+            
         }
 
         private void AddPasswordButton_Click(object sender, RoutedEventArgs e)
-        {
+        { 
+           
             FormHeader.Text = Properties.Resources.AddFormHeader;
-            FormOpeninganimation();
+            FormOpeningAnimation(AddEditForm);
 
         }
 
-        private void FormOpeninganimation()
+        private void FormOpeningAnimation(Grid form)
         {
-            AddEditForm.Visibility = Visibility.Visible;
+            form.Visibility = Visibility.Visible;
             ShadowEffectHomePage.Visibility = Visibility.Visible;
             ((MainWindow)App.Current.Windows[0]).Shadow.Visibility = Visibility.Visible;
             DoubleAnimation formScaleAnimation = new DoubleAnimation()
@@ -59,8 +62,8 @@ namespace PasswordManager.MainWindow.Pages
                 Duration = TimeSpan.FromSeconds(0.2),
                 AccelerationRatio = 0.5,
             };
-            AddEditForm.RenderTransform.BeginAnimation(ScaleTransform.ScaleXProperty, formScaleAnimation);
-            AddEditForm.RenderTransform.BeginAnimation(ScaleTransform.ScaleYProperty, formScaleAnimation);
+            form.RenderTransform.BeginAnimation(ScaleTransform.ScaleXProperty, formScaleAnimation);
+           form.RenderTransform.BeginAnimation(ScaleTransform.ScaleYProperty, formScaleAnimation);
 
             DoubleAnimation formOpacityAnimation = new DoubleAnimation()
             {
@@ -82,14 +85,9 @@ namespace PasswordManager.MainWindow.Pages
             ((MainWindow)App.Current.Windows[0]).Shadow.BeginAnimation(OpacityProperty, shadowAppearingAnimation);
 
         }
-        private void CloseEditAddForm_Click(object sender, RoutedEventArgs e)
+        private void FormClosingAnimation(Grid form)
         {
-            FormClosingAnimation();
-            ClearForm();
-
-        }
-        private void FormClosingAnimation()
-        {
+            
             DoubleAnimation formScaleAnimation = new DoubleAnimation()
             {
                 From = 1,
@@ -97,9 +95,9 @@ namespace PasswordManager.MainWindow.Pages
                 Duration = TimeSpan.FromSeconds(0.2),
                 AccelerationRatio = 0.5,
             };
-            formScaleAnimation.Completed += formDisapperingAnimation_Comleted;
-            AddEditForm.RenderTransform.BeginAnimation(ScaleTransform.ScaleXProperty, formScaleAnimation);
-            AddEditForm.RenderTransform.BeginAnimation(ScaleTransform.ScaleYProperty, formScaleAnimation);
+            formScaleAnimation.Completed += (sender, e) => formDisapperingAnimation_Comleted(sender, e, form);
+            form.RenderTransform.BeginAnimation(ScaleTransform.ScaleXProperty, formScaleAnimation);
+            form.RenderTransform.BeginAnimation(ScaleTransform.ScaleYProperty, formScaleAnimation);
 
             DoubleAnimation formOpacityAnimation = new DoubleAnimation()
             {
@@ -127,11 +125,19 @@ namespace PasswordManager.MainWindow.Pages
             ((MainWindow)App.Current.Windows[0]).Shadow.Visibility = Visibility.Collapsed;
         }
 
-        private void formDisapperingAnimation_Comleted(object sender, EventArgs e)
+        private void formDisapperingAnimation_Comleted(object sender, EventArgs e, Grid form)
         {
-            AddEditForm.Visibility = Visibility.Collapsed;
+            form.Visibility = Visibility.Collapsed;
 
         }
+        private void CloseForm_Click(object sender, RoutedEventArgs e)
+        {
+            Grid form =(Grid)((Button)sender).Parent;
+            FormClosingAnimation(form);
+            ClearForm();
+
+        }
+        
 
         private void HiddenPasswordTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -169,14 +175,15 @@ namespace PasswordManager.MainWindow.Pages
             HiddenPasswordTextBox.Text = "test password";
         }
 
-        private void FormSubmitButton_Click(object sender, RoutedEventArgs e)
+        private void AddEditFormSubmitButton_Click(object sender, RoutedEventArgs e)
         {
             if (!string.IsNullOrEmpty(ResourceTextBox.Text) && !string.IsNullOrEmpty(LoginTextBox.Text) && !string.IsNullOrEmpty(HiddenPasswordTextBox.Text))
             {
                 if (string.IsNullOrEmpty(IdTextBox.Text))
                 {
                     dataVM.AuthenticationDataViewModels.Add(new Models.AuthenticationData(ResourceTextBox.Text, LoginTextBox.Text, HiddenPasswordTextBox.Text));
-                    FormClosingAnimation();
+                   
+                    FormClosingAnimation(AddEditForm);
                     ShowNotification(Properties.Resources.RecordAddedNotification);
 
                 }
@@ -186,7 +193,7 @@ namespace PasswordManager.MainWindow.Pages
                     dataVM.AuthenticationDataViewModels[index].Resource = ResourceTextBox.Text;
                     dataVM.AuthenticationDataViewModels[index].Login = LoginTextBox.Text;
                     dataVM.AuthenticationDataViewModels[index].Password = HiddenPasswordTextBox.Text;
-                    FormClosingAnimation();
+                    FormClosingAnimation(AddEditForm);
                     ShowNotification(Properties.Resources.RecordEditedNotification);
 
                 }
@@ -281,7 +288,6 @@ namespace PasswordManager.MainWindow.Pages
             RevealedPasswordTextBlock.Visibility = Visibility.Visible;
             HiddenPasswordTextBlock.Visibility = Visibility.Collapsed;
 
-
         }
         private void RevealPassword_Unchecked(object sender, RoutedEventArgs e)
         {
@@ -330,15 +336,23 @@ namespace PasswordManager.MainWindow.Pages
             LoginTextBox.Text = item.Login;
             HiddenPasswordTextBox.Text = item.Password;
             IdTextBox.Text = index.ToString();
-            FormOpeninganimation();
+            FormClosingAnimation(AddEditForm);
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
+            var popupEl = (Popup)((Border)((StackPanel)(((Button)sender).Parent)).Parent).Parent;
+            popupEl.IsOpen = false;
+            
+            FormOpeningAnimation(DeleteForm);
+           
+        }
+
+        private void ConfirmDeleatingButton_Click(object sender, RoutedEventArgs e)
+        {
+            FormClosingAnimation(DeleteForm);
             dataVM.AuthenticationDataViewModels.Remove((AuthenticationData)MainDataGrid.CurrentItem);
             ShowNotification(Properties.Resources.RecordRemovedNotification);
         }
-
-
     }
 }

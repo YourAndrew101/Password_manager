@@ -106,6 +106,15 @@ namespace PasswordManager.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Are you sure wou want to delete this record?.
+        /// </summary>
+        public static string DeleteRecordFormHeader {
+            get {
+                return ResourceManager.GetString("DeleteRecordFormHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Edit a record.
         /// </summary>
         public static string EditFormHeader {

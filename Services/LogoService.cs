@@ -11,114 +11,67 @@ using ServicesLibrary;
 
 namespace Services
 {
-    public class Color
+    internal class Color
     {
-        public string hex { get; set; }
-        public string type { get; set; }
-        public int brightness { get; set; }
+        internal string hex { get; set; }
+        internal string type { get; set; }
+        internal int brightness { get; set; }
     }
 
-    public class Font
+    internal class Font
     {
-        public string name { get; set; }
-        public string type { get; set; }
-        public string origin { get; set; }
-        public string originId { get; set; }
-        public List<object> weights { get; set; }
+        internal string name { get; set; }
+        internal string type { get; set; }
+        internal string origin { get; set; }
+        internal string originId { get; set; }
+        internal List<object> weights { get; set; }
     }
 
-    public class Format
+    internal class Format
     {
-        public string src { get; set; }
-        public string background { get; set; }
-        public string format { get; set; }
-        public int height { get; set; }
-        public int width { get; set; }
-        public int size { get; set; }
+        internal string src { get; set; }
+        internal string background { get; set; }
+        internal string format { get; set; }
+        internal int height { get; set; }
+        internal int width { get; set; }
+        internal int size { get; set; }
     }
 
-    public class Image
+    internal class Image
     {
-        public string type { get; set; }
-        public List<Format> formats { get; set; }
+        internal string type { get; set; }
+        internal List<Format> formats { get; set; }
     }
 
-    public class Link
+    internal class Link
     {
-        public string name { get; set; }
-        public string url { get; set; }
+        internal string name { get; set; }
+        internal string url { get; set; }
     }
 
-    public class Logo
+    internal class Logo
     {
-        public string type { get; set; }
-        public object theme { get; set; }
-        public List<Format> formats { get; set; }
+        internal string type { get; set; }
+        internal object theme { get; set; }
+        internal List<Format> formats { get; set; }
     }
 
-    public class Root
+   internal class Root
     {
-        public string name { get; set; }
-        public string domain { get; set; }
-        public bool claimed { get; set; }
-        public string description { get; set; }
-        public List<Link> links { get; set; }
-        public List<Logo> logos { get; set; }
-        public List<Color> colors { get; set; }
-        public List<Font> fonts { get; set; }
-        public List<Image> images { get; set; }
+        internal string name { get; set; }
+        internal string domain { get; set; }
+        internal bool claimed { get; set; }
+        internal string description { get; set; }
+        internal List<Link> links { get; set; }
+        internal List<Logo> logos { get; set; }
+        internal List<Color> colors { get; set; }
+        internal List<Font> fonts { get; set; }
+        internal List<Image> images { get; set; }
     }
-   public class LogoService
+  public class LogoService
     {
 
-        //private static void GetLogoFromAPI(string resourceName)
-        //{
-
-        //    XmlDocument xml = new XmlDocument();
-        //    xml.Load("../../../Services/APIList.xml");
-        //    XmlElement root = xml.DocumentElement;
-        //    string key = root.FirstChild.InnerText;
-        //    string uri = $"https://api.brandfetch.io/v2/brands/{resourceName}";
-        //    WebRequest request = WebRequest.Create(uri);
-        //    request.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {key}");
-        //    WebResponse response = null;
-
-        //    try
-        //    {
-        //        response = request.GetResponse();
-        //    }
-        //    catch (WebException we)
-        //    {
-        //        HttpWebResponse errorResponse = (HttpWebResponse)we.Response;
-
-        //        if (errorResponse.StatusCode == HttpStatusCode.Forbidden)
-        //        {
-        //            root.RemoveChild(root.FirstChild);
-        //            xml.Save("../../../Services/APIList.xml");
-        //            GetLogoFromAPI(resourceName);
-        //        }
-        //        else { return; }
-        //    }
-        //    StreamReader streamReader = new StreamReader(response.GetResponseStream());
-        //    string json = streamReader.ReadToEnd();
-        //    streamReader.Close();
-        //    response.Close();
-
-        //    Root data = JsonConvert.DeserializeObject<Root>(json);
-        //    if (data.logos.Contains(data.logos.FirstOrDefault(e => e.type == "icon")))
-        //    {
-        //        string logoUri = data.logos.FirstOrDefault(e => e.type == "icon").formats[0].src;
-        //        string path = $"../../MainWindow/LogosServices/{resourceName}.png";
-        //        using (WebClient webClient = new WebClient())
-        //        {
-        //            webClient.DownloadFile(new Uri(logoUri), path);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        throw new Exception();
-        //    }
-        //}
+       
         public static string GetLogo(string resourceName)
         {
             string path= $"../../MainWindow/LogosServices/{resourceName}.png";
