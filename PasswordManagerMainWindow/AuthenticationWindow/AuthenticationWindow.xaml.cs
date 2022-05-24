@@ -32,7 +32,7 @@ namespace PasswordManager.AuthenticationWindow
         {
             InitializeComponent();
             SetConnectionDataBase();
-            //SettingsService.SaveEmptySignUpSettings();
+            SettingsService.SaveEmptySignUpSettings();
 
             LaunchPreparation();
         }
@@ -52,8 +52,6 @@ namespace PasswordManager.AuthenticationWindow
 
             SignUpSettings settings = SettingsService.GetSignUpSettings();
             User user = User.CreateAlreadyExistUser(settings.Email, settings.AuthPassword);
-
-            GetServicesData(user);
 
             if (InternetService.IsConnectedToInternet)
                 GetUserDataFromDB(user);
@@ -104,6 +102,7 @@ namespace PasswordManager.AuthenticationWindow
                 return;
             }
         }
+        //TODO написати реалізацю метода
         private void GetUserDataFromLocalStorage(User user)
         {
             throw new NotImplementedException();
@@ -129,6 +128,8 @@ namespace PasswordManager.AuthenticationWindow
 
         public void StartMainWindow(User user)
         {
+            GetServicesData(user);
+
             MainWindow.MainWindow mainWindow = new MainWindow.MainWindow(user);
             mainWindow.Show();
 

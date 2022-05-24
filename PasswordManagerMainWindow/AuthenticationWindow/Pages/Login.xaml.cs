@@ -58,14 +58,8 @@ namespace PasswordManager.AuthenticationWindow.Pages
                 throw;
             }
 
-            if (RememberMeFlag == true) SettingsService.SaveSignUpSettings((SignUpSettings)_user);
-
-            CommonDataProviderFactory dataProviderFactory = new SQLDataProviderFactory();
-            _user.Services = dataProviderFactory.GetDataProvider().Load(_user);
-
-            //NavigationService.Navigate(new TwoStepVerification());
-
-           ((AuthenticationWindow)Window.GetWindow(this)).StartMainWindow(_user);
+            TwoStepVerification twoStepVerification = new TwoStepVerification(_user, (bool)RememberMeFlag);
+            NavigationService.Navigate(twoStepVerification);
         }
 
         private bool CheckAuthData()

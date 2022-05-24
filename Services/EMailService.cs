@@ -55,7 +55,7 @@ namespace ServicesLibrary
 
         private void GetConfirmationMessage()
         {
-            using (StreamReader streamReader = new StreamReader("../../AuthenticationWindow/Assets/EmailConfirmationMessage.txt"))
+            using (StreamReader streamReader = new StreamReader("../../../Services/Assets/EmailConfirmationMessage.txt"))
                 ConfirmationMessage = streamReader.ReadToEnd();
         }
 
