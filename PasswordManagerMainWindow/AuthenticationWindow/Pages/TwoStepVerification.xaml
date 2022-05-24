@@ -50,7 +50,7 @@
                  Grid.Column="1" 
                  BorderThickness="2" 
                  Height="40"
-                 Style="{StaticResource PrimaryTextBoxStyle}"/>
+                 Style="{StaticResource PrimaryTextBoxStyle}" TextChanged="CurrentConfirmationCodeTextBox_TextChanged"/>
 
         <TextBlock x:Name="ErrorTextBlock" 
                    Grid.Row="6"

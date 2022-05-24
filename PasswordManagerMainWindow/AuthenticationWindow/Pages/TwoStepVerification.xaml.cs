@@ -21,8 +21,6 @@ namespace PasswordManager.AuthenticationWindow.Pages
     /// <summary>
     /// Логика взаимодействия для TwoStepVerification.xaml
     /// </summary>
-
-    //TODO подвійна верифікація
     public partial class TwoStepVerification : Page
     {
         private string CurrentConfirmationCode { get => CurrentConfirmationCodeTextBox.Text; }
@@ -67,6 +65,11 @@ namespace PasswordManager.AuthenticationWindow.Pages
                 //TODO обмежена кількість спроб
                 ErrorMessage = Properties.Resources.PasswordResetWrongCode;
             }
+        }
+
+        private void CurrentConfirmationCodeTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ErrorTextBlock.Visibility = Visibility.Hidden;
         }
     }
 }
