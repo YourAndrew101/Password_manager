@@ -46,10 +46,10 @@ namespace PasswordManager.AuthenticationWindow.Pages
             SendEmail();
         }
 
-        private void SendEmail()
+        private async void SendEmail()
         {
             _eMailService = new EMailService(_user.Email);
-            _eMailService.SendConfirmationMessage();
+            await _eMailService.SendAsyncConfirmationMessage();
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e)
