@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ServicesLibrary;
+using ServicesLibrary.SettingsService;
 using UsersLibrary;
 using UsersLibrary.Settings;
 

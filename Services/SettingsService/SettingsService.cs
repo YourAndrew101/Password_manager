@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using UsersLibrary.Settings;
 
-namespace ServicesLibrary
+namespace ServicesLibrary.SettingsService
 {
     public static class SettingsService
     {

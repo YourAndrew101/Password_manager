@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using PasswordManager.MainWindow.Pages;
 using ServicesLibrary;
 using UsersLibrary;
+using UsersLibrary.Settings;
 
 namespace PasswordManager.MainWindow
 {
@@ -44,7 +45,7 @@ namespace PasswordManager.MainWindow
 
         private void SetSystemColorTheme()
         {
-            ThemesService.Themes theme = ThemesService.GetSystemTheme();
+            WindowSettings.Themes theme = ThemesService.GetSystemTheme();
 
             ResourceDictionary dict = new ResourceDictionary { Source = new Uri($"/MainWindow/Themes/{theme}Theme.xaml", UriKind.Relative) };
             Application.Current.Resources.MergedDictionaries.Add(dict);

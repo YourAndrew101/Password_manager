@@ -3,17 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static UsersLibrary.Settings.WindowSettings;
 
 namespace ServicesLibrary
 {
     public class ThemesService
     {
-        public enum Themes
-        {
-            Dark = 0,
-            Light = 1
-        }
-
         public static Themes GetSystemTheme()
         {
             object registerTheme = Microsoft.Win32.Registry

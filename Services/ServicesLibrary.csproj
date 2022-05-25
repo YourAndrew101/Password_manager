@@ -68,7 +68,8 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="SettingsService.cs" />
+    <Compile Include="SettingsService\ISettings.cs" />
+    <Compile Include="SettingsService\SettingsService.cs" />
     <Compile Include="ThemesService.cs" />
     <Compile Include="UsersService.cs" />
   </ItemGroup>
