@@ -55,9 +55,10 @@ namespace PasswordManager.AuthenticationWindow.Pages
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
+            ISettingsService settingsService = new SignUpSettingsService();
             if (_eMailService.ConfirmationCode == CurrentConfirmationCode)
             {
-                if(_saveSettingsFlag) SettingsService.SaveSignUpSettings((SignUpSettings)_user);
+                if(_saveSettingsFlag) settingsService.Save((SignUpSettings)_user);
 
                 ((AuthenticationWindow)Window.GetWindow(this)).StartMainWindow(_user);
             }

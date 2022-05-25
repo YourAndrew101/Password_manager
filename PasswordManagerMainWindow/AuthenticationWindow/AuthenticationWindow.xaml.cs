@@ -32,13 +32,14 @@ namespace PasswordManager.AuthenticationWindow
 
         private void LaunchPreparation()
         {
-            if (!SettingsService.IsSavedUser)
+            SignUpSettingsService settingsService = new SignUpSettingsService();
+            if (!settingsService.IsSavedUser)
             {
                 StartAuthenticationWindow();
                 return;
             }
 
-            SignUpSettings settings = SettingsService.GetSignUpSettings();
+            SignUpSettings settings = (SignUpSettings)settingsService.GetSettings();
             User user = User.CreateAlreadyExistUser(settings.Email, settings.AuthPassword);
 
             if (InternetService.IsConnectedToInternet)

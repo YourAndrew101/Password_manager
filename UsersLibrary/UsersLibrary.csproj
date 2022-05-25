@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="Services\CryptedService.cs" />
     <Compile Include="Services\Service.cs" />
+    <Compile Include="Settings\ISettings.cs" />
     <Compile Include="Settings\WindowSettings.cs" />
     <Compile Include="Settings\SignUpSettings.cs" />
     <Compile Include="Users\User.cs" />

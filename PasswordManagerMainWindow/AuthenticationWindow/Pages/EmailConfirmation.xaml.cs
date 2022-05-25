@@ -41,11 +41,12 @@ namespace PasswordManager.AuthenticationWindow.Pages
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
+            ISettingsService settingsService = new SignUpSettingsService();
             if(_eMailService.ConfirmationCode == CurrentConfirmationCode)
             {
                 UsersService.AddUser(_user);
 
-                SettingsService.SaveSignUpSettings((SignUpSettings)_user);
+                settingsService.Save((SignUpSettings)_user);
 
                 ((AuthenticationWindow)Window.GetWindow(this)).StartMainWindow(_user);
             }

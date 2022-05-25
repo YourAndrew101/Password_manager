@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UsersLibrary.Settings
 {
-    public class SignUpSettings
+    public class SignUpSettings : ISettings
     {
         public string Email { get; private set; }
         public string AuthPassword { get; private set; }

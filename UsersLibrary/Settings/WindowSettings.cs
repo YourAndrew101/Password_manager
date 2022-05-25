@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UsersLibrary.Settings
 {
-    public class WindowSettings
+    public class WindowSettings : ISettings
     {
         public enum Languges
         {
