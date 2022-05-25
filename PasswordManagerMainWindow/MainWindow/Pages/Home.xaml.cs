@@ -32,28 +32,39 @@ namespace PasswordManager.MainWindow.Pages
         private User User { get; set; }
 
         AuthenticationDataVM dataVM = new AuthenticationDataVM();
+
+
+        private readonly Rectangle[] _passwordComplexityRectangles = new Rectangle[5];
+
+        private readonly Color _veryWeakPasswordRectangleColor = (Color)Application.Current.Resources["_veryWeakPasswordRectangleColor"];
+        private readonly Color _weakPasswordRectangleColor = (Color)Application.Current.Resources["_weakPasswordRectangleColor"];
+        private readonly Color _normalPasswordRectangleColor = (Color)Application.Current.Resources["_normalPasswordRectangleColor"];
+        private readonly Color _strongPasswordRectangleColor = (Color)Application.Current.Resources["_strongPasswordRectangleColor"];
+        private readonly Color _veryStrongPasswordRectangleColor = (Color)Application.Current.Resources["_veryStrongPasswordRectangleColor"];
+        private readonly Color _nullPasswordRectangleColor = (Color)Application.Current.Resources["PasswordCompexityRectangle.Static.Fill"];
+
+
         public Home(User user)
         {
             InitializeComponent();
+            InitializePasswordComplexityRectangles();
 
             User = user;
             DataContext = dataVM;
-
-            testc();
         }
-
-        private void testc()
+        private void InitializePasswordComplexityRectangles()
         {
-            Service service = new Service("test", "tetss", "std");
-            IDataProvider dataProvider = new XMLDataProvider();
-            dataProvider.Save(User, service);
+            _passwordComplexityRectangles[0] = VeryWeakPasswordRectangle;
+            _passwordComplexityRectangles[1] = WeakPasswordRectangle;
+            _passwordComplexityRectangles[2] = NormalPasswordRectangle;
+            _passwordComplexityRectangles[3] = StrongPasswordRectangle;
+            _passwordComplexityRectangles[4] = VeryStrongPasswordRectangle;
         }
 
         private void AddPasswordButton_Click(object sender, RoutedEventArgs e)
         {
             FormHeader.Text = Properties.Resources.AddFormHeader;
             FormOpeninganimation();
-
         }
 
         private void FormOpeninganimation()
@@ -187,7 +198,6 @@ namespace PasswordManager.MainWindow.Pages
                     dataVM.AuthenticationDataViewModels.Add(new Models.AuthenticationData(ResourceTextBox.Text, LoginTextBox.Text, HiddenPasswordTextBox.Text));
                     FormClosingAnimation();
                     ShowNotification(Properties.Resources.RecordAddedNotification);
-
                 }
                 else
                 {

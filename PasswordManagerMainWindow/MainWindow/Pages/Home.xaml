@@ -16,7 +16,7 @@
       UseLayoutRounding="True"
       SnapsToDevicePixels="True"
       RenderOptions.BitmapScalingMode="NearestNeighbor">
-    
+
     <Page.RenderTransform >
         <TranslateTransform x:Name="PageAxis"/>
     </Page.RenderTransform>
@@ -32,6 +32,7 @@
             </EventTrigger>-->
 
     </Page.Triggers>
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -50,14 +51,38 @@
         </Grid.RowDefinitions>
 
         <TextBlock Text="{x:Static res:Resources.HomeHeader}" Style="{StaticResource PageHeader}" />
-        <!--<Grid Grid.Row="2" Grid.ColumnSpan="3" Background="AntiqueWhite"/>-->
-        <TextBox x:Name="SearchTextBox" Text="{Binding DataFilter, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="2" Height="30" Width="300" HorizontalAlignment="Right" Margin="0,0,100,0" Style="{StaticResource SearchTextBox}"/>
-        <Button x:Name="AddPasswordButton" Grid.Row="2" Grid.Column="0" Width="40" Height="40" Style="{StaticResource AddButtonStyle}" Content="&#xE710;" HorizontalAlignment="Left" Margin="100,0,0,0" Click="AddPasswordButton_Click"/>
+        <TextBox x:Name="SearchTextBox" 
+                 Text="{Binding DataFilter, UpdateSourceTrigger=PropertyChanged}" 
+                 Grid.Row="2" Grid.Column="2" 
+                 Height="30" 
+                 Width="300" 
+                 HorizontalAlignment="Right" 
+                 Margin="0,0,100,0" 
+                 Style="{StaticResource SearchTextBox}"/>
+        <Button x:Name="AddPasswordButton" 
+                Grid.Row="2" 
+                Grid.Column="0" 
+                Width="40" 
+                Height="40" 
+                Style="{StaticResource AddButtonStyle}"
+                Content="&#xE710;" 
+                HorizontalAlignment="Left" 
+                Margin="100,0,0,0" 
+                Click="AddPasswordButton_Click"/>
 
 
+        <DataGrid x:Name="MainDataGrid"
+                  RenderOptions.EdgeMode="Aliased" 
+                  Grid.Row="4"  
+                  Style="{StaticResource DataGridStyle}" 
+                  RowHeight="40" 
+                  ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}" 
+                  RowStyle="{DynamicResource DataGridRowStyle}"
+                  Grid.Column="0" 
+                  Grid.ColumnSpan="3" 
+                  Margin="100,0,100,10" 
+                  ItemsSource="{Binding AuthenticationDataCollectionView}">
 
-        <DataGrid RenderOptions.EdgeMode="Aliased" Grid.Row="4" x:Name="MainDataGrid" Style="{StaticResource DataGridStyle}" RowHeight="40"  ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}"  RowStyle="{DynamicResource DataGridRowStyle}" Grid.Column="0" Grid.ColumnSpan="3" Margin="100,0,100,10" ItemsSource="{Binding AuthenticationDataCollectionView}">
-            
             <DataGrid.Columns>
                 <DataGridTemplateColumn Width="30" CellStyle="{StaticResource NotSelectableColumnStyle}">
                     <DataGridTemplateColumn.CellTemplate>
@@ -66,7 +91,7 @@
                                 <Border.Background>
                                     <ImageBrush ImageSource="{Binding Path = LogoPath,IsAsync=True}" Stretch="UniformToFill" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor" />
                                 </Border.Background>
-                            <!--<Image Source="{Binding Path = LogoPath,IsAsync=True}" Stretch="Fill" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor" SnapsToDevicePixels="True"/>-->
+                                <!--<Image Source="{Binding Path = LogoPath,IsAsync=True}" Stretch="Fill" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor" SnapsToDevicePixels="True"/>-->
                             </Border>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -75,7 +100,7 @@
                     <DataGridTextColumn.CellStyle>
                         <Style TargetType="DataGridCell" BasedOn="{StaticResource DataGridCellStyle}">
                             <EventSetter Event="PreviewMouseDoubleClick" Handler="CopyCellText">
-                               
+
                             </EventSetter>
                         </Style>
                     </DataGridTextColumn.CellStyle>
@@ -99,11 +124,11 @@
                         <Style TargetType="DataGridCell" BasedOn="{StaticResource DataGridCellStyle}">
                             <EventSetter Event="PreviewMouseDoubleClick" Handler="CopyCellText"/>
                         </Style>
-                      
+
                     </DataGridTemplateColumn.CellStyle>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                           
+
                             <Grid x:Name="Content">
                                 <TextBlock Text="●●●●●●●" x:Name="HiddenPasswordTextBlock" VerticalAlignment="Center"/>
                                 <TextBlock Text="{Binding Path=Password}" x:Name="RevealedPasswordTextBlock" Visibility="Collapsed" VerticalAlignment="Center" Margin="0,0,30,0"/>
@@ -118,9 +143,9 @@
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                
-                                    <Button x:Name="PopupMenuButton" Content="&#xE712;" Click="PopupMenuButton_Click" Style="{StaticResource PopupMenuButtonStyle}" Height="20" Width="20" VerticalAlignment="Center" HorizontalAlignment="Left"/>
-                               
+
+                                <Button x:Name="PopupMenuButton" Content="&#xE712;" Click="PopupMenuButton_Click" Style="{StaticResource PopupMenuButtonStyle}" Height="20" Width="20" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+
                                 <Popup x:Name="PopupMenu"  PlacementTarget="{Binding ElementName=PopupMenuButton}" Style="{StaticResource PopupMenuStyle}" >
                                     <Border  x:Name="DropDownBorder" Style="{StaticResource PopupMenuDropDownBorderStyle}">
                                         <StackPanel  Background="Transparent">
@@ -248,13 +273,15 @@
                  Grid.Row="11" 
                  Grid.Column="1"
                  BorderThickness="2"                 
-                GotFocus="HiddenPasswordTextBox_GotFocus"
+                     GotFocus="HiddenPasswordTextBox_GotFocus"
                      LostFocus="HiddenPasswordTextBox_LostFocus"
                  Style="{StaticResource TextBoxStyle}" 
                 
                  Height="40"  
                  />
+
             <Button x:Name="SuggestPassword" Panel.ZIndex="1" Content="{x:Static res:Resources.FormSuggestPassword}"  Height="30" Width="320" Grid.Column="1" Grid.Row="11" Grid.RowSpan="3" Style="{StaticResource SuggestPassword}" Click="SuggestPassword_Click"/>
+
             <StackPanel Grid.Row="13" 
                     Grid.Column="1">
                 <DockPanel x:Name="PasswordComplexityPanel">

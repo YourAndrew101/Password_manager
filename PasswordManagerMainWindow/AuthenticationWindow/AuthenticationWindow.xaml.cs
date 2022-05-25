@@ -32,7 +32,7 @@ namespace PasswordManager.AuthenticationWindow
         {
             InitializeComponent();
             SetConnectionDataBase();
-            SettingsService.SaveEmptySignUpSettings();
+            //SettingsService.SaveEmptySignUpSettings();
 
             LaunchPreparation();
         }
@@ -57,33 +57,7 @@ namespace PasswordManager.AuthenticationWindow
                 GetUserDataFromDB(user);
             else
                 GetUserDataFromLocalStorage(user);
-        }
-
-        private void GetServicesData(User user)
-        {
-            CommonDataProviderFactory[] dataProviderFactories = CommonDataProviderFactory.CreateFactories();
-            DateTime[] modifyDateTimes = new DateTime[dataProviderFactories.Length];
-            int lastModifyDateTimeIndex;
-
-            for (int i = 0; i < dataProviderFactories.Length; i++)
-            {
-                IDataProvider dataProvider = dataProviderFactories[i].GetDataProvider();
-                modifyDateTimes[i] = dataProvider.GetLastModifyTime(user);
-            }
-
-            lastModifyDateTimeIndex = modifyDateTimes.ToList().IndexOf(modifyDateTimes.Max());
-            List<Service> services = dataProviderFactories[lastModifyDateTimeIndex].GetDataProvider().Load(user);
-            user.Services = services;
-
-            for (int i = 0; i < dataProviderFactories.Length; i++)
-            {
-                if (i == lastModifyDateTimeIndex) continue;
-                IDataProvider dataProvider = dataProviderFactories[i].GetDataProvider();
-
-                dataProvider.Clear(user);
-                dataProvider.Save(user, services);
-            }
-        }
+        }     
 
         private void GetUserDataFromDB(User user)
         {
@@ -102,10 +76,9 @@ namespace PasswordManager.AuthenticationWindow
                 return;
             }
         }
-        //TODO написати реалізацю метода
         private void GetUserDataFromLocalStorage(User user)
         {
-            throw new NotImplementedException();
+            StartMainWindow(user);
         }
 
         private void StartAuthenticationWindow()
@@ -136,6 +109,31 @@ namespace PasswordManager.AuthenticationWindow
             CloseWindow(new object(), new RoutedEventArgs());
 
             return;
+        }
+        private void GetServicesData(User user)
+        {
+            CommonDataProviderFactory[] dataProviderFactories = CommonDataProviderFactory.CreateFactories();
+            DateTime[] modifyDateTimes = new DateTime[dataProviderFactories.Length];
+            int lastModifyDateTimeIndex;
+
+            for (int i = 0; i < dataProviderFactories.Length; i++)
+            {
+                IDataProvider dataProvider = dataProviderFactories[i].GetDataProvider();
+                modifyDateTimes[i] = dataProvider.GetLastModifyTime(user);
+            }
+
+            lastModifyDateTimeIndex = modifyDateTimes.ToList().IndexOf(modifyDateTimes.Max());
+            List<Service> services = dataProviderFactories[lastModifyDateTimeIndex].GetDataProvider().Load(user);
+            user.Services = services;
+
+            for (int i = 0; i < dataProviderFactories.Length; i++)
+            {
+                if (i == lastModifyDateTimeIndex) continue;
+                IDataProvider dataProvider = dataProviderFactories[i].GetDataProvider();
+
+                dataProvider.Clear(user);
+                dataProvider.Save(user, services);
+            }
         }
 
         public void CloseWindow(object sender, RoutedEventArgs e)
