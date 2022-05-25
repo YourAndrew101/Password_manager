@@ -30,11 +30,6 @@ namespace ServicesLibrary
             return result;
         }
 
-        public static void IsUserExists(string email)
-        {
-            if (!IsExistsEmail(email)) throw new NonExistenMailException();
-        }
-
         public static void AddUser(User user)
         {
             if (IsExistsEmail(user.Email)) throw new DuplicateMailException();
@@ -56,7 +51,7 @@ namespace ServicesLibrary
         }
         private static void CreateUserServicesTable(User user)
         {
-            string request = $"CREATE TABLE \"{user.HashEmail}\" (Id int, Name varchar(255), Login varchar(255), Password varchar(255))";
+            string request = $"CREATE TABLE \"{user.HashEmail}\" (Id int, Name varchar(255), Login varchar(255), Password varchar(255), LastDataAdd DateTime)";
             SqlConnection connection = DBConnectionSingleton.GetInstance().SqlConnection;
 
             connection.Open();

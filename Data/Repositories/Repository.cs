@@ -50,7 +50,7 @@ namespace Data.Repositories
 
         public void RemoveRange(IEnumerable<Service> services)
         {
-            foreach (var item in services)
+            foreach (Service item in services)
                 Context.Services.Remove(item);
         }
     }

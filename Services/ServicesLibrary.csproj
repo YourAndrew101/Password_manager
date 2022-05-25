@@ -68,7 +68,8 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="SettingsService.cs" />
+    <Compile Include="SettingsService\ISettingsService.cs" />
+    <Compile Include="SettingsService\SignUpSettingsService.cs" />
     <Compile Include="ThemesService.cs" />
     <Compile Include="UsersService.cs" />
   </ItemGroup>
@@ -91,6 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="APIList.xml" />
+    <Resource Include="Assets\EmailConfirmationMessage.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

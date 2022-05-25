@@ -32,14 +32,35 @@ namespace PasswordManager.MainWindow.Pages
         private User User { get; set; }
 
         AuthenticationDataVM dataVM = new AuthenticationDataVM();
+
+
+        private readonly Rectangle[] _passwordComplexityRectangles = new Rectangle[5];
+
+        private readonly Color _veryWeakPasswordRectangleColor = (Color)Application.Current.Resources["_veryWeakPasswordRectangleColor"];
+        private readonly Color _weakPasswordRectangleColor = (Color)Application.Current.Resources["_weakPasswordRectangleColor"];
+        private readonly Color _normalPasswordRectangleColor = (Color)Application.Current.Resources["_normalPasswordRectangleColor"];
+        private readonly Color _strongPasswordRectangleColor = (Color)Application.Current.Resources["_strongPasswordRectangleColor"];
+        private readonly Color _veryStrongPasswordRectangleColor = (Color)Application.Current.Resources["_veryStrongPasswordRectangleColor"];
+        private readonly Color _nullPasswordRectangleColor = (Color)Application.Current.Resources["PasswordCompexityRectangle.Static.Fill"];
+
+
         public Home(User user)
         {
             InitializeComponent();
+            InitializePasswordComplexityRectangles();
 
             User = user;
             DataContext = dataVM;
           
             
+        }
+        private void InitializePasswordComplexityRectangles()
+        {
+            _passwordComplexityRectangles[0] = VeryWeakPasswordRectangle;
+            _passwordComplexityRectangles[1] = WeakPasswordRectangle;
+            _passwordComplexityRectangles[2] = NormalPasswordRectangle;
+            _passwordComplexityRectangles[3] = StrongPasswordRectangle;
+            _passwordComplexityRectangles[4] = VeryStrongPasswordRectangle;
         }
 
         private void AddPasswordButton_Click(object sender, RoutedEventArgs e)
@@ -185,7 +206,6 @@ namespace PasswordManager.MainWindow.Pages
                    
                     FormClosingAnimation(AddEditForm);
                     ShowNotification(Properties.Resources.RecordAddedNotification);
-
                 }
                 else
                 {

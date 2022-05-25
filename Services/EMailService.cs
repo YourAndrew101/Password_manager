@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ServicesLibrary
@@ -55,21 +56,26 @@ namespace ServicesLibrary
 
         private void GetConfirmationMessage()
         {
-            using (StreamReader streamReader = new StreamReader("../../AuthenticationWindow/Assets/EmailConfirmationMessage.txt"))
+            using (StreamReader streamReader = new StreamReader("../../../Services/Assets/EmailConfirmationMessage.txt"))
                 ConfirmationMessage = streamReader.ReadToEnd();
         }
 
-        //TODO зробити асинхронний метод
         public void SendConfirmationMessage()
         {
             string confirmationMailLogin = ConfigurationManager.AppSettings["ConfirmationMailLogin"];
             string confirmationMailPassword = ConfigurationManager.AppSettings["ConfirmationMailPassword"];
 
-            SmtpClient _smtpClient = new SmtpClient(_smtpClientHost, _smtpClientPort);
-            _smtpClient.Credentials = new NetworkCredential(confirmationMailLogin, confirmationMailPassword);
-            _smtpClient.EnableSsl = false;
+            SmtpClient _smtpClient = new SmtpClient(_smtpClientHost, _smtpClientPort)
+            {
+                Credentials = new NetworkCredential(confirmationMailLogin, confirmationMailPassword),
+                EnableSsl = false
+            };
 
             _smtpClient.Send(_mailMessage);
+        }
+        public async Task SendAsyncConfirmationMessage()
+        {
+            await Task.Run(() => SendConfirmationMessage());
         }
     }
 }

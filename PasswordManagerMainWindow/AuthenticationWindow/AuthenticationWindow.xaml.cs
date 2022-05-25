@@ -1,23 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Configuration;
-using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using Data.DataProviders.Factories;
+using Data.DataProviders.Products;
 using PasswordManager.AuthenticationWindow.Pages;
 using ServicesLibrary;
+using ServicesLibrary.SettingsService;
 using UsersLibrary;
+using UsersLibrary.Services;
 using UsersLibrary.Settings;
+using static UsersLibrary.UsersExceptions;
 
 namespace PasswordManager.AuthenticationWindow
 {
@@ -39,33 +32,34 @@ namespace PasswordManager.AuthenticationWindow
 
         private void LaunchPreparation()
         {
-            if (!SettingsService.IsSavedUser)
+            SignUpSettingsService settingsService = new SignUpSettingsService();
+            if (!settingsService.IsSavedUser)
             {
                 StartAuthenticationWindow();
                 return;
             }
 
-            SignUpSettings settings = SettingsService.GetSignUpSettings();
+            SignUpSettings settings = (SignUpSettings)settingsService.GetSettings();
             User user = User.CreateAlreadyExistUser(settings.Email, settings.AuthPassword);
 
             if (InternetService.IsConnectedToInternet)
                 GetUserDataFromDB(user);
             else
                 GetUserDataFromLocalStorage(user);
-        }
+        }     
 
         private void GetUserDataFromDB(User user)
         {
             try
             {
                 user = UsersService.GetHashAndSaltFromDB(user);
-                if(UsersService.CheckUserData(user))
+                if (UsersService.CheckUserData(user))
                 {
                     StartMainWindow(user);
                     return;
                 }
             }
-            catch (Exception)
+            catch (IncorrectPasswordException)
             {
                 StartAuthenticationWindow();
                 return;
@@ -73,7 +67,7 @@ namespace PasswordManager.AuthenticationWindow
         }
         private void GetUserDataFromLocalStorage(User user)
         {
-            throw new NotImplementedException();
+            StartMainWindow(user);
         }
 
         private void StartAuthenticationWindow()
@@ -87,7 +81,7 @@ namespace PasswordManager.AuthenticationWindow
         }
         private void SetSystemColorTheme()
         {
-            ThemesService.Themes theme = ThemesService.GetSystemTheme();
+            WindowSettings.Themes theme = ThemesService.GetSystemTheme();
 
             ResourceDictionary dict = new ResourceDictionary { Source = new Uri($"AuthenticationWindow/Themes/{theme}Theme.xaml", UriKind.Relative) };
             Application.Current.Resources.MergedDictionaries.Add(dict);
@@ -96,12 +90,39 @@ namespace PasswordManager.AuthenticationWindow
 
         public void StartMainWindow(User user)
         {
+            GetServicesData(user);
+
             MainWindow.MainWindow mainWindow = new MainWindow.MainWindow(user);
             mainWindow.Show();
 
             CloseWindow(new object(), new RoutedEventArgs());
 
             return;
+        }
+        private void GetServicesData(User user)
+        {
+            CommonDataProviderFactory[] dataProviderFactories = CommonDataProviderFactory.CreateFactories();
+            DateTime[] modifyDateTimes = new DateTime[dataProviderFactories.Length];
+            int lastModifyDateTimeIndex;
+
+            for (int i = 0; i < dataProviderFactories.Length; i++)
+            {
+                IDataProvider dataProvider = dataProviderFactories[i].GetDataProvider();
+                modifyDateTimes[i] = dataProvider.GetLastModifyTime(user);
+            }
+
+            lastModifyDateTimeIndex = modifyDateTimes.ToList().IndexOf(modifyDateTimes.Max());
+            List<Service> services = dataProviderFactories[lastModifyDateTimeIndex].GetDataProvider().Load(user);
+            user.Services = services;
+
+            for (int i = 0; i < dataProviderFactories.Length; i++)
+            {
+                if (i == lastModifyDateTimeIndex) continue;
+                IDataProvider dataProvider = dataProviderFactories[i].GetDataProvider();
+
+                dataProvider.Clear(user);
+                dataProvider.Save(user, services);
+            }
         }
 
         public void CloseWindow(object sender, RoutedEventArgs e)

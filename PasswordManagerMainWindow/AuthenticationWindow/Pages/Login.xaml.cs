@@ -16,6 +16,8 @@ using System.Windows.Shapes;
 using UsersLibrary;
 using PasswordManager.MainWindow;
 using System.Configuration;
+using Data.DataProviders.Factories;
+using Data.DataProviders.Products;
 using static UsersLibrary.UsersExceptions;
 using ServicesLibrary;
 using UsersLibrary.Settings;
@@ -56,10 +58,8 @@ namespace PasswordManager.AuthenticationWindow.Pages
                 throw;
             }
 
-            if (RememberMeFlag == true) SettingsService.SaveSignUpSettings((SignUpSettings)_user);
-            //NavigationService.Navigate(new TwoStepVerification());
-
-           ((AuthenticationWindow)Window.GetWindow(this)).StartMainWindow(_user);
+            TwoStepVerification twoStepVerification = new TwoStepVerification(_user, (bool)RememberMeFlag);
+            NavigationService.Navigate(twoStepVerification);
         }
 
         private bool CheckAuthData()
