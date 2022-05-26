@@ -102,7 +102,7 @@
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="FontFamily" Value="Global Sans Serif"/>
             <Setter Property="VerticalAlignment" Value="Top"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Visibility" Value="Hidden"/>
         </Style.Setters>
     </Style>

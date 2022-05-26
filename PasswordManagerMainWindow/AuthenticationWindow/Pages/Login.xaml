@@ -129,6 +129,7 @@
                    Grid.Row="10" 
                    Grid.Column="1" 
                    Margin="0,15,0,0"
+
                    Style="{StaticResource AuthErrorTextBlockStyle}"/>
 
         <CheckBox x:Name="RememberMeCheckBox" 

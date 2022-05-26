@@ -19,6 +19,7 @@ using Data.DataProviders.Products;
 using PasswordManager.MainWindow;
 using PasswordManager.MainWindow.Models;
 using PasswordManager.MainWindow.ViewModels;
+using ServicesLibrary;
 using UsersLibrary;
 using UsersLibrary.Services;
 
@@ -33,6 +34,10 @@ namespace PasswordManager.MainWindow.Pages
 
         AuthenticationDataVM dataVM = new AuthenticationDataVM();
 
+        private string Password { get => HiddenPasswordTextBox.Text; }
+
+        private string PasswordComplexityText { set => PasswordComplexityTextBlock.Text = value; }
+        private Brush PasswordComplexityTextColor { set => PasswordComplexityTextBlock.Foreground = value; }
 
         private readonly Rectangle[] _passwordComplexityRectangles = new Rectangle[5];
 
@@ -222,8 +227,9 @@ namespace PasswordManager.MainWindow.Pages
             }
             else
             {
-                PasswordComplexityTextBlock.Text = Properties.Resources.FormFillAllFields;
-                PasswordComplexityTextBlock.Foreground = new SolidColorBrush(Colors.Red);
+                AddEditFormErrorTextBlock.Visibility = Visibility.Visible;
+                AddEditFormErrorTextBlock.Text = Properties.Resources.FormFillAllFields;
+                
             }
         }
         private void ClearForm()
@@ -251,8 +257,7 @@ namespace PasswordManager.MainWindow.Pages
                 Duration = TimeSpan.FromSeconds(0.3),
                 AccelerationRatio = 0.5
 
-            };
-            DoubleAnimation notificationAppearingOpacity = new DoubleAnimation()
+            };            DoubleAnimation notificationAppearingOpacity = new DoubleAnimation()
             {
                 From = 0,
                 To = 1,
@@ -375,5 +380,52 @@ namespace PasswordManager.MainWindow.Pages
             ShowNotification(Properties.Resources.RecordRemovedNotification);
         }
 
+        //TODO AuthErrorTextBlock and SetShowPasswordToggleButton коли з'явиться
+        private void HiddenPasswordTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            SetPasswordComplexity();
+  
+        }
+        private void SetPasswordComplexity()
+        {
+            PasswordsService.PasswordScore passwordScore = PasswordsService.GetPasswordStrength(Password);
+
+            SolidColorBrush solidColorBrush;
+            string message = "";
+            switch (passwordScore)
+            {
+                case PasswordsService.PasswordScore.VeryWeak:
+                    solidColorBrush = new SolidColorBrush(_veryWeakPasswordRectangleColor);
+                    message = Properties.Resources.PswdVeryWeak;
+                    break;
+                case PasswordsService.PasswordScore.Weak:
+                    solidColorBrush = new SolidColorBrush(_weakPasswordRectangleColor);
+                    message = Properties.Resources.PswdWeak;
+                    break;
+                case PasswordsService.PasswordScore.Medium:
+                    solidColorBrush = new SolidColorBrush(_normalPasswordRectangleColor);
+                    message = Properties.Resources.PswdNormal;
+                    break;
+                case PasswordsService.PasswordScore.Strong:
+                    solidColorBrush = new SolidColorBrush(_strongPasswordRectangleColor);
+                    message = Properties.Resources.PswdStrong;
+                    break;
+                case PasswordsService.PasswordScore.VeryStrong:
+                    solidColorBrush = new SolidColorBrush(_veryStrongPasswordRectangleColor);
+                    message = Properties.Resources.PswdVeryStrong;
+                    break;
+                default:
+                    solidColorBrush = new SolidColorBrush(_nullPasswordRectangleColor);
+                    break;
+            }
+
+            SetPasswordComplexityText(message, solidColorBrush);
+            PasswordsService.SetPasswordComplexityRectangles(solidColorBrush, _nullPasswordRectangleColor, passwordScore, _passwordComplexityRectangles);
+        }
+        private void SetPasswordComplexityText(string message, SolidColorBrush colorBrush)
+        {
+            PasswordComplexityText = message;
+            PasswordComplexityTextColor = colorBrush;
+        }
     }
 }

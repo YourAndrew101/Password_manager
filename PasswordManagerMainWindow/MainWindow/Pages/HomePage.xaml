@@ -141,7 +141,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <Grid  x:Name="ShadowEffectHomePage" Height="700"   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="5" Style="{StaticResource Shadow}"  />
-        <Grid x:Name="AddEditForm" Height="600" Width="500" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="5" Style="{StaticResource OverlayFormStyle}" Margin="0,0,0,104.2" >
+        <Grid x:Name="AddEditForm" Visibility="Visible" Height="600" Width="500" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="5" Style="{StaticResource OverlayFormStyle}" Margin="0,0,0,104.2" >
             <Grid.RenderTransform>
                 <ScaleTransform CenterX="250" CenterY="300" x:Name="FormScailing"/>
             </Grid.RenderTransform>
@@ -254,9 +254,8 @@
                  BorderThickness="2"                 
                      GotFocus="HiddenPasswordTextBox_GotFocus"
                      LostFocus="HiddenPasswordTextBox_LostFocus"
-                 Style="{StaticResource TextBoxStyle}" 
-                
-                 Height="40"  
+                 Style="{StaticResource TextBoxStyle}"                
+                 Height="40" TextChanged="HiddenPasswordTextBox_TextChanged"  
                  />
 
             <Button x:Name="SuggestPassword" Panel.ZIndex="1" Content="{x:Static res:Resources.FormSuggestPassword}"  Height="30" Width="320" Grid.Column="1" Grid.Row="11" Grid.RowSpan="3" Style="{StaticResource SuggestPassword}" Click="SuggestPassword_Click"/>
@@ -288,7 +287,10 @@
                        Width="205" 
                        TextAlignment="Center"/>
             </StackPanel>
-
+            <TextBlock x:Name="AddEditFormErrorTextBlock" 
+                   Grid.Row="13" 
+                   Grid.Column="1"
+                       Style="{StaticResource AddEditFormErrorTextBlockStyle}"/>
 
             <Button x:Name="AddEditFormSubmitButton"
                 Grid.Column="1"

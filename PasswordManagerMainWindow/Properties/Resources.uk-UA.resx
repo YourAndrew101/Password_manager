@@ -325,7 +325,7 @@
     <value>Підтвердити</value>
   </data>
   <data name="TwoStepAuthenticationTitle" xml:space="preserve">
-    <value>Двохфакторна аунтефікація</value>
+    <value>Двохфакторна аунтифікація</value>
   </data>
   <data name="UserExists" xml:space="preserve">
     <value>Користувач уже існує</value>

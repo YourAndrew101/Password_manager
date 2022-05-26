@@ -168,9 +168,8 @@
         
         <TextBlock x:Name="AuthErrorTextBlock" 
                    Grid.Row="10" 
-                   Text="Error sample" 
                    Grid.Column="1"
-                   VerticalAlignment="Bottom"                
+                   VerticalAlignment="Bottom"
                    Style="{StaticResource AuthErrorTextBlockStyle}"/>
 
         <Button x:Name="SubmitButton" 
