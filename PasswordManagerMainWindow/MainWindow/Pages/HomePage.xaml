@@ -290,7 +290,7 @@
             </StackPanel>
 
 
-            <Button x:Name="SubmitButton" 
+            <Button x:Name="AddEditFormSubmitButton"
                 Grid.Column="1"
                 Grid.Row="14"
                 Content="{x:Static res:Resources.FormSubmit}"

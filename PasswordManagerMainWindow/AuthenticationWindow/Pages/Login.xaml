@@ -112,7 +112,7 @@
                  Visibility="Collapsed"
                  Padding="5,0,30,0"
                  Style="{StaticResource PrimaryTextBoxStyle}"   
-                 Text="{Binding Password, ElementName=HiddenPasswordTextBox}" 
+                 Text="{Binding Password, ElementName=HiddenPasswordTextBox, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
                  TextChanged="RevealedPassword_TextChanged"/>
 
         <ToggleButton x:Name="ShowPasswordToggleButton"

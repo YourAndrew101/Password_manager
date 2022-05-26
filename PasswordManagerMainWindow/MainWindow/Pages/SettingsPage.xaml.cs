@@ -24,8 +24,9 @@ namespace PasswordManager.MainWindow.Pages
         public Settings()
         {
             InitializeComponent();
-           // TrayTB.IsChecked = true;
-          
+            // TrayTB.IsChecked = true;
+            
+
         }
 
         private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)

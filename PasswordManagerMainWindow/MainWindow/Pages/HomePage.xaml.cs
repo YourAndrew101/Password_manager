@@ -202,7 +202,7 @@ namespace PasswordManager.MainWindow.Pages
             {
                 if (string.IsNullOrEmpty(IdTextBox.Text))
                 {
-                    dataVM.AuthenticationDataViewModels.Add(new Models.AuthenticationData(ResourceTextBox.Text, LoginTextBox.Text, HiddenPasswordTextBox.Text));
+                    dataVM.AuthenticationDataViewModels.Add(new Models.AuthenticationData(ResourceTextBox.Text.ToLower(), LoginTextBox.Text, HiddenPasswordTextBox.Text));
                    
                     FormClosingAnimation(AddEditForm);
                     ShowNotification(Properties.Resources.RecordAddedNotification);
@@ -210,7 +210,7 @@ namespace PasswordManager.MainWindow.Pages
                 else
                 {
                     int index = int.Parse(IdTextBox.Text);
-                    dataVM.AuthenticationDataViewModels[index].Resource = ResourceTextBox.Text;
+                    dataVM.AuthenticationDataViewModels[index].Resource = ResourceTextBox.Text.ToLower();
                     dataVM.AuthenticationDataViewModels[index].Login = LoginTextBox.Text;
                     dataVM.AuthenticationDataViewModels[index].Password = HiddenPasswordTextBox.Text;
                     FormClosingAnimation(AddEditForm);
@@ -374,5 +374,6 @@ namespace PasswordManager.MainWindow.Pages
             dataVM.AuthenticationDataViewModels.Remove((AuthenticationData)MainDataGrid.CurrentItem);
             ShowNotification(Properties.Resources.RecordRemovedNotification);
         }
+
     }
 }
