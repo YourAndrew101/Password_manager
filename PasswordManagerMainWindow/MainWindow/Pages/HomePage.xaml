@@ -254,9 +254,8 @@
                  BorderThickness="2"                 
                      GotFocus="HiddenPasswordTextBox_GotFocus"
                      LostFocus="HiddenPasswordTextBox_LostFocus"
-                 Style="{StaticResource TextBoxStyle}" 
-                
-                 Height="40"  
+                 Style="{StaticResource TextBoxStyle}"                
+                 Height="40" TextChanged="HiddenPasswordTextBox_TextChanged"  
                  />
 
             <Button x:Name="SuggestPassword" Panel.ZIndex="1" Content="{x:Static res:Resources.FormSuggestPassword}"  Height="30" Width="320" Grid.Column="1" Grid.Row="11" Grid.RowSpan="3" Style="{StaticResource SuggestPassword}" Click="SuggestPassword_Click"/>
