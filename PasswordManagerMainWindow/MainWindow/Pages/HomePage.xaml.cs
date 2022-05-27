@@ -35,6 +35,7 @@ namespace PasswordManager.MainWindow.Pages
         private ServiceRepository Repository { get; set; }
 
         private int _lengthGeneratePassword = 16;
+
         private User User { get; set; }
 
         AuthenticationDataVM dataVM;
@@ -62,7 +63,6 @@ namespace PasswordManager.MainWindow.Pages
             User = user;
             Repository = new ServiceRepository(new DataContext(user.Services));
             dataVM = new AuthenticationDataVM(Repository);
-
             DataContext = dataVM;          
         }
         private void InitializePasswordComplexityRectangles()
@@ -78,94 +78,94 @@ namespace PasswordManager.MainWindow.Pages
         {
 
             FormHeader.Text = Properties.Resources.AddFormHeader;
-            FormOpeningAnimation(AddEditForm);
+            Animation.FormOpeningAnimation(AddEditForm, ShadowEffectHomePage);
+            //FormOpeningAnimation(AddEditForm);
 
         }
 
-        private void FormOpeningAnimation(Grid form)
-        {
-            form.Visibility = Visibility.Visible;
-            ShadowEffectHomePage.Visibility = Visibility.Visible;
-            ((MainWindow)App.Current.Windows[0]).Shadow.Visibility = Visibility.Visible;
-            DoubleAnimation formScaleAnimation = new DoubleAnimation()
-            {
-                From = 1.2,
-                To = 1,
-                Duration = TimeSpan.FromSeconds(0.2),
-                AccelerationRatio = 0.5,
-            };
-            form.RenderTransform.BeginAnimation(ScaleTransform.ScaleXProperty, formScaleAnimation);
-            form.RenderTransform.BeginAnimation(ScaleTransform.ScaleYProperty, formScaleAnimation);
+       // private void FormOpeningAnimation(Grid form)
+       // {
+       //     form.Visibility = Visibility.Visible;
+       //     ShadowEffectHomePage.Visibility = Visibility.Visible;
+       //     ((MainWindow)App.Current.Windows[0]).Shadow.Visibility = Visibility.Visible;
+       //     DoubleAnimation formScaleAnimation = new DoubleAnimation()
+       //     {
+       //         From = 1.2,
+       //         To = 1,
+       //         Duration = TimeSpan.FromSeconds(0.2),
+       //         AccelerationRatio = 0.5,
+       //     };
+       //     form.RenderTransform.BeginAnimation(ScaleTransform.ScaleXProperty, formScaleAnimation);
+       //     form.RenderTransform.BeginAnimation(ScaleTransform.ScaleYProperty, formScaleAnimation);
 
-            DoubleAnimation formOpacityAnimation = new DoubleAnimation()
-            {
-                From = 0,
-                To = 1,
-                Duration = TimeSpan.FromSeconds(0.1),
+       //     DoubleAnimation formOpacityAnimation = new DoubleAnimation()
+       //     {
+       //         From = 0,
+       //         To = 1,
+       //         Duration = TimeSpan.FromSeconds(0.1),
 
-            };
-            AddEditForm.BeginAnimation(OpacityProperty, formOpacityAnimation);
+       //     };
+       //     form.BeginAnimation(OpacityProperty, formOpacityAnimation);
 
-            DoubleAnimation shadowAppearingAnimation = new DoubleAnimation()
-            {
-                Duration = TimeSpan.FromSeconds(0.2),
-                From = 0,
-                To = 0.75,
-            };
-            ShadowEffectHomePage.BeginAnimation(OpacityProperty, shadowAppearingAnimation);
+       //     DoubleAnimation shadowAppearingAnimation = new DoubleAnimation()
+       //     {
+       //         Duration = TimeSpan.FromSeconds(0.2),
+       //         From = 0,
+       //         To = 0.75,
+       //     };
+       //     ShadowEffectHomePage.BeginAnimation(OpacityProperty, shadowAppearingAnimation);
+       //     ((MainWindow)App.Current.Windows[0]).Shadow.BeginAnimation(OpacityProperty, shadowAppearingAnimation);
 
-            ((MainWindow)App.Current.Windows[0]).Shadow.BeginAnimation(OpacityProperty, shadowAppearingAnimation);
+       // }
+       //private void FormClosingAnimation(Grid form)
+       // {
 
-        }
-        private void FormClosingAnimation(Grid form)
-        {
+       //     DoubleAnimation formScaleAnimation = new DoubleAnimation()
+       //     {
+       //         From = 1,
+       //         To = 1.2,
+       //         Duration = TimeSpan.FromSeconds(0.2),
+       //         AccelerationRatio = 0.5,
+       //     };
+       //     formScaleAnimation.Completed += (sender, e) => formDisapperingAnimation_Comleted(sender, e, form);
+       //     form.RenderTransform.BeginAnimation(ScaleTransform.ScaleXProperty, formScaleAnimation);
+       //     form.RenderTransform.BeginAnimation(ScaleTransform.ScaleYProperty, formScaleAnimation);
 
-            DoubleAnimation formScaleAnimation = new DoubleAnimation()
-            {
-                From = 1,
-                To = 1.2,
-                Duration = TimeSpan.FromSeconds(0.2),
-                AccelerationRatio = 0.5,
-            };
-            formScaleAnimation.Completed += (sender, e) => formDisapperingAnimation_Comleted(sender, e, form);
-            form.RenderTransform.BeginAnimation(ScaleTransform.ScaleXProperty, formScaleAnimation);
-            form.RenderTransform.BeginAnimation(ScaleTransform.ScaleYProperty, formScaleAnimation);
-
-            DoubleAnimation formOpacityAnimation = new DoubleAnimation()
-            {
-                From = 1,
-                To = 0,
-                Duration = TimeSpan.FromSeconds(0.1),
+       //     DoubleAnimation formOpacityAnimation = new DoubleAnimation()
+       //     {
+       //         From = 1,
+       //         To = 0,
+       //         Duration = TimeSpan.FromSeconds(0.1),
 
 
-            };
-            AddEditForm.BeginAnimation(OpacityProperty, formOpacityAnimation);
+       //     };
+       //     form.BeginAnimation(OpacityProperty, formOpacityAnimation);
 
-            DoubleAnimation shadowDisappearingAnimation = new DoubleAnimation()
-            {
-                Duration = TimeSpan.FromSeconds(0.2),
-                From = 0.75,
-                To = 0,
-            };
-            shadowDisappearingAnimation.Completed += ShadowDisappearingAnimation_Completed;
-            ShadowEffectHomePage.BeginAnimation(OpacityProperty, shadowDisappearingAnimation);
-            ((MainWindow)App.Current.Windows[0]).Shadow.BeginAnimation(OpacityProperty, shadowDisappearingAnimation);
-        }
-        private void ShadowDisappearingAnimation_Completed(object sender, EventArgs e)
-        {
-            ShadowEffectHomePage.Visibility = Visibility.Collapsed;
-            ((MainWindow)App.Current.Windows[0]).Shadow.Visibility = Visibility.Collapsed;
-        }
+       //     DoubleAnimation shadowDisappearingAnimation = new DoubleAnimation()
+       //     {
+       //         Duration = TimeSpan.FromSeconds(0.2),
+       //         From = 0.75,
+       //         To = 0,
+       //     };
+       //     shadowDisappearingAnimation.Completed += ShadowDisappearingAnimation_Completed;
+       //     ShadowEffectHomePage.BeginAnimation(OpacityProperty, shadowDisappearingAnimation);
+       //     ((MainWindow)App.Current.Windows[0]).Shadow.BeginAnimation(OpacityProperty, shadowDisappearingAnimation);
+       // }
+       // private void ShadowDisappearingAnimation_Completed(object sender, EventArgs e)
+       // {
+       //     ShadowEffectHomePage.Visibility = Visibility.Collapsed;
+       //     ((MainWindow)App.Current.Windows[0]).Shadow.Visibility = Visibility.Collapsed;
+       // }
 
-        private void formDisapperingAnimation_Comleted(object sender, EventArgs e, Grid form)
-        {
-            form.Visibility = Visibility.Collapsed;
+       // private void formDisapperingAnimation_Comleted(object sender, EventArgs e, Grid form)
+       // {
+       //     form.Visibility = Visibility.Collapsed;
 
-        }
+       // }
         private void CloseForm_Click(object sender, RoutedEventArgs e)
         {
             Grid form = (Grid)((Button)sender).Parent;
-            FormClosingAnimation(form);
+            Animation.FormClosingAnimation(form, ShadowEffectHomePage);
             ClearForm();
 
         }
@@ -220,11 +220,8 @@ namespace PasswordManager.MainWindow.Pages
                 {
                     Service service = new Service(ResourceTextBox.Text.ToLower(), LoginTextBox.Text, HiddenPasswordTextBox.Text)
                     { Id = Repository.Any() ? Repository.GetAll().Count() + 1 : 1};
-
-                    
                     Repository.Add(service);
-
-                    FormClosingAnimation(AddEditForm);
+                    Animation.FormClosingAnimation(AddEditForm, ShadowEffectHomePage);
                     ShowNotification(Properties.Resources.RecordAddedNotification);
                 }
                 else
@@ -233,7 +230,7 @@ namespace PasswordManager.MainWindow.Pages
                     //dataVM.AuthenticationDataViewModels[index].Resource = ResourceTextBox.Text.ToLower();
                     //dataVM.AuthenticationDataViewModels[index].Login = LoginTextBox.Text;
                     //dataVM.AuthenticationDataViewModels[index].Password = HiddenPasswordTextBox.Text;
-                    FormClosingAnimation(AddEditForm);
+                    Animation.FormClosingAnimation(AddEditForm, ShadowEffectHomePage);
                     ShowNotification(Properties.Resources.RecordEditedNotification);
 
                 }
@@ -363,7 +360,6 @@ namespace PasswordManager.MainWindow.Pages
             pp.IsOpen = true;
         }
 
-
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
             //var popupEl = (Popup)((Border)((StackPanel)(((Button)sender).Parent)).Parent).Parent;
@@ -383,13 +379,13 @@ namespace PasswordManager.MainWindow.Pages
             var popupEl = (Popup)((Border)((StackPanel)(((Button)sender).Parent)).Parent).Parent;
             popupEl.IsOpen = false;
 
-            FormOpeningAnimation(DeleteForm);
+            Animation.FormOpeningAnimation(DeleteForm, ShadowEffectHomePage);
 
         }
 
         private void ConfirmDeleatingButton_Click(object sender, RoutedEventArgs e)
         {
-            FormClosingAnimation(DeleteForm);
+            Animation.FormClosingAnimation(DeleteForm, ShadowEffectHomePage);
             //dataVM.AuthenticationDataViewModels.Remove((AuthenticationData)MainDataGrid.CurrentItem);
             ShowNotification(Properties.Resources.RecordRemovedNotification);
         }
