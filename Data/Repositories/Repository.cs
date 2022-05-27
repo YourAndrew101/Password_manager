@@ -34,7 +34,7 @@ namespace Data.Repositories
 
         public void Add(Service service)
         {
-            service.Id = Context.Services.Any() ? Context.Services.Max(s => s.Id) : 0;
+            service.Id = Context.Services.Any() ? Context.Services.Max(s => s.Id) : 1;
             Context.Services.Add(service);
         }
 
@@ -47,6 +47,16 @@ namespace Data.Repositories
         {
             foreach (Service item in services)
                 Context.Services.Remove(item);
+        }
+
+        public void Update(int id, Service entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Service startEntity, Service finishEntity)
+        {
+            throw new NotImplementedException();
         }
     }
 }

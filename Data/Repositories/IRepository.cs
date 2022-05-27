@@ -16,6 +16,9 @@ namespace Data.Repositories
 
         void Add(TEntity entity);
 
+        void Update(int id, TEntity entity);
+        void Update(TEntity startEntity, TEntity finishEntity);
+
         void Remove(TEntity entity);
         void RemoveRange(IEnumerable<TEntity> entities);
     }
