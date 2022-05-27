@@ -219,6 +219,9 @@
   <data name="Password" xml:space="preserve">
     <value>Password</value>
   </data>
+  <data name="PasswordLengthSettingHeader" xml:space="preserve">
+    <value>Generated password length</value>
+  </data>
   <data name="PasswordRequest" xml:space="preserve">
     <value>Enter password</value>
   </data>

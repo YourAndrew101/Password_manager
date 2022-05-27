@@ -367,6 +367,15 @@ namespace PasswordManager.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Generated password length.
+        /// </summary>
+        public static string PasswordLengthSettingHeader {
+            get {
+                return ResourceManager.GetString("PasswordLengthSettingHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Enter password.
         /// </summary>
         public static string PasswordRequest {

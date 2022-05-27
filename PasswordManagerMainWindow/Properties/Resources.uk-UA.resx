@@ -219,6 +219,9 @@
   <data name="Password" xml:space="preserve">
     <value>Пароль</value>
   </data>
+  <data name="PasswordLengthSettingHeader" xml:space="preserve">
+    <value>Довжина генерованого паролю</value>
+  </data>
   <data name="PasswordRequest" xml:space="preserve">
     <value>Введіть пароль</value>
   </data>
