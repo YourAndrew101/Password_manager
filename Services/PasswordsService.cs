@@ -28,10 +28,9 @@ namespace ServicesLibrary
             if (password.Length < 8) return PasswordScore.VeryWeak;
 
             if (password.Length >= 8) passwordComplexity++;
-            if (password.Length >= 12) passwordComplexity++;
             if (password.Length >= 16) passwordComplexity++;
             if (password.Any(char.IsDigit)) passwordComplexity++;
-            if (password.Any(char.IsSymbol)) passwordComplexity++;
+            if (password.Count(c => !char.IsLetterOrDigit(c)) > 0) passwordComplexity++;
             if (password.Length - password.Distinct().Count() >= password.Length / 3) passwordComplexity--;
 
             return (PasswordScore)passwordComplexity;
@@ -46,7 +45,7 @@ namespace ServicesLibrary
         }
         private static void ClearPasswordComplexityRectangles(Rectangle[] rectangles, Color color)
         {
-            foreach (var item in rectangles)
+            foreach (Rectangle item in rectangles)
                 item.Fill = new SolidColorBrush(color);
         }
     }

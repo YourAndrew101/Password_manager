@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web.Security;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
@@ -30,6 +31,7 @@ namespace PasswordManager.MainWindow.Pages
     /// </summary>
     public partial class Home : Page
     {
+        private int _lengthGeneratePassword = 16;
         private User User { get; set; }
 
         AuthenticationDataVM dataVM = new AuthenticationDataVM();
@@ -56,8 +58,8 @@ namespace PasswordManager.MainWindow.Pages
 
             User = user;
             DataContext = dataVM;
-          
-            
+
+
         }
         private void InitializePasswordComplexityRectangles()
         {
@@ -69,8 +71,8 @@ namespace PasswordManager.MainWindow.Pages
         }
 
         private void AddPasswordButton_Click(object sender, RoutedEventArgs e)
-        { 
-           
+        {
+
             FormHeader.Text = Properties.Resources.AddFormHeader;
             FormOpeningAnimation(AddEditForm);
 
@@ -89,7 +91,7 @@ namespace PasswordManager.MainWindow.Pages
                 AccelerationRatio = 0.5,
             };
             form.RenderTransform.BeginAnimation(ScaleTransform.ScaleXProperty, formScaleAnimation);
-           form.RenderTransform.BeginAnimation(ScaleTransform.ScaleYProperty, formScaleAnimation);
+            form.RenderTransform.BeginAnimation(ScaleTransform.ScaleYProperty, formScaleAnimation);
 
             DoubleAnimation formOpacityAnimation = new DoubleAnimation()
             {
@@ -113,7 +115,7 @@ namespace PasswordManager.MainWindow.Pages
         }
         private void FormClosingAnimation(Grid form)
         {
-            
+
             DoubleAnimation formScaleAnimation = new DoubleAnimation()
             {
                 From = 1,
@@ -158,12 +160,12 @@ namespace PasswordManager.MainWindow.Pages
         }
         private void CloseForm_Click(object sender, RoutedEventArgs e)
         {
-            Grid form =(Grid)((Button)sender).Parent;
+            Grid form = (Grid)((Button)sender).Parent;
             FormClosingAnimation(form);
             ClearForm();
 
         }
-        
+
 
         private void HiddenPasswordTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
@@ -189,7 +191,6 @@ namespace PasswordManager.MainWindow.Pages
             };
             suggestionDisapperingAnimation.Completed += SuggestionDisappeared;
             SuggestPassword.BeginAnimation(OpacityProperty, suggestionDisapperingAnimation);
-
         }
 
         private void SuggestionDisappeared(object sender, EventArgs e)
@@ -197,10 +198,15 @@ namespace PasswordManager.MainWindow.Pages
             SuggestPassword.Visibility = Visibility.Collapsed;
         }
 
+        private string GeneratePassword()
+        {
+            return Membership.GeneratePassword(_lengthGeneratePassword, _lengthGeneratePassword / 4);
+        }
         private void SuggestPassword_Click(object sender, RoutedEventArgs e)
         {
-            HiddenPasswordTextBox.Text = "test password";
+            HiddenPasswordTextBox.Text = GeneratePassword(); 
         }
+
 
         private void AddEditFormSubmitButton_Click(object sender, RoutedEventArgs e)
         {
@@ -347,7 +353,6 @@ namespace PasswordManager.MainWindow.Pages
             var parent = (StackPanel)((Button)sender).Parent;
             Popup pp = (Popup)parent.FindName("PopupMenu");
             pp.IsOpen = true;
-
         }
 
 
@@ -369,9 +374,9 @@ namespace PasswordManager.MainWindow.Pages
         {
             var popupEl = (Popup)((Border)((StackPanel)(((Button)sender).Parent)).Parent).Parent;
             popupEl.IsOpen = false;
-            
+
             FormOpeningAnimation(DeleteForm);
-           
+
         }
 
         private void ConfirmDeleatingButton_Click(object sender, RoutedEventArgs e)
@@ -385,7 +390,7 @@ namespace PasswordManager.MainWindow.Pages
         private void HiddenPasswordTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             SetPasswordComplexity();
-  
+            SetSuggestPasswordButton();
         }
         private void SetPasswordComplexity()
         {
@@ -427,6 +432,12 @@ namespace PasswordManager.MainWindow.Pages
         {
             PasswordComplexityText = message;
             PasswordComplexityTextColor = colorBrush;
+        }
+
+        private void SetSuggestPasswordButton()
+        {
+            if (!string.IsNullOrEmpty(Password)) SuggestPassword.Visibility = Visibility.Hidden;
+            else SuggestPassword.Visibility = Visibility.Visible;
         }
     }
 }

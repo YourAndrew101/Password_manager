@@ -10,6 +10,7 @@ using System.Configuration;
 using static System.Net.Mime.MediaTypeNames;
 using ServicesLibrary;
 using System.Threading;
+using System.Web.Security;
 
 namespace ConsoleApp1
 {
@@ -17,12 +18,7 @@ namespace ConsoleApp1
     {
         public static void Main()
         {
-            for (int i = 0; i < 100; i++)
-            {
-                EMailService eMailService = new EMailService("test@gmail.com");
-                eMailService.SendConfirmationMessage();
-                Thread.Sleep(10);
-            }
+            string s = Membership.GeneratePassword(16, 16 / 4);
         }
     }
 }
