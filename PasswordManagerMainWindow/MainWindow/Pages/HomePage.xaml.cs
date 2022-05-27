@@ -154,7 +154,6 @@ namespace PasswordManager.MainWindow.Pages
 
                     Animation.FormClosingAnimation(AddEditForm, ShadowEffectHomePage);
                     ShowNotification(Properties.Resources.RecordEditedNotification);
-
                 }
                 ClearForm();
                 dataVM.AuthenticationDataCollectionView.Refresh();
@@ -298,21 +297,22 @@ namespace PasswordManager.MainWindow.Pages
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            var popupEl = (Popup)((Border)((StackPanel)(((Button)sender).Parent)).Parent).Parent;
+            var popupEl = (Popup)((Border)((StackPanel)((Button)sender).Parent).Parent).Parent;
             popupEl.IsOpen = false;
 
             Animation.FormOpeningAnimation(DeleteForm, ShadowEffectHomePage);
-
         }
-
         private void ConfirmDeleatingButton_Click(object sender, RoutedEventArgs e)
         {
             Animation.FormClosingAnimation(DeleteForm, ShadowEffectHomePage);
-            //dataVM.AuthenticationDataViewModels.Remove((AuthenticationData)MainDataGrid.CurrentItem);
+
+            Repository.Remove((Service)MainDataGrid.CurrentItem);
+            dataVM.AuthenticationDataCollectionView.Refresh();
+
             ShowNotification(Properties.Resources.RecordRemovedNotification);
         }
 
-        //TODO AuthErrorTextBlock and SetShowPasswordToggleButton коли з'явиться
+
         private void HiddenPasswordTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             SetPasswordComplexity();
