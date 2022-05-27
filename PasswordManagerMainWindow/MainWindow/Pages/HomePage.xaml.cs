@@ -176,6 +176,7 @@ namespace PasswordManager.MainWindow.Pages
             };
 
             SuggestPassword.BeginAnimation(OpacityProperty, suggestionApperingAnimation);
+            
         }
 
         private void HiddenPasswordTextBox_LostFocus(object sender, RoutedEventArgs e)

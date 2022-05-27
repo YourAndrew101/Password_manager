@@ -13,21 +13,12 @@
         <GradientStop Color="{DynamicResource GradientStop2}" Offset="0.5"/>
         <GradientStop Color="{DynamicResource GradientStop3}" Offset="1"/>
     </LinearGradientBrush>
-
     <SolidColorBrush x:Key="NavmenuItemStyle.Active.Foreground" Color="{DynamicResource NavmenuItem.Active.Foreground}"/>
     <SolidColorBrush x:Key="NavmenuItemStyle.InActive.Foreground" Color="{DynamicResource NavmenuItem.InActive.Foreground}"/>
     <SolidColorBrush x:Key="NavmenuItemStyle.Pressed.Background" Color="{DynamicResource NavmenuItem.Pressed.Background}"/>
     <SolidColorBrush x:Key="NavmenuItemStyle.IsMouseOver.Foreground" Color="{DynamicResource NavmenuItem.IsMouseOver.Foreground}"/>
-
-   
-
-    
-
     <SolidColorBrush x:Key="NotificationBorderStyle.Static.Background" Color="{DynamicResource NotificationBorder.Static.Background}"/>
     <SolidColorBrush x:Key="NotificationTextBlockStyle.Static.Foreground" Color="{DynamicResource NotificationTextBlock.Text.Foreground}"/>
-
-    
-
     <Style x:Key="WindowButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="Template">
             <Setter.Value>
@@ -59,7 +50,6 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-
     <Style x:Key="WindowToggleButton" TargetType="{x:Type ToggleButton}">
         <Setter Property="Template">
             <Setter.Value>
@@ -150,22 +140,12 @@
         <Setter Property="Fill" Value="{DynamicResource NavmenuItemStyle.Pressed.Background}"/>
 
     </Style>
-
-
     <Style x:Key="PageHeader" TargetType="{x:Type TextBlock}">
         <Setter Property="FontFamily" Value="Global Sans Serif"/>
         <Setter Property="FontSize" Value="36"/>
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
-
-
-
-
-
-
-
-    
     <Style x:Key="NotificationBorderStyle" TargetType="{x:Type Border}">
         <Setter Property="CornerRadius" Value="5"/>
         <Setter Property="Background" Value="{DynamicResource NotificationBorderStyle.Static.Background}"/>
@@ -179,10 +159,4 @@
         <Setter Property="FontFamily" Value="Global Sans Serif"/>
         <Setter Property="FontSize" Value="20"/>
     </Style>
-
-
-
-
-
-   
 </ResourceDictionary>

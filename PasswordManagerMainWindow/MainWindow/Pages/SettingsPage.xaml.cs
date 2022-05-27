@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -55,6 +56,32 @@ namespace PasswordManager.MainWindow.Pages
         //        BeginTime = TimeSpan.FromSeconds(0.15),
         //    };
         //    frontRect.BeginAnimation(WidthProperty, widthAnimation2);
+        }
+         
+        private void OnlyNumbersInput(object sender, TextCompositionEventArgs e)
+        {
+          
+        }
+
+        private void PasswordLengthSettingTextBox_PreviewKeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Space)
+            {
+                e.Handled = true;
+                return;
+            }
+         Regex onlyNum = new Regex("[^0-9 ]");
+            e.Handled = onlyNum.IsMatch(""+((char)e.Key));
+            
+        }
+
+        private void PasswordLengthSettingTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            string text = (sender as TextBox).Text;
+            if (text.Any())
+            if (!Char.IsDigit(text.Last())) {
+                (sender as TextBox).Text =text.Remove(text.Length - 1);
+            }
         }
     }
 }
