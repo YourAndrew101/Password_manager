@@ -74,6 +74,7 @@ namespace Services
        
         public static string GetLogo(string resourceName)
         {
+
             string path= $"../../MainWindow/LogosServices/{resourceName}.png";
             if (!File.Exists(path))
             {
@@ -106,7 +107,7 @@ namespace Services
                         }
 
                     }
-                    StreamReader streamReader = new StreamReader(response.GetResponseStream());
+                    StreamReader streamReader = response != null? new StreamReader(response.GetResponseStream()):throw new Exception();
                     string json = streamReader.ReadToEnd();
                     streamReader.Close();
                     response.Close();

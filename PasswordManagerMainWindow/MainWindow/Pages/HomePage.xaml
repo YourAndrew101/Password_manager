@@ -287,9 +287,12 @@
                        Width="205" 
                        TextAlignment="Center"/>
             </StackPanel>
+            <TextBlock x:Name="AddEditFormErrorTextBlock" 
+                   Grid.Row="13" 
+                   Grid.Column="1"
+                       Style="{StaticResource AddEditFormErrorTextBlockStyle}"/>
 
-
-            <Button x:Name="SubmitButton" 
+            <Button x:Name="AddEditFormSubmitButton"
                 Grid.Column="1"
                 Grid.Row="14"
                 Content="{x:Static res:Resources.FormSubmit}"

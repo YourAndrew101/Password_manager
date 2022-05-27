@@ -178,6 +178,7 @@ namespace PasswordManager.MainWindow.Pages
             };
 
             SuggestPassword.BeginAnimation(OpacityProperty, suggestionApperingAnimation);
+            
         }
 
         private void HiddenPasswordTextBox_LostFocus(object sender, RoutedEventArgs e)
@@ -213,15 +214,15 @@ namespace PasswordManager.MainWindow.Pages
             {
                 if (string.IsNullOrEmpty(IdTextBox.Text))
                 {
-                    dataVM.AuthenticationDataViewModels.Add(new Models.AuthenticationData(ResourceTextBox.Text, LoginTextBox.Text, HiddenPasswordTextBox.Text));
-
+                    dataVM.AuthenticationDataViewModels.Add(new Models.AuthenticationData(ResourceTextBox.Text.ToLower(), LoginTextBox.Text, HiddenPasswordTextBox.Text));
+                   
                     FormClosingAnimation(AddEditForm);
                     ShowNotification(Properties.Resources.RecordAddedNotification);
                 }
                 else
                 {
                     int index = int.Parse(IdTextBox.Text);
-                    dataVM.AuthenticationDataViewModels[index].Resource = ResourceTextBox.Text;
+                    dataVM.AuthenticationDataViewModels[index].Resource = ResourceTextBox.Text.ToLower();
                     dataVM.AuthenticationDataViewModels[index].Login = LoginTextBox.Text;
                     dataVM.AuthenticationDataViewModels[index].Password = HiddenPasswordTextBox.Text;
                     FormClosingAnimation(AddEditForm);
@@ -233,8 +234,9 @@ namespace PasswordManager.MainWindow.Pages
             }
             else
             {
-                PasswordComplexityTextBlock.Text = Properties.Resources.FormFillAllFields;
-                PasswordComplexityTextBlock.Foreground = new SolidColorBrush(Colors.Red);
+                AddEditFormErrorTextBlock.Visibility = Visibility.Visible;
+                AddEditFormErrorTextBlock.Text = Properties.Resources.FormFillAllFields;
+                
             }
         }
         private void ClearForm()
@@ -262,8 +264,7 @@ namespace PasswordManager.MainWindow.Pages
                 Duration = TimeSpan.FromSeconds(0.3),
                 AccelerationRatio = 0.5
 
-            };
-            DoubleAnimation notificationAppearingOpacity = new DoubleAnimation()
+            };            DoubleAnimation notificationAppearingOpacity = new DoubleAnimation()
             {
                 From = 0,
                 To = 1,

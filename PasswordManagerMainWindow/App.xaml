@@ -12,6 +12,10 @@
                 <ResourceDictionary Source="AuthenticationWindow/Themes/DarkTheme.xaml"/>
 
                 <ResourceDictionary Source="MainWindow/Styles/MainStyles.xaml"/>
+                <ResourceDictionary Source="MainWindow/Styles/HomeStyles.xaml"/>
+                <ResourceDictionary Source="MainWindow/Styles/FormStyles.xaml"/>
+                <ResourceDictionary Source="MainWindow/Styles/SettingsStyles.xaml"/>
+                <ResourceDictionary Source="MainWindow/Styles/AccountStyles.xaml"/>
                 <ResourceDictionary Source="MainWindow/Themes/DarkTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

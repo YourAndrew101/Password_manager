@@ -122,7 +122,7 @@
                  Visibility="Collapsed"
                  Padding="5,0,30,0"
                  Style="{StaticResource PrimaryTextBoxStyle}"   
-                 Text="{Binding Password, ElementName=HiddenPasswordTextBox}" 
+                 Text="{Binding Password, ElementName=HiddenPasswordTextBox, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" 
                  TextChanged="KindaPassword_TextChanged"/>
 
         <ToggleButton x:Name="ShowPasswordToggleButton"
@@ -168,9 +168,8 @@
         
         <TextBlock x:Name="AuthErrorTextBlock" 
                    Grid.Row="10" 
-                   Text="Error sample" 
                    Grid.Column="1"
-                   VerticalAlignment="Bottom"                
+                   VerticalAlignment="Bottom"
                    Style="{StaticResource AuthErrorTextBlockStyle}"/>
 
         <Button x:Name="SubmitButton" 
