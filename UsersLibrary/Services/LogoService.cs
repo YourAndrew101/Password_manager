@@ -7,7 +7,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using Newtonsoft.Json;
-using ServicesLibrary;
 
 namespace Services
 {
@@ -56,7 +55,7 @@ namespace Services
         internal List<Format> formats { get; set; }
     }
 
-   internal class Root
+    internal class Root
     {
         internal string name { get; set; }
         internal string domain { get; set; }
@@ -68,27 +67,31 @@ namespace Services
         internal List<Font> fonts { get; set; }
         internal List<Image> images { get; set; }
     }
-  public class LogoService
+    public class LogoService
     {
-
-       
         public static string GetLogo(string resourceName)
         {
-
-            string path= $"../../MainWindow/LogosServices/{resourceName}.png";
+            string path = $"../../MainWindow/LogosServices/{resourceName}.png";
             if (!File.Exists(path))
             {
-                if (!InternetService.IsConnectedToInternet) return $"../../MainWindow/LogosServices/defaultLogo.png";
                 try
                 {
                     XmlDocument xml = new XmlDocument();
                     xml.Load("../../../Services/APIList.xml");
                     XmlElement root = xml.DocumentElement;
+
                     string key = root.FirstChild.InnerText;
                     string uri = $"https://api.brandfetch.io/v2/brands/{resourceName}";
-                    WebRequest request = WebRequest.Create(uri);
-                    request.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {key}");
-                    WebResponse response = null;
+
+                    WebResponse response;
+                    WebRequest request;
+                    try
+                    {
+                        request = WebRequest.Create(uri);
+                        request.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {key}");
+                        response = null;
+                    }
+                    catch (WebException) { return $"../../MainWindow/LogosServices/defaultLogo.png"; }
 
                     try
                     {
@@ -107,7 +110,7 @@ namespace Services
                         }
 
                     }
-                    StreamReader streamReader = response != null? new StreamReader(response.GetResponseStream()):throw new Exception();
+                    StreamReader streamReader = response != null ? new StreamReader(response.GetResponseStream()) : throw new Exception();
                     string json = streamReader.ReadToEnd();
                     streamReader.Close();
                     response.Close();
@@ -118,18 +121,19 @@ namespace Services
                         throw new Exception();
                     }
                     string logoUri = data.logos.FirstOrDefault(e => e.type == "icon").formats[0].src;
-                        using (WebClient webClient = new WebClient())
-                        {
-                            webClient.DownloadFile(new Uri(logoUri), path);
-                        }
+                    using (WebClient webClient = new WebClient())
+                    {
+                        webClient.DownloadFile(new Uri(logoUri), path);
+                    }
                 }
                 catch (Exception)
                 {
-                    File.Copy($"../../MainWindow/LogosServices/defaultLogo.png", $"../../MainWindow/LogosServices/{resourceName}.png");
-                }              
+                    if(!File.Exists($"../../MainWindow/LogosServices/{resourceName}.png"))
+                        File.Copy($"../../MainWindow/LogosServices/defaultLogo.png", $"../../MainWindow/LogosServices/{resourceName}.png");
+                }
             }
-            return path; 
+            return path;
         }
-        
+
     }
 }

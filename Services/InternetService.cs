@@ -16,7 +16,7 @@ namespace ServicesLibrary
 
         private static bool SendPingRequest()
         {
-            string host = "google.com";
+            string host = "8.8.8.8";
             Ping p = new Ping();
             try
             {
