@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Media;
 using Services;
-
+using UsersLibrary.Services;
 
 namespace PasswordManager.MainWindow.Models
 {
@@ -16,6 +16,8 @@ namespace PasswordManager.MainWindow.Models
         private string login;
         private string password;
 
+
+        public int Id { get; set; }
 
         public ImageSource LogoPath
         {
@@ -56,6 +58,12 @@ namespace PasswordManager.MainWindow.Models
             this.Resource = Resource;
             this.Login = Login;
             this.Password = Password;
+        }
+
+        public static implicit operator Service(AuthenticationData authenticationData)
+        {
+            return new Service(authenticationData.Resource, authenticationData.Login, authenticationData.Password) 
+            { Id = authenticationData.Id };
         }
     }
 }

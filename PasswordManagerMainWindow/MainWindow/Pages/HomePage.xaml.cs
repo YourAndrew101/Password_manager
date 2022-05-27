@@ -16,9 +16,10 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Data;
 using Data.DataProviders.Products;
+using Data.Repositories;
 using PasswordManager.MainWindow;
-using PasswordManager.MainWindow.Models;
 using PasswordManager.MainWindow.ViewModels;
 using ServicesLibrary;
 using UsersLibrary;
@@ -31,10 +32,12 @@ namespace PasswordManager.MainWindow.Pages
     /// </summary>
     public partial class Home : Page
     {
+        private ServiceRepository Repository { get; set; }
+
         private int _lengthGeneratePassword = 16;
         private User User { get; set; }
 
-        AuthenticationDataVM dataVM = new AuthenticationDataVM();
+        AuthenticationDataVM dataVM;
 
         private string Password { get => HiddenPasswordTextBox.Text; }
 
@@ -57,9 +60,10 @@ namespace PasswordManager.MainWindow.Pages
             InitializePasswordComplexityRectangles();
 
             User = user;
-            DataContext = dataVM;
+            Repository = new ServiceRepository(new DataContext(user.Services));
+            dataVM = new AuthenticationDataVM(Repository);
 
-
+            DataContext = dataVM;          
         }
         private void InitializePasswordComplexityRectangles()
         {
@@ -214,17 +218,21 @@ namespace PasswordManager.MainWindow.Pages
             {
                 if (string.IsNullOrEmpty(IdTextBox.Text))
                 {
-                    dataVM.AuthenticationDataViewModels.Add(new Models.AuthenticationData(ResourceTextBox.Text.ToLower(), LoginTextBox.Text, HiddenPasswordTextBox.Text));
-                   
+                    Service service = new Service(ResourceTextBox.Text.ToLower(), LoginTextBox.Text, HiddenPasswordTextBox.Text)
+                    { Id = Repository.Any() ? Repository.GetAll().Count() + 1 : 1};
+
+                    
+                    Repository.Add(service);
+
                     FormClosingAnimation(AddEditForm);
                     ShowNotification(Properties.Resources.RecordAddedNotification);
                 }
                 else
                 {
                     int index = int.Parse(IdTextBox.Text);
-                    dataVM.AuthenticationDataViewModels[index].Resource = ResourceTextBox.Text.ToLower();
-                    dataVM.AuthenticationDataViewModels[index].Login = LoginTextBox.Text;
-                    dataVM.AuthenticationDataViewModels[index].Password = HiddenPasswordTextBox.Text;
+                    //dataVM.AuthenticationDataViewModels[index].Resource = ResourceTextBox.Text.ToLower();
+                    //dataVM.AuthenticationDataViewModels[index].Login = LoginTextBox.Text;
+                    //dataVM.AuthenticationDataViewModels[index].Password = HiddenPasswordTextBox.Text;
                     FormClosingAnimation(AddEditForm);
                     ShowNotification(Properties.Resources.RecordEditedNotification);
 
@@ -358,16 +366,16 @@ namespace PasswordManager.MainWindow.Pages
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            var popupEl = (Popup)((Border)((StackPanel)(((Button)sender).Parent)).Parent).Parent;
-            popupEl.IsOpen = false;
-            FormHeader.Text = Properties.Resources.EditFormHeader;
-            AuthenticationData item = (AuthenticationData)MainDataGrid.CurrentItem;
-            int index = MainDataGrid.Items.IndexOf(item);
-            ResourceTextBox.Text = item.Resource;
-            LoginTextBox.Text = item.Login;
-            HiddenPasswordTextBox.Text = item.Password;
-            IdTextBox.Text = index.ToString();
-            FormClosingAnimation(AddEditForm);
+            //var popupEl = (Popup)((Border)((StackPanel)(((Button)sender).Parent)).Parent).Parent;
+            //popupEl.IsOpen = false;
+            //FormHeader.Text = Properties.Resources.EditFormHeader;
+            //AuthenticationData item = (AuthenticationData)MainDataGrid.CurrentItem;
+            //int index = MainDataGrid.Items.IndexOf(item);
+            //ResourceTextBox.Text = item.Resource;
+            //LoginTextBox.Text = item.Login;
+            //HiddenPasswordTextBox.Text = item.Password;
+            //IdTextBox.Text = index.ToString();
+            //FormClosingAnimation(AddEditForm);
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
@@ -382,7 +390,7 @@ namespace PasswordManager.MainWindow.Pages
         private void ConfirmDeleatingButton_Click(object sender, RoutedEventArgs e)
         {
             FormClosingAnimation(DeleteForm);
-            dataVM.AuthenticationDataViewModels.Remove((AuthenticationData)MainDataGrid.CurrentItem);
+            //dataVM.AuthenticationDataViewModels.Remove((AuthenticationData)MainDataGrid.CurrentItem);
             ShowNotification(Properties.Resources.RecordRemovedNotification);
         }
 

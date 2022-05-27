@@ -17,30 +17,25 @@ namespace Data.Repositories
             Context = dataContext;
         }
 
+        public bool Any()
+        {
+            return Context.Services.Any();
+        }
+
         public Service Get(int id)
         {
             return Context.Services.First(s => s.Id == id);
         }
 
-        public IEnumerable<Service> GetAll()
+        public ICollection<Service> GetAll()
         {
             return Context.Services;
-        }
-
-        public IEnumerable<Service> Find(Func<Service, bool> predicate)
-        {
-            return Context.Services.Where(predicate);
         }
 
         public void Add(Service service)
         {
             service.Id = Context.Services.Any() ? Context.Services.Max(s => s.Id) : 0;
             Context.Services.Add(service);
-        }
-
-        public void AddRange(IEnumerable<Service> services)
-        {
-            Context.Services.AddRange(services);
         }
 
         public void Remove(Service service)

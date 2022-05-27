@@ -7,14 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
-using PasswordManager.MainWindow.Models;
+using Data.Repositories;
+using UsersLibrary.Services;
 
 namespace PasswordManager.MainWindow.ViewModels
 {
     public class AuthenticationDataVM : BaseModel
     {
-        public ObservableCollection<AuthenticationData> AuthenticationDataViewModels;
-
         public ICollectionView AuthenticationDataCollectionView { get; }
         private string dataFilter = string.Empty;
 
@@ -29,34 +28,19 @@ namespace PasswordManager.MainWindow.ViewModels
                 AuthenticationDataCollectionView.Refresh();
             }
         }
-        public AuthenticationDataVM()
-        {
-
-            AuthenticationDataViewModels = new ObservableCollection<AuthenticationData>
-            {
-                new AuthenticationData("discord.com", "ggd","vfvfg"),
-                new AuthenticationData("test 23", "asf@gnauk.com", "1234567899"),
-                new AuthenticationData("steam.com", "asf@gnauk.com", "1234567899"),
-               
-                new AuthenticationData("robinhood.com", "asf@gnauk.com", "1234567899"),
-                new AuthenticationData("binance.com", "asf@gnauk.com", "1234567899"),
-                new AuthenticationData("facebook.com", "asf@gnauk.com", "1234567899"),
-                new AuthenticationData("twitter.com", "asf@gnauk.com", "1234567899"),
-
-            };
-            AuthenticationDataCollectionView = CollectionViewSource.GetDefaultView(AuthenticationDataViewModels);
+        public AuthenticationDataVM(ServiceRepository serviceRepository)
+        {  
+            AuthenticationDataCollectionView = CollectionViewSource.GetDefaultView(serviceRepository.GetAll());
             AuthenticationDataCollectionView.Filter = FilterData;
-            AuthenticationDataCollectionView.SortDescriptions.Add(new SortDescription(nameof(AuthenticationData.Resource), ListSortDirection.Ascending));
-
-
+            AuthenticationDataCollectionView.SortDescriptions.Add(
+                new SortDescription(nameof(Service.Name), ListSortDirection.Ascending));
         }
 
         private bool FilterData(object obj)
         {
-            if (obj is AuthenticationData authenticationData)
-            {
-                return authenticationData.Resource.Contains(DataFilter.ToLower());
-            }
+            if (obj is Service authenticationData)
+                return authenticationData.Name.Contains(DataFilter.ToLower());
+
             return false;
         }
     }
