@@ -17,46 +17,38 @@ namespace Data.Repositories
             Context = dataContext;
         }
 
-        public bool Any()
-        {
-            return Context.Services.Any();
-        }
+        public bool Any() => Context.Services.Any();
 
-        public Service Get(int id)
-        {
-            return Context.Services.First(s => s.Id == id);
-        }
 
-        public ICollection<Service> GetAll()
-        {
-            return Context.Services;
-        }
+        public Service Get(int id) => Context.Services.First(s => s.Id == id);
+        public List<Service> GetAll() => Context.Services;
+
 
         public void Add(Service service)
         {
-            service.Id = Context.Services.Any() ? Context.Services.Max(s => s.Id) : 1;
+            service.Id = Context.Services.Any() ? Context.Services.Max(s => s.Id) + 1 : 1;
             Context.Services.Add(service);
         }
 
-        public void Remove(Service service)
-        {
-            Context.Services.Remove(service);
-        }
 
+        public void Remove(Service service) => Context.Services.Remove(service);
         public void RemoveRange(IEnumerable<Service> services)
         {
             foreach (Service item in services)
                 Context.Services.Remove(item);
         }
 
+
         public void Update(int id, Service entity)
         {
-            throw new NotImplementedException();
+            Service tempEntity = Context.Services.First(c => c.Id == id);
+            if (tempEntity != null)
+            {
+                tempEntity.Name  = entity.Name;
+                tempEntity.Login = entity.Login;
+                tempEntity.Password = entity.Password;
+            }
         }
-
-        public void Update(Service startEntity, Service finishEntity)
-        {
-            throw new NotImplementedException();
-        }
+        public void Update(Service startEntity, Service finishEntity) => Update(startEntity.Id, finishEntity);
     }
 }

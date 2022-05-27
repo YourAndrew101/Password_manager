@@ -148,10 +148,10 @@ namespace PasswordManager.MainWindow.Pages
                 }
                 else
                 {
-                    int index = int.Parse(IdTextBox.Text);
-                    //dataVM.AuthenticationDataViewModels[index].Resource = ResourceTextBox.Text.ToLower();
-                    //dataVM.AuthenticationDataViewModels[index].Login = LoginTextBox.Text;
-                    //dataVM.AuthenticationDataViewModels[index].Password = HiddenPasswordTextBox.Text;
+                    int ServiceId = int.Parse(IdTextBox.Text);     
+                    Service service = new Service(ResourceTextBox.Text.ToLower(), LoginTextBox.Text, HiddenPasswordTextBox.Text);
+                    Repository.Update(ServiceId, service);
+
                     Animation.FormClosingAnimation(AddEditForm, ShadowEffectHomePage);
                     ShowNotification(Properties.Resources.RecordEditedNotification);
 
@@ -288,11 +288,10 @@ namespace PasswordManager.MainWindow.Pages
             FormHeader.Text = Properties.Resources.EditFormHeader;
 
             Service item = (Service)MainDataGrid.CurrentItem;
-            int index = MainDataGrid.Items.IndexOf(item);
             ResourceTextBox.Text = item.Name;
             LoginTextBox.Text = item.Login;
             HiddenPasswordTextBox.Text = item.Password;
-            IdTextBox.Text = index.ToString();
+            IdTextBox.Text = item.Id.ToString();
 
             Animation.FormOpeningAnimation(AddEditForm, ShadowEffectHomePage);
         }

@@ -10,7 +10,7 @@ namespace Data.Repositories
     public interface IRepository<TEntity> where TEntity : class
     {
         TEntity Get(int id);
-        ICollection<TEntity> GetAll();
+        List<TEntity> GetAll();
 
         bool Any();
 
