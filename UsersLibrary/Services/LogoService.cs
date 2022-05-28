@@ -12,60 +12,60 @@ namespace Services
 {
     internal class Color
     {
-        internal string hex { get; set; }
-        internal string type { get; set; }
-        internal int brightness { get; set; }
+        public string hex { get; set; }
+        public string type { get; set; }
+        public int brightness { get; set; }
     }
 
     internal class Font
     {
-        internal string name { get; set; }
-        internal string type { get; set; }
-        internal string origin { get; set; }
-        internal string originId { get; set; }
-        internal List<object> weights { get; set; }
+        public string name { get; set; }
+        public string type { get; set; }
+        public string origin { get; set; }
+        public string originId { get; set; }
+        public List<object> weights { get; set; }
     }
 
     internal class Format
     {
-        internal string src { get; set; }
-        internal string background { get; set; }
-        internal string format { get; set; }
-        internal int height { get; set; }
-        internal int width { get; set; }
-        internal int size { get; set; }
+        public string src { get; set; }
+        public string background { get; set; }
+        public string format { get; set; }
+        public int height { get; set; }
+        public int width { get; set; }
+        public int size { get; set; }
     }
 
     internal class Image
     {
-        internal string type { get; set; }
-        internal List<Format> formats { get; set; }
+        public string type { get; set; }
+        public List<Format> formats { get; set; }
     }
 
     internal class Link
     {
-        internal string name { get; set; }
-        internal string url { get; set; }
+        public string name { get; set; }
+        public string url { get; set; }
     }
 
     internal class Logo
     {
-        internal string type { get; set; }
-        internal object theme { get; set; }
-        internal List<Format> formats { get; set; }
+        public string type { get; set; }
+        public object theme { get; set; }
+        public List<Format> formats { get; set; }
     }
 
     internal class Root
     {
-        internal string name { get; set; }
-        internal string domain { get; set; }
-        internal bool claimed { get; set; }
-        internal string description { get; set; }
-        internal List<Link> links { get; set; }
-        internal List<Logo> logos { get; set; }
-        internal List<Color> colors { get; set; }
-        internal List<Font> fonts { get; set; }
-        internal List<Image> images { get; set; }
+        public string name { get; set; }
+        public string domain { get; set; }
+        public bool claimed { get; set; }
+        public string description { get; set; }
+        public List<Link> links { get; set; }
+        public List<Logo> logos { get; set; }
+        public List<Color> colors { get; set; }
+        public List<Font> fonts { get; set; }
+        public List<Image> images { get; set; }
     }
     public class LogoService
     {
@@ -83,13 +83,13 @@ namespace Services
                     string key = root.FirstChild.InnerText;
                     string uri = $"https://api.brandfetch.io/v2/brands/{resourceName}";
 
-                    WebResponse response;
+                    WebResponse response=null;
                     WebRequest request;
                     try
                     {
                         request = WebRequest.Create(uri);
                         request.Headers.Add(HttpRequestHeader.Authorization, $"Bearer {key}");
-                        response = null;
+                       
                     }
                     catch (WebException) { return $"../../MainWindow/LogosServices/defaultLogo.png"; }
 

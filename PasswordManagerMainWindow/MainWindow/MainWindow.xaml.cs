@@ -78,7 +78,6 @@ namespace PasswordManager.MainWindow
         {
             WindowState = WindowState.Normal;
         }
-        //TODO: Rewrite this ffs
         protected override void OnStateChanged(EventArgs e)
         {
             base.OnStateChanged(e);
@@ -90,31 +89,27 @@ namespace PasswordManager.MainWindow
         }
         private void Home_Checked(object sender, RoutedEventArgs e)
         {
-            DoubleAnimation da = new DoubleAnimation(0, new Duration(TimeSpan.FromSeconds(0.3)));
-            Axis.BeginAnimation(TranslateTransform.XProperty, da);                
+            Animation.NavMenuAnimation(Axis, 0);
             MainFrame.Content = home;
         }
 
         private void Settings_Checked(object sender, RoutedEventArgs e)
         {
-            DoubleAnimation da = new DoubleAnimation(504, new Duration(TimeSpan.FromSeconds(0.3)));
-            Axis.BeginAnimation(TranslateTransform.XProperty, da);
-            //Thread thread = new Thread(() => this.Dispatcher.Invoke(System.Windows.Threading.DispatcherPriority.Normal, (ThreadStart)delegate ()
-
-            //{
-            //}));thread.Start(); 
+            Animation.NavMenuAnimation(Axis, 504);
             MainFrame.Content = settings;
-
-            
-                 
-            
         }
 
         private void Account_Checked(object sender, RoutedEventArgs e)
         {
-            DoubleAnimation da = new DoubleAnimation(1008, new Duration(TimeSpan.FromSeconds(0.3)));
-            Axis.BeginAnimation(TranslateTransform.XProperty, da);            
+            Animation.NavMenuAnimation(Axis, 1008);           
             MainFrame.Content = account;
+        }
+
+        
+        public void ShowNotification(string NotificationMessage)
+        {
+            Animation.ShowNotificationAnimation(NotificationBody);
+            NotificationText.Text = NotificationMessage;
         }
     }
 }

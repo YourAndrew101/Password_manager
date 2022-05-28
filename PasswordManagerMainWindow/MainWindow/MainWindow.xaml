@@ -98,7 +98,14 @@
                 <Frame x:Name="MainFrame" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Content="Pages/Home.xaml" NavigationUIVisibility="Hidden"/>
 
 
+                <Border x:Name="NotificationBody" Visibility="Collapsed" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="3"  Height="40" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Bottom" Style="{StaticResource NotificationBorderStyle}">
+                    <Border.RenderTransform>
+                        <TranslateTransform x:Name="NotificationTranslateTransform"/>
+                    </Border.RenderTransform>
 
+                    <TextBlock Grid.Column="1" Grid.Row="4"   Style="{StaticResource NotificationTextStyle}" x:Name="NotificationText">
+                    </TextBlock>
+                </Border>
             </Grid>
         </Viewbox>
     </Grid>

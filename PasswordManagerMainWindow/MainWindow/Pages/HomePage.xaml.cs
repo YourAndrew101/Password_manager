@@ -78,8 +78,10 @@ namespace PasswordManager.MainWindow.Pages
         {
             FormHeader.Text = Properties.Resources.AddFormHeader;
             Animation.FormOpeningAnimation(AddEditForm, ShadowEffectHomePage);
+            
+
         }
-       
+
         private void CloseForm_Click(object sender, RoutedEventArgs e)
         {
             Grid form = (Grid)((Button)sender).Parent;
@@ -91,33 +93,12 @@ namespace PasswordManager.MainWindow.Pages
 
         private void HiddenPasswordTextBox_GotFocus(object sender, RoutedEventArgs e)
         {
-            SuggestPassword.Visibility = Visibility.Visible;
-            DoubleAnimation suggestionApperingAnimation = new DoubleAnimation()
-            {
-                From = 0,
-                To = 1,
-                Duration = TimeSpan.FromSeconds(0.2),
-            };
-
-            SuggestPassword.BeginAnimation(OpacityProperty, suggestionApperingAnimation);
-            
+            Animation.SuggestionAppearingAnimation(SuggestPassword);
         }
 
         private void HiddenPasswordTextBox_LostFocus(object sender, RoutedEventArgs e)
         {
-            DoubleAnimation suggestionDisapperingAnimation = new DoubleAnimation()
-            {
-                From = 1,
-                To = 0,
-                Duration = TimeSpan.FromSeconds(0.2),
-            };
-            suggestionDisapperingAnimation.Completed += SuggestionDisappeared;
-            SuggestPassword.BeginAnimation(OpacityProperty, suggestionDisapperingAnimation);
-        }
-
-        private void SuggestionDisappeared(object sender, EventArgs e)
-        {
-            SuggestPassword.Visibility = Visibility.Collapsed;
+            Animation.SuggestionDisappearingAnimation(SuggestPassword);
         }
 
         private string GeneratePassword()
@@ -141,7 +122,7 @@ namespace PasswordManager.MainWindow.Pages
                     Repository.Add(service);
 
                     Animation.FormClosingAnimation(AddEditForm, ShadowEffectHomePage);
-                    ShowNotification(Properties.Resources.RecordAddedNotification);
+                    ((MainWindow)App.Current.Windows[0]).ShowNotification(Properties.Resources.RecordAddedNotification);
                 }
                 else
                 {
@@ -150,7 +131,8 @@ namespace PasswordManager.MainWindow.Pages
                     Repository.Update(ServiceId, service);
 
                     Animation.FormClosingAnimation(AddEditForm, ShadowEffectHomePage);
-                    ShowNotification(Properties.Resources.RecordEditedNotification);
+                    ((MainWindow)App.Current.Windows[0]).ShowNotification(Properties.Resources.RecordEditedNotification);
+
                 }
                 ClearForm();
                 dataVM.AuthenticationDataCollectionView.Refresh();
@@ -167,73 +149,7 @@ namespace PasswordManager.MainWindow.Pages
             LoginTextBox.Text = string.Empty;
             HiddenPasswordTextBox.Text = string.Empty;
         }
-        private Storyboard sb = new Storyboard();
-        private void ShowNotification(string NotificationMessage)
-        {
-            sb.Completed -= Notification_Completed;
-            // sb.Stop();
-
-            NotificationBody.Visibility = Visibility.Visible;
-
-            NotificationText.Text = NotificationMessage;
-
-
-
-            DoubleAnimation notificationAppearingTranslate = new DoubleAnimation()
-            {
-                From = 0,
-                To = -30,
-                Duration = TimeSpan.FromSeconds(0.3),
-                AccelerationRatio = 0.5
-
-            };            DoubleAnimation notificationAppearingOpacity = new DoubleAnimation()
-            {
-                From = 0,
-                To = 1,
-                Duration = TimeSpan.FromSeconds(0.3),
-            };
-            DoubleAnimation notificationDisappearingTranslate = new DoubleAnimation()
-            {
-                From = -30,
-                To = 0,
-                BeginTime = TimeSpan.FromSeconds(2),
-                Duration = TimeSpan.FromSeconds(0.3),
-                AccelerationRatio = 0.5
-            };
-            DoubleAnimation notificationDisappearingOpacity = new DoubleAnimation()
-            {
-                From = 1,
-                To = 0,
-                Duration = TimeSpan.FromSeconds(0.3),
-                BeginTime = TimeSpan.FromSeconds(2),
-            };
-            Storyboard.SetTargetName(notificationAppearingTranslate, "NotificationTranslateTransform");
-            Storyboard.SetTargetProperty(notificationAppearingTranslate, new PropertyPath(TranslateTransform.YProperty));
-
-            sb.Completed += Notification_Completed;
-            sb.Children.Add(notificationAppearingTranslate);
-
-            Storyboard.SetTarget(notificationAppearingOpacity, NotificationBody);
-            Storyboard.SetTargetProperty(notificationAppearingOpacity, new PropertyPath(Border.OpacityProperty));
-            sb.Children.Add(notificationAppearingOpacity);
-
-            Storyboard.SetTargetName(notificationDisappearingTranslate, "NotificationTranslateTransform");
-            Storyboard.SetTargetProperty(notificationDisappearingTranslate, new PropertyPath(TranslateTransform.YProperty));
-            sb.Children.Add(notificationDisappearingTranslate);
-
-            Storyboard.SetTarget(notificationDisappearingOpacity, NotificationBody);
-            Storyboard.SetTargetProperty(notificationDisappearingOpacity, new PropertyPath(Border.OpacityProperty));
-            sb.Children.Add(notificationDisappearingOpacity);
-
-            sb.Begin(NotificationBody);
-
-
-        }
-        private void Notification_Completed(object sender, EventArgs e)
-        {
-            NotificationBody.Visibility = Visibility.Collapsed;
-
-        }
+        
         private void RevealPassword_Checked(object sender, RoutedEventArgs e)
         {
             Grid parent = ((Grid)((ToggleButton)sender).Parent);
@@ -305,8 +221,7 @@ namespace PasswordManager.MainWindow.Pages
 
             Repository.Remove((Service)MainDataGrid.CurrentItem);
             dataVM.AuthenticationDataCollectionView.Refresh();
-
-            ShowNotification(Properties.Resources.RecordRemovedNotification);
+            ((MainWindow)App.Current.Windows[0]).ShowNotification(Properties.Resources.RecordRemovedNotification);
         }
 
 
