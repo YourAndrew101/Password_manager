@@ -61,7 +61,7 @@ namespace PasswordManager.MainWindow.Pages
             InitializePasswordComplexityRectangles();
 
             User = user;
-            Repository = new ServiceRepository(new DataContext(user.Services));
+            Repository = new ServiceRepository(new DataContext(user.Services), User);
             dataVM = new AuthenticationDataVM(Repository);
             DataContext = dataVM;          
         }
@@ -76,7 +76,6 @@ namespace PasswordManager.MainWindow.Pages
 
         private void AddPasswordButton_Click(object sender, RoutedEventArgs e)
         {
-
             FormHeader.Text = Properties.Resources.AddFormHeader;
             Animation.FormOpeningAnimation(AddEditForm, ShadowEffectHomePage);
             
@@ -118,18 +117,19 @@ namespace PasswordManager.MainWindow.Pages
             {
                 if (string.IsNullOrEmpty(IdTextBox.Text))
                 {
-                    Service service = new Service(ResourceTextBox.Text.ToLower(), LoginTextBox.Text, HiddenPasswordTextBox.Text)
-                    { Id = Repository.Any() ? Repository.GetAll().Count() + 1 : 1};
+                    Service service = new Service(ResourceTextBox.Text.ToLower(), LoginTextBox.Text, HiddenPasswordTextBox.Text);
+
                     Repository.Add(service);
+
                     Animation.FormClosingAnimation(AddEditForm, ShadowEffectHomePage);
                     ((MainWindow)App.Current.Windows[0]).ShowNotification(Properties.Resources.RecordAddedNotification);
                 }
                 else
                 {
-                    int index = int.Parse(IdTextBox.Text);
-                    //dataVM.AuthenticationDataViewModels[index].Resource = ResourceTextBox.Text.ToLower();
-                    //dataVM.AuthenticationDataViewModels[index].Login = LoginTextBox.Text;
-                    //dataVM.AuthenticationDataViewModels[index].Password = HiddenPasswordTextBox.Text;
+                    int ServiceId = int.Parse(IdTextBox.Text);     
+                    Service service = new Service(ResourceTextBox.Text.ToLower(), LoginTextBox.Text, HiddenPasswordTextBox.Text);
+                    Repository.Update(ServiceId, service);
+
                     Animation.FormClosingAnimation(AddEditForm, ShadowEffectHomePage);
                     ((MainWindow)App.Current.Windows[0]).ShowNotification(Properties.Resources.RecordEditedNotification);
 
@@ -140,8 +140,7 @@ namespace PasswordManager.MainWindow.Pages
             else
             {
                 AddEditFormErrorTextBlock.Visibility = Visibility.Visible;
-                AddEditFormErrorTextBlock.Text = Properties.Resources.FormFillAllFields;
-                
+                AddEditFormErrorTextBlock.Text = Properties.Resources.FormFillAllFields;               
             }
         }
         private void ClearForm()
@@ -196,35 +195,36 @@ namespace PasswordManager.MainWindow.Pages
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            //var popupEl = (Popup)((Border)((StackPanel)(((Button)sender).Parent)).Parent).Parent;
-            //popupEl.IsOpen = false;
-            //FormHeader.Text = Properties.Resources.EditFormHeader;
-            //AuthenticationData item = (AuthenticationData)MainDataGrid.CurrentItem;
-            //int index = MainDataGrid.Items.IndexOf(item);
-            //ResourceTextBox.Text = item.Resource;
-            //LoginTextBox.Text = item.Login;
-            //HiddenPasswordTextBox.Text = item.Password;
-            //IdTextBox.Text = index.ToString();
-            //FormClosingAnimation(AddEditForm);
+            var popupEl = (Popup)((Border)((StackPanel)(((Button)sender).Parent)).Parent).Parent;
+            popupEl.IsOpen = false;
+            FormHeader.Text = Properties.Resources.EditFormHeader;
+
+            Service item = (Service)MainDataGrid.CurrentItem;
+            ResourceTextBox.Text = item.Name;
+            LoginTextBox.Text = item.Login;
+            HiddenPasswordTextBox.Text = item.Password;
+            IdTextBox.Text = item.Id.ToString();
+
+            Animation.FormOpeningAnimation(AddEditForm, ShadowEffectHomePage);
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            var popupEl = (Popup)((Border)((StackPanel)(((Button)sender).Parent)).Parent).Parent;
+            var popupEl = (Popup)((Border)((StackPanel)((Button)sender).Parent).Parent).Parent;
             popupEl.IsOpen = false;
 
             Animation.FormOpeningAnimation(DeleteForm, ShadowEffectHomePage);
-
         }
-
         private void ConfirmDeleatingButton_Click(object sender, RoutedEventArgs e)
         {
             Animation.FormClosingAnimation(DeleteForm, ShadowEffectHomePage);
-            //dataVM.AuthenticationDataViewModels.Remove((AuthenticationData)MainDataGrid.CurrentItem);
+
+            Repository.Remove((Service)MainDataGrid.CurrentItem);
+            dataVM.AuthenticationDataCollectionView.Refresh();
             ((MainWindow)App.Current.Windows[0]).ShowNotification(Properties.Resources.RecordRemovedNotification);
         }
 
-        //TODO AuthErrorTextBlock and SetShowPasswordToggleButton коли з'явиться
+
         private void HiddenPasswordTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             SetPasswordComplexity();

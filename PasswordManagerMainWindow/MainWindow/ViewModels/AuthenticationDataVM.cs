@@ -20,7 +20,6 @@ namespace PasswordManager.MainWindow.ViewModels
         public string DataFilter
         {
             get => dataFilter;
-
             set
             {
                 dataFilter = value;
@@ -32,8 +31,7 @@ namespace PasswordManager.MainWindow.ViewModels
         {  
             AuthenticationDataCollectionView = CollectionViewSource.GetDefaultView(serviceRepository.GetAll());
             AuthenticationDataCollectionView.Filter = FilterData;
-            AuthenticationDataCollectionView.SortDescriptions.Add(
-                new SortDescription(nameof(Service.Name), ListSortDirection.Ascending));
+            AuthenticationDataCollectionView.SortDescriptions.Add(new SortDescription(nameof(Service.Name), ListSortDirection.Ascending));
         }
 
         private bool FilterData(object obj)

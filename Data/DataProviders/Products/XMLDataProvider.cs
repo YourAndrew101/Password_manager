@@ -13,7 +13,7 @@ namespace Data.DataProviders.Products
 {
     public class XMLDataProvider : IDataProvider
     {
-        private string _filePath = "{0}.xml";
+        private readonly string _filePath = "{0}.xml";
 
         public void Save(User user, Service service)
         {
@@ -34,7 +34,7 @@ namespace Data.DataProviders.Products
 
             xdoc.Save(string.Format(_filePath, user.HashEmail));
         }
-         public void Save(User user, IEnumerable<Service> services)
+        public void Save(User user, IEnumerable<Service> services)
         {
             XDocument xdoc = new XDocument();
             XElement root = new XElement("services");
@@ -54,7 +54,7 @@ namespace Data.DataProviders.Products
                     root.Add(GetXElement(cryptedService));
             }
 
-            
+
 
             xdoc.Save(string.Format(_filePath, user.HashEmail));
         }
@@ -107,6 +107,29 @@ namespace Data.DataProviders.Products
                 }
             }
         }
+
+        public void Update(User user, int id, Service service)
+        {
+            if(!File.Exists(string.Format(_filePath, user.HashEmail))) return;
+
+            CryptedService cryptedService = user.EncryptService(service);
+
+            XDocument xdoc = XDocument.Load(string.Format(_filePath, user.HashEmail));
+            XElement root = xdoc.Element("services");
+
+            XElement findService = root.Elements().First(e => e.Attribute("id").Value == id.ToString());
+
+            if (findService != null)
+            {
+                findService.Attribute("id").Value = cryptedService.Id.ToString();
+                findService.Element("name").Value = cryptedService.Name;
+                findService.Element("login").Value = cryptedService.Login;
+                findService.Element("password").Value = cryptedService.Password;
+            }
+
+            xdoc.Save(string.Format(_filePath, user.HashEmail));
+        }
+        public void Update(User user, Service startService, Service finishService) => Update(user, startService.Id, finishService);
 
         public List<Service> Load(User user)
         {
