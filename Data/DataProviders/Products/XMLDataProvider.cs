@@ -80,7 +80,7 @@ namespace Data.DataProviders.Products
 
             if (root != null)
             {
-                var serviceElement = root.Elements("service").First(p => p.Attribute("id")?.Value == service.Id.ToString());
+                var serviceElement = root.Elements("service").FirstOrDefault(p => p.Attribute("id")?.Value == service.Id.ToString());
 
                 if (serviceElement != null)
                 {
@@ -121,7 +121,6 @@ namespace Data.DataProviders.Products
 
             if (findService != null)
             {
-                findService.Attribute("id").Value = cryptedService.Id.ToString();
                 findService.Element("name").Value = cryptedService.Name;
                 findService.Element("login").Value = cryptedService.Login;
                 findService.Element("password").Value = cryptedService.Password;

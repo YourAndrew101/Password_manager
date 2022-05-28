@@ -111,7 +111,7 @@ namespace Data.DataProviders.Products
         {
             CryptedService cryptedService = user.EncryptService(service);
 
-            string request = $"UPDATE \"{user.HashEmail}\" SET Id = @Id, Name = @Name, Login, Password = @Password, LastDataAdd = @LastDataAdd WHERE Id = @id";
+            string request = $"UPDATE \"{user.HashEmail}\" SET Id = @Id, Name = @Name, Login = @Login, Password = @Password, LastDataAdd = @LastDataAdd WHERE Id = {id}";
             SqlConnection connection = DBConnectionSingleton.GetInstance().SqlConnection;
             connection.Open();
 
