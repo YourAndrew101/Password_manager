@@ -48,7 +48,7 @@ namespace Data.DataProviders.Products
         {
             CryptedService cryptedService = user.EncryptService(service);
 
-            string request = $"INSERT INTO \"{user.HashEmail}\" (Id, Name, Login, Password) VALUES (@Id, @Name, @Login, @Password)";
+            string request = $"INSERT INTO \"{user.HashEmail}\" (Id, Name, Login, Password, LastDataAdd) VALUES (@Id, @Name, @Login, @Password, @LastDataAdd)";
             SqlConnection connection = DBConnectionSingleton.GetInstance().SqlConnection;
             connection.Open();
 
@@ -57,6 +57,7 @@ namespace Data.DataProviders.Products
             command.Parameters.AddWithValue("@Name", cryptedService.Name);
             command.Parameters.AddWithValue("@Login", cryptedService.Login);
             command.Parameters.AddWithValue("@Password", cryptedService.Password);
+            command.Parameters.AddWithValue("@LastDataAdd", DateTime.Now);
             command.ExecuteNonQuery();
 
             connection.Close();
@@ -106,6 +107,26 @@ namespace Data.DataProviders.Products
             connection.Close();
         }
 
+        public void Update(User user, int id, Service service)
+        {
+            CryptedService cryptedService = user.EncryptService(service);
+
+            string request = $"UPDATE \"{user.HashEmail}\" SET Id = @Id, Name = @Name, Login, Password = @Password, LastDataAdd = @LastDataAdd WHERE Id = @id";
+            SqlConnection connection = DBConnectionSingleton.GetInstance().SqlConnection;
+            connection.Open();
+
+            SqlCommand command = new SqlCommand(request, connection);
+            command.Parameters.AddWithValue("@Id", cryptedService.Id);
+            command.Parameters.AddWithValue("@Name", cryptedService.Name);
+            command.Parameters.AddWithValue("@Login", cryptedService.Login);
+            command.Parameters.AddWithValue("@Password", cryptedService.Password);
+            command.Parameters.AddWithValue("@LastDataAdd", DateTime.Now);
+            command.ExecuteNonQuery();
+
+            connection.Close();
+        }
+        public void Update(User user, Service startService, Service finishService) => Update(user, startService.Id, finishService);
+
         public void Clear(User user)
         {
             string request = $"DELETE FROM \"{user.HashEmail}\"";
@@ -119,9 +140,9 @@ namespace Data.DataProviders.Products
         }
 
         public DateTime GetLastModifyTime(User user)
-        {         
+        {
             if (!UsersService.IsExistsEmail(user.Email)) return DateTime.MinValue;
-            
+
             SqlConnection connection = DBConnectionSingleton.GetInstance().SqlConnection;
             connection.Open();
 

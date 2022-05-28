@@ -61,7 +61,7 @@ namespace PasswordManager.MainWindow.Pages
             InitializePasswordComplexityRectangles();
 
             User = user;
-            Repository = new ServiceRepository(new DataContext(user.Services));
+            Repository = new ServiceRepository(new DataContext(user.Services), User);
             dataVM = new AuthenticationDataVM(Repository);
             DataContext = dataVM;          
         }
@@ -76,11 +76,8 @@ namespace PasswordManager.MainWindow.Pages
 
         private void AddPasswordButton_Click(object sender, RoutedEventArgs e)
         {
-
             FormHeader.Text = Properties.Resources.AddFormHeader;
             Animation.FormOpeningAnimation(AddEditForm, ShadowEffectHomePage);
-            //FormOpeningAnimation(AddEditForm);
-
         }
        
         private void CloseForm_Click(object sender, RoutedEventArgs e)
