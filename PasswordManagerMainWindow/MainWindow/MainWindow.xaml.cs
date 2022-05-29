@@ -49,6 +49,7 @@ namespace PasswordManager.MainWindow
             Home.IsChecked = true;
         }
 
+        //TODO додати різні теми
         private void SetSystemColorTheme()
         {
             WindowSettings.Themes theme = ThemesService.GetSystemTheme();

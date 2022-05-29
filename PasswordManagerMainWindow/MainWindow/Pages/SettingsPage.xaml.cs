@@ -14,6 +14,8 @@ using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ServicesLibrary.SettingsService;
+using UsersLibrary.Settings;
 
 namespace PasswordManager.MainWindow.Pages
 {
@@ -22,12 +24,27 @@ namespace PasswordManager.MainWindow.Pages
     /// </summary>
     public partial class Settings : Page
     {
+        private readonly ISettingsService settingsService;
+
         public Settings()
         {
+            settingsService = new WindowSettingsService();
+
             InitializeComponent();
-            // TrayTB.IsChecked = true;
 
+            SetSettings();
+        }
 
+        private void SetSettings()
+        {
+            if (!settingsService.IsSavedSettings) return;
+
+            //WindowSettings settings = (WindowSettings)settingsService.GetSettings();
+            WindowSettings settings = new WindowSettings(WindowSettings.Languages.English, WindowSettings.Themes.Light, true);
+
+            LanguageSelector.SelectedIndex = (int)settings.Language;
+            ThemeSelector.SelectedIndex = (int)settings.Theme;
+            TrayToggleButton.IsChecked = settings.ToTrey;
         }
 
         private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)

@@ -11,7 +11,7 @@ namespace ServicesLibrary.SettingsService
     {
         public bool IsSavedSettings
         {
-            get => !string.IsNullOrEmpty(((SignUpSettings)GetSettings()).Email);
+            get => !string.IsNullOrEmpty(((WindowSettings)GetSettings()).Language.ToString());
         }
 
         public void Save(ISettings settings)
@@ -35,8 +35,9 @@ namespace ServicesLibrary.SettingsService
 
         public ISettings GetSettings()
         {
-            WindowSettings.Languages language = (WindowSettings.Languages)Enum.Parse(typeof(WindowSettings.Languages), Properties.Settings.Default.Language);
-            WindowSettings.Themes theme = (WindowSettings.Themes)Enum.Parse(typeof(WindowSettings.Themes), Properties.Settings.Default.Theme);
+            Enum.TryParse(Properties.Settings.Default.Language, out WindowSettings.Languages language);
+            Enum.TryParse(Properties.Settings.Default.Language, out WindowSettings.Themes theme);
+
             bool toTray = Properties.Settings.Default.IsTray;
 
             return new WindowSettings(language, theme, toTray);

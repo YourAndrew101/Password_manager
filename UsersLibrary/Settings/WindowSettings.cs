@@ -10,15 +10,17 @@ namespace UsersLibrary.Settings
     {
         public enum Languages
         {
-            English,
-            Ukrainian,
-            Russian
+            System = 0,
+            English = 1,
+            Ukrainian = 2,
+            Russian = 3,
         }
 
         public enum Themes
         {
-            Dark = 0,
-            Light = 1
+            System = 0, 
+            Dark = 1,
+            Light = 2
         }
 
         public Languages Language { get; set; }

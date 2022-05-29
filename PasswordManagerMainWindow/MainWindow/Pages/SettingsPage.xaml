@@ -43,13 +43,13 @@
                             <TextBlock Text="{x:Static res:Resources.LanguageSettingSystem}"/>
                         </ComboBoxItem>
                         <ComboBoxItem  Name="LanguageEnglish" Style="{StaticResource SettingComboBoxItemStyle}">
-                            <TextBlock Text="{x:Static res:Resources.LanguageSettingEnglish}"/>
+                            <TextBlock Text="English"/>
                         </ComboBoxItem>
                         <ComboBoxItem  Name="LanguageUkrainian" Style="{StaticResource SettingComboBoxItemStyle}">
-                            <TextBlock Text="{x:Static res:Resources.LanguageSettingUkrainian}"/>
+                            <TextBlock Text="Українська"/>
                         </ComboBoxItem>
                         <ComboBoxItem  Name="LanguageRussian" Style="{StaticResource SettingComboBoxItemStyle}" >
-                            <TextBlock Text="{x:Static res:Resources.LanguageSettingRussian}"/>
+                            <TextBlock Text="Русский"/>
                         </ComboBoxItem>
                     </ComboBox>
                 </StackPanel>
@@ -73,7 +73,7 @@
             <ListViewItem x:Name="TraySetting" Style="{StaticResource SettingsListViewItem}" >
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="{x:Static res:Resources.TraySettingHeader}" Style="{StaticResource SettingHeaderStyle}"/>
-                    <ToggleButton  Name ="TrayTB" HorizontalAlignment="Right" Style="{StaticResource SettingToggleButton}" Unchecked="ToggleButton_Unchecked" />
+                    <ToggleButton Name ="TrayToggleButton" HorizontalAlignment="Right" Style="{StaticResource SettingToggleButton}" Unchecked="ToggleButton_Unchecked" />
                 </StackPanel>
             </ListViewItem>
             <ListViewItem x:Name="PasswordLengthSetting" Style="{StaticResource SettingsListViewItem}" >

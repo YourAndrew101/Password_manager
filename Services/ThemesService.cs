@@ -13,7 +13,7 @@ namespace ServicesLibrary
         {
             object registerTheme = Microsoft.Win32.Registry
                 .GetValue(@"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Themes\Personalize", "AppsUseLightTheme", "1");
-            return (Themes)registerTheme;
+            return (Themes)((int)registerTheme + 1);
         }
     }
 }
