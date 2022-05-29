@@ -21,6 +21,7 @@ namespace ServicesLibrary.SettingsService
                 Properties.Settings.Default.Language = newSettings.Language.ToString();
                 Properties.Settings.Default.Theme = newSettings.Theme.ToString();
                 Properties.Settings.Default.IsTray = newSettings.ToTrey;
+                Properties.Settings.Default.PasswordGenerateLength = newSettings.PasswordGenerateLength;
                 Properties.Settings.Default.Save();
             }
         }
@@ -30,6 +31,8 @@ namespace ServicesLibrary.SettingsService
             Properties.Settings.Default.Language = "";
             Properties.Settings.Default.Theme = "";
             Properties.Settings.Default.IsTray = false;
+            Properties.Settings.Default.PasswordGenerateLength = WindowSettings.StandartPasswordGenerateLength;
+
             Properties.Settings.Default.Save();
         }
 
@@ -39,8 +42,9 @@ namespace ServicesLibrary.SettingsService
             Enum.TryParse(Properties.Settings.Default.Language, out WindowSettings.Themes theme);
 
             bool toTray = Properties.Settings.Default.IsTray;
+            int passwordGenerateLength = Properties.Settings.Default.PasswordGenerateLength;
 
-            return new WindowSettings(language, theme, toTray);
+            return new WindowSettings(language, theme, toTray, passwordGenerateLength);
         }
     }
 }

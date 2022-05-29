@@ -82,5 +82,17 @@ namespace ServicesLibrary.Properties {
                 this["IsTray"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int PasswordGenerateLength {
+            get {
+                return ((int)(this["PasswordGenerateLength"]));
+            }
+            set {
+                this["PasswordGenerateLength"] = value;
+            }
+        }
     }
 }

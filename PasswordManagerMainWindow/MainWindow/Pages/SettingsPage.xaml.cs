@@ -40,11 +40,12 @@ namespace PasswordManager.MainWindow.Pages
             if (!settingsService.IsSavedSettings) return;
 
             //WindowSettings settings = (WindowSettings)settingsService.GetSettings();
-            WindowSettings settings = new WindowSettings(WindowSettings.Languages.English, WindowSettings.Themes.Light, true);
+            WindowSettings settings = new WindowSettings(WindowSettings.Languages.English, WindowSettings.Themes.Light, true, 16);
 
             LanguageSelector.SelectedIndex = (int)settings.Language;
             ThemeSelector.SelectedIndex = (int)settings.Theme;
             TrayToggleButton.IsChecked = settings.ToTrey;
+            PasswordLengthSettingTextBox.Text = settings.PasswordGenerateLength.ToString();
         }
 
         private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)

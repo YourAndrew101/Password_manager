@@ -8,6 +8,8 @@ namespace UsersLibrary.Settings
 {
     public class WindowSettings : ISettings
     {
+        public static readonly int StandartPasswordGenerateLength = 16;
+
         public enum Languages
         {
             System = 0,
@@ -26,14 +28,16 @@ namespace UsersLibrary.Settings
         public Languages Language { get; set; }
         public Themes Theme { get; set; }
         public bool ToTrey { get; set; }
+        public int PasswordGenerateLength { get; set; }
 
         public WindowSettings() { }
 
-        public WindowSettings(Languages language, Themes theme, bool toTrey)
+        public WindowSettings(Languages language, Themes theme, bool toTrey, int passwordGenerateLength )
         {
             Language = language;
             Theme = theme;
             ToTrey = toTrey;
+            PasswordGenerateLength = passwordGenerateLength;
         }
     }
 }
