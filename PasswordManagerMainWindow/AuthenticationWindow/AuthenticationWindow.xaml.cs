@@ -33,7 +33,7 @@ namespace PasswordManager.AuthenticationWindow
         private void LaunchPreparation()
         {
             SignUpSettingsService settingsService = new SignUpSettingsService();
-            if (!settingsService.IsSavedUser)
+            if (!settingsService.IsSavedSettings)
             {
                 StartAuthenticationWindow();
                 return;

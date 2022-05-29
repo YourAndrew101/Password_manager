@@ -9,6 +9,7 @@ namespace ServicesLibrary.SettingsService
 {
     public interface ISettingsService
     {
+        bool IsSavedSettings { get; }
         void Save(ISettings settings);
         void Clear();
         ISettings GetSettings();

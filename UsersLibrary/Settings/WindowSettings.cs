@@ -8,7 +8,7 @@ namespace UsersLibrary.Settings
 {
     public class WindowSettings : ISettings
     {
-        public enum Languges
+        public enum Languages
         {
             English,
             Ukrainian,
@@ -21,15 +21,15 @@ namespace UsersLibrary.Settings
             Light = 1
         }
 
-        public Languges Languge { get; set; }
+        public Languages Language { get; set; }
         public Themes Theme { get; set; }
         public bool ToTrey { get; set; }
 
         public WindowSettings() { }
 
-        public WindowSettings(Languges languge, Themes theme, bool toTrey)
+        public WindowSettings(Languages language, Themes theme, bool toTrey)
         {
-            Languge = languge;
+            Language = language;
             Theme = theme;
             ToTrey = toTrey;
         }

@@ -9,17 +9,15 @@ namespace ServicesLibrary.SettingsService
 {
     public class SignUpSettingsService : ISettingsService
     {
-        public bool IsSavedUser
+        public bool IsSavedSettings
         {
             get => !string.IsNullOrEmpty(((SignUpSettings)GetSettings()).Email);
         }
 
         public void Save(ISettings settings)
         {
-            if (settings is SignUpSettings)
+            if (settings is SignUpSettings newSettings)
             {
-                SignUpSettings newSettings = (SignUpSettings)settings;
-
                 Properties.Settings.Default.Email = newSettings.Email;
                 Properties.Settings.Default.Password = newSettings.AuthPassword;
                 Properties.Settings.Default.Save();

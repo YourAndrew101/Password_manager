@@ -68,6 +68,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="SettingsService\ISettingsService.cs" />
+    <Compile Include="SettingsService\WindowSettingsService.cs" />
     <Compile Include="SettingsService\SignUpSettingsService.cs" />
     <Compile Include="ThemesService.cs" />
     <Compile Include="UsersService.cs" />
