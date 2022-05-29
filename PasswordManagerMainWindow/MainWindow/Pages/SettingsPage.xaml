@@ -38,7 +38,9 @@
             <ListViewItem x:Name="LanguageSetting" Style="{StaticResource SettingsListViewItem}" >
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="{x:Static res:Resources.LanguageSettingHeader}" Style="{StaticResource SettingHeaderStyle}"/>
-                    <ComboBox Name="LanguageSelector" Style="{DynamicResource SettingComboBoxStyle}">
+                    <ComboBox Name="LanguageSelector" 
+                              Style="{DynamicResource SettingComboBoxStyle}"
+                              SelectionChanged = "SaveSettings">
                         <ComboBoxItem Name="LanguageSystem" Style="{StaticResource SettingComboBoxItemStyle}">
                             <TextBlock Text="{x:Static res:Resources.LanguageSettingSystem}"/>
                         </ComboBoxItem>

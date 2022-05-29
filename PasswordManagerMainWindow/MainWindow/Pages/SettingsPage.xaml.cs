@@ -31,20 +31,19 @@ namespace PasswordManager.MainWindow.Pages
             settingsService = new WindowSettingsService();
 
             InitializeComponent();
-
-            SetSettings();
+            DisplaySettings();
         }
 
-        private void SetSettings()
+        private void DisplaySettings()
         {
             if (!settingsService.IsSavedSettings) return;
 
-            //WindowSettings settings = (WindowSettings)settingsService.GetSettings();
-            WindowSettings settings = new WindowSettings(WindowSettings.Languages.English, WindowSettings.Themes.Light, true, 16);
+            WindowSettings settings = (WindowSettings)settingsService.GetSettings();
+            //WindowSettings settings = new WindowSettings(WindowSettings.Languages.English, WindowSettings.Themes.Light, true, 16);
 
             LanguageSelector.SelectedIndex = (int)settings.Language;
             ThemeSelector.SelectedIndex = (int)settings.Theme;
-            TrayToggleButton.IsChecked = settings.ToTrey;
+            TrayToggleButton.IsChecked = settings.ToTray;
             PasswordLengthSettingTextBox.Text = settings.PasswordGenerateLength.ToString();
         }
 
@@ -87,6 +86,33 @@ namespace PasswordManager.MainWindow.Pages
                     (sender as TextBox).Text = text.Remove(temp, 1);
                     (sender as TextBox).CaretIndex = text.Length;
                 }
+        }
+
+        private void SaveSettings(object sender, SelectionChangedEventArgs e)
+        {
+            WindowSettings.Languages language = GetLanguageSetting();
+            WindowSettings.Themes theme = GetThemeSetting();
+            bool toTray = GetToTraySetting();
+            int passwordGenerateLength = GetPasswordGenerateLengthSetting();
+
+            WindowSettings settings = new WindowSettings(language, theme, toTray, passwordGenerateLength);
+            settingsService.Save(settings);
+        }
+        private WindowSettings.Languages GetLanguageSetting()
+        {
+            throw new NotImplementedException();
+        }
+        private WindowSettings.Themes GetThemeSetting()
+        {
+            throw new NotImplementedException();
+        }
+        private bool GetToTraySetting()
+        {
+            throw new NotImplementedException();
+        }
+        private int GetPasswordGenerateLengthSetting()
+        {
+            throw new NotImplementedException();
         }
     }
 }

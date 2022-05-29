@@ -27,16 +27,16 @@ namespace UsersLibrary.Settings
 
         public Languages Language { get; set; }
         public Themes Theme { get; set; }
-        public bool ToTrey { get; set; }
+        public bool ToTray { get; set; }
         public int PasswordGenerateLength { get; set; }
 
         public WindowSettings() { }
 
-        public WindowSettings(Languages language, Themes theme, bool toTrey, int passwordGenerateLength )
+        public WindowSettings(Languages language, Themes theme, bool toTray, int passwordGenerateLength )
         {
             Language = language;
             Theme = theme;
-            ToTrey = toTrey;
+            ToTray = toTray;
             PasswordGenerateLength = passwordGenerateLength;
         }
     }

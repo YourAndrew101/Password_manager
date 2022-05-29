@@ -74,12 +74,12 @@ namespace ServicesLibrary.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool IsTray {
+        public bool ToTray {
             get {
-                return ((bool)(this["IsTray"]));
+                return ((bool)(this["ToTray"]));
             }
             set {
-                this["IsTray"] = value;
+                this["ToTray"] = value;
             }
         }
         
