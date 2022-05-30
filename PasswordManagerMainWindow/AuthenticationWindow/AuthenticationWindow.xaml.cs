@@ -73,20 +73,11 @@ namespace PasswordManager.AuthenticationWindow
         private void StartAuthenticationWindow()
         {
             SetStartUpPage();
-            SetSystemColorTheme();
         }
         private void SetStartUpPage()
         {
             AuthFrame.Content = new Login();
         }
-        private void SetSystemColorTheme()
-        {
-            WindowSettings.Themes theme = ThemesService.GetSystemTheme();
-
-            ResourceDictionary dict = new ResourceDictionary { Source = new Uri($"AuthenticationWindow/Themes/{theme}Theme.xaml", UriKind.Relative) };
-            Application.Current.Resources.MergedDictionaries.Add(dict);
-        }
-
 
         public void StartMainWindow(User user)
         {

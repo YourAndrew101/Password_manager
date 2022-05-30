@@ -34,7 +34,7 @@ namespace PasswordManager.MainWindow
         {
             User = user;
             home = new Home(User);                 
-            //settings = new Settings();
+            settings = new Settings();
             account = new Account();                        
             InitializeComponent();
             SetSystemColorTheme();
