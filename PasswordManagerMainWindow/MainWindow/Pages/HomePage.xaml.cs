@@ -169,21 +169,25 @@ namespace PasswordManager.MainWindow.Pages
         }
         private void CopyCellText(object sender, MouseButtonEventArgs e)
         {
-            //DataGridCell cell = (DataGridCell)sender;
-            //string cellText;
-            //int row = MainDataGrid.Items.IndexOf(cell);
+            DataGridCell cell = (DataGridCell)sender;
 
-            //if (((DataGridCell)sender).Column.DisplayIndex == 2)
-            //{
-            //    cellText = ((AuthenticationData)cell.DataContext).Password;
+            Service _ = ((Service)cell.DataContext);
+            int column = cell.Column.DisplayIndex;
 
-            //}
-            //else
-            //{
-            //    cellText = ((TextBlock)cell.Content).Text;
-            //}
-            //Clipboard.SetText(cellText);
-            //ShowNotification(Properties.Resources.TextCopiedToClipboardNotification);
+            switch (column)
+            {
+                case 1:
+                    Clipboard.SetText(_.Name);
+                    break;
+                case 2:
+                    Clipboard.SetText(_.Login);
+                    break;
+                case 3:
+                    Clipboard.SetText(_.Password);
+                    break;
+            }
+
+              ((MainWindow)App.Current.Windows[0]).ShowNotification(Properties.Resources.TextCopiedToClipboardNotification);
         }
 
         private void PopupMenuButton_Click(object sender, RoutedEventArgs e)

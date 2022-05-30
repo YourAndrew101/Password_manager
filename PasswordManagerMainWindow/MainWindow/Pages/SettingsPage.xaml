@@ -75,7 +75,7 @@
             <ListViewItem x:Name="TraySetting" Style="{StaticResource SettingsListViewItem}" >
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="{x:Static res:Resources.TraySettingHeader}" Style="{StaticResource SettingHeaderStyle}"/>
-                    <ToggleButton Name ="TrayToggleButton" HorizontalAlignment="Right" Style="{StaticResource SettingToggleButton}" Unchecked="ToggleButton_Unchecked" />
+                    <ToggleButton Name ="TrayToggleButton" HorizontalAlignment="Right" Style="{StaticResource SettingToggleButton}"/>
                 </StackPanel>
             </ListViewItem>
             <ListViewItem x:Name="PasswordLengthSetting" Style="{StaticResource SettingsListViewItem}" >
