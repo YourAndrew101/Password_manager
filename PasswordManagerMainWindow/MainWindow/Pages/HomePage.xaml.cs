@@ -61,6 +61,7 @@ namespace PasswordManager.MainWindow.Pages
             InitializePasswordComplexityRectangles();
 
             User = user;
+           
             Repository = new ServiceRepository(new DataContext(user.Services), User);
             dataVM = new AuthenticationDataVM(Repository);
             DataContext = dataVM;          
@@ -170,10 +171,8 @@ namespace PasswordManager.MainWindow.Pages
         private void CopyCellText(object sender, MouseButtonEventArgs e)
         {
             DataGridCell cell = (DataGridCell)sender;
-
             Service _ = ((Service)cell.DataContext);
             int column = cell.Column.DisplayIndex;
-
             switch (column)
             {
                 case 1:
@@ -186,8 +185,7 @@ namespace PasswordManager.MainWindow.Pages
                     Clipboard.SetText(_.Password);
                     break;
             }
-
-              ((MainWindow)App.Current.Windows[0]).ShowNotification(Properties.Resources.TextCopiedToClipboardNotification);
+            ((MainWindow)App.Current.Windows[0]).ShowNotification(Properties.Resources.TextCopiedToClipboardNotification);
         }
 
         private void PopupMenuButton_Click(object sender, RoutedEventArgs e)

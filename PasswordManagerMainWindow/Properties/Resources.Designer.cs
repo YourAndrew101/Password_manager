@@ -61,6 +61,15 @@ namespace PasswordManager.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Account.
+        /// </summary>
+        public static string AccountHeader {
+            get {
+                return ResourceManager.GetString("AccountHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Add a record.
         /// </summary>
         public static string AddFormHeader {
