@@ -39,8 +39,7 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="{x:Static res:Resources.LanguageSettingHeader}" Style="{StaticResource SettingHeaderStyle}"/>
                     <ComboBox Name="LanguageSelector" 
-                              Style="{DynamicResource SettingComboBoxStyle}"
-                              SelectionChanged = "SaveSettings">
+                              Style="{DynamicResource SettingComboBoxStyle}">
                         <ComboBoxItem Name="LanguageSystem" Style="{StaticResource SettingComboBoxItemStyle}">
                             <TextBlock Text="{x:Static res:Resources.LanguageSettingSystem}"/>
                         </ComboBoxItem>
@@ -59,7 +58,8 @@
             <ListViewItem x:Name="ThemeSetting" Style="{StaticResource SettingsListViewItem}" >
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="{x:Static res:Resources.ThemeSettingHeader}" Style="{StaticResource SettingHeaderStyle}"/>
-                    <ComboBox Name="ThemeSelector" Style="{DynamicResource SettingComboBoxStyle}">
+                    <ComboBox Name="ThemeSelector" 
+                              Style="{DynamicResource SettingComboBoxStyle}">
                         <ComboBoxItem  Name="SystemTheme" Style="{StaticResource SettingComboBoxItemStyle}">
                             <TextBlock Text="{x:Static res:Resources.ThemeSettingSystem}"/>
                         </ComboBoxItem>
@@ -75,13 +75,16 @@
             <ListViewItem x:Name="TraySetting" Style="{StaticResource SettingsListViewItem}" >
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="{x:Static res:Resources.TraySettingHeader}" Style="{StaticResource SettingHeaderStyle}"/>
-                    <ToggleButton Name ="TrayToggleButton" HorizontalAlignment="Right" Style="{StaticResource SettingToggleButton}" Unchecked="ToggleButton_Unchecked" />
+                    <ToggleButton Name ="TrayToggleButton" 
+                                  HorizontalAlignment="Right" 
+                                  Style="{StaticResource SettingToggleButton}"/>
                 </StackPanel>
             </ListViewItem>
             <ListViewItem x:Name="PasswordLengthSetting" Style="{StaticResource SettingsListViewItem}" >
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="{x:Static res:Resources.PasswordLengthSettingHeader}" Style="{StaticResource SettingHeaderStyle}"/>
-                    <TextBox Style="{StaticResource SettingTextBox}" Name="PasswordLengthSettingTextBox" TextChanged="PasswordLengthSettingTextBox_TextChanged" />
+                    <TextBox Name="PasswordGenerateLengthSettingTextBox" 
+                             Style="{StaticResource SettingTextBox}"/>
                 </StackPanel>
             </ListViewItem>
         </ListView>

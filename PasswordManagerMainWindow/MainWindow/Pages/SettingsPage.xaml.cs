@@ -32,6 +32,7 @@ namespace PasswordManager.MainWindow.Pages
 
             InitializeComponent();
             DisplaySettings();
+            SubscribeToEvents();
         }
 
         private void DisplaySettings()
@@ -39,40 +40,18 @@ namespace PasswordManager.MainWindow.Pages
             if (!settingsService.IsSavedSettings) return;
 
             WindowSettings settings = (WindowSettings)settingsService.GetSettings();
-            //WindowSettings settings = new WindowSettings(WindowSettings.Languages.English, WindowSettings.Themes.Light, true, 16);
 
             LanguageSelector.SelectedIndex = (int)settings.Language;
             ThemeSelector.SelectedIndex = (int)settings.Theme;
             TrayToggleButton.IsChecked = settings.ToTray;
-            PasswordLengthSettingTextBox.Text = settings.PasswordGenerateLength.ToString();
+            PasswordGenerateLengthSettingTextBox.Text = settings.PasswordGenerateLength.ToString();
         }
-
-        private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
+        private void SubscribeToEvents()
         {
-            //    ControlTemplate template = TrayTB.Template;
-            //    Border frontRect = TrayTB.Template.FindName("frontRect", TrayTB) as Border;
-            //    DoubleAnimation movement = new DoubleAnimation
-            //    {
-            //        Duration = TimeSpan.FromSeconds(0.3),
-            //        From =10,
-            //        To = -10,
-            //    };
-            //    frontRect.RenderTransform.BeginAnimation(TranslateTransform.XProperty, movement);
-            //    DoubleAnimation widthAnimation1 = new DoubleAnimation()
-            //    {
-            //        From = 20,
-            //        To = 35,
-            //        Duration = TimeSpan.FromSeconds(0.15),
-            //    };
-            //    frontRect.BeginAnimation(WidthProperty, widthAnimation1);
-            //    DoubleAnimation widthAnimation2 = new DoubleAnimation()
-            //    {
-            //        From = 35,
-            //        To = 20,
-            //        Duration = TimeSpan.FromSeconds(0.15),
-            //        BeginTime = TimeSpan.FromSeconds(0.15),
-            //    };
-            //    frontRect.BeginAnimation(WidthProperty, widthAnimation2);
+            LanguageSelector.SelectionChanged += LanguageSelector_SelectionChanged;
+            ThemeSelector.SelectionChanged += ThemeSelector_SelectionChanged;
+            TrayToggleButton.Click += TrayToggleButton_Click;
+            PasswordGenerateLengthSettingTextBox.TextChanged += PasswordLengthSettingTextBox_TextChanged;
         }
 
         private void PasswordLengthSettingTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -80,15 +59,34 @@ namespace PasswordManager.MainWindow.Pages
             string text = (sender as TextBox).Text;
 
             if (text.Any())
+            {
                 if (!text.All(c => char.IsDigit(c)))
                 {
                     int temp = text.IndexOf(text.First(c => !char.IsDigit(c)));
                     (sender as TextBox).Text = text.Remove(temp, 1);
                     (sender as TextBox).CaretIndex = text.Length;
                 }
+
+                SaveSettings();
+            }
         }
 
-        private void SaveSettings(object sender, SelectionChangedEventArgs e)
+        private void LanguageSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SaveSettings();
+        }
+
+        private void ThemeSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SaveSettings();
+        }
+
+        private void TrayToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            SaveSettings();
+        }
+
+        private void SaveSettings()
         {
             WindowSettings.Languages language = GetLanguageSetting();
             WindowSettings.Themes theme = GetThemeSetting();
@@ -98,21 +96,15 @@ namespace PasswordManager.MainWindow.Pages
             WindowSettings settings = new WindowSettings(language, theme, toTray, passwordGenerateLength);
             settingsService.Save(settings);
         }
-        private WindowSettings.Languages GetLanguageSetting()
-        {
-            throw new NotImplementedException();
-        }
-        private WindowSettings.Themes GetThemeSetting()
-        {
-            throw new NotImplementedException();
-        }
-        private bool GetToTraySetting()
-        {
-            throw new NotImplementedException();
-        }
+        private WindowSettings.Languages GetLanguageSetting() => (WindowSettings.Languages)LanguageSelector.SelectedIndex;
+        private WindowSettings.Themes GetThemeSetting() => (WindowSettings.Themes)ThemeSelector.SelectedIndex;
+        private bool GetToTraySetting() => (bool)TrayToggleButton.IsChecked;
         private int GetPasswordGenerateLengthSetting()
         {
-            throw new NotImplementedException();
+            if (string.IsNullOrEmpty(PasswordGenerateLengthSettingTextBox.Text))
+                return WindowSettings.StandartPasswordGenerateLength;
+
+            return Convert.ToInt32(PasswordGenerateLengthSettingTextBox.Text);
         }
     }
 }
