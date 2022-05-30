@@ -43,6 +43,7 @@ namespace PasswordManager.MainWindow.Pages
 
             LanguageSelector.SelectedIndex = (int)settings.Language;
             ThemeSelector.SelectedIndex = (int)settings.Theme;
+            
             TrayToggleButton.IsChecked = settings.ToTray;
             PasswordGenerateLengthSettingTextBox.Text = settings.PasswordGenerateLength.ToString();
         }
