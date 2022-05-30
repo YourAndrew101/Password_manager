@@ -18,8 +18,8 @@ namespace ServicesLibrary.SettingsService
         {
             if (settings is WindowSettings newSettings)
             {
-                Properties.Settings.Default.Language = newSettings.Language.ToString();
-                Properties.Settings.Default.Theme = newSettings.Theme.ToString();
+                Properties.Settings.Default.Language = (int)newSettings.Language;
+                Properties.Settings.Default.Theme = (int)newSettings.Theme;
                 Properties.Settings.Default.ToTray = newSettings.ToTray;
                 Properties.Settings.Default.PasswordGenerateLength = newSettings.PasswordGenerateLength;
                 Properties.Settings.Default.Save();
@@ -28,8 +28,8 @@ namespace ServicesLibrary.SettingsService
 
         public void Clear()
         {
-            Properties.Settings.Default.Language = "";
-            Properties.Settings.Default.Theme = "";
+            Properties.Settings.Default.Language = 0;
+            Properties.Settings.Default.Theme = 0;
             Properties.Settings.Default.ToTray = false;
             Properties.Settings.Default.PasswordGenerateLength = WindowSettings.StandartPasswordGenerateLength;
 
@@ -38,8 +38,8 @@ namespace ServicesLibrary.SettingsService
 
         public ISettings GetSettings()
         {
-            Enum.TryParse(Properties.Settings.Default.Language, out WindowSettings.Languages language);
-            Enum.TryParse(Properties.Settings.Default.Language, out WindowSettings.Themes theme);
+            WindowSettings.Languages language = (WindowSettings.Languages)Properties.Settings.Default.Language;
+            WindowSettings.Themes theme = (WindowSettings.Themes)Properties.Settings.Default.Theme;
 
             bool toTray = Properties.Settings.Default.ToTray;
             int passwordGenerateLength = 
