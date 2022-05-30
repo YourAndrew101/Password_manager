@@ -20,7 +20,6 @@ namespace PasswordManager.AuthenticationWindow
         {
             InitializeComponent();
             SetConnectionDataBase();
-            //SettingsService.SaveEmptySignUpSettings();
 
             LaunchPreparation();
         }
@@ -70,13 +69,32 @@ namespace PasswordManager.AuthenticationWindow
             StartMainWindow(user);
         }
 
+
         private void StartAuthenticationWindow()
         {
             SetStartUpPage();
+            ApplySettings();
         }
         private void SetStartUpPage()
         {
             AuthFrame.Content = new Login();
+        }
+        private void ApplySettings()
+        {
+            WindowSettingsService settingsService = new WindowSettingsService();
+
+            if (!settingsService.IsSavedSettings) return;
+
+            WindowSettings windowSettings = (WindowSettings)settingsService.GetSettings();
+            SetColorTheme(windowSettings.Theme);
+        }
+        private void SetColorTheme(WindowSettings.Themes theme)
+        {
+            if (theme == WindowSettings.Themes.System)
+                theme = ThemesService.GetSystemTheme();
+
+            ResourceDictionary mainDict = new ResourceDictionary { Source = new Uri($"AuthenticationWindow/Themes/{theme}Theme.xaml", UriKind.Relative) };
+            Application.Current.Resources.MergedDictionaries.Add(mainDict);
         }
 
         public void StartMainWindow(User user)

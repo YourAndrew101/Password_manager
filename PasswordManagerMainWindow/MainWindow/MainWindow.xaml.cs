@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using PasswordManager.MainWindow.Pages;
 using ServicesLibrary;
+using ServicesLibrary.SettingsService;
 using UsersLibrary;
 using UsersLibrary.Settings;
 
@@ -35,11 +36,32 @@ namespace PasswordManager.MainWindow
             User = user;
             home = new Home(User);                 
             settings = new Settings();
-            account = new Account();                        
+            account = new Account();    
+            
             InitializeComponent();
-            SetSystemColorTheme();
+
+            ApplySettings();
             SetWindowSettings();
         }
+
+        private void ApplySettings()
+        {
+            WindowSettingsService settingsService = new WindowSettingsService();
+
+            if (!settingsService.IsSavedSettings) return;
+
+            WindowSettings windowSettings = (WindowSettings)settingsService.GetSettings();
+            SetColorTheme(windowSettings.Theme);
+        } 
+        private void SetColorTheme(WindowSettings.Themes theme)
+        {
+            if (theme == WindowSettings.Themes.System)
+                theme = ThemesService.GetSystemTheme();
+
+            ResourceDictionary mainDict = new ResourceDictionary { Source = new Uri($"MainWindow/Themes/{theme}Theme.xaml", UriKind.Relative) };
+            Application.Current.Resources.MergedDictionaries.Add(mainDict);
+        }
+
 
         private void SetWindowSettings()
         {
@@ -47,17 +69,7 @@ namespace PasswordManager.MainWindow
             MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
             WindowState = WindowState.Normal;
             Home.IsChecked = true;
-        }
-
-        //TODO додати різні теми
-        private void SetSystemColorTheme()
-        {
-            WindowSettings.Themes theme = ThemesService.GetSystemTheme();
-
-            ResourceDictionary dict = new ResourceDictionary { Source = new Uri($"/MainWindow/Themes/{theme}Theme.xaml", UriKind.Relative) };
-            Application.Current.Resources.MergedDictionaries.Add(dict);
-        }
-
+        }    
 
         private void CloseApp_Click(object sender, RoutedEventArgs e)
         {

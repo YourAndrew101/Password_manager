@@ -89,13 +89,13 @@ namespace PasswordManager.MainWindow.Pages
 
         private void SaveSettings()
         {
-            //WindowSettings.Languages language = GetLanguageSetting();
-          //  WindowSettings.Themes theme = GetThemeSetting();
-           // bool toTray = GetToTraySetting();
-            //int passwordGenerateLength = GetPasswordGenerateLengthSetting();
+            WindowSettings.Languages language = GetLanguageSetting();
+            WindowSettings.Themes theme = GetThemeSetting();
+            bool toTray = GetToTraySetting();
+            int passwordGenerateLength = GetPasswordGenerateLengthSetting();
 
-          //  WindowSettings settings = new WindowSettings(language, theme, toTray, passwordGenerateLength);
-            //settingsService.Save(settings);
+            WindowSettings settings = new WindowSettings(language, theme, toTray, passwordGenerateLength);
+            settingsService.Save(settings);
         }
         private WindowSettings.Languages GetLanguageSetting() => (WindowSettings.Languages)LanguageSelector.SelectedIndex;
         private WindowSettings.Themes GetThemeSetting() => (WindowSettings.Themes)ThemeSelector.SelectedIndex;

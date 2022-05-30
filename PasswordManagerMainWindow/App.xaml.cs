@@ -34,7 +34,6 @@ namespace PasswordManager
 
             WindowSettings windowSettings = (WindowSettings)settingsService.GetSettings();
             SetLanguage(windowSettings.Language);
-            SetColorTheme(windowSettings.Theme);
         }
 
         private void SetLanguage(WindowSettings.Languages language)
@@ -59,16 +58,6 @@ namespace PasswordManager
             }
 
             CultureInfo.CurrentUICulture = new CultureInfo(languageCulture);
-        }
-        private void SetColorTheme(WindowSettings.Themes theme)
-        {
-            if(theme == WindowSettings.Themes.System)
-                theme = ThemesService.GetSystemTheme();
-
-            ResourceDictionary authenticationDict = new ResourceDictionary { Source = new Uri($"AuthenticationWindow/Themes/{theme}Theme.xaml", UriKind.Relative) };
-            ResourceDictionary mainDict = new ResourceDictionary { Source = new Uri($"MainWindow/Themes/{theme}Theme.xaml", UriKind.Relative) };
-            Current.Resources.MergedDictionaries.Add(authenticationDict);
-            Current.Resources.MergedDictionaries.Add(mainDict);
         }
     }
 }
