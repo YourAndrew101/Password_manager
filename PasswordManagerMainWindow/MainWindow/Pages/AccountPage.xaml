@@ -35,7 +35,7 @@
         </Grid.RowDefinitions>
         <TextBlock Text="{x:Static res:Resources.AccountHeader}" Style="{StaticResource PageHeader}"/>
         <!--<Button x:Name="C" Content="erve" Grid.Column="2" Click="C_Click"/>-->
-        <ListView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Width="900" Name="SettingsList" Style="{StaticResource PrimaryListView}" DataContext="{Binding ElementName=_this}">
+        <ListView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Width="900" Name="SettingsList" Style="{StaticResource PrimaryListView}">
             <ListViewItem  Style="{StaticResource PrimaryListViewItem}" >
                 <Grid>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
@@ -175,14 +175,10 @@
                  Grid.Row="11" 
                  Grid.Column="1"
                  BorderThickness="2"                 
-                     GotFocus="HiddenPasswordTextBox_GotFocus"
-                     LostFocus="HiddenPasswordTextBox_LostFocus"
+                    
                  Style="{StaticResource TextBoxStyle}"                
-                 Height="40" TextChanged="HiddenPasswordTextBox_TextChanged"  
+                 Height="40" 
                  />
-
-            <Button x:Name="SuggestPassword" Panel.ZIndex="1" Content="{x:Static res:Resources.FormSuggestPassword}"  Height="30" Width="320" Grid.Column="1" Grid.Row="11" Grid.RowSpan="3" Style="{StaticResource SuggestPassword}" Click="SuggestPassword_Click"/>
-
             <StackPanel Grid.Row="13" 
                     Grid.Column="1">
                 <DockPanel x:Name="PasswordComplexityPanel">
@@ -224,7 +220,7 @@
                 Style="{StaticResource SubmitButtonStyle}" 
                             HorizontalAlignment="Right"
                             VerticalAlignment="Center"
-                    Click="AddEditFormSubmitButton_Click"
+                    
                 />
             <Button Grid.Column="1"
                 Name="CloseEditAddForm"
@@ -232,7 +228,7 @@
                             Style="{StaticResource CancelButtonStyle}"
                             HorizontalAlignment="Left"
                             VerticalAlignment="Center"
-                            Click="CloseForm_Click"
+                           
                             />
         </Grid>
     </Grid>

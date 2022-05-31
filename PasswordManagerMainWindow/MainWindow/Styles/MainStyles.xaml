@@ -162,24 +162,22 @@
 
     <SolidColorBrush x:Key="PrimaryListViewStyle.Background" Color="{DynamicResource PrimaryListView.Background}"/>
 
-    <Style TargetType="{x:Type ListView}" x:Key="PrimaryListView">
+    <Style TargetType="ListView" x:Key="PrimaryListView">
 
         <Setter Property="Background" Value="{DynamicResource PrimaryListViewStyle.Background}"/>
         <Setter Property= "ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
         <Setter Property="BorderThickness" Value="0"/>
-
-
     </Style>
 
     <SolidColorBrush x:Key="PrimaryListViewItemStyle.Static.Background" Color="{DynamicResource PrimaryListViewItem.Static.Background}"/>
-    <Style TargetType="{x:Type ListViewItem}" x:Key="PrimaryListViewItem" >
+    <Style TargetType="ListViewItem" x:Key="PrimaryListViewItem" >
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="Height" Value="50"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="Template">
             <Setter.Value>
-                <ControlTemplate TargetType="{x:Type ListViewItem}">
-                    <Grid Background="{TemplateBinding Background}">
+                <ControlTemplate TargetType="ListViewItem">
+                    <Grid Background="{TemplateBinding Background }">
                         <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalAlignment}"/>
                     </Grid>
                 </ControlTemplate>

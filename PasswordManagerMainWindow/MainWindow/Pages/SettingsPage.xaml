@@ -34,57 +34,57 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock Text="{x:Static res:Resources.SettingsHeader}" Style="{StaticResource PageHeader}" />
-        <ListView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Width="900" Name="SettingsList" Style="{StaticResource PrimaryListView}">
-            <ListViewItem x:Name="LanguageSetting" Style="{StaticResource PrimaryListViewItem}" >
+        <ListView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Width="900" Name="SettingsList" Style="{DynamicResource PrimaryListView}">
+            <ListViewItem x:Name="LanguageSetting" Style="{DynamicResource PrimaryListViewItem}" >
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{x:Static res:Resources.LanguageSettingHeader}" Style="{StaticResource PrimaryListViewHeader}"/>
+                    <TextBlock Text="{x:Static res:Resources.LanguageSettingHeader}" Style="{DynamicResource PrimaryListViewHeader}"/>
                     <ComboBox Name="LanguageSelector" 
                               Style="{DynamicResource SettingComboBoxStyle}">
-                        <ComboBoxItem Name="LanguageSystem" Style="{StaticResource SettingComboBoxItemStyle}">
+                        <ComboBoxItem Name="LanguageSystem" Style="{DynamicResource SettingComboBoxItemStyle}">
                             <TextBlock Text="{x:Static res:Resources.LanguageSettingSystem}"/>
                         </ComboBoxItem>
-                        <ComboBoxItem  Name="LanguageEnglish" Style="{StaticResource SettingComboBoxItemStyle}">
+                        <ComboBoxItem  Name="LanguageEnglish" Style="{DynamicResource SettingComboBoxItemStyle}">
                             <TextBlock Text="English"/>
                         </ComboBoxItem>
-                        <ComboBoxItem  Name="LanguageUkrainian" Style="{StaticResource SettingComboBoxItemStyle}">
+                        <ComboBoxItem  Name="LanguageUkrainian" Style="{DynamicResource SettingComboBoxItemStyle}">
                             <TextBlock Text="Українська"/>
                         </ComboBoxItem>
-                        <ComboBoxItem  Name="LanguageRussian" Style="{StaticResource SettingComboBoxItemStyle}" >
+                        <ComboBoxItem  Name="LanguageRussian" Style="{DynamicResource SettingComboBoxItemStyle}" >
                             <TextBlock Text="Русский"/>
                         </ComboBoxItem>
                     </ComboBox>
                 </StackPanel>
             </ListViewItem>
-            <ListViewItem x:Name="ThemeSetting" Style="{StaticResource PrimaryListViewItem}" >
+            <ListViewItem x:Name="ThemeSetting" Style="{DynamicResource PrimaryListViewItem}" >
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{x:Static res:Resources.ThemeSettingHeader}" Style="{StaticResource PrimaryListViewHeader}"/>
+                    <TextBlock Text="{x:Static res:Resources.ThemeSettingHeader}" Style="{DynamicResource PrimaryListViewHeader}"/>
                     <ComboBox Name="ThemeSelector" 
                               Style="{DynamicResource SettingComboBoxStyle}">
-                        <ComboBoxItem  Name="SystemTheme" Style="{StaticResource SettingComboBoxItemStyle}">
+                        <ComboBoxItem  Name="SystemTheme" Style="{DynamicResource SettingComboBoxItemStyle}">
                             <TextBlock Text="{x:Static res:Resources.ThemeSettingSystem}"/>
                         </ComboBoxItem>
-                        <ComboBoxItem Name="DarkTheme" Style="{StaticResource SettingComboBoxItemStyle}">
+                        <ComboBoxItem Name="DarkTheme" Style="{DynamicResource SettingComboBoxItemStyle}">
                             <TextBlock Text="{x:Static res:Resources.ThemeSettingDark}"/>
                         </ComboBoxItem>
-                        <ComboBoxItem  Name="LightTheme" Style="{StaticResource SettingComboBoxItemStyle}">
+                        <ComboBoxItem  Name="LightTheme" Style="{DynamicResource SettingComboBoxItemStyle}">
                             <TextBlock Text="{x:Static res:Resources.ThemeSettingLight}"/>
                         </ComboBoxItem>
                     </ComboBox>
                 </StackPanel>
             </ListViewItem>
-            <ListViewItem x:Name="TraySetting" Style="{StaticResource PrimaryListViewItem}" >
+            <ListViewItem x:Name="TraySetting" Style="{DynamicResource PrimaryListViewItem}" >
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{x:Static res:Resources.TraySettingHeader}" Style="{StaticResource PrimaryListViewHeader}"/>
+                    <TextBlock Text="{x:Static res:Resources.TraySettingHeader}" Style="{DynamicResource PrimaryListViewHeader}"/>
                     <ToggleButton Name ="TrayToggleButton" 
                                   HorizontalAlignment="Right" 
-                                  Style="{StaticResource SettingToggleButton}"/>
+                                  Style="{DynamicResource SettingToggleButton}"/>
                 </StackPanel>
             </ListViewItem>
-            <ListViewItem x:Name="PasswordLengthSetting" Style="{StaticResource PrimaryListViewItem}" >
+            <ListViewItem x:Name="PasswordLengthSetting" Style="{DynamicResource PrimaryListViewItem}" >
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{x:Static res:Resources.PasswordLengthSettingHeader}" Style="{StaticResource PrimaryListViewHeader}"/>
+                    <TextBlock Text="{x:Static res:Resources.PasswordLengthSettingHeader}" Style="{DynamicResource PrimaryListViewHeader}"/>
                     <TextBox Name="PasswordGenerateLengthSettingTextBox" 
-                             Style="{StaticResource SettingTextBox}"/>
+                             Style="{DynamicResource SettingTextBox}"/>
                 </StackPanel>
             </ListViewItem>
         </ListView>

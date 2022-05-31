@@ -63,7 +63,9 @@ namespace PasswordManager.MainWindow
             if (theme == WindowSettings.Themes.System)
                 theme = ThemesService.GetSystemTheme();
 
-            ResourceDictionary mainDict = new ResourceDictionary { Source = new Uri($"MainWindow/Themes/{theme}Theme.xaml", UriKind.Relative) };
+          //  Application.Current.Resources.MergedDictionaries.RemoveAt(Application.Current.Resources.MergedDictionaries.Count - 1);
+           
+            ResourceDictionary mainDict = new ResourceDictionary { Source = new Uri($"MainWindow/Themes/{theme}Theme.xaml", UriKind.RelativeOrAbsolute) };
             Application.Current.Resources.MergedDictionaries.Add(mainDict);
         }
         private void SetLanguage(WindowSettings.Languages language)
