@@ -15,6 +15,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ServicesLibrary.SettingsService;
+using UsersLibrary.Settings;
 
 namespace PasswordManager.MainWindow.Pages
 {
@@ -23,9 +25,16 @@ namespace PasswordManager.MainWindow.Pages
     /// </summary>
     public partial class Account : Page
     {
+
+        private SignUpSettingsService _service;
+        private SignUpSettings _settings;
         public Account()
         {
             InitializeComponent();
+            _service = new SignUpSettingsService();
+            _settings = (SignUpSettings)_service.GetSettings();
+            EmailTextBlock.Text = _settings.Email;
+
         }
     }
 }

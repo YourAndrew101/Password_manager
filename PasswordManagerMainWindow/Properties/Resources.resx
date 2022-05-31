@@ -117,8 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="AccountEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
   <data name="AccountHeader" xml:space="preserve">
     <value>Account</value>
+  </data>
+  <data name="AccountLogOut" xml:space="preserve">
+    <value>Log out</value>
+  </data>
+  <data name="AccountPassword" xml:space="preserve">
+    <value>Password</value>
   </data>
   <data name="AddFormHeader" xml:space="preserve">
     <value>Add a record</value>
@@ -215,6 +227,9 @@
   </data>
   <data name="LoginRequest" xml:space="preserve">
     <value>Please Log into your account</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Log out</value>
   </data>
   <data name="Log_In" xml:space="preserve">
     <value>Log In</value>

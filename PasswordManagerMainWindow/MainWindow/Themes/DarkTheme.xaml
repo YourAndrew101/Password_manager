@@ -104,8 +104,8 @@
     <ImageSource x:Key="ClosedEye">/MainWindow/Assets/closed_eye_white.png</ImageSource>
     <ImageSource x:Key="OpenEye">/MainWindow/Assets/eye_white.png</ImageSource>
 
-    <Color x:Key="SettingsListView.Background">#2c2f33</Color>
-    <Color x:Key="SettingsListViewItem.Static.Background">#2c2f33</Color>
+    <Color x:Key="PrimaryListView.Background">#2c2f33</Color>
+    <Color x:Key="PrimaryListViewItem.Static.Background">#2c2f33</Color>
 
     <Color x:Key="SettingComboBox.Background">#2c2f33</Color>
     <Color x:Key="SettingComboBox.BorderBrush.Static">LightGray</Color>
@@ -119,4 +119,10 @@
     <Color x:Key="SettingToggleButton.BackRectangle.Background.Unchecked">#414447</Color>
     <Color x:Key="SettingToggleButton.BackRectangle.Background.Checked">#7289da</Color>
     <Color x:Key="SettingToggleButton.FrontRectangle.Background">White</Color>
+
+    <Color x:Key="AccountPrimaryButton.Static.Background" >#7289da</Color>
+    <Color x:Key="AccountPrimaryButton.IsMouseOver.Background" >#506099</Color>
+    <Color x:Key="AccountPrimaryButton.IsPressed.Background" >#445283</Color>
+    <Color x:Key="AccountPrimaryButton.IsEnabledFalse.Background" >#99aab5</Color>
+    <Color x:Key="AccountPrimaryButton.Text.Foreground" >White</Color>
 </ResourceDictionary>

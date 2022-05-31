@@ -160,19 +160,19 @@
         <Setter Property="FontSize" Value="20"/>
     </Style>
 
-    <SolidColorBrush x:Key="SettingsListViewStyle.Background" Color="{DynamicResource SettingsListView.Background}"/>
+    <SolidColorBrush x:Key="PrimaryListViewStyle.Background" Color="{DynamicResource PrimaryListView.Background}"/>
 
-    <Style TargetType="{x:Type ListView}" x:Key="SettingsListView">
+    <Style TargetType="{x:Type ListView}" x:Key="PrimaryListView">
 
-        <Setter Property="Background" Value="{DynamicResource SettingsListViewStyle.Background}"/>
+        <Setter Property="Background" Value="{DynamicResource PrimaryListViewStyle.Background}"/>
         <Setter Property= "ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
         <Setter Property="BorderThickness" Value="0"/>
 
 
     </Style>
 
-    <SolidColorBrush x:Key="SettingsListViewItemStyle.Static.Background" Color="{DynamicResource SettingsListViewItem.Static.Background}"/>
-    <Style TargetType="{x:Type ListViewItem}" x:Key="SettingsListViewItem" >
+    <SolidColorBrush x:Key="PrimaryListViewItemStyle.Static.Background" Color="{DynamicResource PrimaryListViewItem.Static.Background}"/>
+    <Style TargetType="{x:Type ListViewItem}" x:Key="PrimaryListViewItem" >
         <Setter Property="Focusable" Value="False"/>
         <Setter Property="Height" Value="50"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
@@ -187,7 +187,7 @@
         </Setter>
     </Style>
 
-    <Style x:Key="SettingHeaderStyle" TargetType="{x:Type TextBlock}">
+    <Style x:Key="PrimaryListViewHeader" TargetType="{x:Type TextBlock}">
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="Width" Value="700"/>
         <Setter Property="FontFamily" Value="Global Sans Serif"/>

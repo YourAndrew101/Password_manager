@@ -61,11 +61,47 @@ namespace PasswordManager.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Edit.
+        /// </summary>
+        public static string AccountEdit {
+            get {
+                return ResourceManager.GetString("AccountEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Email.
+        /// </summary>
+        public static string AccountEmail {
+            get {
+                return ResourceManager.GetString("AccountEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Account.
         /// </summary>
         public static string AccountHeader {
             get {
                 return ResourceManager.GetString("AccountHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Log out.
+        /// </summary>
+        public static string AccountLogOut {
+            get {
+                return ResourceManager.GetString("AccountLogOut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Password.
+        /// </summary>
+        public static string AccountPassword {
+            get {
+                return ResourceManager.GetString("AccountPassword", resourceCulture);
             }
         }
         
@@ -363,6 +399,15 @@ namespace PasswordManager.Properties {
         public static string LoginRequest {
             get {
                 return ResourceManager.GetString("LoginRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Log out.
+        /// </summary>
+        public static string LogOut {
+            get {
+                return ResourceManager.GetString("LogOut", resourceCulture);
             }
         }
         

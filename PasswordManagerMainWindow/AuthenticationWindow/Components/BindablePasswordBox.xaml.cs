@@ -20,7 +20,7 @@ namespace PasswordManager.Components
        
 
         public static readonly DependencyProperty PasswordProperty = DependencyProperty.Register("Password", typeof(string), typeof(BindablePasswordBox),
-            new PropertyMetadata(string.Empty, PasswordPropertyChanged));
+            new FrameworkPropertyMetadata(string.Empty,FrameworkPropertyMetadataOptions.BindsTwoWayByDefault, PasswordPropertyChanged,null,false,UpdateSourceTrigger.PropertyChanged));
 
         private static void PasswordPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {

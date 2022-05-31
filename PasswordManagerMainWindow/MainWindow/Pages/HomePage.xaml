@@ -44,7 +44,7 @@
             <RowDefinition Height="20"/>
             <!--Separator-->
             <RowDefinition Height="50"/>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="30"/>
             <!--Separator-->
 
             <RowDefinition/>

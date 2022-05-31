@@ -74,7 +74,7 @@
         <Setter Property="FontFamily" Value="Global Sans Serif"/>
         <Setter Property="BorderThickness" Value="2"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontSize" Value="16"/>
         <Setter Property="BorderBrush" Value="{DynamicResource SearchTextBoxStyle.Static.BorderBrush}"/>
     </Style>
 
@@ -221,13 +221,13 @@
         <Setter Property="Background" Value="{DynamicResource DataGridStyle.Static.Background}"/>
         <Setter Property="Foreground" Value="{DynamicResource DataGridStyle.ColumnHeader.Foreground}"/>
         <Setter Property="FontFamily"  Value="Global Sans Serif"/>
-        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontSize" Value="16"/>
     </Style>
     <Style x:Key="DataGridRowStyle" TargetType="{x:Type DataGridRow}">
         <Setter Property="Background" Value="{DynamicResource DataGridStyle.Static.Background}"/>
         <Setter Property="Foreground" Value="{DynamicResource DataGridStyle.Row.Foreground}"/>
         <Setter Property="FontFamily"  Value="Global Sans Serif"/>
-        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontSize" Value="16"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
 
@@ -311,7 +311,7 @@
                                        HorizontalAlignment="Center"
                                        FontFamily="Segoe MDL2 Assets"
                                        Foreground="{DynamicResource DataGridStyle.PopupMenu.Foreground}"
-                                       FontSize="14" RenderTransformOrigin="0.5,0.5">
+                                       FontSize="16" RenderTransformOrigin="0.5,0.5">
                             <TextBlock.RenderTransform>
                                 <RotateTransform Angle="90"/>
                             </TextBlock.RenderTransform>
@@ -360,7 +360,7 @@
                                        HorizontalAlignment="Center"
                                        FontFamily="Global Sans Serif"
                                        Foreground="{DynamicResource DataGridStyle.PopupMenu.Foreground}"
-                                       FontSize="14" />
+                                       FontSize="16" />
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

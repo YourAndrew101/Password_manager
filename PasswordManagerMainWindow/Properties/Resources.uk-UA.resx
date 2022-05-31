@@ -117,8 +117,20 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountEdit" xml:space="preserve">
+    <value>Редагувати</value>
+  </data>
+  <data name="AccountEmail" xml:space="preserve">
+    <value>Ел. пошта</value>
+  </data>
   <data name="AccountHeader" xml:space="preserve">
     <value>Акаунт</value>
+  </data>
+  <data name="AccountLogOut" xml:space="preserve">
+    <value>Вийти</value>
+  </data>
+  <data name="AccountPassword" xml:space="preserve">
+    <value>Пароль</value>
   </data>
   <data name="AddFormHeader" xml:space="preserve">
     <value>Додати запис</value>
@@ -215,6 +227,9 @@
   </data>
   <data name="LoginRequest" xml:space="preserve">
     <value>Будь ласка ввійдіть у Ваш акаунт</value>
+  </data>
+  <data name="LogOut" xml:space="preserve">
+    <value>Вийти з акаунта</value>
   </data>
   <data name="Log_In" xml:space="preserve">
     <value>Увійти</value>
