@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 using Data.DataProviders.Factories;
 using Data.DataProviders.Products;
@@ -86,6 +88,7 @@ namespace PasswordManager.AuthenticationWindow
             if (!settingsService.IsSavedSettings) return;
 
             WindowSettings windowSettings = (WindowSettings)settingsService.GetSettings();
+            SetLanguage(windowSettings.Language);
             SetColorTheme(windowSettings.Theme);
         }
         private void SetColorTheme(WindowSettings.Themes theme)
@@ -96,7 +99,29 @@ namespace PasswordManager.AuthenticationWindow
             ResourceDictionary mainDict = new ResourceDictionary { Source = new Uri($"AuthenticationWindow/Themes/{theme}Theme.xaml", UriKind.Relative) };
             Application.Current.Resources.MergedDictionaries.Add(mainDict);
         }
+        private void SetLanguage(WindowSettings.Languages language)
+        {
+            string languageCulture;
+            switch (language)
+            {
+                case WindowSettings.Languages.System:
+                    return;
+                case WindowSettings.Languages.English:
+                    languageCulture = "en-UK";
+                    break;
+                case WindowSettings.Languages.Ukrainian:
+                    languageCulture = "uk-UA";
+                    break;
+                case WindowSettings.Languages.Russian:
+                    languageCulture = "ru-RU";
+                    break;
+                default:
+                    languageCulture = "en-Uk";
+                    break;
+            }
 
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(languageCulture);
+        }
         public void StartMainWindow(User user)
         {
             GetServicesData(user);

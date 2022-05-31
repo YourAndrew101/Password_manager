@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.Globalization;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using ServicesLibrary;
@@ -22,11 +23,10 @@ namespace PasswordManager
         App()
         {
             DBConnectionSingleton.ConnectionString = ConnectionString;
-
             ApplySettings();
         }
 
-        private void ApplySettings()
+        public void ApplySettings()
         {
             WindowSettingsService settingsService = new WindowSettingsService();
 
@@ -35,7 +35,6 @@ namespace PasswordManager
             WindowSettings windowSettings = (WindowSettings)settingsService.GetSettings();
             SetLanguage(windowSettings.Language);
         }
-
         private void SetLanguage(WindowSettings.Languages language)
         {
             string languageCulture;
@@ -57,7 +56,7 @@ namespace PasswordManager
                     break;
             }
 
-            CultureInfo.CurrentUICulture = new CultureInfo(languageCulture);
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(languageCulture);
         }
     }
 }
