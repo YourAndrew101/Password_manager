@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ServicesLibrary.SettingsService;
+using UsersLibrary;
 using UsersLibrary.Settings;
 
 namespace PasswordManager.MainWindow.Pages
@@ -24,11 +25,13 @@ namespace PasswordManager.MainWindow.Pages
     /// </summary>
     public partial class Settings : Page
     {
-        private readonly ISettingsService settingsService;
+        private readonly ISettingsService _settingsService;
+        private User _user;
 
-        public Settings()
+        public Settings(User user)
         {
-            settingsService = new WindowSettingsService();
+            _settingsService = new WindowSettingsService();
+            _user = user;
 
             InitializeComponent();
             DisplaySettings();
@@ -37,9 +40,9 @@ namespace PasswordManager.MainWindow.Pages
 
         private void DisplaySettings()
         {
-            if (!settingsService.IsSavedSettings) return;
+            if (!_settingsService.IsSavedSettings) return;
 
-            WindowSettings settings = (WindowSettings)settingsService.GetSettings();
+            WindowSettings settings = (WindowSettings)_settingsService.GetSettings();
 
             LanguageSelector.SelectedIndex = (int)settings.Language;
             ThemeSelector.SelectedIndex = (int)settings.Theme;
@@ -72,14 +75,23 @@ namespace PasswordManager.MainWindow.Pages
             }
         }
 
+        private void CreateNewPages()
+        {
+            ((MainWindow)App.Current.Windows[0]).ApplySettings();
+            ((MainWindow)App.Current.Windows[0]).HomePage = new Home(_user);
+            ((MainWindow)App.Current.Windows[0]).SettingsPage = new Settings(_user);
+            ((MainWindow)App.Current.Windows[0]).AccountPage = new Account();
+            ((MainWindow)App.Current.Windows[0]).MainFrame.Content = ((MainWindow)App.Current.Windows[0]).SettingsPage;
+        }
         private void LanguageSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SaveSettings();
+            CreateNewPages();
         }
-
         private void ThemeSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SaveSettings();
+            CreateNewPages();         
         }
 
         private void TrayToggleButton_Click(object sender, RoutedEventArgs e)
@@ -95,7 +107,7 @@ namespace PasswordManager.MainWindow.Pages
             int passwordGenerateLength = GetPasswordGenerateLengthSetting();
 
             WindowSettings settings = new WindowSettings(language, theme, toTray, passwordGenerateLength);
-            settingsService.Save(settings);
+            _settingsService.Save(settings);
         }
         private WindowSettings.Languages GetLanguageSetting() => (WindowSettings.Languages)LanguageSelector.SelectedIndex;
         private WindowSettings.Themes GetThemeSetting() => (WindowSettings.Themes)ThemeSelector.SelectedIndex;
