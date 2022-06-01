@@ -115,6 +115,60 @@ namespace PasswordManager.Properties {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Change email.
+        /// </summary>
+        public static string ChangeEmailFormHeader {
+            get {
+                return ResourceManager.GetString("ChangeEmailFormHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на New email.
+        /// </summary>
+        public static string ChangeEmailNewEmail {
+            get {
+                return ResourceManager.GetString("ChangeEmailNewEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Changes confirmation.
+        /// </summary>
+        public static string ConfirmEmailChangeFormHeader {
+            get {
+                return ResourceManager.GetString("ConfirmEmailChangeFormHeader", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Enter code that you&apos;ve received on old email.
+        /// </summary>
+        public static string ConfirmEmailChangeFormHint {
+            get {
+                return ResourceManager.GetString("ConfirmEmailChangeFormHint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Verification code.
+        /// </summary>
+        public static string ConfirmEmailChangeVerificationCode {
+            get {
+                return ResourceManager.GetString("ConfirmEmailChangeVerificationCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Wrong code.
+        /// </summary>
+        public static string ConfirmEmailChangeWrongCode {
+            get {
+                return ResourceManager.GetString("ConfirmEmailChangeWrongCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Create new account.
         /// </summary>
         public static string CreateNewAccount {
@@ -727,7 +781,7 @@ namespace PasswordManager.Properties {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на Enter 6-digit code that tou&apos;ve received by email.
+        ///   Ищет локализованную строку, похожую на Enter 6-digit code that you&apos;ve received by email.
         /// </summary>
         public static string TwoStepAuthenticationHint {
             get {

@@ -176,13 +176,13 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-    <Style x:Key="AddEditFormErrorTextBlockStyle" TargetType="TextBlock">
+    <Style x:Key="FormErrorTextBlockStyle" TargetType="TextBlock">
         <Style.Setters>
             <Setter Property="Foreground" Value="Red"/>
             <Setter Property="FontSize" Value="14"/>
             <Setter Property="Margin" Value="0,0,0,5"/>
             <Setter Property="FontFamily" Value="Global Sans Serif"/>
-            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
             <Setter Property="Visibility" Value="Hidden"/>
         </Style.Setters>

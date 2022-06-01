@@ -135,6 +135,24 @@
   <data name="AddFormHeader" xml:space="preserve">
     <value>Add a record</value>
   </data>
+  <data name="ChangeEmailFormHeader" xml:space="preserve">
+    <value>Change email</value>
+  </data>
+  <data name="ChangeEmailNewEmail" xml:space="preserve">
+    <value>New email</value>
+  </data>
+  <data name="ConfirmEmailChangeFormHeader" xml:space="preserve">
+    <value>Changes confirmation</value>
+  </data>
+  <data name="ConfirmEmailChangeFormHint" xml:space="preserve">
+    <value>Enter code that you've received on old email</value>
+  </data>
+  <data name="ConfirmEmailChangeVerificationCode" xml:space="preserve">
+    <value>Verification code</value>
+  </data>
+  <data name="ConfirmEmailChangeWrongCode" xml:space="preserve">
+    <value>Wrong code</value>
+  </data>
   <data name="CreateNewAccount" xml:space="preserve">
     <value>Create new account</value>
   </data>
@@ -340,7 +358,7 @@
     <value>Cancel</value>
   </data>
   <data name="TwoStepAuthenticationHint" xml:space="preserve">
-    <value>Enter 6-digit code that tou've received by email</value>
+    <value>Enter 6-digit code that you've received by email</value>
   </data>
   <data name="TwoStepAuthenticationSubmit" xml:space="preserve">
     <value>Submit</value>

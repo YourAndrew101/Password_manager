@@ -51,4 +51,52 @@
         </Style.Triggers>
 
     </Style>
+
+    <SolidColorBrush x:Key="AccountLogOutButtonStyle.Static.Background" Color="{DynamicResource AccountLogOutButton.Static.Background}"/>
+    <SolidColorBrush x:Key="AccountLogOutButtonStyle.IsPressed.Background" Color="{DynamicResource AccountLogOutButton.IsPressed.Background}"/>
+    <SolidColorBrush x:Key="AccountLogOutButtonStyle.IsMouseOver.Background" Color="{DynamicResource AccountLogOutButton.IsMouseOver.Background}"/>
+    <SolidColorBrush x:Key="AccountLogOutButtonStyle.Text.Foreground" Color="{DynamicResource AccountLogOutButton.Text.Foreground}"/>
+    
+    <Style x:Key="AccountLogOutButton" TargetType="{x:Type Button}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Border
+                            x:Name="border"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            
+                            Background="{TemplateBinding Background}"
+                            Height="{TemplateBinding Height}"
+                            Width="{TemplateBinding Width}"
+                            CornerRadius="5"
+                            BorderThickness="0">
+                        <TextBlock Text="{TemplateBinding Property=Content}"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Center"
+                                       FontFamily="Global Sans Serif"
+                                       Foreground="{DynamicResource AccountLogOutButtonStyle.Text.Foreground}"
+                                       FontSize="16"/>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+
+        </Setter>
+        <Setter Property="Background" Value="{DynamicResource AccountLogOutButtonStyle.Static.Background}"/>
+        <Setter Property="Width" Value="130"/>
+
+        <Setter Property="Height" Value="30"/>
+
+
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Background" Value="{DynamicResource AccountLogOutButtonStyle.IsMouseOver.Background}"/>
+            </Trigger>
+            <Trigger Property="IsPressed" Value="True">
+                <Setter Property="Background" Value="{DynamicResource AccountLogOutButtonStyle.IsPressed.Background}"/>
+            </Trigger>
+        </Style.Triggers>
+
+    </Style>
 </ResourceDictionary>
