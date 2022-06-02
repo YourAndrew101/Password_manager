@@ -56,18 +56,7 @@ namespace PasswordManager.MainWindow
 
             WindowSettings windowSettings = (WindowSettings)settingsService.GetSettings();
             SetLanguage(windowSettings.Language);
-            SetColorTheme(windowSettings.Theme);
         } 
-        private void SetColorTheme(WindowSettings.Themes theme)
-        {
-            if (theme == WindowSettings.Themes.System)
-                theme = ThemesService.GetSystemTheme();
-
-          //  Application.Current.Resources.MergedDictionaries.RemoveAt(Application.Current.Resources.MergedDictionaries.Count - 1);
-           
-            ResourceDictionary mainDict = new ResourceDictionary { Source = new Uri($"MainWindow/Themes/{theme}Theme.xaml", UriKind.RelativeOrAbsolute) };
-            Application.Current.Resources.MergedDictionaries.Add(mainDict);
-        }
         private void SetLanguage(WindowSettings.Languages language)
         {
             string languageCulture;
@@ -120,7 +109,7 @@ namespace PasswordManager.MainWindow
         protected override void OnStateChanged(EventArgs e)
         {
             if (WindowState == WindowState.Minimized)
-                this.Hide();
+                Hide();
 
             if (WindowState == WindowState.Maximized && MaximizeWindow.IsChecked == false)
                 MaximizeWindow.IsChecked = true;
