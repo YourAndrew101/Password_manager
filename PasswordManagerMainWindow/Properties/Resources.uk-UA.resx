@@ -135,6 +135,24 @@
   <data name="AddFormHeader" xml:space="preserve">
     <value>Додати запис</value>
   </data>
+  <data name="ChangeEmailFormHeader" xml:space="preserve">
+    <value>Зміна пошти</value>
+  </data>
+  <data name="ChangeEmailNewEmail" xml:space="preserve">
+    <value>Нова пошта</value>
+  </data>
+  <data name="ConfirmEmailChangeFormHeader" xml:space="preserve">
+    <value>Підтвердження змін</value>
+  </data>
+  <data name="ConfirmEmailChangeFormHint" xml:space="preserve">
+    <value>Введіть код, який ви отримали на стару пошту</value>
+  </data>
+  <data name="ConfirmEmailChangeVerificationCode" xml:space="preserve">
+    <value>Код підтвердження</value>
+  </data>
+  <data name="ConfirmEmailChangeWrongCode" xml:space="preserve">
+    <value>Невірний код</value>
+  </data>
   <data name="CreateNewAccount" xml:space="preserve">
     <value>Створити новий акаунт</value>
   </data>

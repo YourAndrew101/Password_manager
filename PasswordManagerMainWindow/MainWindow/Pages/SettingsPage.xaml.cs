@@ -80,7 +80,7 @@ namespace PasswordManager.MainWindow.Pages
             ((MainWindow)App.Current.Windows[0]).ApplySettings();
             ((MainWindow)App.Current.Windows[0]).HomePage = new Home(_user);
             ((MainWindow)App.Current.Windows[0]).SettingsPage = new Settings(_user);
-            ((MainWindow)App.Current.Windows[0]).AccountPage = new Account();
+            ((MainWindow)App.Current.Windows[0]).AccountPage = new Account(_user);
             ((MainWindow)App.Current.Windows[0]).MainFrame.Content = ((MainWindow)App.Current.Windows[0]).SettingsPage;
         }
         private void LanguageSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -37,7 +37,7 @@ namespace ServicesLibrary
         {
             _mailMessage = new MailMessage(new MailAddress("pswdmngr.supp0rt@gmail.com"), new MailAddress(Email))
             {
-                Subject = "Email confirmation",
+                Subject = "Action confirmation",
                 Body = ConfirmationMessage.Replace("_CONFIRMATIONCODE_", ConfirmationCode),
                 IsBodyHtml = true
             };
@@ -56,7 +56,7 @@ namespace ServicesLibrary
 
         private void GetConfirmationMessage()
         {
-            using (StreamReader streamReader = new StreamReader("../../../Services/Assets/EmailConfirmationMessage.txt"))
+            using (StreamReader streamReader = new StreamReader("../../../Services/Assets/ActionConfirmationMessage.txt"))
                 ConfirmationMessage = streamReader.ReadToEnd();
         }
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -15,7 +16,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ServicesLibrary;
 using ServicesLibrary.SettingsService;
+using UsersLibrary;
 using UsersLibrary.Settings;
 
 namespace PasswordManager.MainWindow.Pages
@@ -26,14 +29,98 @@ namespace PasswordManager.MainWindow.Pages
     public partial class Account : Page
     {
 
-        private SignUpSettingsService _service;
-        private SignUpSettings _settings;
-        public Account()
+        private User _user;
+
+        private string _email;
+        private EMailService _eMailService;
+        public Account(User user)
         {
             InitializeComponent();
-            _service = new SignUpSettingsService();
-            _settings = (SignUpSettings)_service.GetSettings();
-            EmailTextBlock.Text = _settings.Email;
+            _user = user;
+
+            _email = _user.Email;
+            SetAccountFields();
+        }
+        private void SetAccountFields()
+        {
+            EmailTextBlock.Text = _email;
+
+        }
+
+        private void ChangeEmailFormSubmitButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (!CheckAuthData()) return;
+
+            SendEmail();
+            ChangeEmailForm.Visibility = Visibility.Collapsed;
+            ConfirmEmailChangeForm.Visibility = Visibility.Visible;
+
+        }
+        private bool CheckAuthData()
+        {
+            if (string.IsNullOrEmpty(NewEmailTextBox.Text) || string.IsNullOrWhiteSpace(NewEmailTextBox.Text)) { SetErrorMessage(ChangeEmailFormErrorTextBlock, Properties.Resources.EmailRequest); return false; }
+          
+            try { _ = new MailAddress(NewEmailTextBox.Text).Address; }
+            catch (FormatException) { SetErrorMessage(ChangeEmailFormErrorTextBlock,Properties.Resources.EnterValidEmail); return false; }
+
+            return true;
+        }
+
+        private void SetErrorMessage(TextBlock textBlock,string message)
+        {
+            textBlock.Visibility = Visibility.Visible;
+            textBlock.Text = message;
+        }
+       
+        private void CloseForm(object sender, RoutedEventArgs e)
+        {
+            Grid form = (Grid)((Button)sender).Parent;
+            Animation.FormClosingAnimation(form, ShadowEffectAccountPage);
+            ClearForm();
+
+        }
+
+        private void ClearForm()
+        {
+            NewEmailTextBox.Text = string.Empty;
+            ConfirmEmailChangeCode.Text = string.Empty;
+            ConfirmEmailChangeFormErrorTextBlock.Text = string.Empty;
+            ConfirmEmailChangeFormErrorTextBlock.Visibility = Visibility.Collapsed;
+            ChangeEmailFormErrorTextBlock.Text= string.Empty;
+            ChangeEmailFormErrorTextBlock.Visibility = Visibility.Collapsed;
+        }
+
+        private void ChangeEmailButton_Click(object sender, RoutedEventArgs e)
+        {
+            Animation.FormOpeningAnimation(ChangeEmailForm, ShadowEffectAccountPage);
+        }
+    //TODO: Add logic to update field in db etc.
+        private void ConfirmEmailChangeFormSubmitButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (_eMailService.ConfirmationCode == ConfirmEmailChangeCode.Text)
+            {
+                _email = NewEmailTextBox.Text;
+            SetAccountFields();
+            Animation.FormClosingAnimation(ConfirmEmailChangeForm, ShadowEffectAccountPage);
+            ClearForm();
+            }
+            else
+            {
+                SetErrorMessage(ConfirmEmailChangeFormErrorTextBlock, Properties.Resources.ConfirmEmailChangeWrongCode);
+               
+
+
+            }
+           
+        }
+        private async void SendEmail()
+        {
+            _eMailService = new EMailService(_user.Email);
+            await _eMailService.SendAsyncConfirmationMessage();
+        }
+
+        private void LogOutButton_Click(object sender, RoutedEventArgs e)
+        {
 
         }
     }

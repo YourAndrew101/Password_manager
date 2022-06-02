@@ -381,11 +381,11 @@
                             <table style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px;background-position:left top" width="100%" cellspacing="0" cellpadding="0" role="presentation">
                               <tr>
                                 <td class="es-m-txt-c" align="left" style="Margin:0;padding-bottom:5px;padding-left:10px;padding-right:10px;padding-top:20px">
-                                  <h1 class="name" style="Margin:0;line-height:36px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:30px;font-style:normal;font-weight:normal;color:#333333">Email confirmation</h1></td>
+                                  <h1 class="name" style="Margin:0;line-height:36px;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:30px;font-style:normal;font-weight:normal;color:#333333">Action confirmation</h1></td>
                               </tr>
                               <tr>
                                 <td class="es-m-txt-l" align="left" style="Margin:0;padding-top:5px;padding-left:10px;padding-right:10px;padding-bottom:20px">
-                                  <p class="date" style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#666666;font-size:14px">Enter this code into app to confirm your email address</p>
+                                  <p class="date" style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:21px;color:#666666;font-size:14px">Enter this code into app to confirm your action</p>
                                 </td>
                               </tr>
                               <tr>

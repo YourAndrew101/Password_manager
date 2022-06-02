@@ -37,7 +37,7 @@ namespace PasswordManager.MainWindow
             User = user;
             HomePage = new Home(User);
             SettingsPage = new Settings(User);
-            AccountPage = new Account();    
+            AccountPage = new Account(User);    
             
             InitializeComponent();
 

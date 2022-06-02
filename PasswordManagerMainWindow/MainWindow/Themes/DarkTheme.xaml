@@ -125,4 +125,9 @@
     <Color x:Key="AccountPrimaryButton.IsPressed.Background" >#445283</Color>
     <Color x:Key="AccountPrimaryButton.IsEnabledFalse.Background" >#99aab5</Color>
     <Color x:Key="AccountPrimaryButton.Text.Foreground" >White</Color>
+
+    <Color x:Key="AccountLogOutButton.Static.Background" >#ff0000</Color>
+    <Color x:Key="AccountLogOutButton.IsMouseOver.Background" >#b30000</Color>
+    <Color x:Key="AccountLogOutButton.IsPressed.Background" >#660000</Color>
+    <Color x:Key="AccountLogOutButton.Text.Foreground" >White</Color>
 </ResourceDictionary>
