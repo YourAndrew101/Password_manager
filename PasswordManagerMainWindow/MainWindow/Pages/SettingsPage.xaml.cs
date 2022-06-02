@@ -46,7 +46,7 @@ namespace PasswordManager.MainWindow.Pages
 
             LanguageSelector.SelectedIndex = (int)settings.Language;
             ThemeSelector.SelectedIndex = (int)settings.Theme;
-            
+
             TrayToggleButton.IsChecked = settings.ToTray;
             PasswordGenerateLengthSettingTextBox.Text = settings.PasswordGenerateLength.ToString();
         }
@@ -90,8 +90,8 @@ namespace PasswordManager.MainWindow.Pages
         }
         private void ThemeSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            ((MainWindow)App.Current.Windows[0]).ShowNotification(Properties.Resources.ThemeSettingsChange);
             SaveSettings();
-            CreateNewPages();         
         }
 
         private void TrayToggleButton_Click(object sender, RoutedEventArgs e)

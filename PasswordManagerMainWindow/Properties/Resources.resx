@@ -348,6 +348,9 @@
   <data name="ThemeSettingLight" xml:space="preserve">
     <value>Light</value>
   </data>
+  <data name="ThemeSettingsChange" xml:space="preserve">
+    <value>Theme will be changed after restart the application</value>
+  </data>
   <data name="ThemeSettingSystem" xml:space="preserve">
     <value>System</value>
   </data>

@@ -348,6 +348,9 @@
   <data name="ThemeSettingLight" xml:space="preserve">
     <value>Светлая</value>
   </data>
+  <data name="ThemeSettingsChange" xml:space="preserve">
+    <value>Тема будет изменена при перезапуске приложения</value>
+  </data>
   <data name="ThemeSettingSystem" xml:space="preserve">
     <value>Системная</value>
   </data>

@@ -348,6 +348,9 @@
   <data name="ThemeSettingLight" xml:space="preserve">
     <value>Світла</value>
   </data>
+  <data name="ThemeSettingsChange" xml:space="preserve">
+    <value>Тема буде змінена при перезапуску додатку</value>
+  </data>
   <data name="ThemeSettingSystem" xml:space="preserve">
     <value>Системна</value>
   </data>
