@@ -46,7 +46,7 @@ namespace PasswordManager.AuthenticationWindow.Pages
             {
                 UsersService.AddUser(_user);
 
-                settingsService.Save((SignUpSettings)_user);
+                settingsService.SaveSettings((SignUpSettings)_user);
 
                 ((AuthenticationWindow)Window.GetWindow(this)).StartMainWindow(_user);
             }

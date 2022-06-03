@@ -14,7 +14,7 @@ namespace ServicesLibrary.SettingsService
             get => !string.IsNullOrEmpty(((SignUpSettings)GetSettings()).Email);
         }
 
-        public void Save(ISettings settings)
+        public void SaveSettings(ISettings settings)
         {
             if (settings is SignUpSettings newSettings)
             {
@@ -24,7 +24,7 @@ namespace ServicesLibrary.SettingsService
             }
         }
 
-        public void Clear()
+        public void ClearSettings()
         {
             Properties.Settings.Default.Email = "";
             Properties.Settings.Default.Password = "";

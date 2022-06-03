@@ -107,7 +107,7 @@ namespace PasswordManager.MainWindow.Pages
             int passwordGenerateLength = GetPasswordGenerateLengthSetting();
 
             WindowSettings settings = new WindowSettings(language, theme, toTray, passwordGenerateLength);
-            _settingsService.Save(settings);
+            _settingsService.SaveSettings(settings);
         }
         private WindowSettings.Languages GetLanguageSetting() => (WindowSettings.Languages)LanguageSelector.SelectedIndex;
         private WindowSettings.Themes GetThemeSetting() => (WindowSettings.Themes)ThemeSelector.SelectedIndex;

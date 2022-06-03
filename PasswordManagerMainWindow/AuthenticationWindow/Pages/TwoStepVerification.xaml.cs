@@ -58,7 +58,7 @@ namespace PasswordManager.AuthenticationWindow.Pages
             ISettingsService settingsService = new SignUpSettingsService();
             if (_eMailService.ConfirmationCode == CurrentConfirmationCode)
             {
-                if(_saveSettingsFlag) settingsService.Save((SignUpSettings)_user);
+                if(_saveSettingsFlag) settingsService.SaveSettings((SignUpSettings)_user);
 
                 ((AuthenticationWindow)Window.GetWindow(this)).StartMainWindow(_user);
             }

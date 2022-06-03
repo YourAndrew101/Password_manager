@@ -1,29 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Web.Security;
+﻿using System.Web.Security;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Data;
-using Data.DataProviders.Products;
 using Data.Repositories;
-using PasswordManager.MainWindow;
 using PasswordManager.MainWindow.ViewModels;
 using ServicesLibrary;
+using ServicesLibrary.SettingsService;
 using UsersLibrary;
 using UsersLibrary.Services;
+using UsersLibrary.Settings;
 
 namespace PasswordManager.MainWindow.Pages
 {
@@ -34,7 +23,13 @@ namespace PasswordManager.MainWindow.Pages
     {
         private ServiceRepository Repository { get; set; }
 
-        private int _lengthGeneratePassword = 16;
+        private int LengthGeneratePassword { 
+            get
+            {
+                ISettingsService settingsService = new WindowSettingsService();
+                return ((WindowSettings)settingsService.GetSettings()).PasswordGenerateLength;
+            }
+        }
 
         private User User { get; set; }
 
@@ -78,9 +73,7 @@ namespace PasswordManager.MainWindow.Pages
         private void AddPasswordButton_Click(object sender, RoutedEventArgs e)
         {
             FormHeader.Text = Properties.Resources.AddFormHeader;
-            Animation.FormOpeningAnimation(AddEditForm, ShadowEffectHomePage);
-            
-
+            Animation.FormOpeningAnimation(AddEditForm, ShadowEffectHomePage);         
         }
 
         private void CloseForm_Click(object sender, RoutedEventArgs e)
@@ -88,7 +81,6 @@ namespace PasswordManager.MainWindow.Pages
             Grid form = (Grid)((Button)sender).Parent;
             Animation.FormClosingAnimation(form, ShadowEffectHomePage);
             ClearForm();
-
         }
 
 
@@ -104,7 +96,7 @@ namespace PasswordManager.MainWindow.Pages
 
         private string GeneratePassword()
         {
-            return Membership.GeneratePassword(_lengthGeneratePassword, _lengthGeneratePassword / 4);
+            return Membership.GeneratePassword(LengthGeneratePassword, LengthGeneratePassword / 4);
         }
         private void SuggestPassword_Click(object sender, RoutedEventArgs e)
         {

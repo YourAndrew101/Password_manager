@@ -14,7 +14,7 @@ namespace ServicesLibrary.SettingsService
             get => !string.IsNullOrEmpty(((WindowSettings)GetSettings()).Language.ToString());
         }
 
-        public void Save(ISettings settings)
+        public void SaveSettings(ISettings settings)
         {
             if (settings is WindowSettings newSettings)
             {
@@ -26,7 +26,7 @@ namespace ServicesLibrary.SettingsService
             }
         }
 
-        public void Clear()
+        public void ClearSettings()
         {
             Properties.Settings.Default.Language = 0;
             Properties.Settings.Default.Theme = 0;
