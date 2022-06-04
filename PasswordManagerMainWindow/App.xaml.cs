@@ -40,9 +40,11 @@ namespace PasswordManager
         {
             if (theme == WindowSettings.Themes.System)
                 theme = ThemesService.GetSystemTheme();
-
-            ResourceDictionary mainDict = new ResourceDictionary { Source = new Uri($"AuthenticationWindow/Themes/{theme}Theme.xaml", UriKind.Relative) };
+            ResourceDictionary mainDict = new ResourceDictionary { Source = new Uri($"MainWindow/Themes/{theme}Theme.xaml", UriKind.Relative) };
             Application.Current.Resources.MergedDictionaries.Add(mainDict);
+            ResourceDictionary authDict = new ResourceDictionary { Source = new Uri($"AuthenticationWindow/Themes/{theme}Theme.xaml", UriKind.Relative) };
+            Application.Current.Resources.MergedDictionaries.Add(authDict);
+
         }
         private void SetLanguage(WindowSettings.Languages language)
         {
