@@ -21,8 +21,7 @@ namespace PasswordManager.AuthenticationWindow
         public AuthenticationWindow()
         {
             InitializeComponent();
-            SetConnectionDataBase();
-
+            SetConnectionDataBase();           
             LaunchPreparation();
         }
 

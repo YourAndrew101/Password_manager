@@ -8,18 +8,13 @@
         Title="MainWindow" 
         MinHeight="576"
         MinWidth="1024"
-        Height="838.4"
-        Width="1550.4"
         WindowStyle="None"
         WindowStartupLocation="CenterScreen"
         AllowsTransparency="True"
         Background="{DynamicResource MainColor}"
-        Foreground="{DynamicResource TextColor}"
-        WindowState="Minimized"
+        Foreground="{DynamicResource TextColor}"    
         
-      
         >
-    <!--Maximized window sizes: Height - 838.4; Width - 1550.4-->
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="30"/>
     </WindowChrome.WindowChrome>

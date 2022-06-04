@@ -30,7 +30,7 @@ namespace UsersLibrary.Services
             get
             {
                 ImageSourceConverter converter = new ImageSourceConverter();
-
+                
                 return (ImageSource)converter.ConvertFromString(LogoService.GetLogo(Name));
             }
         }

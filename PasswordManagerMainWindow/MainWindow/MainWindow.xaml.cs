@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 using PasswordManager.MainWindow.Pages;
 using ServicesLibrary;
 using ServicesLibrary.SettingsService;
@@ -40,13 +41,14 @@ namespace PasswordManager.MainWindow
             AccountPage = new Account(User);    
             
             InitializeComponent();
-
+            
             ApplySettings();
             SetWindowSettings();
-
+           
             CreateNotificationIcon();
+            
         }
-        
+
 
         public void ApplySettings()
         {
@@ -157,5 +159,7 @@ namespace PasswordManager.MainWindow
         {
             Close();
         }
+
+        
     }
 }
