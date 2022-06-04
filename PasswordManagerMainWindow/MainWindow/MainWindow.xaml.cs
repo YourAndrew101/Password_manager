@@ -83,8 +83,8 @@ namespace PasswordManager.MainWindow
 
         private void SetWindowSettings()
         {
-            MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
-            MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
+            MaxHeight = SystemParameters.WorkArea.Height;
+            MaxWidth = SystemParameters.WorkArea.Width;
             WindowState = WindowState.Normal;
             Home.IsChecked = true;
         }
