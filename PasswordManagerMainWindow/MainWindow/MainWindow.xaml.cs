@@ -38,7 +38,9 @@ namespace PasswordManager.MainWindow
             User = user;
             HomePage = new Home(User);
             SettingsPage = new Settings(User);
-            AccountPage = new Account(User);    
+            AccountPage = new Account(User);
+
+            this.StateChanged += MainWindow_StateChanged;
             
             InitializeComponent();
             
@@ -49,6 +51,13 @@ namespace PasswordManager.MainWindow
             
         }
 
+        private void MainWindow_StateChanged(object sender, EventArgs e)
+        {
+            if (WindowState == WindowState.Maximized && MaximizeWindow.IsChecked == false)
+                MaximizeWindow.IsChecked = true;
+            if (WindowState == WindowState.Normal && MaximizeWindow.IsChecked == true)
+                MaximizeWindow.IsChecked = false;
+        }
 
         public void ApplySettings()
         {
@@ -58,6 +67,7 @@ namespace PasswordManager.MainWindow
 
             WindowSettings windowSettings = (WindowSettings)settingsService.GetSettings();
             SetLanguage(windowSettings.Language);
+            SetColorTheme(windowSettings.Theme);
         } 
         private void SetLanguage(WindowSettings.Languages language)
         {
@@ -82,11 +92,21 @@ namespace PasswordManager.MainWindow
 
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(languageCulture);
         }
+        private void SetColorTheme(WindowSettings.Themes theme)
+        {
+            if (theme == WindowSettings.Themes.System)
+                theme = ThemesService.GetSystemTheme();
+            ResourceDictionary mainDict = new ResourceDictionary { Source = new Uri($"MainWindow/Themes/{theme}Theme.xaml", UriKind.Relative) };
+            Application.Current.Resources.MergedDictionaries.Add(mainDict);
+            ResourceDictionary authDict = new ResourceDictionary { Source = new Uri($"AuthenticationWindow/Themes/{theme}Theme.xaml", UriKind.Relative) };
+            Application.Current.Resources.MergedDictionaries.Add(authDict);
+
+        }
 
         private void SetWindowSettings()
         {
-            MaxHeight = SystemParameters.WorkArea.Height;
-            MaxWidth = SystemParameters.WorkArea.Width;
+            MaxHeight = SystemParameters.MaximizedPrimaryScreenHeight;
+            MaxWidth = SystemParameters.MaximizedPrimaryScreenWidth;
             WindowState = WindowState.Normal;
             Home.IsChecked = true;
         }
@@ -104,22 +124,7 @@ namespace PasswordManager.MainWindow
                 };
         }
 
-        private void MaximizeWindow_Unchecked(object sender, RoutedEventArgs e)
-        {
-            WindowState = WindowState.Normal;
-        }
-        protected override void OnStateChanged(EventArgs e)
-        {
-            if (WindowState == WindowState.Minimized)
-                Hide();
-
-            if (WindowState == WindowState.Maximized && MaximizeWindow.IsChecked == false)
-                MaximizeWindow.IsChecked = true;
-            if (WindowState == WindowState.Normal && MaximizeWindow.IsChecked == true)
-                MaximizeWindow.IsChecked = false;
-
-            base.OnStateChanged(e);
-        }
+        
         private void Home_Checked(object sender, RoutedEventArgs e)
         {
             Animation.NavMenuAnimation(Axis, 0);
@@ -145,6 +150,10 @@ namespace PasswordManager.MainWindow
             NotificationText.Text = NotificationMessage;
         }
 
+        private void MaximizeWindow_Unchecked(object sender, RoutedEventArgs e)
+        {
+            WindowState = WindowState.Normal;
+        }
 
         private void MaximizeWindow_Checked(object sender, RoutedEventArgs e)
         {
