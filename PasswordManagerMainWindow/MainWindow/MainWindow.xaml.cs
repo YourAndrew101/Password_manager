@@ -32,7 +32,22 @@ namespace PasswordManager.MainWindow
         public Home HomePage { get; set; }
         public Settings SettingsPage { get; set; }
         public Account AccountPage { get; set; }
-            
+
+        private bool ToTray 
+        {
+            get 
+            {
+                ISettingsService settingsService = new WindowSettingsService();
+                return ((WindowSettings)settingsService.GetSettings()).ToTray;
+            }
+        }
+
+        private System.Windows.Forms.NotifyIcon _notifyIcon;
+
+        private delegate void ActionClose();
+        private ActionClose _actionClose;
+
+        
         public MainWindow(User user)
         {
             User = user;
@@ -113,10 +128,12 @@ namespace PasswordManager.MainWindow
 
         private void CreateNotificationIcon()
         {
-            System.Windows.Forms.NotifyIcon ni = new System.Windows.Forms.NotifyIcon();
-            ni.Icon = new System.Drawing.Icon("../../MainWindow/Assets/TrayIcon.ico");
-            ni.Visible = true;
-            ni.DoubleClick +=
+            _notifyIcon = new System.Windows.Forms.NotifyIcon
+            {
+                Icon = new System.Drawing.Icon("../../MainWindow/Assets/TrayIcon.ico"),
+                Visible = true
+            };
+            _notifyIcon.DoubleClick +=
                 delegate (object sender, EventArgs args)
                 {
                     Show();
@@ -124,7 +141,6 @@ namespace PasswordManager.MainWindow
                 };
         }
 
-        
         private void Home_Checked(object sender, RoutedEventArgs e)
         {
             Animation.NavMenuAnimation(Axis, 0);
@@ -154,21 +170,32 @@ namespace PasswordManager.MainWindow
         {
             WindowState = WindowState.Normal;
         }
-
         private void MaximizeWindow_Checked(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Maximized;
         }
-
         private void MinimizeWindow_Click(object sender, RoutedEventArgs e)
         {
             WindowState = WindowState.Minimized;
         }
+
         private void CloseApp_Click(object sender, RoutedEventArgs e)
         {
+            if (ToTray) _actionClose = CloseToTrey;
+            else _actionClose = CloseWithExit;
+
+            _actionClose();
+        }
+        private void CloseToTrey()
+        {
+            Hide();
+            base.OnStateChanged(new EventArgs());
+        }
+        private void CloseWithExit()
+        {
+            _notifyIcon.Visible = false;
             Close();
         }
 
-        
     }
 }
