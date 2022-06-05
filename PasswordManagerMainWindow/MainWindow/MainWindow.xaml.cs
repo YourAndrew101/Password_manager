@@ -167,8 +167,6 @@ namespace PasswordManager.MainWindow
         private void CloseApp_Click(object sender, RoutedEventArgs e)
         {
             Close();
-        }
-
-        
+        }   
     }
 }

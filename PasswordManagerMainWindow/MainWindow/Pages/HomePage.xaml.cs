@@ -33,7 +33,7 @@ namespace PasswordManager.MainWindow.Pages
 
         private User User { get; set; }
 
-        AuthenticationDataVM dataVM;
+        ServiceVM dataVM;
 
         private string Password { get => HiddenPasswordTextBox.Text; }
 
@@ -58,7 +58,7 @@ namespace PasswordManager.MainWindow.Pages
             User = user;
            
             Repository = new ServiceRepository(new DataContext(user.Services), User);
-            dataVM = new AuthenticationDataVM(Repository);
+            dataVM = new ServiceVM(Repository);
             DataContext = dataVM;          
         }
         private void InitializePasswordComplexityRectangles()
@@ -128,7 +128,7 @@ namespace PasswordManager.MainWindow.Pages
 
                 }
                 ClearForm();
-                dataVM.AuthenticationDataCollectionView.Refresh();
+                dataVM.ServiceCollectionView.Refresh();
             }
             else
             {
@@ -216,7 +216,7 @@ namespace PasswordManager.MainWindow.Pages
             Animation.FormClosingAnimation(DeleteForm, ShadowEffectHomePage);
 
             Repository.Remove((Service)MainDataGrid.CurrentItem);
-            dataVM.AuthenticationDataCollectionView.Refresh();
+            dataVM.ServiceCollectionView.Refresh();
             ((MainWindow)App.Current.Windows[0]).ShowNotification(Properties.Resources.RecordRemovedNotification);
         }
 
