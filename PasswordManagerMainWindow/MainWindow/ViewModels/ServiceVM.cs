@@ -12,9 +12,9 @@ using UsersLibrary.Services;
 
 namespace PasswordManager.MainWindow.ViewModels
 {
-    public class AuthenticationDataVM : BaseModel
+    public class ServiceVM : BaseModel
     {
-        public ICollectionView AuthenticationDataCollectionView { get; }
+        public ICollectionView ServiceCollectionView { get; }
         private string dataFilter = string.Empty;
 
         public string DataFilter
@@ -24,20 +24,20 @@ namespace PasswordManager.MainWindow.ViewModels
             {
                 dataFilter = value;
                 OnPropertyChanged(nameof(DataFilter));
-                AuthenticationDataCollectionView.Refresh();
+                ServiceCollectionView.Refresh();
             }
         }
-        public AuthenticationDataVM(ServiceRepository serviceRepository)
+        public ServiceVM(ServiceRepository serviceRepository)
         {  
-            AuthenticationDataCollectionView = CollectionViewSource.GetDefaultView(serviceRepository.GetAll());
-            AuthenticationDataCollectionView.Filter = FilterData;
-            AuthenticationDataCollectionView.SortDescriptions.Add(new SortDescription(nameof(Service.Name), ListSortDirection.Ascending));
+            ServiceCollectionView = CollectionViewSource.GetDefaultView(serviceRepository.GetAll());
+            ServiceCollectionView.Filter = FilterData;
+            ServiceCollectionView.SortDescriptions.Add(new SortDescription(nameof(Service.Name), ListSortDirection.Ascending));
         }
 
         private bool FilterData(object obj)
         {
-            if (obj is Service authenticationData)
-                return authenticationData.Name.Contains(DataFilter.ToLower());
+            if (obj is Service service)
+                return service.Name.Contains(DataFilter.ToLower());
 
             return false;
         }

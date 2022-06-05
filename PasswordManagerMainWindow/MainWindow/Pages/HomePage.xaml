@@ -21,16 +21,6 @@
         <TranslateTransform x:Name="PageAxis"/>
     </Page.RenderTransform>
     <Page.Triggers>
-
-        <!--<EventTrigger RoutedEvent="Page.Loaded">
-                <BeginStoryboard>
-                    <Storyboard>
-                        <DoubleAnimation Storyboard.TargetName="PageAxis" Storyboard.TargetProperty="Y" From="100" To="0" Duration="0:0:0.2"/>
-                        <DoubleAnimation Storyboard.TargetProperty="Opacity" From="0" To="1" Duration="0:0:0.2"/>
-                    </Storyboard>
-                </BeginStoryboard>
-            </EventTrigger>-->
-
     </Page.Triggers>
 
     <Grid>
@@ -71,16 +61,15 @@
                 Click="AddPasswordButton_Click"/>
 
 
-        <DataGrid RenderOptions.EdgeMode="Aliased" Grid.Row="4" x:Name="MainDataGrid" Style="{StaticResource DataGridStyle}" RowHeight="40"  ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}"  RowStyle="{DynamicResource DataGridRowStyle}" Grid.Column="0" Grid.ColumnSpan="3" Margin="100,0,100,10" ItemsSource="{Binding AuthenticationDataCollectionView}">
+        <DataGrid RenderOptions.EdgeMode="Aliased" Grid.Row="4" x:Name="MainDataGrid" Style="{StaticResource DataGridStyle}" RowHeight="40"  ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}"  RowStyle="{DynamicResource DataGridRowStyle}" Grid.Column="0" Grid.ColumnSpan="3" Margin="100,0,100,10" ItemsSource="{Binding ServiceCollectionView}">
             <DataGrid.Columns>
-                <DataGridTemplateColumn Width="30" CellStyle="{StaticResource NotSelectableColumnStyle}">
+                <DataGridTemplateColumn Width="30" CellStyle="{StaticResource NonSelectableCellStyle}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <Border CornerRadius="15" Height="30">
                                 <Border.Background>
                                     <ImageBrush ImageSource="{Binding Path = LogoPath,IsAsync=True}" Stretch="UniformToFill" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="LowQuality" />
                                 </Border.Background>
-                                <!--<Image Source="{Binding Path = LogoPath,IsAsync=True}" Stretch="Fill" RenderOptions.EdgeMode="Aliased" RenderOptions.BitmapScalingMode="NearestNeighbor" SnapsToDevicePixels="True"/>-->
                             </Border>
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
@@ -118,7 +107,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTemplateColumn Width="*" CellStyle="{StaticResource NotSelectableColumnStyle}">
+                <DataGridTemplateColumn Width="*" CellStyle="{StaticResource NonSelectableCellStyle}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -139,6 +128,15 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        
+        
+        
+        
+        
+        
+        
+        
+        
         <Grid  x:Name="ShadowEffectHomePage" Height="700"   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="5" Style="{StaticResource Shadow}"  />
         <Grid x:Name="AddEditForm"  Height="600" Width="500" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="5" Style="{StaticResource OverlayFormStyle}" Margin="0,0,0,104.2" >
             <Grid.RenderTransform>

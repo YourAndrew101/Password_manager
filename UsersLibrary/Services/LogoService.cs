@@ -126,13 +126,11 @@ namespace Services
                         MakeCopy(resourceName);
                         return path;
                     }
-
                 }
                 StreamReader streamReader = response != null ? new StreamReader(response.GetResponseStream()) : throw new Exception();
                 string json = streamReader.ReadToEnd();
                 streamReader.Close();
                 response.Close();
-
                 Root data = JsonConvert.DeserializeObject<Root>(json);
                 if (!data.logos.Contains(data.logos.FirstOrDefault(e => e.type == "icon")))
                 {
@@ -145,8 +143,6 @@ namespace Services
                     webClient.DownloadFile(new Uri(logoUri), path);
                 }
             }
-
-
             return path;
         }
 

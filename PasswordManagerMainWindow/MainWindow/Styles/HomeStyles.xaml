@@ -142,8 +142,6 @@
 
     <Style x:Key="DataGridStyle" TargetType="{x:Type DataGrid}">
         <Style.Resources>
-
-
             <Style x:Key="ScrollThumbs" TargetType="{x:Type Thumb}">
                 <Setter Property="Template">
                     <Setter.Value>
@@ -155,7 +153,6 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-
             <!--ScrollBars-->
             <Style x:Key="{x:Type ScrollBar}" TargetType="{x:Type ScrollBar}">
 
@@ -172,7 +169,6 @@
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="0.00001*" />
                                     </Grid.RowDefinitions>
-
                                     <Track x:Name="PART_Track" Grid.Row="0" IsDirectionReversed="true" Focusable="false">
                                         <Track.Thumb>
                                             <Thumb x:Name="Thumb" Background="{TemplateBinding Foreground}" Style="{DynamicResource ScrollThumbs}" />
@@ -188,12 +184,6 @@
                                 </Grid>
                             </Border>
                             <ControlTemplate.Triggers>
-                                <!--<Trigger SourceName="Thumb" Property="IsMouseOver" Value="true">
-                                    <Setter Value="{DynamicResource ButtonSelectBrush}" TargetName="Thumb" Property="Background" />
-                                </Trigger>
-                                <Trigger SourceName="Thumb" Property="IsDragging" Value="true">
-                                    <Setter Value="{DynamicResource DarkBrush}" TargetName="Thumb" Property="Background" />
-                                </Trigger>-->
                                 <Trigger Property="IsEnabled" Value="false">
                                     <Setter TargetName="Thumb" Property="Visibility" Value="Collapsed" />
                                 </Trigger>
@@ -230,8 +220,6 @@
         <Setter Property="FontSize" Value="16"/>
         <Setter Property="VerticalContentAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
-
-
     </Style>
 
     <Style TargetType="{x:Type DataGridCell}" x:Key="DataGridCellStyle">
@@ -283,7 +271,7 @@
 
         </Style.Triggers>
     </Style>
-    <Style x:Key="NotSelectableColumnStyle" TargetType="{x:Type DataGridCell}">
+    <Style x:Key="NonSelectableCellStyle" TargetType="{x:Type DataGridCell}">
         <Setter Value="False" Property="Focusable"/>
         <Style.Triggers>
             <Trigger Property="IsSelected" Value="True">
