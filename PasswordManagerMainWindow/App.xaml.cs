@@ -23,8 +23,42 @@ namespace PasswordManager
         App()
         {
             DBConnectionSingleton.ConnectionString = ConnectionString;
+            ApplySettings();
+        }
+        public void ApplySettings()
+        {
+            WindowSettingsService settingsService = new WindowSettingsService();
+
+            if (!settingsService.IsSavedSettings) return;
+
+            WindowSettings windowSettings = (WindowSettings)settingsService.GetSettings();
+            SetLanguage(windowSettings.Language);
+            
+        }
+        private void SetLanguage(WindowSettings.Languages language)
+        {
+            string languageCulture;
+            switch (language)
+            {
+                case WindowSettings.Languages.System:
+                    return;
+                case WindowSettings.Languages.English:
+                    languageCulture = "en-UK";
+                    break;
+                case WindowSettings.Languages.Ukrainian:
+                    languageCulture = "uk-UA";
+                    break;
+                case WindowSettings.Languages.Russian:
+                    languageCulture = "ru-RU";
+                    break;
+                default:
+                    languageCulture = "en-Uk";
+                    break;
+            }
+
+            Thread.CurrentThread.CurrentUICulture = new CultureInfo(languageCulture);
         }
 
-       
+
     }
 }

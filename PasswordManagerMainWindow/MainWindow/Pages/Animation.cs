@@ -139,9 +139,9 @@ namespace PasswordManager.MainWindow.Pages
             button.Visibility = Visibility.Collapsed;
         }
 
-        private static Storyboard notificationSB = new Storyboard();
-        public static void ShowNotificationAnimation(Border notificationBody) {
 
+        public static void ShowNotificationAnimation(Border notificationBody) {
+            Storyboard notificationSB = new Storyboard();
             notificationSB.Completed -= (sender, e) => Notification_Completed(sender, e, notificationBody);
             notificationBody.Visibility = Visibility.Visible;
             DoubleAnimation notificationAppearingTranslate = new DoubleAnimation()
