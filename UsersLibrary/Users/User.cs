@@ -1,15 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Security.Cryptography;
-using System.Configuration;
-using System.Data.SqlClient;
-using System.Runtime.Serialization;
-using UsersLibrary.Settings;
-using UsersLibrary.Services;
 using System.IO;
+using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
+using UsersLibrary.Services;
+using UsersLibrary.Settings;
 
 namespace UsersLibrary
 {
@@ -63,7 +59,6 @@ namespace UsersLibrary
             Services = new List<Service>();
         }
             
-
 
         private string AddStringToCharsCount(string inputString, int count)
         {

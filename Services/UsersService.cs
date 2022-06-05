@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
 using UsersLibrary;
 using static UsersLibrary.UsersExceptions;
 
@@ -12,8 +7,6 @@ namespace ServicesLibrary
 {
     public static class UsersService
     {
-        public static string ConnectionString { get; set; }
-
         public static bool IsExistsEmail(string email)
         {
             string request = "SELECT COUNT(*) FROM \"users\" WHERE  EMAIL = @EMail";

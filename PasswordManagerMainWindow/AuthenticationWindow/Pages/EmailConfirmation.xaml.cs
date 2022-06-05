@@ -7,9 +7,6 @@ using UsersLibrary.Settings;
 
 namespace PasswordManager.AuthenticationWindow.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для EmailConfirmation.xaml
-    /// </summary>
     public partial class EmailConfirmation : Page
     {
         private string CurrentConfirmationCode { get => CurrentConfirmationCodeTextBox.Text; }
@@ -40,12 +37,12 @@ namespace PasswordManager.AuthenticationWindow.Pages
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e)
-        {
-            ISettingsService settingsService = new SignUpSettingsService();
+        {   
             if(_eMailService.ConfirmationCode == CurrentConfirmationCode)
             {
                 UsersService.AddUser(_user);
 
+                ISettingsService settingsService = new SignUpSettingsService();
                 settingsService.SaveSettings((SignUpSettings)_user);
 
                 ((AuthenticationWindow)Window.GetWindow(this)).StartMainWindow(_user);
