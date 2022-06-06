@@ -86,7 +86,11 @@ namespace Services
         }
         private static void MakeCopy(string resourceName)
         {
-            File.Copy($"../../MainWindow/LogosServices/defaultLogo.png", $"../../MainWindow/LogosServices/{resourceName}.png");
+            try
+            {
+                File.Copy($"../../MainWindow/LogosServices/defaultLogo.png", $"../../MainWindow/LogosServices/{resourceName}.png");
+            }
+            catch (Exception) { }
         }
 
         public static string GetLogo(string resourceName)

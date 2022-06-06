@@ -1,30 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
 using System.Net.Mail;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
 using System.Windows.Media;
-using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ServicesLibrary;
 using UsersLibrary;
-
 using static UsersLibrary.UsersExceptions;
 
 namespace PasswordManager.AuthenticationWindow.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для Signup.xaml
-    /// </summary>
     public partial class Signup : Page
     {
         private string Password { get => RevealedPasswordTextBox.Text; }
@@ -66,7 +52,6 @@ namespace PasswordManager.AuthenticationWindow.Pages
             _passwordComplexityRectangles[4] = VeryStrongPasswordRectangle;
         }
 
-        
         private void KindaPassword_TextChanged(object sender, TextChangedEventArgs e)
         {
             SetPasswordComplexity();

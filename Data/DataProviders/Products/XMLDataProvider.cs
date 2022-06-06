@@ -2,9 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 using System.Xml.Linq;
 using UsersLibrary;
 using UsersLibrary.Services;
@@ -53,8 +50,6 @@ namespace Data.DataProviders.Products
                 if (root != null)
                     root.Add(GetXElement(cryptedService));
             }
-
-
 
             xdoc.Save(string.Format(_filePath, user.HashEmail));
         }

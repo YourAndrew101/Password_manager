@@ -367,7 +367,7 @@
     <value>Подтвердить</value>
   </data>
   <data name="TwoStepAuthenticationTitle" xml:space="preserve">
-    <value>Двохфакторная аунтефикация</value>
+    <value>Двофакторна аутентификация</value>
   </data>
   <data name="UserExists" xml:space="preserve">
     <value>Пользователь уже существует</value>
