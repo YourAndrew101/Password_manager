@@ -1,20 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Animation;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Microsoft.Win32;
 using PasswordManager.MainWindow.Pages;
 using ServicesLibrary;
 using ServicesLibrary.SettingsService;
@@ -23,9 +10,6 @@ using UsersLibrary.Settings;
 
 namespace PasswordManager.MainWindow
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {  
         private User User { get; set; }
@@ -76,7 +60,7 @@ namespace PasswordManager.MainWindow
 
         public void ApplySettings()
         {
-            WindowSettingsService settingsService = new WindowSettingsService();
+            ISettingsService settingsService = new WindowSettingsService();
 
             if (!settingsService.IsSavedSettings) return;
 

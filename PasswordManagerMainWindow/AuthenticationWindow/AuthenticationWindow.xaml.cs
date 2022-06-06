@@ -20,9 +20,6 @@ namespace PasswordManager.AuthenticationWindow
         {
             InitializeComponent();
 
-            SignUpSettingsService sign = new SignUpSettingsService();
-            sign.ClearSettings();
-
             LaunchPreparation();
         }
 
@@ -93,6 +90,8 @@ namespace PasswordManager.AuthenticationWindow
             ResourceDictionary authDict = new ResourceDictionary { Source = new Uri($"AuthenticationWindow/Themes/{theme}Theme.xaml", UriKind.Relative) };
             Application.Current.Resources.MergedDictionaries.Add(authDict);
         }
+
+
         public void StartMainWindow(User user)
         {
             GetServicesData(user);
@@ -107,14 +106,8 @@ namespace PasswordManager.AuthenticationWindow
         private void GetServicesData(User user)
         {
             CommonDataProviderFactory[] dataProviderFactories = CommonDataProviderFactory.CreateFactories();
-            DateTime[] modifyDateTimes = new DateTime[dataProviderFactories.Length];
+            DateTime[] modifyDateTimes = GetModifeDateTimes(user, dataProviderFactories);
             int lastModifyDateTimeIndex;
-
-            for (int i = 0; i < dataProviderFactories.Length; i++)
-            {
-                IDataProvider dataProvider = dataProviderFactories[i].GetDataProvider();
-                modifyDateTimes[i] = dataProvider.GetLastModifyTime(user);
-            }
 
             lastModifyDateTimeIndex = modifyDateTimes.ToList().IndexOf(modifyDateTimes.Max());
             List<Service> services = dataProviderFactories[lastModifyDateTimeIndex].GetDataProvider().Load(user);
@@ -128,6 +121,18 @@ namespace PasswordManager.AuthenticationWindow
                 dataProvider.Clear(user);
                 dataProvider.Save(user, services);
             }
+        }
+        private DateTime[] GetModifeDateTimes(User user, CommonDataProviderFactory[] dataProviderFactories)
+        {
+            DateTime[] modifyDateTimes = new DateTime[dataProviderFactories.Length];
+
+            for (int i = 0; i < dataProviderFactories.Length; i++)
+            {
+                IDataProvider dataProvider = dataProviderFactories[i].GetDataProvider();
+                modifyDateTimes[i] = dataProvider.GetLastModifyTime(user);
+            }
+
+            return modifyDateTimes;
         }
 
         public void CloseWindow(object sender, RoutedEventArgs e)

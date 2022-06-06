@@ -16,9 +16,6 @@ using UsersLibrary.Settings;
 
 namespace PasswordManager.MainWindow.Pages
 {
-    /// <summary>
-    /// Логика взаимодействия для Home.xaml
-    /// </summary>
     public partial class Home : Page
     {
         private ServiceRepository Repository { get; set; }

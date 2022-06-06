@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Data.DataProviders.Products;
-using ServicesLibrary;
-using UsersLibrary;
+﻿using Data.DataProviders.Products;
 
 namespace Data.DataProviders.Factories
 {
