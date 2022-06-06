@@ -31,32 +31,36 @@ namespace PasswordManager.MainWindow.Pages
 
         private User _user;
 
-        private string _email;
+        private string Email
+        {
+            get => _user.Email;
+        }
         private EMailService _eMailService;
+
         public Account(User user)
         {
             InitializeComponent();
             _user = user;
 
-            _email = _user.Email;
+            
             SetAccountFields();
         }
         private void SetAccountFields()
         {
-            EmailTextBlock.Text = _email;
+            EmailTextBlock.Text = Email;
 
         }
 
         private void ChangeEmailFormSubmitButton_Click(object sender, RoutedEventArgs e)
         {
-            if (!CheckAuthData()) return;
+            if (!CheckData()) return;
 
             SendEmail();
             ChangeEmailForm.Visibility = Visibility.Collapsed;
             ConfirmEmailChangeForm.Visibility = Visibility.Visible;
 
         }
-        private bool CheckAuthData()
+        private bool CheckData()
         {
             if (string.IsNullOrEmpty(NewEmailTextBox.Text) || string.IsNullOrWhiteSpace(NewEmailTextBox.Text)) { SetErrorMessage(ChangeEmailFormErrorTextBlock, Properties.Resources.EmailRequest); return false; }
           
@@ -99,8 +103,8 @@ namespace PasswordManager.MainWindow.Pages
         {
             if (_eMailService.ConfirmationCode == ConfirmEmailChangeCode.Text)
             {
-                _email = NewEmailTextBox.Text;
-            SetAccountFields();
+            //    _email = NewEmailTextBox.Text;
+            //SetAccountFields();
             Animation.FormClosingAnimation(ConfirmEmailChangeForm, ShadowEffectAccountPage);
             ClearForm();
             }
@@ -108,8 +112,6 @@ namespace PasswordManager.MainWindow.Pages
             {
                 SetErrorMessage(ConfirmEmailChangeFormErrorTextBlock, Properties.Resources.ConfirmEmailChangeWrongCode);
                
-
-
             }
            
         }

@@ -66,7 +66,7 @@ namespace PasswordManager.AuthenticationWindow.Pages
             _passwordComplexityRectangles[4] = VeryStrongPasswordRectangle;
         }
 
-        //TODO: Rewirte toglebuttonShow for key preview
+        
         private void KindaPassword_TextChanged(object sender, TextChangedEventArgs e)
         {
             SetPasswordComplexity();

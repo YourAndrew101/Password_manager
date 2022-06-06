@@ -134,6 +134,11 @@
     </Style>
     <SolidColorBrush x:Key="SettingComboBoxItemStyle.Static.Background" Color="{DynamicResource SettingComboBoxItem.Static.Background}"/>
     <SolidColorBrush x:Key="SettingComboBoxItemStyle.IsHighlighted.Background" Color="{DynamicResource SettingComboBoxItem.IsHighlighted.Background}"/>
+    
+    
+    
+    
+    
     <Style x:Key="SettingComboBoxItemStyle" TargetType="ComboBoxItem">
         <Setter Property="Height" Value="25"/>
         <Setter Property="Template">
@@ -174,7 +179,6 @@
                         </Border>
                     </Grid>
                     <ControlTemplate.Resources>
-
                     </ControlTemplate.Resources>
                     <ControlTemplate.Triggers>
 
@@ -188,8 +192,6 @@
                                     </Storyboard>
                                 </BeginStoryboard>
                             </Trigger.EnterActions>
-
-
                         </Trigger>
                         <Trigger Property="IsChecked" Value="True">
                             <Trigger.EnterActions>
@@ -215,16 +217,10 @@
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Setter.Value>
-
         </Setter>
-        <!--<Setter Property="IsChecked" Value="True"/>-->
         <Setter Property="Height" Value="30"/>
         <Setter Property="Width" Value="50"/>
         <Setter Property="Focusable" Value="False"/>
-        <Style.Triggers>
-
-
-        </Style.Triggers>
     </Style>
     <Style x:Key="SettingTextBox" TargetType="TextBox">
         <Style.Setters>

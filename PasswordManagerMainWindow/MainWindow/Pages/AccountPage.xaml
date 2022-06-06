@@ -33,9 +33,8 @@
 
             <RowDefinition/>
         </Grid.RowDefinitions>
-        
+
         <TextBlock Text="{x:Static res:Resources.AccountHeader}" Style="{StaticResource PageHeader}"/>
-        <!--<Button x:Name="C" Content="erve" Grid.Column="2" Click="C_Click"/>-->
         <ListView Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Width="900" Name="SettingsList" Style="{StaticResource PrimaryListView}">
             <ListViewItem  Style="{StaticResource PrimaryListViewItem}" >
                 <Grid>

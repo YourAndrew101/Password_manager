@@ -138,6 +138,7 @@ namespace PasswordManager.MainWindow.Pages
         }
         private void ClearForm()
         {
+            IdTextBox.Text = string.Empty;
             ResourceTextBox.Text = string.Empty;
             LoginTextBox.Text = string.Empty;
             HiddenPasswordTextBox.Text = string.Empty;

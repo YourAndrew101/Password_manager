@@ -129,14 +129,6 @@
             </DataGrid.Columns>
         </DataGrid>
         
-        
-        
-        
-        
-        
-        
-        
-        
         <Grid  x:Name="ShadowEffectHomePage" Height="700"   Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5" Grid.RowSpan="5" Style="{StaticResource Shadow}"  />
         <Grid x:Name="AddEditForm"  Height="600" Width="500" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Grid.RowSpan="5" Style="{StaticResource OverlayFormStyle}" Margin="0,0,0,104.2" >
             <Grid.RenderTransform>
@@ -318,12 +310,12 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="Auto"/>
-               
+
                 <RowDefinition Height="35"/>
 
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="20*"/>
-                
+
             </Grid.RowDefinitions>
             <Grid.RenderTransform>
                 <ScaleTransform CenterX="250" CenterY="125" />
@@ -339,7 +331,7 @@
                    FontFamily="Global Sans Serif" 
                    FontWeight="Bold" 
                    TextWrapping="Wrap"/>
-            
+
             <Button x:Name="ConfirmDeleatingButton" 
                 Grid.Column="1"
                 Grid.Row="3"
@@ -361,13 +353,5 @@
                             />
 
         </Grid>
-        <Border x:Name="NotificationBody" Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3"  Height="40" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Bottom" Style="{StaticResource NotificationBorderStyle}" Visibility="Collapsed"  >
-            <Border.RenderTransform>
-                <TranslateTransform x:Name="NotificationTranslateTransform"/>
-            </Border.RenderTransform>
-
-            <TextBlock Grid.Column="1" Grid.Row="4"   Style="{StaticResource NotificationTextStyle}" x:Name="NotificationText">
-            </TextBlock>
-        </Border>
     </Grid>
 </Page>

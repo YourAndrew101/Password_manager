@@ -4,13 +4,12 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PasswordManager.MainWindow.Pages" 
-            xmlns:res="clr-namespace:PasswordManager.Properties"
+      xmlns:res="clr-namespace:PasswordManager.Properties"
       mc:Ignorable="d" 
       Width="1550.4"
       Height="700"
       Title="Settings"
-      ShowsNavigationUI="False"
-       
+      ShowsNavigationUI="False"  
       Background="{DynamicResource MainColor}"
       Foreground="{DynamicResource TextColor}"
       RenderOptions.EdgeMode="Aliased"
@@ -25,12 +24,9 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-           
             <!--Separator-->
             <RowDefinition Height="50"/>
-            
             <!--Separator-->
-
             <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock Text="{x:Static res:Resources.SettingsHeader}" Style="{StaticResource PageHeader}" />
@@ -89,5 +85,4 @@
             </ListViewItem>
         </ListView>
     </Grid>
-
 </Page>

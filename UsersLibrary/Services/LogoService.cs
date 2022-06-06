@@ -131,11 +131,12 @@ namespace Services
                 string json = streamReader.ReadToEnd();
                 streamReader.Close();
                 response.Close();
-                Root data = JsonConvert.DeserializeObject<Root>(json);
+                Root data;
+                try{data = JsonConvert.DeserializeObject<Root>(json); }
+                catch { MakeCopy(resourceName); return path; }
                 if (!data.logos.Contains(data.logos.FirstOrDefault(e => e.type == "icon")))
                 {
-                    MakeCopy(resourceName);
-                    return path;
+                    MakeCopy(resourceName); return path;
                 }
                 string logoUri = data.logos.FirstOrDefault(e => e.type == "icon").formats[0].src;
                 using (WebClient webClient = new WebClient())
