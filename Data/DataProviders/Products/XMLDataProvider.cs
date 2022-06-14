@@ -153,6 +153,13 @@ namespace Data.DataProviders.Products
             xdoc.Save(string.Format(_filePath, user.HashEmail));
         }
 
+        public void DeleteFile(User user)
+        {
+            if (!File.Exists(string.Format(_filePath, user.HashEmail))) return;
+
+            File.Delete(string.Format(_filePath, user.HashEmail));
+        }
+
         public DateTime GetLastModifyTime(User user)
         {
             if (!File.Exists(string.Format(_filePath, user.HashEmail))) return DateTime.MinValue;

@@ -28,7 +28,6 @@ namespace PasswordManager.MainWindow.Pages
     /// </summary>
     public partial class Account : Page
     {
-
         private User _user;
 
         private string Email

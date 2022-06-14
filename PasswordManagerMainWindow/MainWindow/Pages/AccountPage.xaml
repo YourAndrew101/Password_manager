@@ -57,8 +57,14 @@
             </ListViewItem>-->
             <ListViewItem  Style="{StaticResource PrimaryListViewItem}" >
                 <Grid>
-                    <TextBlock Text="{x:Static res:Resources.LogOut}" Style="{StaticResource PrimaryListViewHeader}" HorizontalAlignment="Left"/>
-                    <Button x:Name="LogOutButton" Style="{StaticResource AccountLogOutButton}" Click="LogOutButton_Click" Content="{x:Static res:Resources.AccountLogOut}" HorizontalAlignment="Right"/>
+                    <TextBlock Text="{x:Static res:Resources.LogOut}" 
+                               Style="{StaticResource PrimaryListViewHeader}" 
+                               HorizontalAlignment="Left"/>
+                    <Button x:Name="LogOutButton" 
+                            Style="{StaticResource AccountLogOutButton}" 
+                            Click="LogOutButton_Click" 
+                            Content="{x:Static res:Resources.AccountLogOut}" 
+                            HorizontalAlignment="Right"/>
                 </Grid>
             </ListViewItem>
         </ListView>

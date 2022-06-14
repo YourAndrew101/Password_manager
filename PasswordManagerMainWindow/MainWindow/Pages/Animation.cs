@@ -33,7 +33,7 @@ namespace PasswordManager.MainWindow.Pages
         {
             form.Visibility = Visibility.Visible;
             pageShadow.Visibility = Visibility.Visible;
-            ((MainWindow)App.Current.Windows[0]).Shadow.Visibility = Visibility.Visible;
+            ((MainWindow)Application.Current.MainWindow).Shadow.Visibility = Visibility.Visible;
             DoubleAnimation formScaleAnimation = new DoubleAnimation()
             {
                 From = 1.2,
@@ -61,7 +61,7 @@ namespace PasswordManager.MainWindow.Pages
             };
             pageShadow.BeginAnimation(OpacityProperty, shadowAppearingAnimation);
 
-            ((MainWindow)App.Current.Windows[0]).Shadow.BeginAnimation(OpacityProperty, shadowAppearingAnimation);
+            ((MainWindow)Application.Current.MainWindow).Shadow.BeginAnimation(OpacityProperty, shadowAppearingAnimation);
 
         }
         public static void FormClosingAnimation(Grid form, Grid pageShadow)
@@ -96,12 +96,12 @@ namespace PasswordManager.MainWindow.Pages
             };
             shadowDisappearingAnimation.Completed += (sender, e) => ShadowDisappearingAnimation_Completed(sender, e, pageShadow);
             pageShadow.BeginAnimation(OpacityProperty, shadowDisappearingAnimation);
-            ((MainWindow)App.Current.Windows[0]).Shadow.BeginAnimation(OpacityProperty, shadowDisappearingAnimation);
+            ((MainWindow)Application.Current.MainWindow).Shadow.BeginAnimation(OpacityProperty, shadowDisappearingAnimation);
         }
         private static void ShadowDisappearingAnimation_Completed(object sender, EventArgs e, Grid pageShadow)
         {
             pageShadow.Visibility = Visibility.Collapsed;
-            ((MainWindow)App.Current.Windows[0]).Shadow.Visibility = Visibility.Collapsed;
+            ((MainWindow)Application.Current.MainWindow).Shadow.Visibility = Visibility.Collapsed;
         }
 
         private static void formDisapperingAnimation_Comleted(object sender, EventArgs e, Grid form)

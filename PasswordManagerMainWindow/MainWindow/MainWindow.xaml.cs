@@ -142,13 +142,13 @@ namespace PasswordManager.MainWindow
             Animation.NavMenuAnimation(Axis, 1008);           
             MainFrame.Content = AccountPage;
         }
-
         
         public void ShowNotification(string NotificationMessage)
         {
             Animation.ShowNotificationAnimation(NotificationBody);
             NotificationText.Text = NotificationMessage;
         }
+
 
         private void MaximizeWindow_Unchecked(object sender, RoutedEventArgs e)
         {
@@ -179,9 +179,6 @@ namespace PasswordManager.MainWindow
         {
             _notifyIcon.Visible = false;
             Close();
-        }
-
-        
-        
+        }       
     }
 }

@@ -12,6 +12,17 @@ namespace PasswordManager
     {
         public static string ConnectionString { get => ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString; }
 
+        public MainWindow.MainWindow GetMainWindow
+        {
+            get
+            {
+                foreach (Window window in Windows)
+                    if (window is MainWindow.MainWindow mainWindow) return mainWindow;
+
+                return null;
+            }
+        }
+
         App()
         {
             DBConnectionSingleton.ConnectionString = ConnectionString;
@@ -49,6 +60,12 @@ namespace PasswordManager
             }
 
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(languageCulture);
+        }
+
+
+        public void ExitUser()
+        {
+            this.Windows[0]
         }
     }
 }
