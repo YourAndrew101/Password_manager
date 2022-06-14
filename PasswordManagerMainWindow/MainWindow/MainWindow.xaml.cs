@@ -39,7 +39,7 @@ namespace PasswordManager.MainWindow
             SettingsPage = new Settings(User);
             AccountPage = new Account(User);
 
-            this.StateChanged += MainWindow_StateChanged;
+            StateChanged += MainWindow_StateChanged;
             
             InitializeComponent();
             
@@ -47,7 +47,6 @@ namespace PasswordManager.MainWindow
             SetWindowSettings();
            
             CreateNotificationIcon();
-            
         }
 
         private void MainWindow_StateChanged(object sender, EventArgs e)

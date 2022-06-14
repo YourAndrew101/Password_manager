@@ -22,6 +22,18 @@ namespace PasswordManager
                 return null;
             }
         }
+        public AuthenticationWindow.AuthenticationWindow GetAuthenticationWindow
+        {
+            get
+            {
+                foreach (Window window in Windows)
+                    if (window is AuthenticationWindow.AuthenticationWindow authenticationWindow) return authenticationWindow;
+
+                return null;
+            }
+        }
+
+        private ISettingsService settingsService;
 
         App()
         {
@@ -30,7 +42,7 @@ namespace PasswordManager
         }
         public void ApplySettings()
         {
-            ISettingsService settingsService = new WindowSettingsService();
+            settingsService = new WindowSettingsService();
 
             if (!settingsService.IsSavedSettings) return;
 
@@ -65,7 +77,14 @@ namespace PasswordManager
 
         public void ExitUser()
         {
-            
+            GetMainWindow.Close();
+
+            settingsService = new WindowSettingsService();
+            settingsService.ClearSettings();
+            settingsService = new SignUpSettingsService();
+            settingsService.ClearSettings();
+
+            GetAuthenticationWindow.Show();
         }
     }
 }
