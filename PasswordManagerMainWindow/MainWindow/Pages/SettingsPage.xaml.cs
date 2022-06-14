@@ -62,11 +62,11 @@ namespace PasswordManager.MainWindow.Pages
 
         private void CreateNewPages()
         {
-            ((MainWindow)Application.Current.MainWindow).ApplySettings();
-            ((MainWindow)Application.Current.MainWindow).HomePage = new Home(_user);
-            ((MainWindow)Application.Current.MainWindow).SettingsPage = new Settings(_user);
-            ((MainWindow)Application.Current.MainWindow).AccountPage = new Account(_user);
-            ((MainWindow)Application.Current.MainWindow).MainFrame.Content = ((MainWindow)Application.Current.MainWindow).SettingsPage;
+            ((App)Application.Current).GetMainWindow.ApplySettings();
+            ((App)Application.Current).GetMainWindow.HomePage = new Home(_user);
+            ((App)Application.Current).GetMainWindow.SettingsPage = new Settings(_user);
+            ((App)Application.Current).GetMainWindow.AccountPage = new Account(_user);
+            ((App)Application.Current).GetMainWindow.MainFrame.Content = ((App)Application.Current).GetMainWindow.SettingsPage;
         }
         private void LanguageSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -75,7 +75,7 @@ namespace PasswordManager.MainWindow.Pages
         }
         private void ThemeSelector_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ((MainWindow)Application.Current.MainWindow).ShowNotification(Properties.Resources.ThemeSettingsChange);
+            ((App)Application.Current).GetMainWindow.ShowNotification(Properties.Resources.ThemeSettingsChange);
             SaveSettings();
         }
 

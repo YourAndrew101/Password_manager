@@ -65,7 +65,7 @@ namespace PasswordManager
 
         public void ExitUser()
         {
-            this.Windows[0]
+            
         }
     }
 }

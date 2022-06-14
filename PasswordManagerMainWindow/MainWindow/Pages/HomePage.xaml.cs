@@ -112,7 +112,7 @@ namespace PasswordManager.MainWindow.Pages
                     Repository.Add(service);
 
                     Animation.FormClosingAnimation(AddEditForm, ShadowEffectHomePage);
-                    ((MainWindow)Application.Current.MainWindow).ShowNotification(Properties.Resources.RecordAddedNotification);
+                    ((App)Application.Current).GetMainWindow.ShowNotification(Properties.Resources.RecordAddedNotification);
                 }
                 else
                 {
@@ -121,7 +121,7 @@ namespace PasswordManager.MainWindow.Pages
                     Repository.Update(ServiceId, service);
 
                     Animation.FormClosingAnimation(AddEditForm, ShadowEffectHomePage);
-                    ((MainWindow)Application.Current.MainWindow).ShowNotification(Properties.Resources.RecordEditedNotification);
+                    ((App)Application.Current).GetMainWindow.ShowNotification(Properties.Resources.RecordEditedNotification);
 
                 }
                 ClearForm();
@@ -178,7 +178,7 @@ namespace PasswordManager.MainWindow.Pages
                     break;
             }
 
-            ((MainWindow)Application.Current.MainWindow).ShowNotification(Properties.Resources.TextCopiedToClipboardNotification);
+            ((App)Application.Current).GetMainWindow.ShowNotification(Properties.Resources.TextCopiedToClipboardNotification);
         }
 
         private void PopupMenuButton_Click(object sender, RoutedEventArgs e)
@@ -216,8 +216,7 @@ namespace PasswordManager.MainWindow.Pages
 
             Repository.Remove((Service)MainDataGrid.CurrentItem);
             dataVM.ServiceCollectionView.Refresh();
-
-            ((MainWindow)Application.Current.MainWindow).ShowNotification(Properties.Resources.RecordRemovedNotification);
+            ((App)Application.Current).GetMainWindow.ShowNotification(Properties.Resources.RecordRemovedNotification);
         }
 
 
