@@ -122,7 +122,7 @@ namespace PasswordManager.MainWindow.Pages
 
         private void LogOutButton_Click(object sender, RoutedEventArgs e)
         {
-
+            ((App)App.Current).ExitUser(_user);
         }
     }
 }

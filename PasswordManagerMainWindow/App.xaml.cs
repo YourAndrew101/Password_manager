@@ -2,8 +2,10 @@
 using System.Globalization;
 using System.Threading;
 using System.Windows;
+using Data.DataProviders.Products;
 using ServicesLibrary;
 using ServicesLibrary.SettingsService;
+using UsersLibrary;
 using UsersLibrary.Settings;
 
 namespace PasswordManager
@@ -48,7 +50,7 @@ namespace PasswordManager
 
             WindowSettings windowSettings = (WindowSettings)settingsService.GetSettings();
             SetLanguage(windowSettings.Language);
-            
+
         }
         private void SetLanguage(WindowSettings.Languages language)
         {
@@ -75,16 +77,28 @@ namespace PasswordManager
         }
 
 
-        public void ExitUser()
+        public void ExitUser(User user)
         {
-            GetMainWindow.Close();
+            ClearAllSettings();
+            ClearAllServices(user);
 
+            AuthenticationWindow.AuthenticationWindow authenticationWindow = new AuthenticationWindow.AuthenticationWindow();
+            authenticationWindow.Show();
+
+            GetMainWindow.DeleteNotificationIcon();
+            GetMainWindow.Close();
+        }
+        private void ClearAllSettings()
+        {
             settingsService = new WindowSettingsService();
             settingsService.ClearSettings();
             settingsService = new SignUpSettingsService();
             settingsService.ClearSettings();
-
-            GetAuthenticationWindow.Show();
+        }
+        private void ClearAllServices(User user)
+        {
+            XMLDataProvider xMLDataProvider = new XMLDataProvider();
+            xMLDataProvider.DeleteFile(user);
         }
     }
 }

@@ -123,6 +123,11 @@ namespace PasswordManager.MainWindow
                     WindowState = WindowState.Normal;
                 };
         }
+        public void DeleteNotificationIcon()
+        {
+            _notifyIcon.Visible = false;
+            _notifyIcon.Dispose();
+        }
 
         private void Home_Checked(object sender, RoutedEventArgs e)
         {
@@ -176,7 +181,7 @@ namespace PasswordManager.MainWindow
         }
         private void CloseWithExit()
         {
-            _notifyIcon.Visible = false;
+            DeleteNotificationIcon();
             Close();
         }       
     }
