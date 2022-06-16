@@ -62,7 +62,7 @@ namespace PasswordManager.MainWindow.Pages
 
         private void CreateNewPages()
         {
-            ((App)Application.Current).GetMainWindow.ApplySettings();
+            ((App)Application.Current).GetMainWindow.ApplySettingsLanguage();
             ((App)Application.Current).GetMainWindow.HomePage = new Home(_user);
             ((App)Application.Current).GetMainWindow.SettingsPage = new Settings(_user);
             ((App)Application.Current).GetMainWindow.AccountPage = new Account(_user);

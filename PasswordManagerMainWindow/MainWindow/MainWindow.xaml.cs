@@ -57,6 +57,15 @@ namespace PasswordManager.MainWindow
                 MaximizeWindow.IsChecked = false;
         }
 
+        public void ApplySettingsLanguage()
+        {
+            ISettingsService settingsService = new WindowSettingsService();
+
+            if (!settingsService.IsSavedSettings) return;
+
+            WindowSettings windowSettings = (WindowSettings)settingsService.GetSettings();
+            SetLanguage(windowSettings.Language);
+        }
         public void ApplySettings()
         {
             ISettingsService settingsService = new WindowSettingsService();
